@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class FirstViewController: UIViewController {
     
@@ -21,16 +22,20 @@ class FirstViewController: UIViewController {
         self.roundedSignUpBtn.layer.cornerRadius = 8
         self.roundedLoginBtn.layer.cornerRadius = 8
         
-        try! Auth.auth().signOut()
+//        try! Auth.auth().signOut()
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         // Check if user is already logged in
         if Auth.auth().currentUser != nil {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let CategoriesTableViewController = storyBoard.instantiateViewController(withIdentifier: "CategoriesTableViewController")
-            present(CategoriesTableViewController, animated: true, completion: nil)
+            
+            User.sharedInstance.uid = Auth.auth().currentUser?.uid
+            DatabaseService.loadSingletonData(completionHandler: { (success) in
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                let CategoriesTableViewController = storyBoard.instantiateViewController(withIdentifier: "CategoriesTableViewController")
+                self.present(CategoriesTableViewController, animated: true, completion: nil)
+            })
         }
     }
     
