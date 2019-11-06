@@ -92,7 +92,7 @@
 		6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E7F4B9CBDBABBE5D7A0C2C3 /* Pods_TourneyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourneyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6849550BE28B7D56F62AAA /* Pods-Tourney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tourney.release.xcconfig"; path = "Target Support Files/Pods-Tourney/Pods-Tourney.release.xcconfig"; sourceTree = "<group>"; };
-		DF0B82462360DE1E000DDF32 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = ../LoginVC.swift; sourceTree = "<group>"; };
+		DF0B82462360DE1E000DDF32 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		DF0B824C2361EE99000DDF32 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		DFC545662305AB64009F84B1 /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		DFC545682305AB79009F84B1 /* TopVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopVideoController.swift; sourceTree = "<group>"; };
@@ -129,6 +129,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		098E94762373406F00B9E520 /* Login Signup */ = {
+			isa = PBXGroup;
+			children = (
+				DF0B824C2361EE99000DDF32 /* FirstViewController.swift */,
+				DF0B82462360DE1E000DDF32 /* LoginVC.swift */,
+				6E6AA49022EFAB52006A1267 /* UserVC.swift */,
+			);
+			path = "Login Signup";
+			sourceTree = "<group>";
+		};
 		2F3391B8AB786C39994757EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,9 +189,7 @@
 				6E6AA49722EFAB53006A1267 /* view */,
 				6E6AA48B22EFAB3C006A1267 /* Competition View */,
 				6E6AA45A22EFAA39006A1267 /* AppDelegate.swift */,
-				DF0B824C2361EE99000DDF32 /* FirstViewController.swift */,
-				DF0B82462360DE1E000DDF32 /* LoginVC.swift */,
-				6E6AA49022EFAB52006A1267 /* UserVC.swift */,
+				098E94762373406F00B9E520 /* Login Signup */,
 				6E6AA4AB22EFAB78006A1267 /* Main.storyboard */,
 				6E6AA46622EFAA3A006A1267 /* LaunchScreen.storyboard */,
 				6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */,

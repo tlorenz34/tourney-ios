@@ -20,7 +20,8 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         self.roundedSignUpBtn.layer.cornerRadius = 8
         self.roundedLoginBtn.layer.cornerRadius = 8
-
+        
+        try! Auth.auth().signOut()
 
     }
     
