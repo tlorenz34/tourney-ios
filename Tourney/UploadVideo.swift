@@ -211,7 +211,10 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     }
     
     @IBAction func uploadVideoButtonPressed(_ sender: Any) {
-        cropVideo(sourceURL: self.videoURL! as URL, startTime: self.startTime, endTime: self.endTime) { (outputURL) in
+                
+        guard let videoURL = videoURL else { return }
+        
+        cropVideo(sourceURL: videoURL as URL, startTime: self.startTime, endTime: self.endTime) { (outputURL) in
             self.uploadToStorage(videoLink: outputURL)
         }
     }
