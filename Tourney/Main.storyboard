@@ -405,7 +405,7 @@
                                 <rect key="frame" x="0.0" y="627" width="375" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFU-Tb-n8K">
-                                        <rect key="frame" x="0.0" y="0.0" width="170" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="F00-Uq-ilF"/>
                                         </constraints>
@@ -414,20 +414,7 @@
                                             <segue destination="Xc6-Lz-pOt" kind="show" identifier="toUploadVideo" id="1Ex-2H-U6N"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNf-Ls-yiS">
-                                        <rect key="frame" x="205" y="0.0" width="170" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="z52-Pj-EXh"/>
-                                        </constraints>
-                                        <state key="normal" title="Take new video"/>
-                                        <connections>
-                                            <segue destination="BJr-F5-TZn" kind="show" identifier="recordVideoSegue" id="kDI-lv-1kz"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="jNf-Ls-yiS" firstAttribute="width" secondItem="TFU-Tb-n8K" secondAttribute="width" id="DEH-ej-fFf"/>
-                                </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGz-Nc-a6b">
                                 <rect key="frame" x="20" y="55" width="335" height="40"/>
@@ -1336,10 +1323,10 @@
         <image name="jan-kopriva-Sgv7CbCWcFE-unsplash" width="4000" height="6000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gQD-u3-W4x"/>
+        <segue reference="drw-u4-XWL"/>
         <segue reference="P0u-iu-Uw9"/>
         <segue reference="o0G-E3-jeL"/>
         <segue reference="EpW-Me-C44"/>
-        <segue reference="1Ex-2H-U6N"/>
+        <segue reference="XMn-l8-Bx7"/>
     </inferredMetricsTieBreakers>
 </document>
