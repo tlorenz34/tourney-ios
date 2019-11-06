@@ -36,25 +36,45 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+
+    // MARK: - Actions
+    
+    @IBAction func completeAccount(_ sender: Any){
         
-        return (true)
+        
+        
+        Auth.auth().createUser(withEmail: signUpEmailField.text!, password: signUpPasswordField.text!, completion: {
+            (user, error) in
+            if error != nil{
+                print("@willcohen There is an error in UserVC: \(String(describing: error?.localizedDescription))")
+            } else{
+                if let user = user{
+                    self.userUid = user.uid
+                    User.sharedInstance.uid = user.uid
+                    self.uploadImg(completionHandler: { (success) in
+                        if (success) {
+                            self.setUpUserAndContinue()
+                        } else {
+                            print("@willcohen somethign went wrong")
+                        }
+                    })
+                }
+            }
+        })
     }
+    
+    @IBAction func selectedImagePicker(_ sender: Any){
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Helpers
     
     func keychain(){
         KeychainWrapper.standard.set(userUid, forKey: "uid")
-    }
-    
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        checkPermissions()
-        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
-            userImagePicker.image = image
-            imageSelected = true
-        } else {
-            print("@willcohen Image wasn't selected")
-        }
-        imagePicker.dismiss(animated: true, completion: nil)
     }
     
     func setUpUserAndContinue(){
@@ -118,34 +138,26 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         
     }
     
-    @IBAction func completeAccount(_ sender: Any){
-        Auth.auth().createUser(withEmail: signUpEmailField.text!, password: signUpPasswordField.text!, completion: {
-            (user, error) in
-            if error != nil{
-                print("@willcohen There is an error in UserVC: \(String(describing: error?.localizedDescription))")
-            } else{
-                if let user = user{
-                    self.userUid = user.uid
-                    User.sharedInstance.uid = user.uid
-                    self.uploadImg(completionHandler: { (success) in
-                        if (success) {
-                            self.setUpUserAndContinue()
-                        } else {
-                            print("@willcohen somethign went wrong")
-                        }
-                    })
-                }
-            }
-        })
+    
+    
+    // MARK: - TextField Delegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return (true)
     }
     
-    @IBAction func selectedImagePicker(_ sender: Any){
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    @IBAction func cancel(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+    // MARK: - ImagePicker Delegate
 
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        checkPermissions()
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
+            userImagePicker.image = image
+            imageSelected = true
+        } else {
+            print("@willcohen Image wasn't selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
 }
