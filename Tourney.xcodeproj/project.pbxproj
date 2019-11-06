@@ -139,6 +139,15 @@
 			path = "Login Signup";
 			sourceTree = "<group>";
 		};
+		098E9477237341B500B9E520 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6E6AA49622EFAB53006A1267 /* Post.swift */,
+				6E6AA49C22EFAB53006A1267 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		2F3391B8AB786C39994757EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,21 +188,20 @@
 				6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */,
 				6E6AA49422EFAB53006A1267 /* FeedVC.swift */,
 				6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */,
-				6E6AA49622EFAB53006A1267 /* Post.swift */,
 				6E6AA49122EFAB52006A1267 /* PostCell.swift */,
 				6E6AA49522EFAB53006A1267 /* RecordVideo.swift */,
 				6E6AA49222EFAB52006A1267 /* SignOut.swift */,
 				6E6AA49B22EFAB53006A1267 /* UploadVideo.swift */,
-				6E6AA49C22EFAB53006A1267 /* User.swift */,
 				6E6AA49D22EFAB53006A1267 /* UserProfile.swift */,
-				6E6AA49722EFAB53006A1267 /* view */,
+				098E9477237341B500B9E520 /* Models */,
+				6E6AA49722EFAB53006A1267 /* Views */,
 				6E6AA48B22EFAB3C006A1267 /* Competition View */,
-				6E6AA45A22EFAA39006A1267 /* AppDelegate.swift */,
 				098E94762373406F00B9E520 /* Login Signup */,
 				6E6AA4AB22EFAB78006A1267 /* Main.storyboard */,
 				6E6AA46622EFAA3A006A1267 /* LaunchScreen.storyboard */,
 				6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */,
 				6E6AA46922EFAA3B006A1267 /* Info.plist */,
+				6E6AA45A22EFAA39006A1267 /* AppDelegate.swift */,
 				6E6AA46122EFAA39006A1267 /* Tourney.xcdatamodeld */,
 			);
 			path = Tourney;
@@ -226,14 +234,14 @@
 			path = "Competition View";
 			sourceTree = "<group>";
 		};
-		6E6AA49722EFAB53006A1267 /* view */ = {
+		6E6AA49722EFAB53006A1267 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				6E6AA49822EFAB53006A1267 /* CircleImage.swift */,
 				6E6AA49922EFAB53006A1267 /* VideoView.swift */,
 				6E6AA49A22EFAB53006A1267 /* RoundedView.swift */,
 			);
-			path = view;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		EAF5DBD4C2527B013AAA7470 /* Pods */ = {
