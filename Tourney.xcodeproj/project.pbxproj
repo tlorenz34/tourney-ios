@@ -148,6 +148,21 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		098E94782373636800B9E520 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				098E94762373406F00B9E520 /* Login Signup */,
+				6E6AA49422EFAB53006A1267 /* FeedVC.swift */,
+				6E6AA49522EFAB53006A1267 /* RecordVideo.swift */,
+				6E6AA49222EFAB52006A1267 /* SignOut.swift */,
+				6E6AA49B22EFAB53006A1267 /* UploadVideo.swift */,
+				6E6AA49D22EFAB53006A1267 /* UserProfile.swift */,
+				6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */,
+				DFC545682305AB79009F84B1 /* TopVideoController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		2F3391B8AB786C39994757EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,20 +198,12 @@
 		6E6AA45922EFAA39006A1267 /* Tourney */ = {
 			isa = PBXGroup;
 			children = (
-				DFC545682305AB79009F84B1 /* TopVideoController.swift */,
 				DFC545662305AB64009F84B1 /* DatabaseService.swift */,
 				6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */,
-				6E6AA49422EFAB53006A1267 /* FeedVC.swift */,
-				6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */,
-				6E6AA49122EFAB52006A1267 /* PostCell.swift */,
-				6E6AA49522EFAB53006A1267 /* RecordVideo.swift */,
-				6E6AA49222EFAB52006A1267 /* SignOut.swift */,
-				6E6AA49B22EFAB53006A1267 /* UploadVideo.swift */,
-				6E6AA49D22EFAB53006A1267 /* UserProfile.swift */,
 				098E9477237341B500B9E520 /* Models */,
 				6E6AA49722EFAB53006A1267 /* Views */,
 				6E6AA48B22EFAB3C006A1267 /* Competition View */,
-				098E94762373406F00B9E520 /* Login Signup */,
+				098E94782373636800B9E520 /* Controllers */,
 				6E6AA4AB22EFAB78006A1267 /* Main.storyboard */,
 				6E6AA46622EFAA3A006A1267 /* LaunchScreen.storyboard */,
 				6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */,
@@ -237,6 +244,7 @@
 		6E6AA49722EFAB53006A1267 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E6AA49122EFAB52006A1267 /* PostCell.swift */,
 				6E6AA49822EFAB53006A1267 /* CircleImage.swift */,
 				6E6AA49922EFAB53006A1267 /* VideoView.swift */,
 				6E6AA49A22EFAB53006A1267 /* RoundedView.swift */,
