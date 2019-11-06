@@ -243,19 +243,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVA-By-0hs">
-                                        <rect key="frame" x="327" y="8" width="32" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="2zN-hA-SeM"/>
-                                            <constraint firstAttribute="width" constant="32" id="SBT-E7-FFY"/>
-                                            <constraint firstAttribute="height" constant="32" id="wcz-jj-GIB"/>
-                                        </constraints>
-                                        <state key="normal" image="baseline_settings_black_48pt_3x"/>
-                                        <connections>
-                                            <action selector="SignOutWith_sender:" destination="hFD-yr-YVI" eventType="touchUpInside" id="Hjr-Td-Km9"/>
-                                            <segue destination="xTv-Gt-4M6" kind="show" id="drw-u4-XWL"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhI-pT-LrV">
                                         <rect key="frame" x="18" y="8" width="40" height="32"/>
                                         <constraints>
@@ -272,19 +259,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="hVA-By-0hs" firstAttribute="top" secondItem="oYw-II-E1S" secondAttribute="top" constant="8" id="0Du-tz-pS2"/>
                                     <constraint firstAttribute="height" constant="50" id="15D-zf-HAz"/>
-                                    <constraint firstAttribute="bottom" secondItem="hVA-By-0hs" secondAttribute="bottom" constant="10" id="3fE-1Z-rK7"/>
-                                    <constraint firstItem="hVA-By-0hs" firstAttribute="centerY" secondItem="oYw-II-E1S" secondAttribute="centerY" constant="-1" id="8fh-E4-J93"/>
                                     <constraint firstItem="hZr-6a-Hpg" firstAttribute="centerX" secondItem="oYw-II-E1S" secondAttribute="centerX" id="BiH-bv-sWh"/>
-                                    <constraint firstItem="hhI-pT-LrV" firstAttribute="top" secondItem="hVA-By-0hs" secondAttribute="top" id="SQO-14-eD5"/>
+                                    <constraint firstItem="hhI-pT-LrV" firstAttribute="top" secondItem="oYw-II-E1S" secondAttribute="top" constant="8" id="LqE-DH-54f"/>
                                     <constraint firstAttribute="bottom" secondItem="hZr-6a-Hpg" secondAttribute="bottom" constant="14" id="UP9-Kc-uW7"/>
-                                    <constraint firstAttribute="trailing" secondItem="hVA-By-0hs" secondAttribute="trailing" constant="16" id="aLP-8l-Wrd"/>
                                     <constraint firstItem="hhI-pT-LrV" firstAttribute="leading" secondItem="oYw-II-E1S" secondAttribute="leading" constant="18" id="fis-6q-Upu"/>
                                     <constraint firstItem="hZr-6a-Hpg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hhI-pT-LrV" secondAttribute="trailing" constant="8" symbolic="YES" id="iKV-wa-vxv"/>
-                                    <constraint firstAttribute="trailing" secondItem="hVA-By-0hs" secondAttribute="trailing" constant="16" id="qNd-dS-bHR"/>
                                     <constraint firstItem="hZr-6a-Hpg" firstAttribute="top" secondItem="oYw-II-E1S" secondAttribute="top" constant="15" id="qRc-Hh-82z"/>
-                                    <constraint firstItem="hVA-By-0hs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hZr-6a-Hpg" secondAttribute="trailing" constant="8" symbolic="YES" id="y6W-7s-WZU"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="85j-sH-D74">
@@ -881,19 +862,6 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zT0-Ph-Lw7">
-                                    <rect key="frame" x="327" y="8" width="32" height="32"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="32" id="Qnn-17-8gj"/>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="tsk-cl-TxD"/>
-                                        <constraint firstAttribute="width" constant="32" id="zJd-07-6kk"/>
-                                    </constraints>
-                                    <state key="normal" image="baseline_settings_black_48pt_3x"/>
-                                    <connections>
-                                        <action selector="SignOutWith_sender:" destination="hFD-yr-YVI" eventType="touchUpInside" id="Qsh-kA-BGx"/>
-                                        <segue destination="xTv-Gt-4M6" kind="show" id="gQD-u3-W4x"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4J-tB-JbQ">
                                     <rect key="frame" x="27" y="8" width="32" height="32"/>
                                     <constraints>
@@ -910,22 +878,15 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="zT0-Ph-Lw7" secondAttribute="bottom" constant="10" id="06q-ON-hD4"/>
-                                <constraint firstAttribute="trailing" secondItem="zT0-Ph-Lw7" secondAttribute="trailing" constant="16" id="1Ff-ZB-nTV"/>
                                 <constraint firstAttribute="bottom" secondItem="N4J-tB-JbQ" secondAttribute="bottom" constant="10" id="948-JM-3hV"/>
                                 <constraint firstAttribute="bottom" secondItem="RMT-av-7zX" secondAttribute="bottom" constant="14" id="9Rz-FM-e8A"/>
                                 <constraint firstItem="N4J-tB-JbQ" firstAttribute="leading" secondItem="Zqt-9e-hdF" secondAttribute="leading" constant="27" id="HHD-qM-imx"/>
-                                <constraint firstItem="zT0-Ph-Lw7" firstAttribute="centerY" secondItem="Zqt-9e-hdF" secondAttribute="centerY" constant="-1" id="Hpp-CH-GpF"/>
                                 <constraint firstItem="N4J-tB-JbQ" firstAttribute="leading" secondItem="Zqt-9e-hdF" secondAttribute="leading" constant="27" id="LO7-lW-RDf"/>
                                 <constraint firstItem="RMT-av-7zX" firstAttribute="centerX" secondItem="Zqt-9e-hdF" secondAttribute="centerX" id="YYo-6s-wMH"/>
                                 <constraint firstItem="N4J-tB-JbQ" firstAttribute="centerY" secondItem="RMT-av-7zX" secondAttribute="centerY" id="ZFg-bj-v40"/>
-                                <constraint firstItem="zT0-Ph-Lw7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RMT-av-7zX" secondAttribute="trailing" constant="8" symbolic="YES" id="am0-ny-Lgp"/>
                                 <constraint firstItem="N4J-tB-JbQ" firstAttribute="top" secondItem="Zqt-9e-hdF" secondAttribute="top" constant="8" id="brr-pB-7KC"/>
                                 <constraint firstItem="RMT-av-7zX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N4J-tB-JbQ" secondAttribute="trailing" constant="8" symbolic="YES" id="eW8-oE-zug"/>
-                                <constraint firstItem="N4J-tB-JbQ" firstAttribute="bottom" secondItem="zT0-Ph-Lw7" secondAttribute="bottom" id="hVM-4l-6am"/>
                                 <constraint firstAttribute="height" constant="50" id="hbP-m3-DhY"/>
-                                <constraint firstItem="zT0-Ph-Lw7" firstAttribute="top" secondItem="Zqt-9e-hdF" secondAttribute="top" constant="8" id="pFq-yg-CNF"/>
-                                <constraint firstAttribute="trailing" secondItem="zT0-Ph-Lw7" secondAttribute="trailing" constant="16" id="rdm-c0-8VX"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -1321,9 +1282,9 @@
         <image name="jan-kopriva-Sgv7CbCWcFE-unsplash" width="4000" height="6000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="drw-u4-XWL"/>
+        <segue reference="xcO-Wg-sga"/>
         <segue reference="P0u-iu-Uw9"/>
-        <segue reference="dRG-1V-ury"/>
+        <segue reference="jyX-zH-4fh"/>
         <segue reference="1Ex-2H-U6N"/>
     </inferredMetricsTieBreakers>
 </document>
