@@ -1,0 +1,832 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4D0CA4B65570B64F4966238C /* Pods_TourneyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332AD775DEECDBF079B44E07 /* Pods_TourneyUITests.framework */; };
+		4EACE43D0769FABE1627E0D8 /* Pods_TourneyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7F4B9CBDBABBE5D7A0C2C3 /* Pods_TourneyTests.framework */; };
+		5AA3CBA15A8BC08F54B11DB6 /* Pods_Tourney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F4A147F551EC5A23237372 /* Pods_Tourney.framework */; };
+		6E6AA45B22EFAA39006A1267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA45A22EFAA39006A1267 /* AppDelegate.swift */; };
+		6E6AA46322EFAA39006A1267 /* Tourney.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA46122EFAA39006A1267 /* Tourney.xcdatamodeld */; };
+		6E6AA46822EFAA3A006A1267 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E6AA46622EFAA3A006A1267 /* LaunchScreen.storyboard */; };
+		6E6AA47322EFAA3B006A1267 /* TourneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA47222EFAA3B006A1267 /* TourneyTests.swift */; };
+		6E6AA47E22EFAA3B006A1267 /* TourneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA47D22EFAA3B006A1267 /* TourneyUITests.swift */; };
+		6E6AA48E22EFAB3C006A1267 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA48C22EFAB3C006A1267 /* CustomCell.swift */; };
+		6E6AA48F22EFAB3C006A1267 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA48D22EFAB3C006A1267 /* TableViewController.swift */; };
+		6E6AA49E22EFAB53006A1267 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49022EFAB52006A1267 /* UserVC.swift */; };
+		6E6AA49F22EFAB53006A1267 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49122EFAB52006A1267 /* PostCell.swift */; };
+		6E6AA4A022EFAB53006A1267 /* SignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49222EFAB52006A1267 /* SignOut.swift */; };
+		6E6AA4A122EFAB53006A1267 /* leaderboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */; };
+		6E6AA4A222EFAB53006A1267 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49422EFAB53006A1267 /* FeedVC.swift */; };
+		6E6AA4A322EFAB53006A1267 /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49522EFAB53006A1267 /* RecordVideo.swift */; };
+		6E6AA4A422EFAB53006A1267 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49622EFAB53006A1267 /* Post.swift */; };
+		6E6AA4A522EFAB53006A1267 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49822EFAB53006A1267 /* CircleImage.swift */; };
+		6E6AA4A622EFAB53006A1267 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49922EFAB53006A1267 /* VideoView.swift */; };
+		6E6AA4A722EFAB53006A1267 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49A22EFAB53006A1267 /* RoundedView.swift */; };
+		6E6AA4A822EFAB53006A1267 /* UploadVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49B22EFAB53006A1267 /* UploadVideo.swift */; };
+		6E6AA4A922EFAB53006A1267 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49C22EFAB53006A1267 /* User.swift */; };
+		6E6AA4AA22EFAB53006A1267 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49D22EFAB53006A1267 /* UserProfile.swift */; };
+		6E6AA4AC22EFAB78006A1267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E6AA4AB22EFAB78006A1267 /* Main.storyboard */; };
+		6E6AA4AE22EFAB8A006A1267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */; };
+		6E6AA4B222EFABF6006A1267 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */; };
+		DF0B82472360DE1E000DDF32 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B82462360DE1E000DDF32 /* LoginVC.swift */; };
+		DF0B824D2361EE99000DDF32 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B824C2361EE99000DDF32 /* FirstViewController.swift */; };
+		DFC545672305AB65009F84B1 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC545662305AB64009F84B1 /* DatabaseService.swift */; };
+		DFC545692305AB79009F84B1 /* TopVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC545682305AB79009F84B1 /* TopVideoController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6E6AA46F22EFAA3B006A1267 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E6AA44F22EFAA39006A1267 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E6AA45622EFAA39006A1267;
+			remoteInfo = Tourney;
+		};
+		6E6AA47A22EFAA3B006A1267 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E6AA44F22EFAA39006A1267 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E6AA45622EFAA39006A1267;
+			remoteInfo = Tourney;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		332AD775DEECDBF079B44E07 /* Pods_TourneyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourneyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EE4966694CF40101B40DC84 /* Pods-Tourney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tourney.debug.xcconfig"; path = "Target Support Files/Pods-Tourney/Pods-Tourney.debug.xcconfig"; sourceTree = "<group>"; };
+		400BB418888C43F7223AD794 /* Pods-TourneyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourneyUITests.debug.xcconfig"; path = "Target Support Files/Pods-TourneyUITests/Pods-TourneyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		52D0007D14DB05595D9DAE8E /* Pods-TourneyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourneyTests.debug.xcconfig"; path = "Target Support Files/Pods-TourneyTests/Pods-TourneyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6E6AA45722EFAA39006A1267 /* Tourney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tourney.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6AA45A22EFAA39006A1267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6E6AA46222EFAA39006A1267 /* Tourney.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tourney.xcdatamodel; sourceTree = "<group>"; };
+		6E6AA46722EFAA3A006A1267 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6E6AA46922EFAA3B006A1267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E6AA46E22EFAA3B006A1267 /* TourneyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TourneyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6AA47222EFAA3B006A1267 /* TourneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourneyTests.swift; sourceTree = "<group>"; };
+		6E6AA47422EFAA3B006A1267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E6AA47922EFAA3B006A1267 /* TourneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TourneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6AA47D22EFAA3B006A1267 /* TourneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourneyUITests.swift; sourceTree = "<group>"; };
+		6E6AA47F22EFAA3B006A1267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E6AA48C22EFAB3C006A1267 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		6E6AA48D22EFAB3C006A1267 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		6E6AA49022EFAB52006A1267 /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
+		6E6AA49122EFAB52006A1267 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		6E6AA49222EFAB52006A1267 /* SignOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOut.swift; sourceTree = "<group>"; };
+		6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = leaderboardVC.swift; sourceTree = "<group>"; };
+		6E6AA49422EFAB53006A1267 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		6E6AA49522EFAB53006A1267 /* RecordVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideo.swift; sourceTree = "<group>"; };
+		6E6AA49622EFAB53006A1267 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		6E6AA49822EFAB53006A1267 /* CircleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		6E6AA49922EFAB53006A1267 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		6E6AA49A22EFAB53006A1267 /* RoundedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		6E6AA49B22EFAB53006A1267 /* UploadVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadVideo.swift; sourceTree = "<group>"; };
+		6E6AA49C22EFAB53006A1267 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6E6AA49D22EFAB53006A1267 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		6E6AA4AB22EFAB78006A1267 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8E7F4B9CBDBABBE5D7A0C2C3 /* Pods_TourneyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourneyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB6849550BE28B7D56F62AAA /* Pods-Tourney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tourney.release.xcconfig"; path = "Target Support Files/Pods-Tourney/Pods-Tourney.release.xcconfig"; sourceTree = "<group>"; };
+		DF0B82462360DE1E000DDF32 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = ../LoginVC.swift; sourceTree = "<group>"; };
+		DF0B824C2361EE99000DDF32 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		DFC545662305AB64009F84B1 /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		DFC545682305AB79009F84B1 /* TopVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopVideoController.swift; sourceTree = "<group>"; };
+		E1557F7680A284C73CAB1D11 /* Pods-TourneyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourneyTests.release.xcconfig"; path = "Target Support Files/Pods-TourneyTests/Pods-TourneyTests.release.xcconfig"; sourceTree = "<group>"; };
+		F0F4A147F551EC5A23237372 /* Pods_Tourney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tourney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1F4207945D217632471FDA2 /* Pods-TourneyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourneyUITests.release.xcconfig"; path = "Target Support Files/Pods-TourneyUITests/Pods-TourneyUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6E6AA45422EFAA39006A1267 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AA3CBA15A8BC08F54B11DB6 /* Pods_Tourney.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6AA46B22EFAA3B006A1267 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EACE43D0769FABE1627E0D8 /* Pods_TourneyTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6AA47622EFAA3B006A1267 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D0CA4B65570B64F4966238C /* Pods_TourneyUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F3391B8AB786C39994757EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F0F4A147F551EC5A23237372 /* Pods_Tourney.framework */,
+				8E7F4B9CBDBABBE5D7A0C2C3 /* Pods_TourneyTests.framework */,
+				332AD775DEECDBF079B44E07 /* Pods_TourneyUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E6AA44E22EFAA39006A1267 = {
+			isa = PBXGroup;
+			children = (
+				6E6AA45922EFAA39006A1267 /* Tourney */,
+				6E6AA47122EFAA3B006A1267 /* TourneyTests */,
+				6E6AA47C22EFAA3B006A1267 /* TourneyUITests */,
+				6E6AA45822EFAA39006A1267 /* Products */,
+				EAF5DBD4C2527B013AAA7470 /* Pods */,
+				2F3391B8AB786C39994757EE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6E6AA45822EFAA39006A1267 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E6AA45722EFAA39006A1267 /* Tourney.app */,
+				6E6AA46E22EFAA3B006A1267 /* TourneyTests.xctest */,
+				6E6AA47922EFAA3B006A1267 /* TourneyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E6AA45922EFAA39006A1267 /* Tourney */ = {
+			isa = PBXGroup;
+			children = (
+				DFC545682305AB79009F84B1 /* TopVideoController.swift */,
+				DFC545662305AB64009F84B1 /* DatabaseService.swift */,
+				6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */,
+				6E6AA49422EFAB53006A1267 /* FeedVC.swift */,
+				6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */,
+				6E6AA49622EFAB53006A1267 /* Post.swift */,
+				6E6AA49122EFAB52006A1267 /* PostCell.swift */,
+				6E6AA49522EFAB53006A1267 /* RecordVideo.swift */,
+				6E6AA49222EFAB52006A1267 /* SignOut.swift */,
+				6E6AA49B22EFAB53006A1267 /* UploadVideo.swift */,
+				6E6AA49C22EFAB53006A1267 /* User.swift */,
+				6E6AA49D22EFAB53006A1267 /* UserProfile.swift */,
+				6E6AA49722EFAB53006A1267 /* view */,
+				6E6AA48B22EFAB3C006A1267 /* Competition View */,
+				6E6AA45A22EFAA39006A1267 /* AppDelegate.swift */,
+				DF0B824C2361EE99000DDF32 /* FirstViewController.swift */,
+				DF0B82462360DE1E000DDF32 /* LoginVC.swift */,
+				6E6AA49022EFAB52006A1267 /* UserVC.swift */,
+				6E6AA4AB22EFAB78006A1267 /* Main.storyboard */,
+				6E6AA46622EFAA3A006A1267 /* LaunchScreen.storyboard */,
+				6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */,
+				6E6AA46922EFAA3B006A1267 /* Info.plist */,
+				6E6AA46122EFAA39006A1267 /* Tourney.xcdatamodeld */,
+			);
+			path = Tourney;
+			sourceTree = "<group>";
+		};
+		6E6AA47122EFAA3B006A1267 /* TourneyTests */ = {
+			isa = PBXGroup;
+			children = (
+				6E6AA47222EFAA3B006A1267 /* TourneyTests.swift */,
+				6E6AA47422EFAA3B006A1267 /* Info.plist */,
+			);
+			path = TourneyTests;
+			sourceTree = "<group>";
+		};
+		6E6AA47C22EFAA3B006A1267 /* TourneyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6E6AA47D22EFAA3B006A1267 /* TourneyUITests.swift */,
+				6E6AA47F22EFAA3B006A1267 /* Info.plist */,
+			);
+			path = TourneyUITests;
+			sourceTree = "<group>";
+		};
+		6E6AA48B22EFAB3C006A1267 /* Competition View */ = {
+			isa = PBXGroup;
+			children = (
+				6E6AA48C22EFAB3C006A1267 /* CustomCell.swift */,
+				6E6AA48D22EFAB3C006A1267 /* TableViewController.swift */,
+			);
+			path = "Competition View";
+			sourceTree = "<group>";
+		};
+		6E6AA49722EFAB53006A1267 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6E6AA49822EFAB53006A1267 /* CircleImage.swift */,
+				6E6AA49922EFAB53006A1267 /* VideoView.swift */,
+				6E6AA49A22EFAB53006A1267 /* RoundedView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		EAF5DBD4C2527B013AAA7470 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3EE4966694CF40101B40DC84 /* Pods-Tourney.debug.xcconfig */,
+				DB6849550BE28B7D56F62AAA /* Pods-Tourney.release.xcconfig */,
+				52D0007D14DB05595D9DAE8E /* Pods-TourneyTests.debug.xcconfig */,
+				E1557F7680A284C73CAB1D11 /* Pods-TourneyTests.release.xcconfig */,
+				400BB418888C43F7223AD794 /* Pods-TourneyUITests.debug.xcconfig */,
+				F1F4207945D217632471FDA2 /* Pods-TourneyUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6E6AA45622EFAA39006A1267 /* Tourney */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6AA48222EFAA3B006A1267 /* Build configuration list for PBXNativeTarget "Tourney" */;
+			buildPhases = (
+				61317236152288FEBC845829 /* [CP] Check Pods Manifest.lock */,
+				6E6AA45322EFAA39006A1267 /* Sources */,
+				6E6AA45422EFAA39006A1267 /* Frameworks */,
+				6E6AA45522EFAA39006A1267 /* Resources */,
+				9C3CDC47CD69D84969C0E162 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tourney;
+			productName = Tourney;
+			productReference = 6E6AA45722EFAA39006A1267 /* Tourney.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6E6AA46D22EFAA3B006A1267 /* TourneyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6AA48522EFAA3B006A1267 /* Build configuration list for PBXNativeTarget "TourneyTests" */;
+			buildPhases = (
+				7D678ACF04425B47523CBB7A /* [CP] Check Pods Manifest.lock */,
+				6E6AA46A22EFAA3B006A1267 /* Sources */,
+				6E6AA46B22EFAA3B006A1267 /* Frameworks */,
+				6E6AA46C22EFAA3B006A1267 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E6AA47022EFAA3B006A1267 /* PBXTargetDependency */,
+			);
+			name = TourneyTests;
+			productName = TourneyTests;
+			productReference = 6E6AA46E22EFAA3B006A1267 /* TourneyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6E6AA47822EFAA3B006A1267 /* TourneyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6AA48822EFAA3B006A1267 /* Build configuration list for PBXNativeTarget "TourneyUITests" */;
+			buildPhases = (
+				F4B2152293845BF53AF35B62 /* [CP] Check Pods Manifest.lock */,
+				6E6AA47522EFAA3B006A1267 /* Sources */,
+				6E6AA47622EFAA3B006A1267 /* Frameworks */,
+				6E6AA47722EFAA3B006A1267 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E6AA47B22EFAA3B006A1267 /* PBXTargetDependency */,
+			);
+			name = TourneyUITests;
+			productName = TourneyUITests;
+			productReference = 6E6AA47922EFAA3B006A1267 /* TourneyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6E6AA44F22EFAA39006A1267 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "Will Cohen";
+				TargetAttributes = {
+					6E6AA45622EFAA39006A1267 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					6E6AA46D22EFAA3B006A1267 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 6E6AA45622EFAA39006A1267;
+					};
+					6E6AA47822EFAA3B006A1267 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 6E6AA45622EFAA39006A1267;
+					};
+				};
+			};
+			buildConfigurationList = 6E6AA45222EFAA39006A1267 /* Build configuration list for PBXProject "Tourney" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6E6AA44E22EFAA39006A1267;
+			productRefGroup = 6E6AA45822EFAA39006A1267 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E6AA45622EFAA39006A1267 /* Tourney */,
+				6E6AA46D22EFAA3B006A1267 /* TourneyTests */,
+				6E6AA47822EFAA3B006A1267 /* TourneyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6E6AA45522EFAA39006A1267 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6AA4AC22EFAB78006A1267 /* Main.storyboard in Resources */,
+				6E6AA4B222EFABF6006A1267 /* GoogleService-Info.plist in Resources */,
+				6E6AA4AE22EFAB8A006A1267 /* Assets.xcassets in Resources */,
+				6E6AA46822EFAA3A006A1267 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6AA46C22EFAA3B006A1267 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6AA47722EFAA3B006A1267 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		61317236152288FEBC845829 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tourney-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D678ACF04425B47523CBB7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TourneyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C3CDC47CD69D84969C0E162 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tourney/Pods-Tourney-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tourney/Pods-Tourney-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tourney/Pods-Tourney-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4B2152293845BF53AF35B62 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TourneyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6E6AA45322EFAA39006A1267 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6AA49F22EFAB53006A1267 /* PostCell.swift in Sources */,
+				DFC545692305AB79009F84B1 /* TopVideoController.swift in Sources */,
+				DF0B82472360DE1E000DDF32 /* LoginVC.swift in Sources */,
+				6E6AA4A022EFAB53006A1267 /* SignOut.swift in Sources */,
+				6E6AA4A222EFAB53006A1267 /* FeedVC.swift in Sources */,
+				6E6AA4A522EFAB53006A1267 /* CircleImage.swift in Sources */,
+				DF0B824D2361EE99000DDF32 /* FirstViewController.swift in Sources */,
+				6E6AA4A422EFAB53006A1267 /* Post.swift in Sources */,
+				DFC545672305AB65009F84B1 /* DatabaseService.swift in Sources */,
+				6E6AA49E22EFAB53006A1267 /* UserVC.swift in Sources */,
+				6E6AA4A922EFAB53006A1267 /* User.swift in Sources */,
+				6E6AA4AA22EFAB53006A1267 /* UserProfile.swift in Sources */,
+				6E6AA46322EFAA39006A1267 /* Tourney.xcdatamodeld in Sources */,
+				6E6AA4A822EFAB53006A1267 /* UploadVideo.swift in Sources */,
+				6E6AA4A722EFAB53006A1267 /* RoundedView.swift in Sources */,
+				6E6AA4A622EFAB53006A1267 /* VideoView.swift in Sources */,
+				6E6AA48E22EFAB3C006A1267 /* CustomCell.swift in Sources */,
+				6E6AA48F22EFAB3C006A1267 /* TableViewController.swift in Sources */,
+				6E6AA4A322EFAB53006A1267 /* RecordVideo.swift in Sources */,
+				6E6AA4A122EFAB53006A1267 /* leaderboardVC.swift in Sources */,
+				6E6AA45B22EFAA39006A1267 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6AA46A22EFAA3B006A1267 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6AA47322EFAA3B006A1267 /* TourneyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6AA47522EFAA3B006A1267 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6AA47E22EFAA3B006A1267 /* TourneyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6E6AA47022EFAA3B006A1267 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E6AA45622EFAA39006A1267 /* Tourney */;
+			targetProxy = 6E6AA46F22EFAA3B006A1267 /* PBXContainerItemProxy */;
+		};
+		6E6AA47B22EFAA3B006A1267 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E6AA45622EFAA39006A1267 /* Tourney */;
+			targetProxy = 6E6AA47A22EFAA3B006A1267 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6E6AA46622EFAA3A006A1267 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E6AA46722EFAA3A006A1267 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6E6AA48022EFAA3B006A1267 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6E6AA48122EFAA3B006A1267 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6E6AA48322EFAA3B006A1267 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EE4966694CF40101B40DC84 /* Pods-Tourney.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.5;
+				DEVELOPMENT_TEAM = SFS3QU5SC2;
+				INFOPLIST_FILE = Tourney/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tourney.Tourney;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6E6AA48422EFAA3B006A1267 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB6849550BE28B7D56F62AAA /* Pods-Tourney.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.5;
+				DEVELOPMENT_TEAM = SFS3QU5SC2;
+				INFOPLIST_FILE = Tourney/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tourney.Tourney;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6E6AA48622EFAA3B006A1267 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52D0007D14DB05595D9DAE8E /* Pods-TourneyTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X5M32A4UP;
+				INFOPLIST_FILE = TourneyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tourney.TourneyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tourney.app/Tourney";
+			};
+			name = Debug;
+		};
+		6E6AA48722EFAA3B006A1267 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1557F7680A284C73CAB1D11 /* Pods-TourneyTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X5M32A4UP;
+				INFOPLIST_FILE = TourneyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tourney.TourneyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tourney.app/Tourney";
+			};
+			name = Release;
+		};
+		6E6AA48922EFAA3B006A1267 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 400BB418888C43F7223AD794 /* Pods-TourneyUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X5M32A4UP;
+				INFOPLIST_FILE = TourneyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tourney.TourneyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Tourney;
+			};
+			name = Debug;
+		};
+		6E6AA48A22EFAA3B006A1267 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1F4207945D217632471FDA2 /* Pods-TourneyUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X5M32A4UP;
+				INFOPLIST_FILE = TourneyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tourney.TourneyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Tourney;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6E6AA45222EFAA39006A1267 /* Build configuration list for PBXProject "Tourney" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6AA48022EFAA3B006A1267 /* Debug */,
+				6E6AA48122EFAA3B006A1267 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6AA48222EFAA3B006A1267 /* Build configuration list for PBXNativeTarget "Tourney" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6AA48322EFAA3B006A1267 /* Debug */,
+				6E6AA48422EFAA3B006A1267 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6AA48522EFAA3B006A1267 /* Build configuration list for PBXNativeTarget "TourneyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6AA48622EFAA3B006A1267 /* Debug */,
+				6E6AA48722EFAA3B006A1267 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6AA48822EFAA3B006A1267 /* Build configuration list for PBXNativeTarget "TourneyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6AA48922EFAA3B006A1267 /* Debug */,
+				6E6AA48A22EFAA3B006A1267 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6E6AA46122EFAA39006A1267 /* Tourney.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6E6AA46222EFAA39006A1267 /* Tourney.xcdatamodel */,
+			);
+			currentVersion = 6E6AA46222EFAA39006A1267 /* Tourney.xcdatamodel */;
+			path = Tourney.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6E6AA44F22EFAA39006A1267 /* Project object */;
+}
