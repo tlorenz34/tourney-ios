@@ -14,7 +14,7 @@ import AVKit
 import CoreData
 import Cache
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var postBtn: UIButton!
@@ -57,33 +57,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     var likedPosts: [String] = []
     
-    override func viewDidAppear(_ animated: Bool) {
-        /*if let currentCell = currentCell {
-            currentCell.isActive();
-        }
-        loadDataAndResetTable()
-         */
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        /*if let currentCell = currentCell {
-            currentCell.isUnactive()
-        }
-         */
-    }
-   
-    
-    private func configureViews() {
-        firstHolderView.layer.cornerRadius = 10.0;
-        firstHolderView.layer.borderColor = UIColor.lightGray.cgColor;
-        firstHolderView.layer.borderWidth = 1.0;
-        secondHolderView.layer.cornerRadius = 10.0;
-        secondHolderView.layer.borderColor = UIColor.lightGray.cgColor;
-        secondHolderView.layer.borderWidth = 1.0;
-        thirdHolderView.layer.cornerRadius = 10.0;
-        thirdHolderView.layer.borderColor = UIColor.lightGray.cgColor;
-        thirdHolderView.layer.borderWidth = 1.0;
-    }
+    // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +72,117 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         configureViews()
         
         sortTopVideos()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        /*if let currentCell = currentCell {
+            currentCell.isActive();
+        }
+        loadDataAndResetTable()
+         */
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        /*if let currentCell = currentCell {
+            currentCell.isUnactive()
+        }
+         */
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func postImageTapped(_ sender: AnyObject){
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func SignOut (_sender: AnyObject){
+        try! Auth.auth().signOut()
+        
+        KeychainWrapper.standard.removeObject(forKey: "uid")
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
+       // self.activityIndicator.startAnimating()
+        self.dismiss(animated: true, completion: nil);
+        //self.activityIndicator.stopAnimating()
+    }
+    
+    @IBAction func firstVideoPressed(_ sender: Any) {
+        self.selectedVideo = queried[0]
+        self.performSegue(withIdentifier: "toTopVideo", sender: nil)
+    }
+    
+    @IBAction func secondButtonPressed(_ sender: Any) {
+        self.selectedVideo = queried[1]
+        self.performSegue(withIdentifier: "toTopVideo", sender: nil)
+    }
+    
+    @IBAction func thirdButtonPressed(_ sender: Any) {
+        self.selectedVideo = queried[1]
+        self.performSegue(withIdentifier: "toTopVideo", sender: nil)
+    }
+    
+    // MARK: - TableView
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return (tableView.frame.height * 0.90)
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let post = posts[indexPath.row]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
+            cell.configCell(post: post)
+            if (cellPostkeys.contains(post.postKey)) {
+                let index = cellPostkeys.firstIndex(of: post.postKey)
+                cells[index!] = cell
+            } else {
+                cells.append(cell)
+                cellPostkeys.append(post.postKey)
+            }
+            if (firstRun && (indexPath.row == 0)) {
+                cell.playvid(url: post.videoLink)
+                currentCellPlaying = cell
+                firstRun = false
+            }
+            cell.updateThumbnail()
+            return cell
+        } else {
+            return PostCell()
+        }
+        
+        /*
+         cell.configCell(post: post)
+         if (!cells.contains(cell)) {
+         cells.append(cell)
+         }
+         if (indexPath.row == 0) {
+         cell.isActive()
+         } else {
+         cell.isUnactive()
+         }
+         return cell
+         */
+    }
+   
+    // MARK: - Helpers
+    
+    private func configureViews() {
+        firstHolderView.layer.cornerRadius = 10.0;
+        firstHolderView.layer.borderColor = UIColor.lightGray.cgColor;
+        firstHolderView.layer.borderWidth = 1.0;
+        secondHolderView.layer.cornerRadius = 10.0;
+        secondHolderView.layer.borderColor = UIColor.lightGray.cgColor;
+        secondHolderView.layer.borderWidth = 1.0;
+        thirdHolderView.layer.cornerRadius = 10.0;
+        thirdHolderView.layer.borderColor = UIColor.lightGray.cgColor;
+        thirdHolderView.layer.borderWidth = 1.0;
     }
     
     private func sortTopVideos() {
@@ -211,17 +296,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (tableView.frame.height * 0.90)
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
-    }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         var mostVisiblePercentage: CGFloat = 0.0
@@ -250,43 +324,45 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
         
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = posts[indexPath.row]
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
-            cell.configCell(post: post)
-            if (cellPostkeys.contains(post.postKey)) {
-                let index = cellPostkeys.firstIndex(of: post.postKey)
-                cells[index!] = cell
-            } else {
-                cells.append(cell)
-                cellPostkeys.append(post.postKey)
-            }
-            if (firstRun && (indexPath.row == 0)) {
-                cell.playvid(url: post.videoLink)
-                currentCellPlaying = cell
-                firstRun = false
-            }
-            cell.updateThumbnail()
-            return cell
-        } else {
-            return PostCell()
-        }
         
-        /*
-         cell.configCell(post: post)
-         if (!cells.contains(cell)) {
-         cells.append(cell)
-         }
-         if (indexPath.row == 0) {
-         cell.isActive()
-         } else {
-         cell.isUnactive()
-         }
-         return cell
-         */
+    func postToFireBase(imgUrl: String){
+        let userID = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with: {(snapshot) in
+            let data = snapshot.value as! Dictionary<String, AnyObject>
+            let username = data["username"]
+            let userImg = data["userImg"]
+            let post: Dictionary<String, AnyObject> = [
+                "username": username as AnyObject,
+                "userImg": userImg as AnyObject,
+                "imageUrl": imgUrl as AnyObject,
+                "likes": 0 as AnyObject
+            ]
+            let firebasePost = Database.database().reference().child("posts").childByAutoId()
+            firebasePost.setValue(post)
+            self.imageSelected = false
+            self.tableView.reloadData()
+        })
+        
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTopVideo" {
+            if let destination = segue.destination as? TopVideoController {
+                destination.post = self.selectedVideo
+            }
+        } else if segue.identifier == "toUploadVideo" {
+            if let destination = segue.destination as? UploadVideo {
+                
+            }
+        } else if segue.identifier == "recordVideoSegue" {
+            if let destination = segue.destination as? RecordVideo {
+                
+            }
+        }
+    }
+    
+}
+extension FeedVC: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
@@ -326,77 +402,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             }
         }
     }
-    
-    func postToFireBase(imgUrl: String){
-        let userID = Auth.auth().currentUser?.uid
-        Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with: {(snapshot) in
-            let data = snapshot.value as! Dictionary<String, AnyObject>
-            let username = data["username"]
-            let userImg = data["userImg"]
-            let post: Dictionary<String, AnyObject> = [
-                "username": username as AnyObject,
-                "userImg": userImg as AnyObject,
-                "imageUrl": imgUrl as AnyObject,
-                "likes": 0 as AnyObject
-            ]
-            let firebasePost = Database.database().reference().child("posts").childByAutoId()
-            firebasePost.setValue(post)
-            self.imageSelected = false
-            self.tableView.reloadData()
-        })
-        
-    }
-    
-    @IBAction func postImageTapped(_ sender: AnyObject){
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    @IBAction func SignOut (_sender: AnyObject){
-        try! Auth.auth().signOut()
-        
-        KeychainWrapper.standard.removeObject(forKey: "uid")
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
-    
-    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
-       // self.activityIndicator.startAnimating()
-        self.dismiss(animated: true, completion: nil);
-        //self.activityIndicator.stopAnimating()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toTopVideo" {
-            if let destination = segue.destination as? TopVideoController {
-                destination.post = self.selectedVideo
-            }
-        } else if segue.identifier == "toUploadVideo" {
-            if let destination = segue.destination as? UploadVideo {
-                
-            }
-        } else if segue.identifier == "recordVideoSegue" {
-            if let destination = segue.destination as? RecordVideo {
-                
-            }
-        }
-    }
-    
-    @IBAction func firstVideoPressed(_ sender: Any) {
-        self.selectedVideo = queried[0]
-        self.performSegue(withIdentifier: "toTopVideo", sender: nil)
-    }
-    
-    @IBAction func secondButtonPressed(_ sender: Any) {
-        self.selectedVideo = queried[1]
-        self.performSegue(withIdentifier: "toTopVideo", sender: nil)
-    }
-    
-    @IBAction func thirdButtonPressed(_ sender: Any) {
-        self.selectedVideo = queried[1]
-        self.performSegue(withIdentifier: "toTopVideo", sender: nil)
-    }
-    
 }
 
 extension Collection where Indices.Iterator.Element == Index {
