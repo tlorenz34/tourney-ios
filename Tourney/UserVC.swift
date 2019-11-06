@@ -41,12 +41,17 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     @IBAction func completeAccount(_ sender: Any){
         
-        
+        // alert user if profile picture has not been set
+        if imageSelected == false {
+            alert(title: "Profile Picture", message: "Set up a profile picture before creating an account!")
+            return
+        }
         
         Auth.auth().createUser(withEmail: signUpEmailField.text!, password: signUpPasswordField.text!, completion: {
             (user, error) in
-            if error != nil{
-                print("@willcohen There is an error in UserVC: \(String(describing: error?.localizedDescription))")
+            if let error = error {
+                print("@willcohen There is an error in UserVC: \(String(describing: error.localizedDescription))")
+                self.alert(title: "Oh Oh", message: error.localizedDescription)
             } else{
                 if let user = user{
                     self.userUid = user.uid
@@ -72,6 +77,15 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     }
     
     // MARK: - Helpers
+    
+    func alert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(dismissAction)
+        present(alertController, animated: true, completion: nil)
+    }
     
     func keychain(){
         KeychainWrapper.standard.set(userUid, forKey: "uid")
