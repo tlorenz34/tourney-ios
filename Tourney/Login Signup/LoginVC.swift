@@ -45,6 +45,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func backButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - View lifecycle
     
     override func viewDidLoad() {
