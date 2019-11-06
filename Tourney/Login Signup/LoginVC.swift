@@ -59,15 +59,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         // Do any additional setup after loading the view.
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if let _ = KeychainWrapper.standard.string(forKey: "uid") {
-            User.sharedInstance.uid = KeychainWrapper.standard.string(forKey: "uid")
-            DatabaseService.loadSingletonData { (success) in
-                self.goToFeedVC()
-            }
-        }
-    }
 
     // MARK: - Helpers
 
