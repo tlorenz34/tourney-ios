@@ -46,6 +46,13 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             alert(title: "Profile Picture", message: "Set up a profile picture before creating an account!")
             return
         }
+        // alert username has not been set
+        if let username = usernameField.text {
+            if username.count == 0 {
+                alert(title: "Username", message: "Make sure you choose a username before continuing!")
+                return
+            }
+        }
         
         Auth.auth().createUser(withEmail: signUpEmailField.text!, password: signUpPasswordField.text!, completion: {
             (user, error) in
