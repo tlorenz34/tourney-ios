@@ -23,32 +23,43 @@ class CustomCell: UITableViewCell {
     
     var mainImageView : UIImageView = {
         var imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
         
+    }()
+    var opaqueView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = 0.25
+        return view
+    }()
+    var titleLabel: UILabel = {
+        var height = 60
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: height))
+        label.font = UIFont.boldSystemFont(ofSize: CGFloat(height))
+        label.textColor = .white
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.addSubview(mainImageView)
-        self.addSubview(messageView)
         
-        mainImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        mainImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        mainImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        mainImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        mainImageView.bottomAnchor.constraint(equalTo: self.messageView.topAnchor).isActive = true
-        mainImageView.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        // set frames for components
+        let cellFrame = CGRect(x: 0,
+                               y: 0,
+                               width: contentView.frame.width + 60,
+                               height: 400)
+        mainImageView.frame = cellFrame
+        opaqueView.frame = cellFrame
+        titleLabel.frame = CGRect(x: 20, y: 400 - titleLabel.frame.height - 20, width: 400, height: titleLabel.frame.height)
         
-        
-        messageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        messageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        messageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        messageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-       
-        
+        // add components
+        addSubview(mainImageView)
+        addSubview(opaqueView)
+        addSubview(titleLabel)
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         if let message = message {
