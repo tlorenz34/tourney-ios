@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FirstViewController: UIViewController {
     
@@ -20,7 +21,16 @@ class FirstViewController: UIViewController {
         self.roundedSignUpBtn.layer.cornerRadius = 8
         self.roundedLoginBtn.layer.cornerRadius = 8
 
-        
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Check if user is already logged in
+        if Auth.auth().currentUser != nil {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let CategoriesTableViewController = storyBoard.instantiateViewController(withIdentifier: "CategoriesTableViewController")
+            present(CategoriesTableViewController, animated: true, completion: nil)
+        }
     }
     
 
