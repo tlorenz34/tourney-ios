@@ -45,6 +45,7 @@ class TableViewController: UITableViewController {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "custom") as! CustomCell
         cell.mainImage = data[indexPath.row].image
         cell.titleLabel.text = data[indexPath.row].message
+        cell.layoutSubviews()
         return cell
         
     }

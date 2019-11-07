@@ -45,15 +45,6 @@ class CustomCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        // set frames for components
-        let cellFrame = CGRect(x: 0,
-                               y: 0,
-                               width: contentView.frame.width + 60,
-                               height: 400)
-        mainImageView.frame = cellFrame
-        opaqueView.frame = cellFrame
-        titleLabel.frame = CGRect(x: 20, y: 400 - titleLabel.frame.height - 20, width: 400, height: titleLabel.frame.height)
-        
         // add components
         addSubview(mainImageView)
         addSubview(opaqueView)
@@ -68,6 +59,11 @@ class CustomCell: UITableViewCell {
         if let image = mainImage {
             mainImageView.image = image
         }
+        
+        // update frames for components within competitions cells to match tableview frame
+        mainImageView.frame = CGRect(x: 0, y: 0, width: super.frame.width, height: super.frame.height)
+        opaqueView.frame = mainImageView.frame
+        titleLabel.frame = CGRect(x: 20, y: 400 - titleLabel.frame.height - 20, width: super.frame.width, height: titleLabel.frame.height)
     }
     
     required init?(coder aDecoder: NSCoder) {
