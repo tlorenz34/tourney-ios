@@ -32,10 +32,11 @@ class CustomCell: UITableViewCell {
        let view = UIView()
         view.backgroundColor = .black
         view.alpha = 0.25
+
         return view
     }()
     var titleLabel: UILabel = {
-        var height = 60
+        var height = 45
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: height))
         label.font = UIFont.boldSystemFont(ofSize: CGFloat(height))
         label.textColor = .white
@@ -62,8 +63,12 @@ class CustomCell: UITableViewCell {
         
         // update frames for components within competitions cells to match tableview frame
         mainImageView.frame = CGRect(x: 0, y: 0, width: super.frame.width, height: super.frame.height)
+        mainImageView.layer.cornerRadius = 12
         opaqueView.frame = mainImageView.frame
-        titleLabel.frame = CGRect(x: 20, y: 400 - titleLabel.frame.height - 20, width: super.frame.width, height: titleLabel.frame.height)
+        opaqueView.layer.cornerRadius = 12
+        titleLabel.frame = CGRect(x: 20, y: 400 - titleLabel.frame.height - 90, width: super.frame.width, height: titleLabel.frame.height)
+        mainImageView.frame = mainImageView.frame.inset(by: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+        opaqueView.frame = opaqueView.frame.inset(by: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
     }
     
     required init?(coder aDecoder: NSCoder) {

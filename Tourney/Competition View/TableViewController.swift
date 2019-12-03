@@ -24,8 +24,8 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        data = [CellData(image: UIImage(named: "BMX_Competition_1"), message: "Competition 1", filter: "BMX_Competition_1"),
-                CellData(image: UIImage(named: "BMX_Competition_2"), message: "Competition 2", filter: "BMX_Competition_2")]
+        data = [CellData(image: UIImage(named: "BMX_Competition_1"), message: "BMX", filter: "BMX_Competition_1"),
+                CellData(image: UIImage(named: "BMX_Competition_2"), message: "Skateboarding", filter: "BMX_Competition_2")]
         self.tableView.register(CustomCell.self, forCellReuseIdentifier: "custom")
         self.tableView.rowHeight = UITableView.automaticDimension
         // used to be 200
