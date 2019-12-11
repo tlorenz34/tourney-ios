@@ -12,6 +12,7 @@ import UIKit
 class TournamentCell: UITableViewCell {
     
     @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet var opaqueView: UIView! //
     @IBOutlet var tournamentTitleLabel: UILabel!
     @IBOutlet var leaderProfileImageView: UIImageView!
     @IBOutlet var leaderUsernameLabel: UILabel!
@@ -21,6 +22,15 @@ class TournamentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setup()
+    }
+    
+    func setup() {
+        // set rounded borders
+        backgroundImageView.layer.cornerRadius = 15
+        opaqueView.layer.cornerRadius = 15
+        // set profile image to be cirular
+        leaderProfileImageView.layer.cornerRadius = leaderProfileImageView.frame.width / 2
     }
     
 }
