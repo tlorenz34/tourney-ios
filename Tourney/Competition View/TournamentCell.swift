@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CustomCell: UITableViewCell {
+class TournamentCell: UITableViewCell {
     
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var tournamentTitleLabel: UILabel!

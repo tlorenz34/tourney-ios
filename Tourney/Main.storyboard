@@ -875,7 +875,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompetitionCell" rowHeight="350" id="caU-cn-cva" customClass="CustomCell" customModule="Tourney" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TournamentCell" rowHeight="350" id="caU-cn-cva" customClass="TournamentCell" customModule="Tourney" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="78" width="375" height="350"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="caU-cn-cva" id="P2e-cN-WJ7">
@@ -937,9 +937,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="backgroundImageView" destination="Xbl-w1-tsc" id="1Es-Yg-f9x"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
