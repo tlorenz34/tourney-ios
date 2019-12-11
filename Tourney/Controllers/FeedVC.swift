@@ -19,20 +19,21 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var postBtn: UIButton!
     
-    @IBOutlet weak var firstHolderView: UIView!
-    @IBOutlet weak var firstUserImage: UIImageView!
-    @IBOutlet weak var firstUserName: UILabel!
-    @IBOutlet weak var firstViews: UILabel!
+    // leaderboard profile images
+    @IBOutlet var firstPlaceProfileImageView: UIImageView!
+    @IBOutlet var secondPlaceProfileImageView: UIImageView!
+    @IBOutlet var thirdPlaceProfileImageView: UIImageView!
     
-    @IBOutlet weak var secondHolderView: UIView!
-    @IBOutlet weak var secondUserImage: UIImageView!
-    @IBOutlet weak var secondUserName: UILabel!
-    @IBOutlet weak var secondViews: UILabel!
+    // leaderboard usernames
+    @IBOutlet var firstPlaceUsernameLabel: UILabel!
+    @IBOutlet var secondPlaceUsernameLabel: UILabel!
+    @IBOutlet var thirdlaceUsernameLabel: UILabel!
     
-    @IBOutlet weak var thirdHolderView: UIView!
-    @IBOutlet weak var thirdUserImage: UIImageView!
-    @IBOutlet weak var thirdUserName: UILabel!
-    @IBOutlet weak var thirdViews: UILabel!
+    // leaderboard views
+    @IBOutlet var firstPlaceViews: UILabel!
+    @IBOutlet var secondPlaceViews: UILabel!
+    @IBOutlet var thirdPlaceViews: UILabel!
+    
     @IBOutlet weak var noVideosPostedLabel: UILabel!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -174,15 +175,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     // MARK: - Helpers
     
     private func configureViews() {
-        firstHolderView.layer.cornerRadius = 10.0;
-        firstHolderView.layer.borderColor = UIColor.lightGray.cgColor;
-        firstHolderView.layer.borderWidth = 1.0;
-        secondHolderView.layer.cornerRadius = 10.0;
-        secondHolderView.layer.borderColor = UIColor.lightGray.cgColor;
-        secondHolderView.layer.borderWidth = 1.0;
-        thirdHolderView.layer.cornerRadius = 10.0;
-        thirdHolderView.layer.borderColor = UIColor.lightGray.cgColor;
-        thirdHolderView.layer.borderWidth = 1.0;
+        firstPlaceProfileImageView.layer.borderColor = UIColor.systemYellow.cgColor
+        secondPlaceProfileImageView.layer.borderColor = UIColor.orange.cgColor
+        thirdPlaceProfileImageView.layer.borderColor = UIColor.gray.cgColor
     }
     
     private func sortTopVideos() {
@@ -217,19 +212,19 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     
     private func updateUITopVideos(topVideos: [Post?], any: Bool) {
         if let _ = topVideos[exist: 0] {
-            self.firstUserName.text = topVideos[0]!.username
-            self.firstViews.text = "\(topVideos[0]!.views)"
-            downloadImage(from: URL(string: topVideos[0]!.userImg)!, imageView: firstUserImage)
+            firstPlaceUsernameLabel.text = topVideos[0]!.username
+            firstPlaceViews.text = "\(topVideos[0]!.views)"
+            downloadImage(from: URL(string: topVideos[0]!.userImg)!, imageView: firstPlaceProfileImageView)
         }
         if let _ = topVideos[exist: 1] {
-            self.secondUserName.text = topVideos[1]!.username
-            self.secondViews.text = "\(topVideos[1]!.views)"
-            downloadImage(from: URL(string: topVideos[1]!.userImg)!, imageView: secondUserImage)
+            secondPlaceUsernameLabel.text = topVideos[1]!.username
+            secondPlaceViews.text = "\(topVideos[1]!.views)"
+            downloadImage(from: URL(string: topVideos[1]!.userImg)!, imageView: secondPlaceProfileImageView)
         }
         if let _ = topVideos[exist: 2] {
-            self.thirdUserName.text = topVideos[2]!.username
-            self.thirdViews.text = "\(topVideos[2]!.views)"
-            downloadImage(from: URL(string: topVideos[2]!.userImg)!, imageView: thirdUserImage)
+            thirdlaceUsernameLabel.text = topVideos[2]!.username
+            thirdPlaceViews.text = "\(topVideos[2]!.views)"
+            downloadImage(from: URL(string: topVideos[2]!.userImg)!, imageView: thirdPlaceProfileImageView)
         }
     }
     
