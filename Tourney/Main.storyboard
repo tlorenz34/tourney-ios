@@ -856,13 +856,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tourney" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMT-av-7zX">
-                                    <rect key="frame" x="153" y="12" width="69" height="24"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="21"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4J-tB-JbQ">
                                     <rect key="frame" x="27" y="8" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -871,8 +864,19 @@
                                         <segue destination="GFG-Mj-yKl" kind="show" id="xcO-Wg-sga"/>
                                     </connections>
                                 </button>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tourney-text-logo" translatesAutoresizingMaskIntoConstraints="NO" id="bCn-iG-eLW">
+                                    <rect key="frame" x="117.5" y="8" width="140" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="34" id="7kw-If-Kit"/>
+                                        <constraint firstAttribute="width" constant="140" id="cbU-IW-KzR"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="bCn-iG-eLW" firstAttribute="centerY" secondItem="Zqt-9e-hdF" secondAttribute="centerY" id="RiW-dg-xXt"/>
+                                <constraint firstItem="bCn-iG-eLW" firstAttribute="centerX" secondItem="Zqt-9e-hdF" secondAttribute="centerX" id="SHG-a0-Vl3"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TournamentCell" rowHeight="350" id="caU-cn-cva" customClass="TournamentCell" customModule="Tourney" customModuleProvider="target">
@@ -883,7 +887,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BMX_Competition_1" translatesAutoresizingMaskIntoConstraints="NO" id="Xbl-w1-tsc">
-                                            <rect key="frame" x="16" y="11" width="343" height="328"/>
+                                            <rect key="frame" x="16" y="11" width="343.00000000000091" height="328.00000000000045"/>
                                         </imageView>
                                         <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smi-cH-qGf">
                                             <rect key="frame" x="16" y="11" width="343" height="328"/>
@@ -1347,6 +1351,7 @@
         <image name="baseline_settings_black_48pt_3x" width="144" height="144"/>
         <image name="jan-kopriva-Sgv7CbCWcFE-unsplash" width="4000" height="6000"/>
         <image name="profile-placeholder" width="360" height="360"/>
+        <image name="tourney-text-logo" width="332" height="129"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GwX-NP-xWc"/>
