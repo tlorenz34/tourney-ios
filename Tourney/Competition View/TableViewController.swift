@@ -40,6 +40,12 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
         let cell = tableView.dequeueReusableCell(withIdentifier: "TournamentCell", for: indexPath) as! TournamentCell
+        
+        let cellData = data[indexPath.row]
+        
+        cell.backgroundImageView.image = cellData.image
+        cell.tournamentTitleLabel.text = cellData.message
+        
         return cell
     }
     

@@ -14,6 +14,7 @@ class TournamentCell: UITableViewCell {
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var opaqueView: UIView! //
     @IBOutlet var tournamentTitleLabel: UILabel!
+    @IBOutlet var leaderPositionImageView: UIImageView!
     @IBOutlet var leaderProfileImageView: UIImageView!
     @IBOutlet var leaderUsernameLabel: UILabel!
     @IBOutlet var participantsLabel: UILabel!
@@ -29,8 +30,13 @@ class TournamentCell: UITableViewCell {
         // set rounded borders
         backgroundImageView.layer.cornerRadius = 15
         opaqueView.layer.cornerRadius = 15
-        // set profile image to be cirular
+        
+        // setup profile image
         leaderProfileImageView.layer.cornerRadius = leaderProfileImageView.frame.width / 2
+        leaderProfileImageView.layer.borderColor = UIColor.systemYellow.cgColor
+        leaderProfileImageView.layer.borderWidth = 2
+        leaderPositionImageView.backgroundColor = UIColor.systemYellow
+        leaderPositionImageView.layer.cornerRadius = leaderPositionImageView.frame.width / 2
     }
     
 }
