@@ -26,10 +26,6 @@ class TableViewController: UITableViewController {
         
         data = [CellData(image: UIImage(named: "BMX_Competition_1"), message: "BMX #1", filter: "BMX_Competition_1"),
                 CellData(image: UIImage(named: "BMX_Competition_2"), message: "BMX #2", filter: "BMX_Competition_2")]
-        self.tableView.register(CustomCell.self, forCellReuseIdentifier: "custom")
-        self.tableView.rowHeight = UITableView.automaticDimension
-        // used to be 200
-        self.tableView.estimatedRowHeight = 400
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,15 +35,13 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 400
     }
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "custom") as! CustomCell
-        cell.mainImage = data[indexPath.row].image
-        cell.titleLabel.text = data[indexPath.row].message
-        cell.layoutSubviews()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CompetitionCell", for: indexPath) as! CustomCell
+        cell.backgroundImageView.image = data[indexPath.row].image
         return cell
-        
     }
     
  
@@ -64,9 +58,6 @@ class TableViewController: UITableViewController {
                 destination.activeFilter = self.selectedFilter
             }
         }
-    }
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        return false
     }
 
 }
