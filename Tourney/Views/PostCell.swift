@@ -16,10 +16,10 @@ import Kingfisher
 
 class PostCell: UITableViewCell {
     
-    @IBOutlet weak var userImg: UIImageView!
-    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var profileImageView: ProfileImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var postVideo: UIView!
-    @IBOutlet weak var likesLbl: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     
     var post: Post!
@@ -38,12 +38,14 @@ class PostCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.postVideo.backgroundColor = UIColor.clear
-        self.postVideo.isHidden = true
-        self.postVideo.layer.addSublayer(self.playerLayer)
+        postVideo.backgroundColor = UIColor.clear
+        postVideo.isHidden = true
+        postVideo.layer.addSublayer(self.playerLayer)
+        postVideo.layer.cornerRadius = 5
+        postVideo.layer.masksToBounds = true
         player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
         thumbnailImageView.backgroundColor = UIColor.gray
-        userImg.layer.cornerRadius = userImg.frame.height / 2
+        
     }
     
     override func layoutSubviews() {
@@ -65,10 +67,10 @@ class PostCell: UITableViewCell {
         player.automaticallyWaitsToMinimizeStalling = true
         self.player.play()
         
-        // NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { [weak self] _ in
-        //     self?.player.seek(to: CMTime.zero)
-        //     self?.player.play()
-        //}
+        // bring views to the front to not be covered by player
+        postVideo.bringSubviewToFront(profileImageView)
+        postVideo.bringSubviewToFront(usernameLabel)
+        postVideo.bringSubviewToFront(viewsLabel)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -93,10 +95,10 @@ class PostCell: UITableViewCell {
         
         postVideo.backgroundColor = UIColor.clear
         self.post = post
-        self.likesLbl.text = "\(post.views)"
-        self.username.text = post.username
+        viewsLabel.text = "\(post.views) views"
+        usernameLabel.text = post.username
         updateViewsInDatabase();
-        self.userImg.kf.setImage(with: URL(string: post.userImg))
+        profileImageView.kf.setImage(with: URL(string: post.userImg))
         
     }
     
@@ -113,8 +115,8 @@ class PostCell: UITableViewCell {
     }
     
     func updateLikesInUI(like: Bool) {
-        let views = likesLbl.text!
-        likesLbl.text = "\((Int(views)! + 1))"
+        let views = viewsLabel.text!
+        viewsLabel.text = "\((Int(views)! + 1)) views"
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
