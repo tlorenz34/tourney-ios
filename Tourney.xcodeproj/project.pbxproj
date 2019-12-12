@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		094E6D2923A2D179008973C1 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094E6D2823A2D179008973C1 /* CircleView.swift */; };
 		097BE06A23A19DDF00371829 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097BE06923A19DDF00371829 /* ProfileImageView.swift */; };
 		4D0CA4B65570B64F4966238C /* Pods_TourneyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332AD775DEECDBF079B44E07 /* Pods_TourneyUITests.framework */; };
 		4EACE43D0769FABE1627E0D8 /* Pods_TourneyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7F4B9CBDBABBE5D7A0C2C3 /* Pods_TourneyTests.framework */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		094E6D2823A2D179008973C1 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		097BE06923A19DDF00371829 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		332AD775DEECDBF079B44E07 /* Pods_TourneyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourneyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EE4966694CF40101B40DC84 /* Pods-Tourney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tourney.debug.xcconfig"; path = "Target Support Files/Pods-Tourney/Pods-Tourney.debug.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				097BE06923A19DDF00371829 /* ProfileImageView.swift */,
 				6E6AA49122EFAB52006A1267 /* PostCell.swift */,
 				6E6AA49822EFAB53006A1267 /* CircleImage.swift */,
+				094E6D2823A2D179008973C1 /* CircleView.swift */,
 				6E6AA49922EFAB53006A1267 /* VideoView.swift */,
 				6E6AA49A22EFAB53006A1267 /* RoundedView.swift */,
 			);
@@ -510,6 +513,7 @@
 				6E6AA48E22EFAB3C006A1267 /* TournamentCell.swift in Sources */,
 				6E6AA48F22EFAB3C006A1267 /* TableViewController.swift in Sources */,
 				6E6AA4A322EFAB53006A1267 /* RecordVideo.swift in Sources */,
+				094E6D2923A2D179008973C1 /* CircleView.swift in Sources */,
 				6E6AA4A122EFAB53006A1267 /* leaderboardVC.swift in Sources */,
 				6E6AA45B22EFAA39006A1267 /* AppDelegate.swift in Sources */,
 			);

@@ -176,8 +176,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     
     private func configureViews() {
         firstPlaceProfileImageView.layer.borderColor = UIColor.systemYellow.cgColor
-        secondPlaceProfileImageView.layer.borderColor = UIColor.orange.cgColor
-        thirdPlaceProfileImageView.layer.borderColor = UIColor.gray.cgColor
+        secondPlaceProfileImageView.layer.borderColor = UIColor.gray.cgColor
+        thirdPlaceProfileImageView.layer.borderColor = UIColor.orange.cgColor
     }
     
     private func sortTopVideos() {
