@@ -8,11 +8,14 @@
 
 import UIKit
 
+/**
+ UIImageView subclass to maintain consistency across all profile images.
+ */
 class ProfileImageView: UIImageView {
 
     override func awakeFromNib() {
         layer.cornerRadius = frame.width / 2
-        layer.borderWidth = 2
+        layer.borderWidth = 3
         layer.borderColor = UIColor.systemYellow.cgColor
     }
 }
