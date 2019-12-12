@@ -40,12 +40,12 @@ class PostCell: UITableViewCell {
         super.awakeFromNib()
         postVideo.backgroundColor = UIColor.clear
         postVideo.isHidden = true
-        postVideo.layer.addSublayer(self.playerLayer)
-        postVideo.layer.cornerRadius = 5
+        postVideo.layer.cornerRadius = 15
         postVideo.layer.masksToBounds = true
+        postVideo.layer.addSublayer(self.playerLayer)
         player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
         thumbnailImageView.backgroundColor = UIColor.gray
-        
+        thumbnailImageView.layer.cornerRadius = 15
     }
     
     override func layoutSubviews() {
