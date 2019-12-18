@@ -8,16 +8,16 @@
 
 import UIKit
 
-struct CellData {
-    
-    let image: UIImage?
-    let message: String?
-    let filter: String?
-    
-}
 
 class TableViewController: UITableViewController {
     
+    struct CellData {
+        
+        let image: UIImage?
+        let message: String?
+        let filter: String?
+        
+    }
     var data = [CellData]()
     var selectedFilter: String!
 
