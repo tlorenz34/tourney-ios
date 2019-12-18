@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class TableViewController: UITableViewController {
@@ -20,12 +21,52 @@ class TableViewController: UITableViewController {
     }
     var data = [CellData]()
     var selectedFilter: String!
+    var ref: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         data = [CellData(image: UIImage(named: "BMX_Competition_1"), message: "BMX #1", filter: "BMX_Competition_1"),
                 CellData(image: UIImage(named: "BMX_Competition_2"), message: "BMX #2", filter: "BMX_Competition_2")]
+    }
+    
+    func getTournamentData(eventId: String, completion: @escaping (_ winnerPost: Post?, _ participants: Int) -> Void) {
+        
+        ref = Database.database().reference()
+        ref.child("posts")
+            .queryOrdered(byChild: "eventID")
+            .queryEqual(toValue: eventId)
+            .observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+            var tournamentPosts: [Post] = []
+            var winningPost: Post?
+            var participants: Int = 0
+            
+            // query retrieves Posts. Children would be subset of Posts with eventId.
+            if let postSnapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                // Parse posts into array
+                for postSnapshot in postSnapshots {
+                    if let postDict = postSnapshot.value as? Dictionary<String, AnyObject>{
+                        let key = postSnapshot.key
+                        let post = Post(postKey: key, postData: postDict)
+                        tournamentPosts.append(post)
+                    }
+                }
+                // sort torunament posts by views
+                tournamentPosts = tournamentPosts.sorted(by: { $0.views > $1.views } )
+                // set winner
+                if let winnerPost = tournamentPosts.first {
+                    winningPost = winnerPost
+                }
+                // count participants
+                participants = tournamentPosts.count
+                
+                completion(winningPost, participants)
+            }
+
+          }) { (error) in
+            print(error.localizedDescription)
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
