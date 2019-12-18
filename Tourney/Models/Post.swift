@@ -52,6 +52,12 @@ class Post  {
     var views: Int {
         return _views
     }
+    /// Views as a string with commas. Turns 120442 into "120,442"
+    var formattedViews: String {
+        let nf = NumberFormatter()
+        nf.numberStyle = .decimal
+        return nf.string(from: NSNumber(integerLiteral: _views))!
+    }
     var postKey: String {
         return _postKey
     }

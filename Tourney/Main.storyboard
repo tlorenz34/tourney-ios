@@ -800,7 +800,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BMX_Competition_1" translatesAutoresizingMaskIntoConstraints="NO" id="Xbl-w1-tsc">
-                                            <rect key="frame" x="16" y="11" width="343.00000000000091" height="328.00000000000045"/>
+                                            <rect key="frame" x="16" y="11" width="343" height="328"/>
                                         </imageView>
                                         <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smi-cH-qGf">
                                             <rect key="frame" x="16" y="11" width="343" height="328"/>

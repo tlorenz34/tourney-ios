@@ -213,17 +213,17 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     private func updateUITopVideos(topVideos: [Post?], any: Bool) {
         if let _ = topVideos[exist: 0] {
             firstPlaceUsernameLabel.text = topVideos[0]!.username
-            firstPlaceViews.text = "\(topVideos[0]!.views)"
+            firstPlaceViews.text = "\(topVideos[0]!.formattedViews)"
             downloadImage(from: URL(string: topVideos[0]!.userImg)!, imageView: firstPlaceProfileImageView)
         }
         if let _ = topVideos[exist: 1] {
             secondPlaceUsernameLabel.text = topVideos[1]!.username
-            secondPlaceViews.text = "\(topVideos[1]!.views)"
+            secondPlaceViews.text = "\(topVideos[1]!.formattedViews)"
             downloadImage(from: URL(string: topVideos[1]!.userImg)!, imageView: secondPlaceProfileImageView)
         }
         if let _ = topVideos[exist: 2] {
             thirdlaceUsernameLabel.text = topVideos[2]!.username
-            thirdPlaceViews.text = "\(topVideos[2]!.views)"
+            thirdPlaceViews.text = "\(topVideos[2]!.formattedViews)"
             downloadImage(from: URL(string: topVideos[2]!.userImg)!, imageView: thirdPlaceProfileImageView)
         }
     }
