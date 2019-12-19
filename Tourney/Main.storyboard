@@ -73,7 +73,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1i-VX-ceE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1i-VX-ceE" customClass="LoadingUIButton" customModule="Tourney" customModuleProvider="target">
                                 <rect key="frame" x="16" y="298" width="343" height="50"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -138,11 +138,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jan-kopriva-Sgv7CbCWcFE-unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="tNZ-Ca-RgG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="647" id="Io7-SY-kN3"/>
                                     <constraint firstAttribute="width" constant="375" id="RQ8-BN-R9L"/>
@@ -747,6 +747,7 @@
                 <navigationController navigationBarHidden="YES" id="aa7-GI-cd7" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="2Av-du-sGI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VHM-RW-vJf">
+                        <rect key="frame" x="0.0" y="-20" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -800,7 +801,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BMX_Competition_1" translatesAutoresizingMaskIntoConstraints="NO" id="Xbl-w1-tsc">
-                                            <rect key="frame" x="16" y="11" width="343.00000000000091" height="328.00000000000045"/>
+                                            <rect key="frame" x="16" y="11" width="343" height="328"/>
                                         </imageView>
                                         <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smi-cH-qGf">
                                             <rect key="frame" x="16" y="11" width="343" height="328"/>
@@ -1174,7 +1175,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="xTv-Gt-4M6" customClass="SignOut" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ssA-WL-Ypx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yV-DY-z1o">
@@ -1226,7 +1227,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUF-Et-bBZ">
-                                <rect key="frame" x="142" y="575" width="90" height="72"/>
+                                <rect key="frame" x="142" y="555" width="90" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="z6L-iy-bSb"/>
                                 </constraints>
@@ -1268,8 +1269,8 @@
         <image name="tourney-text-logo" width="332" height="129"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GwX-NP-xWc"/>
-        <segue reference="cIv-nT-Xdz"/>
+        <segue reference="P0u-iu-Uw9"/>
+        <segue reference="o0G-E3-jeL"/>
         <segue reference="1Ex-2H-U6N"/>
     </inferredMetricsTieBreakers>
 </document>

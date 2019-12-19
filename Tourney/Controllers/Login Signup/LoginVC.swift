@@ -15,13 +15,15 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginEmailField: UITextField!
     @IBOutlet weak var loginPasswordField: UITextField!
     @IBOutlet weak var doesNotExistLabel: UILabel!
-    @IBOutlet weak var roundedLoginButton: UIButton!
+    @IBOutlet weak var roundedLoginButton: LoadingUIButton!
+    
 
     var userUid: String!
 
     // MARK: - Actions
     
     @IBAction func loginInTapped(_ sender: Any){
+        roundedLoginButton.showLoading()
         if let email = loginEmailField.text, let password = loginPasswordField.text {
             Auth.auth().signIn(withEmail: email, password: password, completion:
                 {(user, error) in
@@ -30,14 +32,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                             self.userUid = user.uid
                             User.sharedInstance.uid = user.uid
                             DatabaseService.loadSingletonData(completionHandler: { (success) in
+                                self.roundedLoginButton.hideLoading()
                                 self.goToFeedVC()
                             })
                         }
                     } else {
+                        self.roundedLoginButton.hideLoading()
                         print("user does not exist yet")
                         self.doesNotExistLabel.textColor = UIColor.red
-                        print("USER DOES NOTTTT EXIST")
-                        self.goToCreateUserVC()
                     }
                     
             })
