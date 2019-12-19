@@ -16,8 +16,12 @@ class DatabaseService {
         userNodeReference.observeSingleEvent(of: .value, with: { (snapshot) in
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
 
-            User.sharedInstance.profileImageURL = (postDict["profileImageUrl"] as! String);
-            User.sharedInstance.username = (postDict["username"] as! String);
+            if let profileImageURL = postDict["profileImageUrl"] as? String {
+                 User.sharedInstance.profileImageURL = profileImageURL
+            }
+            if let username = postDict["username"] as? String {
+                User.sharedInstance.username = username
+            }
             completionHandler(true);
         })
     }

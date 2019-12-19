@@ -16,8 +16,16 @@ class UserProfile: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        userProfileImageView.kf.setImage(with: URL(string: User.sharedInstance.profileImageURL))
-        userNameTextField.text = User.sharedInstance.username
+        
+        
+        // unwrap user profile image url
+        if let profileImageURL = User.sharedInstance.profileImageURL {
+            userProfileImageView.kf.setImage(with: URL(string: profileImageURL))
+        }
+        // unwrap username
+        if let username = User.sharedInstance.username {
+            userNameTextField.text = username
+        }
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {

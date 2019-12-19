@@ -13,8 +13,8 @@ final class User {
     private init() { }
     
     var uid: String!
-    var username: String!
-    var profileImageURL: String!
+    var username: String?
+    var profileImageURL: String?
     
     var activeFilter: String!
     
