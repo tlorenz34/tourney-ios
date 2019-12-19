@@ -39,7 +39,7 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 
     // MARK: - Actions
     
-    @IBAction func completeAccount(_ sender: Any){
+    @IBAction func completeAccount(_ sender: LoadingUIButton){
         
         // alert user if profile picture has not been set
         if imageSelected == false {
@@ -54,9 +54,14 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             }
         }
         
+        // show loading on button
+        sender.showLoading()
+        
         Auth.auth().createUser(withEmail: signUpEmailField.text!, password: signUpPasswordField.text!, completion: {
             (user, error) in
             if let error = error {
+                // stop loading on button
+                sender.hideLoading()
                 print("@willcohen There is an error in UserVC: \(String(describing: error.localizedDescription))")
                 self.alert(title: "Oh Oh", message: error.localizedDescription)
             } else{
@@ -64,6 +69,8 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                     self.userUid = user.uid
                     User.sharedInstance.uid = user.uid
                     self.uploadImg(completionHandler: { (success) in
+                        // stop loading on button
+                        sender.hideLoading()
                         if (success) {
                             self.setUpUserAndContinue()
                         } else {
