@@ -87,6 +87,16 @@
                                     <action selector="loginInTapped:" destination="3ks-14-eL3" eventType="touchUpInside" id="jlo-Tj-HZ6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGB-Yz-fMq">
+                                <rect key="frame" x="117.5" y="374" width="140" height="26"/>
+                                <fontDescription key="fontDescription" name="SFMono-Regular" family="SF Mono" pointSize="12"/>
+                                <state key="normal" title="Or create an account here">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createAccountTapped" destination="3ks-14-eL3" eventType="touchUpInside" id="TE0-us-DWm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -105,6 +115,8 @@
                             <constraint firstItem="tcz-oc-tRs" firstAttribute="trailing" secondItem="l1i-VX-ceE" secondAttribute="trailing" constant="16" id="TmV-Jr-2k4"/>
                             <constraint firstItem="tcz-oc-tRs" firstAttribute="trailing" secondItem="B6q-Qr-7ua" secondAttribute="trailing" constant="141" id="TtM-Wf-8k8"/>
                             <constraint firstItem="tcz-oc-tRs" firstAttribute="trailing" secondItem="g1r-2h-1Mf" secondAttribute="trailing" constant="118" id="YRG-IF-uUt"/>
+                            <constraint firstItem="PGB-Yz-fMq" firstAttribute="centerX" secondItem="l1i-VX-ceE" secondAttribute="centerX" id="ZQE-R7-nDt"/>
+                            <constraint firstItem="PGB-Yz-fMq" firstAttribute="top" secondItem="l1i-VX-ceE" secondAttribute="bottom" constant="26" id="dnW-2T-vp8"/>
                             <constraint firstItem="B6q-Qr-7ua" firstAttribute="top" secondItem="tcz-oc-tRs" secondAttribute="top" constant="20" id="ex4-Db-jS9"/>
                             <constraint firstItem="l1i-VX-ceE" firstAttribute="top" secondItem="P4L-J9-diD" secondAttribute="bottom" constant="58" id="fKY-aK-ciD"/>
                             <constraint firstItem="B6q-Qr-7ua" firstAttribute="top" secondItem="tcz-oc-tRs" secondAttribute="top" constant="20" id="gac-Wj-NGE"/>

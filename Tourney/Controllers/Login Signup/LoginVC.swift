@@ -17,6 +17,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var doesNotExistLabel: UILabel!
     @IBOutlet weak var roundedLoginButton: LoadingUIButton!
     
+    @IBAction func createAccountTapped() {
+        goToCreateUserVC()
+    }
+    
 
     var userUid: String!
 
