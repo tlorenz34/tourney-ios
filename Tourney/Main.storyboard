@@ -1047,7 +1047,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2018-09-14 at 12.08.52 PM" translatesAutoresizingMaskIntoConstraints="NO" id="uQ4-2d-wEU" customClass="CircleImage" customModule="Tourney" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uQ4-2d-wEU" customClass="CircleImage" customModule="Tourney" customModuleProvider="target">
                                 <rect key="frame" x="117.5" y="140" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="Dix-k0-eDt"/>
@@ -1261,15 +1261,15 @@
     </scenes>
     <resources>
         <image name="BMX_Competition_1" width="3788" height="2576"/>
-        <image name="Screen Shot 2018-09-14 at 12.08.52 PM" width="734" height="806"/>
         <image name="baseline_person_black_48pt_3x" width="144" height="144"/>
         <image name="baseline_settings_black_48pt_3x" width="144" height="144"/>
         <image name="jan-kopriva-Sgv7CbCWcFE-unsplash" width="4000" height="6000"/>
+        <image name="profile-placeholder" width="360" height="360"/>
         <image name="tourney-text-logo" width="332" height="129"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GwX-NP-xWc"/>
-        <segue reference="KSZ-Fc-GLf"/>
+        <segue reference="cIv-nT-Xdz"/>
         <segue reference="1Ex-2H-U6N"/>
     </inferredMetricsTieBreakers>
 </document>
