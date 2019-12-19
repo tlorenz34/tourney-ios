@@ -25,6 +25,7 @@ class PostCell: UITableViewCell {
     var post: Post!
     var userPostKey: DatabaseReference!
     let currentUser = KeychainWrapper.standard.string(forKey: "uid")
+    let loadingIndicator = UIActivityIndicatorView(style: .white)
     
     var viewed: Bool = false;
     
@@ -46,6 +47,11 @@ class PostCell: UITableViewCell {
         player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
         thumbnailImageView.backgroundColor = UIColor.gray
         thumbnailImageView.layer.cornerRadius = 15
+        
+        // add loading indicator
+        loadingIndicator.center = center
+        addSubview(loadingIndicator)
+        loadingIndicator.startAnimating()
     }
     
     override func layoutSubviews() {
@@ -84,6 +90,10 @@ class PostCell: UITableViewCell {
     
     func updateThumbnail() {
         if let thumbnail = post.thumbnail {
+            
+            // once thumbnail is set, replace loading indicator with thumbnail
+            loadingIndicator.stopAnimating()
+            
             thumbnailImageView.image = thumbnail
         } else {
             thumbnailImageView.backgroundColor = UIColor.gray
