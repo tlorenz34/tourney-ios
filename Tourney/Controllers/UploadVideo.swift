@@ -20,11 +20,13 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     @IBOutlet weak var chooseVideoButton: UIButton!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var trimView: ABVideoRangeSlider!
+    @IBOutlet var uploadButton: UIButton!
     
     let VIDEO_MAX_DURATION: Float = 10.0;
     
     var didComeFromRecording: Bool = false
     var recordedVideo: URL!
+    let loadingIndicatorView = UIActivityIndicatorView()
     
     let imagePickerController = UIImagePickerController()
     var videoURL: NSURL?
@@ -98,6 +100,9 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
             if error == nil {
                 self.postToDatabase(videoURL: (metadata?.downloadURL()!.absoluteString)!)
             } else {
+                // if error, stop loading indicator
+                self.loadingIndicatorView.stopAnimating()
+                self.resetUploadButtonState()
                 print(error?.localizedDescription ?? "")
             }
         })
@@ -178,6 +183,11 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
         let postReference = Database.database().reference().child("posts").child(randomID)
         let postData = ["uid": User.sharedInstance.uid, "username": User.sharedInstance.username, "profileImage": User.sharedInstance.profileImageURL, "views": 0, "videoURL": videoURL, "eventID": User.sharedInstance.activeFilter] as [String : Any];
         postReference.updateChildValues(postData) { (error, reference) in
+            
+            // remove loading indicator
+            self.loadingIndicatorView.stopAnimating()
+            self.resetUploadButtonState()
+            
             if (error == nil) {
                 if let priorController = self.priorRecordingController {
                     priorController.shouldDismiss = true
@@ -213,6 +223,14 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     @IBAction func uploadVideoButtonPressed(_ sender: Any) {
                 
         guard let videoURL = videoURL else { return }
+
+        // add loading indicator
+        loadingIndicatorView.center = uploadButton.center
+        if let buttonSuperView = uploadButton.superview {
+            buttonSuperView.addSubview(loadingIndicatorView)
+            uploadButton.setTitle("", for: .normal)
+            loadingIndicatorView.startAnimating()
+        }
         
         cropVideo(sourceURL: videoURL as URL, startTime: self.startTime, endTime: self.endTime) { (outputURL) in
             self.uploadToStorage(videoLink: outputURL)
@@ -264,6 +282,10 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     func randomString(length: Int) -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+    func resetUploadButtonState() {
+        uploadButton.setTitle("Upload", for: .normal)
     }
     
     
