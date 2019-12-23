@@ -37,7 +37,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBOutlet weak var noVideosPostedLabel: UILabel!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+        
     var posts = [Post]()
     var post: Post!
     var imagePicker: UIImagePickerController!
@@ -69,7 +69,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         
-        loadDataAndResetTable()
+        loadDataAndResetTable(scrollTo: nil)
         configureViews()
         
         sortTopVideos()
@@ -123,6 +123,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBAction func thirdButtonPressed(_ sender: Any) {
         self.selectedVideo = queried[1]
         self.performSegue(withIdentifier: "toTopVideo", sender: nil)
+    }
+    
+    @IBAction func uploadVideoButtonTapped() {
+        performSegue(withIdentifier: "toUploadVideoVC", sender: nil)
     }
     
     // MARK: - TableView
@@ -241,8 +245,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             }
         }
     }
-    
-    func loadDataAndResetTable() {
+    /**
+     Loads video submissions (Posts) that have `eventID` as the tournament id (`activeFilter`). If `videoURL` is non-nil, it will look for the `Post` that has the `_videoLink` property to `videoURL'`. Else, it won't scroll.
+     */
+    func loadDataAndResetTable(scrollTo videoURL: String?) {
         let ref = Database.database().reference().child("posts")
         let query = ref.queryOrdered(byChild: "eventID").queryEqual(toValue: activeFilter)
         query.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -265,6 +271,16 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
                 }
             }
             self.tableView.reloadData()
+            
+            // if video url passed, scroll to it
+            if let videoURLToScrollTo = videoURL {
+                for (index, post) in self.posts.enumerated() {
+                    if post._videoLink == videoURLToScrollTo {
+                        self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
+                    }
+                }
+            }
+            
             if (self.posts.count == 0) {
                 self.noVideosPostedLabel.isHidden = false
             }
@@ -345,9 +361,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             if let destination = segue.destination as? TopVideoController {
                 destination.post = self.selectedVideo
             }
-        } else if segue.identifier == "toUploadVideo" {
+        } else if segue.identifier == "toUploadVideoVC" {
             if let destination = segue.destination as? UploadVideo {
-                
+                destination.delegate = self
             }
         } else if segue.identifier == "recordVideoSegue" {
             if let destination = segue.destination as? RecordVideo {
@@ -402,5 +418,10 @@ extension FeedVC: UIImagePickerControllerDelegate {
 extension Collection where Indices.Iterator.Element == Index {
     subscript (exist index: Index) -> Iterator.Element? {
         return indices.contains(index) ? self[index] : nil
+    }
+}
+extension FeedVC: UploadVideoDelegate {
+    func didUploadVideo(with videoURL: String) {
+        loadDataAndResetTable(scrollTo: videoURL)
     }
 }

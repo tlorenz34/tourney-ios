@@ -15,12 +15,20 @@ import SwiftKeychainWrapper
 import ABVideoRangeSlider
 import MobileCoreServices
 
+/**
+ Delegate to let other view controllers know when the `UploadVideo` view controller has finished uploading a video to the database.
+ */
+protocol UploadVideoDelegate: class {
+    func didUploadVideo(with videoURL: String)
+}
+
 class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var chooseVideoButton: UIButton!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var trimView: ABVideoRangeSlider!
     @IBOutlet var uploadButton: UIButton!
+    weak var delegate: UploadVideoDelegate?
     
     let VIDEO_MAX_DURATION: Float = 10.0;
     
@@ -192,7 +200,11 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
                 if let priorController = self.priorRecordingController {
                     priorController.shouldDismiss = true
                 }
-                self.dismiss(animated: true, completion: nil);
+                self.dismiss(animated: true) {
+                    // delegate implementation
+                    self.delegate?.didUploadVideo(with: videoURL)
+                }
+                
             } else {
                 print("unsuccessful")
             }

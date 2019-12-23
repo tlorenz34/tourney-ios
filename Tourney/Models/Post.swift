@@ -20,7 +20,7 @@ class Post  {
     private var _postImg: String!
     private var _views: Int!
     private var _postKey: String!
-    private var _videoLink: String!
+    var _videoLink: String!
     private var _postRef: DatabaseReference!
     var thumbnail: UIImage!
     

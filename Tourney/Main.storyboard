@@ -366,7 +366,7 @@
                                         </constraints>
                                         <state key="normal" title="Upload a video"/>
                                         <connections>
-                                            <segue destination="Xc6-Lz-pOt" kind="show" identifier="toUploadVideo" id="1Ex-2H-U6N"/>
+                                            <action selector="uploadVideoButtonTapped" destination="hFD-yr-YVI" eventType="touchUpInside" id="iHZ-7y-hJ3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -569,6 +569,7 @@
                         <outlet property="thirdPlaceViews" destination="4Y2-wY-0SZ" id="jQD-SP-uig"/>
                         <outlet property="thirdlaceUsernameLabel" destination="iGd-p0-gPZ" id="vVQ-bc-EA4"/>
                         <segue destination="gSG-Sq-wle" kind="show" identifier="toTopVideo" id="0ew-Ft-8bm"/>
+                        <segue destination="Xc6-Lz-pOt" kind="show" identifier="toUploadVideoVC" id="r3h-ex-kE7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5V-vz-P5v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -790,6 +791,7 @@
                 <navigationController navigationBarHidden="YES" id="aa7-GI-cd7" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="2Av-du-sGI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VHM-RW-vJf">
+                        <rect key="frame" x="0.0" y="-20" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1313,6 +1315,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="P0u-iu-Uw9"/>
         <segue reference="cIv-nT-Xdz"/>
-        <segue reference="1Ex-2H-U6N"/>
+        <segue reference="r3h-ex-kE7"/>
     </inferredMetricsTieBreakers>
 </document>
