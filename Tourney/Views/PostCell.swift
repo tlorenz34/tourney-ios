@@ -49,7 +49,6 @@ class PostCell: UITableViewCell {
         thumbnailImageView.layer.cornerRadius = 15
         
         // add loading indicator
-        loadingIndicator.center = center
         addSubview(loadingIndicator)
         loadingIndicator.startAnimating()
     }
@@ -57,6 +56,8 @@ class PostCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         playerLayer.frame = postVideo.layer.bounds
+        loadingIndicator.frame = bounds
+
     }
     
     func stopvid() {
