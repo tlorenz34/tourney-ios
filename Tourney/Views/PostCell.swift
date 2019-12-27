@@ -47,10 +47,6 @@ class PostCell: UITableViewCell {
         player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
         thumbnailImageView.backgroundColor = UIColor.gray
         thumbnailImageView.layer.cornerRadius = 15
-        
-        // add loading indicator
-        addSubview(loadingIndicator)
-        loadingIndicator.startAnimating()
     }
     
     override func layoutSubviews() {
@@ -108,8 +104,12 @@ class PostCell: UITableViewCell {
         self.post = post
         viewsLabel.text = "\(post.views) views"
         usernameLabel.text = post.username
-        updateViewsInDatabase();
+        updateViewsInDatabase()
         profileImageView.kf.setImage(with: URL(string: post.userImg))
+        
+        // add loading indicator
+        addSubview(loadingIndicator)
+        loadingIndicator.startAnimating()
         
     }
     
