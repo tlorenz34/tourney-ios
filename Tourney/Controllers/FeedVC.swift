@@ -246,7 +246,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         }
     }
     /**
-     Loads video submissions (Posts) that have `eventID` as the tournament id (`activeFilter`). If `videoURL` is non-nil, it will look for the `Post` that has the `_videoLink` property to `videoURL'`. Else, it won't scroll.
+     Loads video submissions (Posts) that have `eventID` as the tournament id (`activeFilter`).
+     
+     To scroll to a video: if `videoURL` parameter  is non-nil, it will look for the `Post` that has the `_videoLink` property to `videoURL'`. Else, it won't scroll.
      */
     func loadDataAndResetTable(scrollTo videoURL: String?) {
         let ref = Database.database().reference().child("posts")
