@@ -121,7 +121,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     }
     
     @IBAction func thirdButtonPressed(_ sender: Any) {
-        self.selectedVideo = queried[1]
+        self.selectedVideo = queried[2]
         self.performSegue(withIdentifier: "toTopVideo", sender: nil)
     }
     
