@@ -107,12 +107,10 @@ class TournamentCell: UITableViewCell {
     func uniquePosts(posts: [Post]) -> Int {
         var uniquePosts: [Post] = []
         for post in posts {
-            print(post.username)
             if !uniquePosts.contains(where: {$0.username == post.username}) {
                 uniquePosts.append(post)
             }
         }
-        print("END")
         return uniquePosts.count
     }
 }
