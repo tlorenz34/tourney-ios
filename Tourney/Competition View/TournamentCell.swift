@@ -79,7 +79,7 @@ class TournamentCell: UITableViewCell {
                     winningPost = winnerPost
                 }
                 // count participants
-                participants = tournamentPosts.count
+                participants = self.uniquePosts(posts: tournamentPosts)
                 
                 completion(winningPost, participants)
             }
@@ -103,4 +103,16 @@ class TournamentCell: UITableViewCell {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
+    /// Counts the number of unique `Post` of a `Post` array based on the `username` field of each `Post`.
+    func uniquePosts(posts: [Post]) -> Int {
+        var uniquePosts: [Post] = []
+        for post in posts {
+            print(post.username)
+            if !uniquePosts.contains(where: {$0.username == post.username}) {
+                uniquePosts.append(post)
+            }
+        }
+        print("END")
+        return uniquePosts.count
+    }
 }
