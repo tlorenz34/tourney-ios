@@ -66,8 +66,8 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 self.alert(title: "Oh Oh", message: error.localizedDescription)
             } else{
                 if let user = user{
-                    self.userUid = user.uid
-                    User.sharedInstance.uid = user.uid
+                    self.userUid = user.user.uid
+                    User.sharedInstance.uid = user.user.uid
                     self.uploadImg(completionHandler: { (success) in
                         // stop loading on button
                         sender.hideLoading()

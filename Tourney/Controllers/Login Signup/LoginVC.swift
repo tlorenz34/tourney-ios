@@ -33,8 +33,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 {(user, error) in
                     if error == nil{
                         if let user = user {
-                            self.userUid = user.uid
-                            User.sharedInstance.uid = user.uid
+                            self.userUid = user.user.uid
+                            User.sharedInstance.uid = user.user.uid
                             DatabaseService.loadSingletonData(completionHandler: { (success) in
                                 self.roundedLoginButton.hideLoading()
                                 self.goToFeedVC()

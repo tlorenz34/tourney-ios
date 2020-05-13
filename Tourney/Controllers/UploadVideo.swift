@@ -106,7 +106,15 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
         let storageReference = Storage.storage().reference().child("videos").child(randomID)
         storageReference.putFile(from: videoLink as URL, metadata: nil, completion: { (metadata, error) in
             if error == nil {
-                self.postToDatabase(videoURL: (metadata?.downloadURL()!.absoluteString)!)
+                  // You can also access to download URL after upload.
+                storageReference.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                    // Uh-oh, an error occurred!
+                    return
+                    }
+                    self.postToDatabase(videoURL: (downloadURL.absoluteString))
+                }
+                
             } else {
                 // if error, stop loading indicator
                 self.loadingIndicatorView.stopAnimating()
