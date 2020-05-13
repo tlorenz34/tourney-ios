@@ -60,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0914EE75246C30D3008EAAD3 /* Tourney.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tourney.entitlements; sourceTree = "<group>"; };
 		09464F0A23ABFCA700F10A44 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		094E6D2823A2D179008973C1 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		097BE06923A19DDF00371829 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
@@ -204,6 +205,7 @@
 		6E6AA45922EFAA39006A1267 /* Tourney */ = {
 			isa = PBXGroup;
 			children = (
+				0914EE75246C30D3008EAAD3 /* Tourney.entitlements */,
 				DFC545662305AB64009F84B1 /* DatabaseService.swift */,
 				6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */,
 				098E9477237341B500B9E520 /* Models */,
@@ -687,9 +689,10 @@
 			baseConfigurationReference = 3EE4966694CF40101B40DC84 /* Pods-Tourney.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tourney/Tourney.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.5;
-				DEVELOPMENT_TEAM = K93NF4PY9Z;
+				DEVELOPMENT_TEAM = SFS3QU5SC2;
 				INFOPLIST_FILE = Tourney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -708,9 +711,10 @@
 			baseConfigurationReference = DB6849550BE28B7D56F62AAA /* Pods-Tourney.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tourney/Tourney.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.5;
-				DEVELOPMENT_TEAM = K93NF4PY9Z;
+				DEVELOPMENT_TEAM = 638FLLMGVC;
 				INFOPLIST_FILE = Tourney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
