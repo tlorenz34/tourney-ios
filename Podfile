@@ -11,6 +11,7 @@ target 'Tourney' do
 	pod 'Firebase/Auth', '4.8.0'
 	pod 'Firebase/Database', '4.8.0'
 	pod 'Firebase/Storage', '4.8.0'
+  pod 'Firebase/DynamicLinks' 
 	pod 'ABVideoRangeSlider'
   pod 'Kingfisher'
   pod 'SwiftKeychainWrapper'
