@@ -1,6 +1,0 @@
-framework module Pods_TourneyUITests {
-  umbrella header "Pods-TourneyUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
