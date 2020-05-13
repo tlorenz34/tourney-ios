@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // FIX THIS
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print("configured!")
         FirebaseApp.configure()
         return true
     }
@@ -45,6 +46,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    // MARK: - Universal Link Handler
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        if let incomingURL = userActivity.webpageURL {
+            print("incoming url: \(incomingURL)")
+            let handled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { (dynamiclink, error) in
+                guard error == nil else {
+                    print("found error parsing universal link: \(String(describing: error?.localizedDescription))")
+                    return
+                }
+                if let link = dynamiclink {
+                    self.handleIncomingDynamicLink(link)
+                }
+            }
+            return handled
+        } else {
+            return false
+        }
+        
+    }
+    
+    func handleIncomingDynamicLink(_ dynamicLink: DynamicLink) {
+        guard let dynamicLinkURL = dynamicLink.url else {
+            print("dynamic link received contains no URL object")
+            return
+        }
+        
+        print("incoming dynamic link url: \(dynamicLinkURL)")
+        
+        guard let urlComponents = URLComponents(url: dynamicLinkURL, resolvingAgainstBaseURL: false),
+            let queryItems = urlComponents.queryItems else { return }
+        
+        print("found \(queryItems.count) query items for dynamic link:")
+        queryItems.forEach({
+            print($0.name)
+            print($0.value)
+        })
+
+    }
+    
+    // MARK: - Custom URL Link Handler
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+            self.handleIncomingDynamicLink(dynamicLink)
+            return true
+        } else {
+            return false
+        }
     }
 
     // MARK: - Core Data stack
