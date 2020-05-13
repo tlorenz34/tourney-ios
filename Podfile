@@ -7,10 +7,10 @@ target 'Tourney' do
 
   # Pods for Tourney
 
-	pod 'Firebase/Core', '4.8'
-	pod 'Firebase/Auth', '4.8.0'
-	pod 'Firebase/Database', '4.8.0'
-	pod 'Firebase/Storage', '4.8.0'
+	pod 'Firebase/Core'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Database'
+	pod 'Firebase/Storage'
   pod 'Firebase/DynamicLinks' 
 	pod 'ABVideoRangeSlider'
   pod 'Kingfisher'
