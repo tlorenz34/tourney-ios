@@ -25,6 +25,7 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     var imagePicker: UIImagePickerController!
     var username: String!
     var imageSelected = false
+    var dynamicLinkTourneyId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         self.usernameField.delegate = self
+        print("dynamic link from sign up: \(dynamicLinkTourneyId)")
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -187,5 +189,14 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             print("@willcohen Image wasn't selected")
         }
         imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toFeedSegue" {
+            if let dynamicLinkTourneyId = dynamicLinkTourneyId {
+                let feedVC = segue.destination as! TableViewController
+                feedVC.dynamicLinkTourneyId = dynamicLinkTourneyId
+            }                        
+        }
     }
 }

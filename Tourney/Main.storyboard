@@ -150,11 +150,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jan-kopriva-Sgv7CbCWcFE-unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="tNZ-Ca-RgG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="6000"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="647" id="Io7-SY-kN3"/>
                                     <constraint firstAttribute="width" constant="375" id="RQ8-BN-R9L"/>
@@ -174,7 +174,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="3ks-14-eL3" kind="popoverPresentation" popoverAnchorView="a8S-uX-hVO" id="xZC-RZ-ofH">
+                                    <segue destination="3ks-14-eL3" kind="popoverPresentation" identifier="" popoverAnchorView="a8S-uX-hVO" id="xZC-RZ-ofH">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -204,7 +204,8 @@
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tGY-Ki-3g3" kind="show" id="GwX-NP-xWc"/>
+                                    <action selector="signUpTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="jki-Xs-HtR"/>
+                                    <segue destination="tGY-Ki-3g3" kind="show" identifier="showSignUp" id="GwX-NP-xWc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1234,7 +1235,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="xTv-Gt-4M6" customClass="SignOut" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ssA-WL-Ypx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yV-DY-z1o">
@@ -1286,7 +1287,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUF-Et-bBZ">
-                                <rect key="frame" x="142" y="555" width="90" height="72"/>
+                                <rect key="frame" x="142" y="575" width="90" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="z6L-iy-bSb"/>
                                 </constraints>
@@ -1320,8 +1321,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="P0u-iu-Uw9"/>
-        <segue reference="cIv-nT-Xdz"/>
+        <segue reference="GwX-NP-xWc"/>
+        <segue reference="KSZ-Fc-GLf"/>
         <segue reference="r3h-ex-kE7"/>
     </inferredMetricsTieBreakers>
     <resources>

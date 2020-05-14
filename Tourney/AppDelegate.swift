@@ -84,10 +84,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("found \(queryItems.count) query items for dynamic link:")
         queryItems.forEach({
-            print($0.name)
-            print($0.value)
+            print("key: \($0.name)")
+            print("value: \($0.value)")
         })
+        
+        
+        if let launchVC = self.window?.rootViewController as? FirstViewController,
+            let dynamicLinkTourneyId = queryItems[0].value {
 
+            if Auth.auth().currentUser != nil {
+                // logged in and already loaded from prior open
+                if let mainTournamentPage = launchVC.presentedViewController as? TableViewController {
+                    mainTournamentPage.dynamicLinkTourneyId = dynamicLinkTourneyId
+                } else {
+                    // logged in but app was closed
+                    launchVC.dynamicLinkTourneyId = dynamicLinkTourneyId
+                }
+            } else {
+                // not logged in
+                launchVC.dynamicLinkTourneyId = dynamicLinkTourneyId
+            }
+        }
+        
     }
     
     // MARK: - Custom URL Link Handler

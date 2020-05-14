@@ -22,12 +22,32 @@ class TableViewController: UITableViewController {
     var data = [CellData]()
     var selectedFilter: String!
     var ref: DatabaseReference!
+    var dynamicLinkTourneyId: String? {
+        didSet { // when user is already logge in and opens app via dynamic link
+            selectedFilter = dynamicLinkTourneyId
+            self.performSegue(withIdentifier: "toVideoFeed", sender: nil)
+            self.dynamicLinkTourneyId = nil
+        }
+    }
+    var firstLoad = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         data = [CellData(image: UIImage(named: "BMX_Competition_1"), message: "BMX #1", filter: "BMX_Competition_1"),
                 CellData(image: UIImage(named: "BMX_Competition_2"), message: "BMX #2", filter: "BMX_Competition_2")]
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let dynamicLinkTourneyId = dynamicLinkTourneyId {
+            selectedFilter = dynamicLinkTourneyId
+            self.performSegue(withIdentifier: "toVideoFeed", sender: nil)
+            self.dynamicLinkTourneyId = nil
+        }
+        
+
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

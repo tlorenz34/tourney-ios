@@ -14,8 +14,13 @@ class FirstViewController: UIViewController {
     
     
     @IBOutlet weak var roundedSignUpBtn: UIButton!
-    
     @IBOutlet weak var roundedLoginBtn: UIButton!
+    
+    var dynamicLinkTourneyId: String?
+    
+    @IBAction func signUpTapped() {
+        performSegue(withIdentifier: "showSignUp", sender: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +29,8 @@ class FirstViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        print("from first vc, dynamic link is: \(dynamicLinkTourneyId)")
         // Check if user is already logged in
         if Auth.auth().currentUser != nil {        
             User.sharedInstance.uid = Auth.auth().currentUser?.uid
@@ -33,6 +40,19 @@ class FirstViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSignUp" {
+            if let dynamicLinkTourneyId = dynamicLinkTourneyId {
+                let destinationVC = segue.destination as! UserVC
+                destinationVC.dynamicLinkTourneyId = dynamicLinkTourneyId
+            }
+        } else if segue.identifier == "toFeedSegue" {
+            if let dynamicLinkTourneyId = dynamicLinkTourneyId {
+                let destinationVC = segue.destination as! TableViewController
+                destinationVC.dynamicLinkTourneyId = dynamicLinkTourneyId
+            }
+        }
+    }
 
   
 }
