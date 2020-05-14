@@ -21,7 +21,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         goToCreateUserVC()
     }
     
-
+    var dynamicLinkTourneyId: String?
     var userUid: String!
 
     // MARK: - Actions
@@ -85,6 +85,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 
             }
             
+        } else if segue.identifier == "toFeedVC" {
+            if let dynamicLinkTourneyId = dynamicLinkTourneyId {
+                print("passing dynamic link to sign up to main tourney page")
+                let feedVC = segue.destination as! TableViewController
+                feedVC.dynamicLinkTourneyId = dynamicLinkTourneyId
+            }
         }
     }
     

@@ -33,7 +33,6 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         self.usernameField.delegate = self
-        print("dynamic link from sign up: \(dynamicLinkTourneyId)")
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

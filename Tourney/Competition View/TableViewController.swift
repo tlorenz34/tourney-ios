@@ -22,11 +22,13 @@ class TableViewController: UITableViewController {
     var data = [CellData]()
     var selectedFilter: String!
     var ref: DatabaseReference!
-    var dynamicLinkTourneyId: String? {
+    /// Placeholder for dynamic link tournament id for new usrs
+    var dynamicLinkTourneyId: String?
+    var dynamicLinkTourneyIdForReturningUsers: String? {
         didSet { // when user is already logge in and opens app via dynamic link
-            selectedFilter = dynamicLinkTourneyId
+            selectedFilter = dynamicLinkTourneyIdForReturningUsers
             self.performSegue(withIdentifier: "toVideoFeed", sender: nil)
-            self.dynamicLinkTourneyId = nil
+            self.dynamicLinkTourneyIdForReturningUsers = nil
         }
     }
     var firstLoad = true
