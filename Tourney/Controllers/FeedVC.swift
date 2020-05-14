@@ -13,6 +13,7 @@ import SwiftKeychainWrapper
 import AVKit
 import CoreData
 import Cache
+import MessageUI
 
 class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
@@ -128,6 +129,16 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBAction func uploadVideoButtonTapped() {
         performSegue(withIdentifier: "toUploadVideoVC", sender: nil)
     }
+    
+    @IBAction func inviteTapped(_ sender: Any) {
+        if MFMessageComposeViewController.canSendText() {
+            let controller = MFMessageComposeViewController()
+            controller.body = "Check this tournament: https://tourney.page.link"
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
     
     // MARK: - TableView
     
@@ -425,5 +436,11 @@ extension Collection where Indices.Iterator.Element == Index {
 extension FeedVC: UploadVideoDelegate {
     func didUploadVideo(with videoURL: String) {
         loadDataAndResetTable(scrollTo: videoURL)
+    }
+}
+
+extension FeedVC: MFMessageComposeViewControllerDelegate {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }
