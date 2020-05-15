@@ -13,7 +13,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="3ks-14-eL3" customClass="LoginVC" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VrD-CG-bet">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKd-KD-8W3">
@@ -154,7 +154,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jan-kopriva-Sgv7CbCWcFE-unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="tNZ-Ca-RgG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="6000"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="647" id="Io7-SY-kN3"/>
                                     <constraint firstAttribute="width" constant="375" id="RQ8-BN-R9L"/>
@@ -174,9 +174,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="3ks-14-eL3" kind="popoverPresentation" identifier="" popoverAnchorView="a8S-uX-hVO" id="xZC-RZ-ofH">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <action selector="signInTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQK-Vf-sJU"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tourney" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pr4-pa-vcn">
@@ -233,6 +231,7 @@
                         <outlet property="roundedSignUpBtn" destination="n9g-sU-OlA" id="QWR-d7-fYd"/>
                         <segue destination="aa7-GI-cd7" kind="show" identifier="ToFeed" id="wfu-Ls-UB2"/>
                         <segue destination="PxB-fK-dTO" kind="show" identifier="toFeedSegue" id="KSZ-Fc-GLf"/>
+                        <segue destination="3ks-14-eL3" kind="show" identifier="showSignIn" id="oSK-oC-anG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

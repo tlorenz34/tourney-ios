@@ -21,6 +21,9 @@ class FirstViewController: UIViewController {
     @IBAction func signUpTapped() {
         performSegue(withIdentifier: "showSignUp", sender: nil)
     }
+    @IBAction func signInTapped() {
+        performSegue(withIdentifier: "showSignIn", sender: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,11 @@ class FirstViewController: UIViewController {
         } else if segue.identifier == "toFeedSegue" {
             if let dynamicLinkTourneyId = dynamicLinkTourneyId {
                 let destinationVC = segue.destination as! TableViewController
+                destinationVC.dynamicLinkTourneyId = dynamicLinkTourneyId
+            }
+        } else if segue.identifier == "showSignIn" {
+            if let dynamicLinkTourneyId = dynamicLinkTourneyId {
+                let destinationVC = segue.destination as! LoginVC
                 destinationVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }
         }
