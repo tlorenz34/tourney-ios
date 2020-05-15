@@ -18,9 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // I can create an account with nothing in the email and password field right now
     // FIX THIS
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        print("configured!")
         FirebaseApp.configure()
+        
+        // handle dynamic link when app is switching from inactive to active state
+        if let userActivityDictionary = launchOptions?[.userActivityDictionary] as? [UIApplication.LaunchOptionsKey : Any],
+            let userActivity = userActivityDictionary[.userActivityType] as? NSUserActivity {
+            handleUserActivity(userActivity: userActivity)
+        }
+        
         return true
     }
 
@@ -68,7 +73,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             return false
         }
-        
+    }
+    func handleUserActivity(userActivity: NSUserActivity) {
+        if let incomingURL = userActivity.webpageURL {
+            print("incoming url: \(incomingURL)")
+            let handled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { (dynamiclink, error) in
+                guard error == nil else {
+                    print("found error parsing universal link: \(String(describing: error?.localizedDescription))")
+                    return
+                }
+                if let link = dynamiclink {
+                    self.handleIncomingDynamicLink(link)
+                }
+            }
+        }
     }
     
     func handleIncomingDynamicLink(_ dynamicLink: DynamicLink) {
