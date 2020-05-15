@@ -64,6 +64,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         self.roundedLoginButton.layer.cornerRadius = 7
         
         // Do any additional setup after loading the view.
+        print(dynamicLinkTourneyId)
     }
 
     // MARK: - Helpers
@@ -87,7 +88,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             
         } else if segue.identifier == "toFeedVC" {
             if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-                print("passing dynamic link to sign up to main tourney page")
                 let feedVC = segue.destination as! TableViewController
                 feedVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }

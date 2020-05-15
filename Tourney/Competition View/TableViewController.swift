@@ -43,13 +43,12 @@ class TableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Present tournament if dynamic link is found
         if let dynamicLinkTourneyId = dynamicLinkTourneyId {
             selectedFilter = dynamicLinkTourneyId
             self.performSegue(withIdentifier: "toVideoFeed", sender: nil)
             self.dynamicLinkTourneyId = nil
         }
-        
-
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -119,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     launchVC.dynamicLinkTourneyId = dynamicLinkTourneyId
                 }
             } else {
+                // not signed in, set dynamic link var at approproate VC (depending on where user is when dynamic link is parsed from network)
                 if let signUpPage = launchVC.presentedViewController as? UserVC {
                     // not logged in but already tapped signup
                     signUpPage.dynamicLinkTourneyId = dynamicLinkTourneyId

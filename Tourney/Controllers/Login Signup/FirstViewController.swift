@@ -29,8 +29,7 @@ class FirstViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        print("from first vc, dynamic link is: \(dynamicLinkTourneyId)")
+    
         // Check if user is already logged in
         if Auth.auth().currentUser != nil {        
             User.sharedInstance.uid = Auth.auth().currentUser?.uid
