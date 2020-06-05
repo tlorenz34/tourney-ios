@@ -6,6 +6,7 @@
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
 //
 
+// Rounded view for each individual FeedVC video uploaded 
 import UIKit
 
 class RoundedView: UIView {

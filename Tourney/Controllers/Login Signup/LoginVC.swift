@@ -5,6 +5,7 @@
 //  Created by Thaddeus Lorenz on 10/23/19.
 //  Copyright © 2019 Will Cohen. All rights reserved.
 //
+// This view controller is for logging in to an account that already exists
 
 import UIKit
 import Firebase
@@ -73,7 +74,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         // used to be "toSignUp"
         if segue.identifier == "toSignUp"{
             
-            if let destination = segue.destination as? UserVC{
+            if let destination = segue.destination as? SignUpVC{
                 if userUid != nil{
                     destination.userUid = userUid
                 }
@@ -88,7 +89,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             
         } else if segue.identifier == "toFeedVC" {
             if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-                let feedVC = segue.destination as! TableViewController
+                let feedVC = segue.destination as! TournamentTableViewController
                 feedVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }
         }

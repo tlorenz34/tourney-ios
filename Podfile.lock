@@ -117,7 +117,7 @@ DEPENDENCIES:
   - SwiftKeychainWrapper
 
 SPEC REPOS:
-  trunk:
+  https://github.com/cocoapods/specs.git:
     - ABVideoRangeSlider
     - Cache
     - Firebase
@@ -171,4 +171,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: a66b253437da052ee5aab14649d127348e22566a
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.6.1

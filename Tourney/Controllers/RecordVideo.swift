@@ -5,7 +5,11 @@
 //  Created by Will Cohen on 7/25/19.
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
 //
-
+// ** ATTENTION! **
+// This class is currently not being used. When a user selects "Start Competing" within
+// FeedVC, they had the ability to record a video within the app or upload a video
+// from within their camera roll. The current version only supports the user selecting/clipping
+// a video from their camera roll. This class is not being used in the current version.
 import UIKit
 import AVFoundation
 

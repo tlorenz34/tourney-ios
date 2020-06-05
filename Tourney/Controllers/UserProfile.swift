@@ -1,10 +1,11 @@
 //
 //  UserProfile.swift
-//  goldcoastleague
+//  Tourney
 //
 //  Created by Thaddeus Lorenz on 6/29/19.
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
 //
+// View controller for "My Profile" section
 
 import UIKit
 import Kingfisher

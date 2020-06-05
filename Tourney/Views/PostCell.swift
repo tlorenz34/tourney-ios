@@ -4,7 +4,9 @@
 //
 //  Created by Thaddeus Lorenz on 5/29/19.
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
-//
+
+// This class defines how each individual video within FeedVC is configured in terms of design
+// and functionality
 
 import UIKit
 import Firebase

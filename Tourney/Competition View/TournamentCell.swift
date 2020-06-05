@@ -6,6 +6,12 @@
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
 //
 
+//
+// This class makes up each competition/tournament that is created.
+// This class represents what you see after you have logged into the app
+// and are presented with various competitions that includes the name, # of participants,
+// and the current leader (user with the most views)
+
 import Foundation
 import UIKit
 import Firebase

@@ -1,17 +1,18 @@
 //
-//  UserVC.swift
-//  goldcoastleague
+//  SignUpVC.swift
+//  Tourney
 //
 //  Created by Thaddeus Lorenz on 5/28/19.
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
 //
-
+// This view controller is used when an account doesn't exhist and a user wants
+// to create an account after clicking "Sign Up" from "SignUpLoginVC"
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
 import Photos
 
-class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var userImagePicker: UIImageView!
     @IBOutlet weak var completeSignInBtn: UIButton!
@@ -194,7 +195,7 @@ class UserVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toFeedSegue" {
             if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-                let feedVC = segue.destination as! TableViewController
+                let feedVC = segue.destination as! TournamentTableViewController
                 feedVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }                        
         }

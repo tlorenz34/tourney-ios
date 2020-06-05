@@ -5,12 +5,15 @@
 //  Created by Thaddeus Lorenz on 10/24/19.
 //  
 //
+// This is the first view controller a user is presented with after
+// downloading our app. The user is presented with two options:
+// "Sign up" or "Login"
 
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class FirstViewController: UIViewController {
+class SignUpLogInVC: UIViewController {
     
     
     @IBOutlet weak var roundedSignUpBtn: UIButton!
@@ -45,12 +48,12 @@ class FirstViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSignUp" {
             if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-                let destinationVC = segue.destination as! UserVC
+                let destinationVC = segue.destination as! SignUpVC
                 destinationVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }
         } else if segue.identifier == "toFeedSegue" {
             if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-                let destinationVC = segue.destination as! TableViewController
+                let destinationVC = segue.destination as! TournamentTableViewController
                 destinationVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }
         } else if segue.identifier == "showSignIn" {

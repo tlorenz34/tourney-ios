@@ -5,6 +5,8 @@
 //  Created by Will Cohen on 7/30/19.
 //  Copyright © 2019 Will Cohen. All rights reserved.
 //
+// View controller after a user clicks on leaderboard icon. Video displays on the
+// users screen
 
 import UIKit
 import AVKit

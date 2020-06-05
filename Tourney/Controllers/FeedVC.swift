@@ -1,10 +1,13 @@
 //
 //  FeedVC.swift
-//  goldcoastleague
+//  Tourney
 //
 //  Created by Thaddeus Lorenz on 5/29/19.
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
 //
+// After a user selects a TournamentCell, the user is presented with a competition/tournament
+// that includes a newsfeed of the participants video uploads, top three most viewed videos,
+// and the ability to "Start Competing" (upload a video)
 
 import UIKit
 import Firebase
@@ -104,23 +107,24 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         dismiss(animated: true, completion: nil)
         
     }
-    
+    // clicking "Back"
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
        // self.activityIndicator.startAnimating()
         self.dismiss(animated: true, completion: nil);
         //self.activityIndicator.stopAnimating()
     }
     
+    // view first place video on leaderboard
     @IBAction func firstVideoPressed(_ sender: Any) {
         self.selectedVideo = queried[0]
         self.performSegue(withIdentifier: "toTopVideo", sender: nil)
     }
-    
+    // view second place video on leaderboard
     @IBAction func secondButtonPressed(_ sender: Any) {
         self.selectedVideo = queried[1]
         self.performSegue(withIdentifier: "toTopVideo", sender: nil)
     }
-    
+    // view third place video on leaderboard
     @IBAction func thirdButtonPressed(_ sender: Any) {
         self.selectedVideo = queried[2]
         self.performSegue(withIdentifier: "toTopVideo", sender: nil)
@@ -129,11 +133,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBAction func uploadVideoButtonTapped() {
         performSegue(withIdentifier: "toUploadVideoVC", sender: nil)
     }
-    
+    // invite a user by sending a unique tournament/competition link through iMessage
     @IBAction func inviteTapped(_ sender: Any) {
         if MFMessageComposeViewController.canSendText() {
             let controller = MFMessageComposeViewController()
-            controller.body = "Check this tournament: https://tourney.page.link"
+            controller.body = "Check this tournament: https://tourney.page.link/\(activeFilter!)"
             controller.messageComposeDelegate = self
             self.present(controller, animated: true, completion: nil)
         }
@@ -194,7 +198,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         secondPlaceProfileImageView.layer.borderColor = UIColor.gray.cgColor
         thirdPlaceProfileImageView.layer.borderColor = UIColor.orange.cgColor
     }
-    
+    // sorting all uploaded videos to competition/tournament by views
+    // fetching data from Firebase and sorting the top three most viewed videos
     private func sortTopVideos() {
         let ref = Database.database().reference().child("posts")
         var queriedPosts: [Post] = []
@@ -224,7 +229,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             }
         })
     }
-    
+    // updates leaderboard based off of views
     private func updateUITopVideos(topVideos: [Post?], any: Bool) {
         if let _ = topVideos[exist: 0] {
             firstPlaceUsernameLabel.text = topVideos[0]!.username

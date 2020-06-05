@@ -6,8 +6,9 @@
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
 //
 
-import Foundation
 
+// Every video that is uploaded contains these attributes
+import Foundation
 import FirebaseAnalytics
 import FirebaseDatabase
 import AVKit

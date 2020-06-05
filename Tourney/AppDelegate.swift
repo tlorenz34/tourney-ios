@@ -107,12 +107,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         
         
-        if let launchVC = self.window?.rootViewController as? FirstViewController,
+        if let launchVC = self.window?.rootViewController as? SignUpLogInVC,
             let dynamicLinkTourneyId = queryItems[0].value {
             
             if Auth.auth().currentUser != nil {
                 // logged in and already loaded from prior open
-                if let mainTournamentPage = launchVC.presentedViewController as? TableViewController {
+                if let mainTournamentPage = launchVC.presentedViewController as? TournamentTableViewController {
                     mainTournamentPage.dynamicLinkTourneyIdForReturningUsers = dynamicLinkTourneyId
                 } else {
                     // logged in but app was closed (????)
@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             } else {
                 // not signed in, set dynamic link var at approproate VC (depending on where user is when dynamic link is parsed from network)
-                if let signUpPage = launchVC.presentedViewController as? UserVC {
+                if let signUpPage = launchVC.presentedViewController as? SignUpVC {
                     // not logged in but already tapped signup
                     signUpPage.dynamicLinkTourneyId = dynamicLinkTourneyId
                 } else if let loginPage = launchVC.presentedViewController as? LoginVC {

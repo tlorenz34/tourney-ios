@@ -1,16 +1,14 @@
-//
-//  TableViewController.swift
-//  goldcoastleague
-//
 //  Created by Thaddeus Lorenz on 7/3/19.
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
 //
+// This class is when you want to create a new TournamentCell.
+// Whenever I want to add or modify a competition, I have to manually adjust
+// this class in order to change the name/cover photo
 
 import UIKit
 import Firebase
 
-
-class TableViewController: UITableViewController {
+class TournamentTableViewController: UITableViewController {
     
     struct CellData {
         
@@ -36,8 +34,8 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        data = [CellData(image: UIImage(named: "BMX_Competition_1"), message: "BMX #1", filter: "BMX_Competition_1"),
-                CellData(image: UIImage(named: "BMX_Competition_2"), message: "BMX #2", filter: "BMX_Competition_2")]
+        data = [CellData(image: UIImage(named: "BMX_Competition_1"), message: "BMX Park", filter: "BMX_Park_Competition"),
+                CellData(image: UIImage(named: "BMX_Competition_2"), message: "BMX Freestyle", filter: "BMX_Freestyle_Competition")]
         
     }
     override func viewDidAppear(_ animated: Bool) {

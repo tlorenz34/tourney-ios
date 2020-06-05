@@ -6,6 +6,7 @@
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
 //
 
+// When a user signs up, they create a username, profile picture
 import Foundation
 
 final class User {
@@ -15,7 +16,6 @@ final class User {
     var uid: String!
     var username: String?
     var profileImageURL: String?
-    
     var activeFilter: String!
     
 }

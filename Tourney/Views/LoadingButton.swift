@@ -6,6 +6,8 @@
 //  Copyright © 2019 Messenger. All rights reserved.
 //
 
+// This is the loading icon for each video when it is fetching data from Firebase
+
 import UIKit
 
 class LoadingUIButton: UIButton {
