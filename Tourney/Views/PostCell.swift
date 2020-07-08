@@ -116,16 +116,19 @@ class PostCell: UITableViewCell {
     }
     
     func updateViewsInDatabase() {
+      
+            
+        
         let postRef = Database.database().reference().child("posts").child(post.postKey).child("views")
         postRef.runTransactionBlock( { (currentData: MutableData) -> TransactionResult in
             
             var currentCount = currentData.value as? Int ?? 0
-            currentCount += 1
+            currentCount +=  1
             currentData.value = currentCount
             
             return TransactionResult.success(withValue: currentData)
         })
-    }
+        }
     
     func updateLikesInUI(like: Bool) {
         let views = viewsLabel.text!

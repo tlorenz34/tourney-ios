@@ -137,7 +137,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBAction func inviteTapped(_ sender: Any) {
         if MFMessageComposeViewController.canSendText() {
             let controller = MFMessageComposeViewController()
-            controller.body = "Check this tournament: https://tourney.page.link/\(activeFilter!)"
+            controller.body = "Think you can beat me? Start competing against me by uploading a video to the Tourney app. Accept this challenge by clicking the link https://tourney.page.link/\(activeFilter!)"
             controller.messageComposeDelegate = self
             self.present(controller, animated: true, completion: nil)
         }

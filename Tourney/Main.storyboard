@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -150,8 +150,9 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jan-kopriva-Sgv7CbCWcFE-unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="tNZ-Ca-RgG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="647" id="Io7-SY-kN3"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="LBC-jO-yev"/>
                                     <constraint firstAttribute="width" constant="375" id="RQ8-BN-R9L"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="667" id="bMx-ai-jZU"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8S-uX-hVO">
@@ -201,12 +202,15 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="LKn-lm-wck" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="248" id="8tD-li-EgX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="a8S-uX-hVO" secondAttribute="bottom" constant="51" id="9ba-vo-xsE"/>
+                            <constraint firstItem="tNZ-Ca-RgG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CAS-mT-DYA"/>
                             <constraint firstItem="n9g-sU-OlA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="ENd-yL-iGf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="a8S-uX-hVO" secondAttribute="bottom" constant="51" id="NaO-XW-nV3"/>
                             <constraint firstItem="a8S-uX-hVO" firstAttribute="top" secondItem="n9g-sU-OlA" secondAttribute="bottom" constant="18" id="PMW-jQ-yUJ"/>
                             <constraint firstItem="n9g-sU-OlA" firstAttribute="top" secondItem="LKn-lm-wck" secondAttribute="bottom" constant="120" id="RLd-em-jUd"/>
                             <constraint firstItem="tNZ-Ca-RgG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="S0g-Mn-IUl"/>
                             <constraint firstItem="a8S-uX-hVO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="Tnh-mi-yhB"/>
+                            <constraint firstItem="a8S-uX-hVO" firstAttribute="top" secondItem="n9g-sU-OlA" secondAttribute="bottom" constant="18" id="W0l-Nd-vbQ"/>
                             <constraint firstItem="n9g-sU-OlA" firstAttribute="centerX" secondItem="LKn-lm-wck" secondAttribute="centerX" id="aQd-h6-UDX"/>
                             <constraint firstItem="tNZ-Ca-RgG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="g4R-5L-T86"/>
                             <constraint firstItem="LKn-lm-wck" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="kId-go-uzd"/>
@@ -215,9 +219,12 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a8S-uX-hVO" secondAttribute="trailing" constant="91" id="rOo-WW-xHm"/>
                             <constraint firstItem="tNZ-Ca-RgG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sex-33-73e"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n9g-sU-OlA" secondAttribute="trailing" constant="91" id="tTu-ad-Bex"/>
+                            <constraint firstItem="tNZ-Ca-RgG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tfH-81-FNY"/>
+                            <constraint firstItem="tNZ-Ca-RgG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="v91-mt-j58"/>
                             <constraint firstItem="LKn-lm-wck" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="248" id="vIT-bb-PZK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="a8S-uX-hVO" secondAttribute="bottom" constant="51" id="yVk-rT-wKd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LKn-lm-wck" secondAttribute="trailing" constant="68" id="yoQ-bk-zod"/>
+                            <constraint firstItem="tNZ-Ca-RgG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zGF-8M-dM0"/>
                             <constraint firstItem="LKn-lm-wck" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="zhr-YP-QgF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -261,14 +268,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9N-TP-T7L">
-                                        <rect key="frame" x="310" y="9" width="47" height="32"/>
+                                        <rect key="frame" x="285" y="9" width="72" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="eHe-d9-E30"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="en6-e5-1Zm"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                        <state key="normal" title="Invite">
-                                            <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Challenge">
+                                            <color key="titleColor" red="1" green="0.33577219648400536" blue="0.30742135423157735" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="inviteTapped:" destination="hFD-yr-YVI" eventType="touchUpInside" id="teU-ly-nkb"/>
@@ -381,6 +388,7 @@
                                         <state key="normal" title="Start Competing"/>
                                         <connections>
                                             <action selector="uploadVideoButtonTapped" destination="hFD-yr-YVI" eventType="touchUpInside" id="iHZ-7y-hJ3"/>
+                                            <segue destination="BJr-F5-TZn" kind="show" identifier="toUploadVideoVC" id="HFr-aj-3vX"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -583,7 +591,6 @@
                         <outlet property="thirdPlaceViews" destination="4Y2-wY-0SZ" id="jQD-SP-uig"/>
                         <outlet property="thirdlaceUsernameLabel" destination="iGd-p0-gPZ" id="vVQ-bc-EA4"/>
                         <segue destination="gSG-Sq-wle" kind="show" identifier="toTopVideo" id="0ew-Ft-8bm"/>
-                        <segue destination="Xc6-Lz-pOt" kind="show" identifier="toUploadVideoVC" id="r3h-ex-kE7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5V-vz-P5v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -792,7 +799,7 @@
                     <navigationItem key="navigationItem" id="nei-z2-ZAR"/>
                     <connections>
                         <outlet property="previewView" destination="jZh-Be-qdm" id="8Uq-ZR-jqU"/>
-                        <segue destination="Xc6-Lz-pOt" kind="show" identifier="toEditorSegue" id="XMn-l8-Bx7"/>
+                        <segue destination="Xc6-Lz-pOt" kind="show" identifier="toEditorSegue" id="nk2-te-ED4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dC6-dw-vUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1303,8 +1310,12 @@
             <point key="canvasLocation" x="1980" y="1297"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="GwX-NP-xWc"/>
+        <segue reference="KSZ-Fc-GLf"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="BMX_Competition_1" width="4000" height="6000"/>
+        <image name="BMX_Competition_1" width="7952" height="5304"/>
         <image name="TourneyCompetitionLogoWHITE" width="1983" height="357"/>
         <image name="baseline_person_black_48pt_3x" width="144" height="144"/>
         <image name="baseline_settings_black_48pt_3x" width="144" height="144"/>
@@ -1312,9 +1323,4 @@
         <image name="profile-placeholder" width="360" height="360"/>
         <image name="tourney-text-logo" width="332" height="129"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="GwX-NP-xWc"/>
-        <segue reference="KSZ-Fc-GLf"/>
-        <segue reference="XMn-l8-Bx7"/>
-    </inferredMetricsTieBreakers>
 </document>

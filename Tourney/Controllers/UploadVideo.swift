@@ -31,6 +31,8 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var trimView: ABVideoRangeSlider!
     @IBOutlet var uploadButton: UIButton!
+    @IBOutlet var recordButton: UIButton!
+    
     weak var delegate: UploadVideoDelegate?
     
     let VIDEO_MAX_DURATION: Float = 10.0;
@@ -309,6 +311,9 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     
     func resetUploadButtonState() {
         uploadButton.setTitle("Upload", for: .normal)
+    }
+    @IBAction func RecordButtonTapped() {
+        performSegue(withIdentifier: "toRecordVideo", sender: nil)
     }
     
     

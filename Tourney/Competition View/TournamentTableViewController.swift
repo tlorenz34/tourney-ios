@@ -34,8 +34,9 @@ class TournamentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        data = [CellData(image: UIImage(named: "BMX_Competition_1"), message: "BMX Park", filter: "BMX_Park_Competition"),
-                CellData(image: UIImage(named: "BMX_Competition_2"), message: "BMX Freestyle", filter: "BMX_Freestyle_Competition")]
+        data = [CellData(image: UIImage(named: "BMX_Competition_1"), message: "BMX Challenge", filter: "BMX_Competition_1"),
+                CellData(image: UIImage(named: "tricking"), message: "Tricking Challenge", filter: "tricking")
+        ]
         
     }
     override func viewDidAppear(_ animated: Bool) {
