@@ -18,11 +18,23 @@ import Kingfisher
 
 class PostCell: UITableViewCell {
     
+    @IBAction func didTapThumbsUp() {
+        // if state = not tapped
+        if thumbsUpButton.imageView?.image == UIImage(systemName: "hand.thumbsup") {
+            // update ui
+            thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+        } else {
+            // state is tapped already, unlike
+            thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+        }
+    }
+    
     @IBOutlet weak var profileImageView: ProfileImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var postVideo: UIView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var thumbsUpButton: UIButton!
     
     var post: Post!
     var userPostKey: DatabaseReference!
@@ -76,6 +88,7 @@ class PostCell: UITableViewCell {
         postVideo.bringSubviewToFront(profileImageView)
         postVideo.bringSubviewToFront(usernameLabel)
         postVideo.bringSubviewToFront(viewsLabel)
+        postVideo.bringSubviewToFront(thumbsUpButton)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -134,12 +147,4 @@ class PostCell: UITableViewCell {
         let views = viewsLabel.text!
         viewsLabel.text = "\((Int(views)! + 1)) views"
     }
-    
-    @IBAction func buttonPressed(_ sender: Any) {
-        print("button")
-        
-    }
-    
-
-    
 }
