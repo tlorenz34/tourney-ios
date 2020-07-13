@@ -318,16 +318,29 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZc-fX-mxX">
                                                     <rect key="frame" x="10" y="10" width="355" height="324"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbj-3b-jnc">
-                                                            <rect key="frame" x="290" y="259" width="50" height="50"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbj-3b-jnc">
+                                                            <rect key="frame" x="250" y="269" width="90" height="40"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="50" id="Gid-0o-KYm"/>
-                                                                <constraint firstAttribute="width" constant="50" id="mll-Oi-0JO"/>
+                                                                <constraint firstAttribute="height" constant="40" id="Gid-0o-KYm"/>
+                                                                <constraint firstAttribute="width" constant="90" id="mll-Oi-0JO"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <state key="normal" image="hand.thumbsup" catalog="system"/>
+                                                            <state key="normal" title="Vote">
+                                                                <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                                    <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                    <integer key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="didTapThumbsUp" destination="hmW-ya-0fA" eventType="touchUpInside" id="DLd-LN-FJ9"/>
                                                             </connections>
@@ -1336,7 +1349,6 @@
         <image name="TourneyCompetitionLogoWHITE" width="1983" height="357"/>
         <image name="baseline_person_black_48pt_3x" width="144" height="144"/>
         <image name="baseline_settings_black_48pt_3x" width="144" height="144"/>
-        <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
         <image name="jan-kopriva-Sgv7CbCWcFE-unsplash" width="4000" height="6000"/>
         <image name="profile-placeholder" width="360" height="360"/>
         <image name="tourney-text-logo" width="332" height="129"/>

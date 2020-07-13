@@ -19,13 +19,16 @@ import Kingfisher
 class PostCell: UITableViewCell {
     
     @IBAction func didTapThumbsUp() {
-        // if state = not tapped
-        if thumbsUpButton.imageView?.image == UIImage(systemName: "hand.thumbsup") {
+        // if state = not vote
+        if thumbsUpButton.titleLabel!.text == "Vote" {
             // update ui
-            thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+            thumbsUpButton.setTitle("Voted", for: .normal)
+            thumbsUpButton.backgroundColor = UIColor.link
+            thumbsUpButton.setTitleColor(UIColor.white, for: .normal)
         } else {
-            // state is tapped already, unlike
-            thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+            thumbsUpButton.setTitle("Vote", for: .normal)
+            thumbsUpButton.backgroundColor = UIColor.white
+            thumbsUpButton.setTitleColor(UIColor.link, for: .normal)
         }
     }
     
