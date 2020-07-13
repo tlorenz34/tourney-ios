@@ -22,6 +22,9 @@ class DatabaseService {
             if let username = postDict["username"] as? String {
                 User.sharedInstance.username = username
             }
+            if let votes = postDict["votes"] as? [String : String] {
+                User.sharedInstance.votes = votes
+            }
             completionHandler(true);
         })
     }

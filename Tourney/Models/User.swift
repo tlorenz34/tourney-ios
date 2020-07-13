@@ -17,6 +17,8 @@ final class User {
     var username: String?
     var profileImageURL: String?
     var activeFilter: String!
+    /// Holds the one vote allowed per competition in a dictionary: [competitionId : postId]
+    var votes: [String : String]?
     
 }
 
