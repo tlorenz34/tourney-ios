@@ -16,6 +16,10 @@ import SwiftKeychainWrapper
 import AVKit
 import Kingfisher
 
+protocol PostCellDelegate: class {
+    func didVoteForPost(postId: String)
+}
+
 class PostCell: UITableViewCell {
     
     @IBAction func didTapThumbsUp() {
@@ -30,6 +34,8 @@ class PostCell: UITableViewCell {
             thumbsUpButton.backgroundColor = UIColor.white
             thumbsUpButton.setTitleColor(UIColor.link, for: .normal)
         }
+        // notify controllers of action
+        delegate?.didVoteForPost(postId: post.postKey)
     }
     
     @IBOutlet weak var profileImageView: ProfileImageView!
@@ -43,6 +49,7 @@ class PostCell: UITableViewCell {
     var userPostKey: DatabaseReference!
     let currentUser = KeychainWrapper.standard.string(forKey: "uid")
     let loadingIndicator = UIActivityIndicatorView(style: .white)
+    weak var delegate: PostCellDelegate?
     
     var viewed: Bool = false;
     

@@ -159,6 +159,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         let post = posts[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
             cell.configCell(post: post)
+            cell.delegate = self
             if (cellPostkeys.contains(post.postKey)) {
                 let index = cellPostkeys.firstIndex(of: post.postKey)
                 cells[index!] = cell
@@ -193,40 +194,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
    
     // MARK: - Helpers
     
-    /**
-     Set a vote from user towards a submission.
-     */
-    private func voteForPost(newVotePostId: String) {
-        // check if user already voted for a post in this competition
-        if let votes = User.sharedInstance.votes,
-            let oldVotePostId = votes[activeFilter],
-            let userManager = UserManager() {
-            
-                        
-            // if user is unvoting a submission which they previously voted for
-            if newVotePostId == oldVotePostId {
-                // remove vote from user object and leave empty
-                userManager.removeVoteFromCompetition(competitionId: activeFilter)
-                // remove vote from post
-                PostManager(postId: newVotePostId).removeVote()
-            } else {
-                // remove vote from old post by decreasing the post.votes count
-                PostManager(postId: oldVotePostId).removeVote()
-                // add new vote to post Id in post model
-                PostManager(postId: newVotePostId).addVote()
-                // replace vote with new vote in user model
-                userManager.addVote(competitionId: activeFilter, postId: newVotePostId)
-            }
-        } else {
-            // new vote
-            if let userManager = UserManager() {
-                // add vote to user model
-                userManager.addVote(competitionId: activeFilter, postId: newVotePostId)
-                // add vote post model
-                PostManager(postId: newVotePostId).addVote()
-            }
-        }
-    }
     
     private func configureViews() {
         firstPlaceProfileImageView.layer.borderColor = UIColor.systemYellow.cgColor
@@ -482,5 +449,47 @@ extension FeedVC: UploadVideoDelegate {
 extension FeedVC: MFMessageComposeViewControllerDelegate {
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         controller.dismiss(animated: true, completion: nil)
+    }
+}
+extension FeedVC: PostCellDelegate {
+    /**
+     Delegate call from `PostCellDelegate`
+     */
+    func didVoteForPost(postId: String) {
+        voteForPost(newVotePostId: postId)
+    }
+    /**
+     Set a vote from user towards a submission.
+     */
+    private func voteForPost(newVotePostId: String) {        
+        // check if user already voted for a post in this competition
+        if let userManager = UserManager() {
+            userManager.getVotes { (votes) in
+                if let votes = votes, let oldVotePostId = votes[self.activeFilter] {
+                    // if user is unvoting a submission which they previously voted for
+                    if newVotePostId == oldVotePostId {
+                        // remove vote from user object and leave empty
+                        userManager.removeVoteFromCompetition(competitionId: self.activeFilter)
+                        // remove vote from post
+                        PostManager(postId: newVotePostId).removeVote()
+                    } else {
+                        // remove vote from old post by decreasing the post.votes count
+                        PostManager(postId: oldVotePostId).removeVote()
+                        // add new vote to post Id in post model
+                        PostManager(postId: newVotePostId).addVote()
+                        // replace vote with new vote in user model
+                        userManager.addVote(competitionId: self.activeFilter, postId: newVotePostId)
+                    }
+                } else {
+                    // new vote
+                    if let userManager = UserManager() {
+                        // add vote to user model
+                        userManager.addVote(competitionId: self.activeFilter, postId: newVotePostId)
+                        // add vote post model
+                        PostManager(postId: newVotePostId).addVote()
+                    }
+                }
+            }
+        }
     }
 }

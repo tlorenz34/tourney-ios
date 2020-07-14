@@ -50,5 +50,17 @@ class UserManager {
     public func addVote(competitionId: String, postId: String) {
         userRef.child("votes").setValue([competitionId : postId])
     }
-    
+    /**
+     Get `votes` property for user
+     */
+    public func getVotes(completion: @escaping ([String : String]?) -> Void) {
+        userRef.observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? [String : Any],
+                let votes =  value["votes"] as? [String : String] {
+                completion(votes)
+            } else {
+                completion(nil)
+            }
+        }
+    }
 }
