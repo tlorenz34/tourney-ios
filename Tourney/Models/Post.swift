@@ -113,3 +113,46 @@ class Post  {
         
     }
 }
+/**
+ Class to manage networking aspects of the Post model
+ */
+class PostManager {
+    
+    var id: String
+    var postRef: DatabaseReference {
+        Database.database().reference().child("posts").child(id)
+    }
+    
+    init(postId: String) {
+        id = postId
+    }
+    /// Increments `votes` field by `1`
+    public func addVote() {
+        addToVote(amount: 1)
+    }
+    /// Decreases `votes` field by `1`
+    public func removeVote() {
+        addToVote(amount: -1)
+    }
+    /**
+     Add amount to `votes` field of Post object
+     */
+    private func addToVote(amount: Int) {
+        postRef.observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? [String : Any] {                
+                if let votes = value["votes"] as? Int {
+                    // check to make sure votes don't go below 0 (happens in an environment where votes are simultaneously being sent and netowrk lags
+                    if votes + amount < 0 { return }
+                    // add votes
+                    self.postRef.updateChildValues(["votes" : votes + amount])
+                } else {
+                    // no votes field found, fist vote.
+                    if amount > 0 { // security check to not go below 0
+                        self.postRef.updateChildValues(["votes": 1])
+                    }
+                }
+            }
+        }
+    }
+    
+}

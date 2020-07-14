@@ -8,6 +8,7 @@
 
 // When a user signs up, they create a username, profile picture
 import Foundation
+import Firebase
 
 final class User {
     static let sharedInstance = User()
@@ -23,3 +24,31 @@ final class User {
 }
 
 
+/**
+Class to manage networking aspects of the User model
+*/
+class UserManager {
+    
+    var uid: String
+    var userRef: DatabaseReference {
+        Database.database().reference().child("users").child(uid)
+    }
+    
+    init?() {
+        guard let currentUser = Auth.auth().currentUser else { return nil }
+        self.uid = currentUser.uid
+    }
+    /**
+     Remove vote from competition
+     */
+    public func removeVoteFromCompetition(competitionId: String) {
+        userRef.child("votes").child(competitionId).removeValue()
+    }
+    /**
+     Add vote to a post within a competition
+     */
+    public func addVote(competitionId: String, postId: String) {
+        userRef.child("votes").setValue([competitionId : postId])
+    }
+    
+}

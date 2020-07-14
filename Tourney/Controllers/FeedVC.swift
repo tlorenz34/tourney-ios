@@ -193,6 +193,41 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
    
     // MARK: - Helpers
     
+    /**
+     Set a vote from user towards a submission.
+     */
+    private func voteForPost(newVotePostId: String) {
+        // check if user already voted for a post in this competition
+        if let votes = User.sharedInstance.votes,
+            let oldVotePostId = votes[activeFilter],
+            let userManager = UserManager() {
+            
+                        
+            // if user is unvoting a submission which they previously voted for
+            if newVotePostId == oldVotePostId {
+                // remove vote from user object and leave empty
+                userManager.removeVoteFromCompetition(competitionId: activeFilter)
+                // remove vote from post
+                PostManager(postId: newVotePostId).removeVote()
+            } else {
+                // remove vote from old post by decreasing the post.votes count
+                PostManager(postId: oldVotePostId).removeVote()
+                // add new vote to post Id in post model
+                PostManager(postId: newVotePostId).addVote()
+                // replace vote with new vote in user model
+                userManager.addVote(competitionId: activeFilter, postId: newVotePostId)
+            }
+        } else {
+            // new vote
+            if let userManager = UserManager() {
+                // add vote to user model
+                userManager.addVote(competitionId: activeFilter, postId: newVotePostId)
+                // add vote post model
+                PostManager(postId: newVotePostId).addVote()
+            }
+        }
+    }
+    
     private func configureViews() {
         firstPlaceProfileImageView.layer.borderColor = UIColor.systemYellow.cgColor
         secondPlaceProfileImageView.layer.borderColor = UIColor.gray.cgColor
