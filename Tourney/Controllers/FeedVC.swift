@@ -78,18 +78,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         configureViews()
         
         sortTopVideos()
-        
-        // initial load vote for user to reflect on cell
-        if let userManager = UserManager() {
-            userManager.getVotes { (votes) in
-                if let votes = votes {
-                    if (votes[self.activeFilter] != nil) {
-                        self.postIdOfCurrentUserVote = votes[self.activeFilter]
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -282,6 +270,22 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             print(response?.suggestedFilename ?? url.lastPathComponent)
             DispatchQueue.main.async() {
                 imageView.image = UIImage(data: data)
+            }
+        }
+    }
+    /**
+     Initial load for user vote to reflect on posts being displayed.
+     */
+    private func loadUserVotes() {
+        // initial load vote for user to reflect on cell
+        if let userManager = UserManager() {
+            userManager.getVotes { (votes) in
+                if let votes = votes {
+                    if (votes[self.activeFilter] != nil) {
+                        self.postIdOfCurrentUserVote = votes[self.activeFilter]
+                        self.tableView.reloadData()
+                    }
+                }
             }
         }
     }
