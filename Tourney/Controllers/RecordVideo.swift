@@ -22,6 +22,8 @@ class RecordVideo: UIViewController, AVCaptureFileOutputRecordingDelegate {
     var previewLayer: AVCaptureVideoPreviewLayer!
     var activeInput: AVCaptureDeviceInput!
     var outputURL: URL!
+    // Holds FeedVC to pass on to the editor VC and set it as its delegate (UploadVideoDelegate) 
+    var feedVC: FeedVC!
     
     var shouldDismiss: Bool = false
 
@@ -155,6 +157,7 @@ class RecordVideo: UIViewController, AVCaptureFileOutputRecordingDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEditorSegue" {
             if let destination = segue.destination as? UploadVideo {
+                destination.delegate = feedVC
                 destination.didComeFromRecording = true
                 destination.recordedVideo = self.outputURL
                 destination.priorRecordingController = self

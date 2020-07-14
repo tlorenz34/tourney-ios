@@ -133,7 +133,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     }
     
     @IBAction func uploadVideoButtonTapped() {
-        performSegue(withIdentifier: "toUploadVideoVC", sender: nil)
+        performSegue(withIdentifier: "toRecordVideoVC", sender: nil)
     }
     // invite a user by sending a unique tournament/competition link through iMessage
     @IBAction func inviteTapped(_ sender: Any) {
@@ -411,11 +411,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             }
         } else if segue.identifier == "toUploadVideoVC" {
             if let destination = segue.destination as? UploadVideo {
+                print("this segue ran")
                 destination.delegate = self
             }
-        } else if segue.identifier == "recordVideoSegue" {
+        } else if segue.identifier == "toRecordVideoVC" {
             if let destination = segue.destination as? RecordVideo {
-                
+                destination.feedVC = self
             }
         }
     }
