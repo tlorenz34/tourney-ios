@@ -49,9 +49,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     var selectedImage: UIImage!
     var userImage: String!
     var userName: String!
-    
+    /// ID of competition being displayed
     var activeFilter: String!
-    
+    /// ID of post which user has voted for within competition. Used to signify which post the user has voted for via the voting button
+    var postIdOfCurrentUserVote: String?
     var currentCellPlaying: PostCell!
     var cells: [PostCell] = [];
     var cellPostkeys: [String] = []
@@ -77,6 +78,18 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         configureViews()
         
         sortTopVideos()
+        
+        // initial load vote for user to reflect on cell
+        if let userManager = UserManager() {
+            userManager.getVotes { (votes) in
+                if let votes = votes {
+                    if (votes[self.activeFilter] != nil) {
+                        self.postIdOfCurrentUserVote = votes[self.activeFilter]
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -172,6 +185,15 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
                 currentCellPlaying = cell
                 firstRun = false
             }
+            // update vote button reflecting state of vote for post
+            if let postIdOfCurrentUserVote = postIdOfCurrentUserVote {
+                if postIdOfCurrentUserVote == post.postKey {
+                    cell.isVotedFor = true
+                } else {
+                    cell.isVotedFor = false
+                }
+            }
+            
             cell.updateThumbnail()
             return cell
         } else {
@@ -461,7 +483,7 @@ extension FeedVC: PostCellDelegate {
     /**
      Set a vote from user towards a submission.
      */
-    private func voteForPost(newVotePostId: String) {        
+    private func voteForPost(newVotePostId: String) {
         // check if user already voted for a post in this competition
         if let userManager = UserManager() {
             userManager.getVotes { (votes) in
@@ -472,6 +494,8 @@ extension FeedVC: PostCellDelegate {
                         userManager.removeVoteFromCompetition(competitionId: self.activeFilter)
                         // remove vote from post
                         PostManager(postId: newVotePostId).removeVote()
+                        // update current vote (to reflect on cells)
+                        self.postIdOfCurrentUserVote = nil
                     } else {
                         // remove vote from old post by decreasing the post.votes count
                         PostManager(postId: oldVotePostId).removeVote()
@@ -479,6 +503,8 @@ extension FeedVC: PostCellDelegate {
                         PostManager(postId: newVotePostId).addVote()
                         // replace vote with new vote in user model
                         userManager.addVote(competitionId: self.activeFilter, postId: newVotePostId)
+                        // update current vote (to reflect on cells)
+                        self.postIdOfCurrentUserVote = newVotePostId
                     }
                 } else {
                     // new vote
@@ -487,8 +513,11 @@ extension FeedVC: PostCellDelegate {
                         userManager.addVote(competitionId: self.activeFilter, postId: newVotePostId)
                         // add vote post model
                         PostManager(postId: newVotePostId).addVote()
+                        // update current vote (to reflect on cells)
+                        self.postIdOfCurrentUserVote = newVotePostId
                     }
                 }
+                self.tableView.reloadData()
             }
         }
     }

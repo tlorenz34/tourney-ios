@@ -26,13 +26,9 @@ class PostCell: UITableViewCell {
         // if state = not vote
         if thumbsUpButton.titleLabel!.text == "Vote" {
             // update ui
-            thumbsUpButton.setTitle("Voted", for: .normal)
-            thumbsUpButton.backgroundColor = UIColor.link
-            thumbsUpButton.setTitleColor(UIColor.white, for: .normal)
+            updateUIForVotingButton(voted: true)
         } else {
-            thumbsUpButton.setTitle("Vote", for: .normal)
-            thumbsUpButton.backgroundColor = UIColor.white
-            thumbsUpButton.setTitleColor(UIColor.link, for: .normal)
+            updateUIForVotingButton(voted: false)
         }
         // notify controllers of action
         delegate?.didVoteForPost(postId: post.postKey)
@@ -49,6 +45,15 @@ class PostCell: UITableViewCell {
     var userPostKey: DatabaseReference!
     let currentUser = KeychainWrapper.standard.string(forKey: "uid")
     let loadingIndicator = UIActivityIndicatorView(style: .white)
+    var isVotedFor: Bool = false {
+        didSet {
+            if self.isVotedFor {
+                updateUIForVotingButton(voted: true)
+            } else {
+                updateUIForVotingButton(voted: false)
+            }
+        }
+    }
     weak var delegate: PostCellDelegate?
     
     var viewed: Bool = false;
@@ -156,5 +161,19 @@ class PostCell: UITableViewCell {
     func updateLikesInUI(like: Bool) {
         let views = viewsLabel.text!
         viewsLabel.text = "\((Int(views)! + 1)) views"
+    }
+    /**
+     Update UI of voting button to reflect state of vote
+     */
+    private func updateUIForVotingButton(voted: Bool) {
+        if voted {
+            thumbsUpButton.setTitle("Voted", for: .normal)
+            thumbsUpButton.backgroundColor = UIColor.link
+            thumbsUpButton.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            thumbsUpButton.setTitle("Vote", for: .normal)
+            thumbsUpButton.backgroundColor = UIColor.white
+            thumbsUpButton.setTitleColor(UIColor.link, for: .normal)
+        }
     }
 }
