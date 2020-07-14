@@ -62,7 +62,7 @@ class Post  {
     var postKey: String {
         return _postKey
     }
-    
+    var votes: Int
    /* var downloadedURL: URL {
         get {
             return _downloadedURL
@@ -77,6 +77,7 @@ class Post  {
         _username = username
         _userImg = userImg
         _videoLink = videoLink
+        votes = 0
     }
     init(postKey: String, postData: Dictionary<String, AnyObject>) {
         _postKey = postKey
@@ -97,7 +98,11 @@ class Post  {
         if let videoLink = postData["videoURL"] as? String {
             _videoLink = videoLink
         }
-        
+        if let votes = postData["votes"] as? Int {
+            self.votes = votes
+        } else {
+            votes = 0
+        }
         _postRef = Database.database().reference().child("posts").child(_postKey)
         
         
@@ -127,28 +132,36 @@ class PostManager {
         id = postId
     }
     /// Increments `votes` field by `1`
-    public func addVote() {
-        addToVote(amount: 1)
+    public func addVote(completion: @escaping () -> Void) {
+        addToVote(amount: 1) {
+            completion()
+        }
     }
     /// Decreases `votes` field by `1`
-    public func removeVote() {
-        addToVote(amount: -1)
+    public func removeVote(completion: @escaping () -> Void) {
+        addToVote(amount: -1) {
+            completion()
+        }
     }
     /**
      Add amount to `votes` field of Post object
      */
-    private func addToVote(amount: Int) {
+    private func addToVote(amount: Int, completion: @escaping () -> Void) {
         postRef.observeSingleEvent(of: .value) { (snapshot) in
             if let value = snapshot.value as? [String : Any] {                
                 if let votes = value["votes"] as? Int {
                     // check to make sure votes don't go below 0 (happens in an environment where votes are simultaneously being sent and netowrk lags
                     if votes + amount < 0 { return }
                     // add votes
-                    self.postRef.updateChildValues(["votes" : votes + amount])
+                    self.postRef.updateChildValues(["votes" : votes + amount]) { (error, ref) in
+                        completion()
+                    }
                 } else {
                     // no votes field found, fist vote.
                     if amount > 0 { // security check to not go below 0
-                        self.postRef.updateChildValues(["votes": 1])
+                        self.postRef.updateChildValues(["votes" : 1]) { (error, ref) in
+                            completion()
+                        }
                     }
                 }
             }

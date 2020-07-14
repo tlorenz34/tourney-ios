@@ -75,6 +75,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         imagePicker.allowsEditing = true
         
         loadDataAndResetTable(scrollTo: nil)
+        loadUserVotes()
         configureViews()
         
         sortTopVideos()
@@ -213,6 +214,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     // sorting all uploaded videos to competition/tournament by views
     // fetching data from Firebase and sorting the top three most viewed videos
     private func sortTopVideos() {
+        print("running sort top videos...")
         let ref = Database.database().reference().child("posts")
         var queriedPosts: [Post] = []
         let query = ref.queryOrdered(byChild: "eventID").queryEqual(toValue: activeFilter)
@@ -228,7 +230,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
                 }
             }
             
-            queriedPosts = queriedPosts.sorted(by: { $0.views > $1.views })
+            queriedPosts = queriedPosts.sorted(by: { $0.votes > $1.votes })
             self.queried = queriedPosts
             if (queriedPosts.count == 1) {
                 self.updateUITopVideos(topVideos: [queriedPosts[0]], any: true)
@@ -245,17 +247,17 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     private func updateUITopVideos(topVideos: [Post?], any: Bool) {
         if let _ = topVideos[exist: 0] {
             firstPlaceUsernameLabel.text = topVideos[0]!.username
-            firstPlaceViews.text = "\(topVideos[0]!.formattedViews)"
+            firstPlaceViews.text = "\(topVideos[0]!.votes)"
             downloadImage(from: URL(string: topVideos[0]!.userImg)!, imageView: firstPlaceProfileImageView)
         }
         if let _ = topVideos[exist: 1] {
             secondPlaceUsernameLabel.text = topVideos[1]!.username
-            secondPlaceViews.text = "\(topVideos[1]!.formattedViews)"
+            secondPlaceViews.text = "\(topVideos[1]!.votes)"
             downloadImage(from: URL(string: topVideos[1]!.userImg)!, imageView: secondPlaceProfileImageView)
         }
         if let _ = topVideos[exist: 2] {
             thirdlaceUsernameLabel.text = topVideos[2]!.username
-            thirdPlaceViews.text = "\(topVideos[2]!.formattedViews)"
+            thirdPlaceViews.text = "\(topVideos[2]!.votes)"
             downloadImage(from: URL(string: topVideos[2]!.userImg)!, imageView: thirdPlaceProfileImageView)
         }
     }
@@ -497,14 +499,20 @@ extension FeedVC: PostCellDelegate {
                         // remove vote from user object and leave empty
                         userManager.removeVoteFromCompetition(competitionId: self.activeFilter)
                         // remove vote from post
-                        PostManager(postId: newVotePostId).removeVote()
+                        PostManager(postId: newVotePostId).removeVote {
+                            // update leaderboard videos
+                            self.sortTopVideos()
+                        }
                         // update current vote (to reflect on cells)
                         self.postIdOfCurrentUserVote = nil
                     } else {
                         // remove vote from old post by decreasing the post.votes count
-                        PostManager(postId: oldVotePostId).removeVote()
+                        PostManager(postId: oldVotePostId).removeVote {}
                         // add new vote to post Id in post model
-                        PostManager(postId: newVotePostId).addVote()
+                        PostManager(postId: newVotePostId).addVote {
+                            // update leaderboard videos
+                            self.sortTopVideos()
+                        }
                         // replace vote with new vote in user model
                         userManager.addVote(competitionId: self.activeFilter, postId: newVotePostId)
                         // update current vote (to reflect on cells)
@@ -516,9 +524,14 @@ extension FeedVC: PostCellDelegate {
                         // add vote to user model
                         userManager.addVote(competitionId: self.activeFilter, postId: newVotePostId)
                         // add vote post model
-                        PostManager(postId: newVotePostId).addVote()
+                        PostManager(postId: newVotePostId).addVote {
+                            // update leaderboard videos
+                            self.sortTopVideos()
+                        }
                         // update current vote (to reflect on cells)
                         self.postIdOfCurrentUserVote = newVotePostId
+                        // update leaderboard videos
+                        self.sortTopVideos()
                     }
                 }
                 self.tableView.reloadData()
