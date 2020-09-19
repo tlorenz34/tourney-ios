@@ -6,7 +6,7 @@
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
 //
 // When a user picks a video from their camera roll, they have the ability to clip and
-// adjust the video to a maximum of 8 seconds. This class helps the user pick, clip/edit, then
+// adjust the video to a maximum of 10 seconds. This class helps the user pick, clip/edit, then
 // upload the video
 import UIKit
 import AVKit

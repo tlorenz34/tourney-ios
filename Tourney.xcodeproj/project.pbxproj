@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,6 +39,9 @@
 		DF0B82472360DE1E000DDF32 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B82462360DE1E000DDF32 /* LoginVC.swift */; };
 		DF0B824D2361EE99000DDF32 /* SignUpLogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B824C2361EE99000DDF32 /* SignUpLogInVC.swift */; };
 		DF72AE04248C166000E730EF /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF72AE03248C166000E730EF /* UIButtonExtension.swift */; };
+		DFAF566B24F440FD00523ECF /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAF566A24F440FD00523ECF /* RulesViewController.swift */; };
+		DFAF566F24F446DE00523ECF /* ruleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAF566E24F446DE00523ECF /* ruleView.swift */; };
+		DFAF567124F44AD500523ECF /* Rule.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFAF567024F44AD500523ECF /* Rule.xib */; };
 		DFC545672305AB65009F84B1 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC545662305AB64009F84B1 /* DatabaseService.swift */; };
 		DFC545692305AB79009F84B1 /* TopVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC545682305AB79009F84B1 /* TopVideoController.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +106,9 @@
 		DF0B82462360DE1E000DDF32 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		DF0B824C2361EE99000DDF32 /* SignUpLogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLogInVC.swift; sourceTree = "<group>"; };
 		DF72AE03248C166000E730EF /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		DFAF566A24F440FD00523ECF /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		DFAF566E24F446DE00523ECF /* ruleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ruleView.swift; sourceTree = "<group>"; };
+		DFAF567024F44AD500523ECF /* Rule.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Rule.xib; sourceTree = "<group>"; };
 		DFC545662305AB64009F84B1 /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		DFC545682305AB79009F84B1 /* TopVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopVideoController.swift; sourceTree = "<group>"; };
 		E1557F7680A284C73CAB1D11 /* Pods-TourneyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourneyTests.release.xcconfig"; path = "Target Support Files/Pods-TourneyTests/Pods-TourneyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 				6E6AA49D22EFAB53006A1267 /* UserProfile.swift */,
 				6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */,
 				DFC545682305AB79009F84B1 /* TopVideoController.swift */,
+				DFAF566A24F440FD00523ECF /* RulesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -262,6 +269,8 @@
 				094E6D2823A2D179008973C1 /* CircleView.swift */,
 				6E6AA49922EFAB53006A1267 /* VideoView.swift */,
 				6E6AA49A22EFAB53006A1267 /* RoundedView.swift */,
+				DFAF566E24F446DE00523ECF /* ruleView.swift */,
+				DFAF567024F44AD500523ECF /* Rule.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -387,6 +396,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFAF567124F44AD500523ECF /* Rule.xib in Resources */,
 				6E6AA4AC22EFAB78006A1267 /* Main.storyboard in Resources */,
 				6E6AA4B222EFABF6006A1267 /* GoogleService-Info.plist in Resources */,
 				6E6AA4AE22EFAB8A006A1267 /* Assets.xcassets in Resources */,
@@ -461,11 +471,9 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tourney/Pods-Tourney-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tourney/Pods-Tourney-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -521,8 +529,10 @@
 				097BE06A23A19DDF00371829 /* ProfileImageView.swift in Sources */,
 				6E6AA48E22EFAB3C006A1267 /* TournamentCell.swift in Sources */,
 				6E6AA48F22EFAB3C006A1267 /* TournamentTableViewController.swift in Sources */,
+				DFAF566B24F440FD00523ECF /* RulesViewController.swift in Sources */,
 				6E6AA4A322EFAB53006A1267 /* RecordVideo.swift in Sources */,
 				DF72AE04248C166000E730EF /* UIButtonExtension.swift in Sources */,
+				DFAF566F24F446DE00523ECF /* ruleView.swift in Sources */,
 				094E6D2923A2D179008973C1 /* CircleView.swift in Sources */,
 				6E6AA4A122EFAB53006A1267 /* leaderboardVC.swift in Sources */,
 				6E6AA45B22EFAA39006A1267 /* AppDelegate.swift in Sources */,
@@ -695,7 +705,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tourney/Tourney.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.38;
+				CURRENT_PROJECT_VERSION = 2.43;
 				DEVELOPMENT_TEAM = SFS3QU5SC2;
 				INFOPLIST_FILE = Tourney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -703,7 +713,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.38;
+				MARKETING_VERSION = 2.43;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tourney.Tourney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -718,7 +728,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tourney/Tourney.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.38;
+				CURRENT_PROJECT_VERSION = 2.43;
 				DEVELOPMENT_TEAM = SFS3QU5SC2;
 				INFOPLIST_FILE = Tourney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -726,7 +736,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.38;
+				MARKETING_VERSION = 2.43;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tourney.Tourney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

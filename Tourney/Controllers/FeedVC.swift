@@ -135,6 +135,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBAction func uploadVideoButtonTapped() {
         performSegue(withIdentifier: "toRecordVideoVC", sender: nil)
     }
+    @IBAction func rulesButtonTapped() {
+        performSegue(withIdentifier: "toRulesVC", sender: nil)
+    }
     // invite a user by sending a unique tournament/competition link through iMessage
     @IBAction func inviteTapped(_ sender: Any) {
         if MFMessageComposeViewController.canSendText() {

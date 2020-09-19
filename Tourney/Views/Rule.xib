@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ruleView" customModule="Tourney" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="482" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KjC-8z-eHs">
+                    <rect key="frame" x="0.0" y="0.0" width="482" height="250"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BMX_2" translatesAutoresizingMaskIntoConstraints="NO" id="f5N-K1-byw">
+                            <rect key="frame" x="182" y="52" width="119" height="113"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="119" id="I5x-wf-jbP"/>
+                                <constraint firstAttribute="height" constant="113" id="SH4-2c-1qV"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload as many times as possible to the " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDp-fV-s8e" userLabel="Title Label">
+                            <rect key="frame" x="8" y="173" width="466" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="2G8-uz-5Mn"/>
+                                <constraint firstAttribute="width" constant="466" id="Pyl-02-b1A"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.3146297716" green="0.85911722720000006" blue="0.44390886569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="f5N-K1-byw" firstAttribute="leading" secondItem="KjC-8z-eHs" secondAttribute="leading" constant="182" id="8Ll-pq-Xmk"/>
+                        <constraint firstItem="f5N-K1-byw" firstAttribute="top" secondItem="KjC-8z-eHs" secondAttribute="top" constant="52" id="Ctr-4t-htC"/>
+                        <constraint firstAttribute="height" constant="250" id="FOM-B8-X38"/>
+                        <constraint firstAttribute="trailing" secondItem="f5N-K1-byw" secondAttribute="trailing" constant="181" id="G4q-vo-And"/>
+                        <constraint firstAttribute="width" constant="482" id="GrF-6Z-iZU"/>
+                        <constraint firstAttribute="bottom" secondItem="cDp-fV-s8e" secondAttribute="bottom" constant="56" id="UlL-vO-2jR"/>
+                        <constraint firstAttribute="trailing" secondItem="cDp-fV-s8e" secondAttribute="trailing" constant="8" id="dma-Hg-WQP"/>
+                        <constraint firstItem="cDp-fV-s8e" firstAttribute="leading" secondItem="KjC-8z-eHs" secondAttribute="leading" constant="8" id="xv1-ib-UDX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.31462977155262062" green="0.85911722715736039" blue="0.44390886568644261" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="KjC-8z-eHs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hk5-1V-A8J"/>
+                <constraint firstItem="KjC-8z-eHs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="IHg-PL-NOt"/>
+                <constraint firstAttribute="bottom" secondItem="KjC-8z-eHs" secondAttribute="bottom" id="Kl3-IZ-bhF"/>
+                <constraint firstItem="KjC-8z-eHs" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="SHy-Up-Wy4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="ruleImageView" destination="f5N-K1-byw" id="Y8Y-dH-MUq"/>
+                <outlet property="titleLabel" destination="cDp-fV-s8e" id="5Mf-17-hJ7"/>
+            </connections>
+            <point key="canvasLocation" x="186.95652173913044" y="311.38392857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BMX_2" width="2992" height="2097"/>
+    </resources>
+</document>
