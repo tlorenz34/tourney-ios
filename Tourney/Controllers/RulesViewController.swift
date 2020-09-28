@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RulesViewControllerDelegate: class {
+    func didTapStartCompeting()
+}
+
 class RulesViewController: UIViewController, UIScrollViewDelegate {
     
     var feedVC: FeedVC!
@@ -23,6 +27,7 @@ class RulesViewController: UIViewController, UIScrollViewDelegate {
     let rule6 = ["title":"Invite your friends","image":"invite_friends"]
     
     var ruleArray = [Dictionary<String, String>]()
+    weak var delegate: RulesViewControllerDelegate?
     
     
     override func viewDidLoad() {
@@ -56,7 +61,9 @@ class RulesViewController: UIViewController, UIScrollViewDelegate {
 
     }
     @IBAction func uploadVideoButtonTapped() {
-        performSegue(withIdentifier: "toRecordVideoVC", sender: nil)
+        dismiss(animated: true) {
+            self.delegate?.didTapStartCompeting()
+        }
     }
     @IBAction func cancel(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)

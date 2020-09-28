@@ -421,6 +421,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             if let destination = segue.destination as? RecordVideo {
                 destination.feedVC = self
             }
+        } else if segue.identifier == "toRulesVC" {
+            if let destination = segue.destination as? RulesViewController {
+                destination.delegate = self
+            }
         }
     }
     
@@ -541,5 +545,10 @@ extension FeedVC: PostCellDelegate {
                 self.tableView.reloadData()
             }
         }
+    }
+}
+extension FeedVC: RulesViewControllerDelegate {
+    func didTapStartCompeting() {
+        performSegue(withIdentifier: "toRecordVideoVC", sender: nil)
     }
 }
