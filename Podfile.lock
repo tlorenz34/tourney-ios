@@ -1,6 +1,8 @@
 PODS:
   - ABVideoRangeSlider (0.1.5)
   - Cache (5.3.0)
+  - Firebase (6.29.0):
+    - Firebase/Core (= 6.29.0)
   - Firebase/Auth (6.29.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.7.1)
@@ -97,6 +99,7 @@ PODS:
 DEPENDENCIES:
   - ABVideoRangeSlider
   - Cache
+  - Firebase
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -150,6 +153,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
 
-PODFILE CHECKSUM: a66b253437da052ee5aab14649d127348e22566a
+PODFILE CHECKSUM: 6d1aea3f238d92007de19009f1a914b9999b24e2
 
 COCOAPODS: 1.9.1

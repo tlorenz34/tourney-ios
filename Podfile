@@ -7,6 +7,7 @@ target 'Tourney' do
 
   # Pods for Tourney
 
+  pod 'Firebase'
 	pod 'Firebase/Core'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
