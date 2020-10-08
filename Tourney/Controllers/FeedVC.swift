@@ -20,8 +20,9 @@ import MessageUI
 
 class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var postBtn: UIButton!
     
     // leaderboard profile images
     @IBOutlet var firstPlaceProfileImageView: UIImageView!
@@ -39,63 +40,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBOutlet var thirdPlaceViews: UILabel!
     
     @IBOutlet weak var noVideosPostedLabel: UILabel!
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-        
-    var posts = [Post]()
-    var post: Post!
-    var imagePicker: UIImagePickerController!
-    var imageSelected = false
-    var selectedImage: UIImage!
-    var userImage: String!
-    var userName: String!
-    /// ID of competition being displayed
-    var activeFilter: String!
-    /// ID of post which user has voted for within competition. Used to signify which post the user has voted for via the voting button
-    var postIdOfCurrentUserVote: String?
-    var currentCellPlaying: PostCell!
-    var cells: [PostCell] = [];
-    var cellPostkeys: [String] = []
-    var firstRun: Bool = true
-    
-    var selectedVideo: Post!
-    var queried: [Post] = []
-    
-    var likedPosts: [String] = []
-    
-    // MARK: - View lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        noVideosPostedLabel.isHidden = true
-        tableView.delegate = self
-        tableView.dataSource = self
-        imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        
-        loadDataAndResetTable(scrollTo: nil)
-        loadUserVotes()
-        configureViews()
-        
-        sortTopVideos()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        /*if let currentCell = currentCell {
-            currentCell.isActive();
-        }
-        loadDataAndResetTable()
-         */
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        /*if let currentCell = currentCell {
-            currentCell.isUnactive()
-        }
-         */
-    }
-    
+            
     // MARK: - Actions
     
     @IBAction func postImageTapped(_ sender: AnyObject){
@@ -148,6 +93,60 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         }
     }
     
+    // MARK: - Properties
+    
+    var tournament: Tournament!
+    var submissions: [Submission] = []
+    
+    var posts = [Post]()
+    var post: Post!
+    var imagePicker: UIImagePickerController!
+    var imageSelected = false
+    var selectedImage: UIImage!
+    var userImage: String!
+    var userName: String!
+    /// ID of competition being displayed
+    var activeFilter: String! = "BMX_Competition_2"
+    /// ID of post which user has voted for within competition. Used to signify which post the user has voted for via the voting button
+    var postIdOfCurrentUserVote: String?
+    var currentCellPlaying: PostCell!
+    var cells: [PostCell] = [];
+    var cellPostkeys: [String] = []
+    var firstRun: Bool = true
+    
+    var selectedVideo: Post!
+    var queried: [Post] = []
+    
+    var likedPosts: [String] = []
+    
+    // MARK: - View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        noVideosPostedLabel.isHidden = true
+        tableView.delegate = self
+        tableView.dataSource = self
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+//        loadDataAndResetTable(scrollTo: nil)
+//        loadUserVotes()
+//        configureViews()
+//
+//        sortTopVideos()
+        
+        
+        SubmissionManager().fetchSubmissionsForTournament(tournamentId: tournament.id) { (submissions) in
+            if let submissions = submissions {
+                self.submissions = submissions
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+    
+
     
     // MARK: - TableView
     
@@ -158,9 +157,24 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return submissions.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+        let submission = submissions[indexPath.row]
+        
+        cell.usernameLabel.text = submission.creatorUsername
+        cell.viewsLabel.text = "\(submission.views)"
+        cell.profileImageView.kf.setImage(with: submission.creatorProfileImageURL)
+        cell.thumbnailImageView.kf.setImage(with: submission.thumbnailURL)
+        
+        return cell
+        
+        
+        
+        
+        
         let post = posts[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
             cell.configCell(post: post)
@@ -173,7 +187,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
                 cellPostkeys.append(post.postKey)
             }
             if (firstRun && (indexPath.row == 0)) {
-                cell.playvid(url: post.videoLink)
+//                cell.playvid(url: post.videoLink)
                 currentCellPlaying = cell
                 firstRun = false
             }
@@ -191,23 +205,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         } else {
             return PostCell()
         }
-        
-        /*
-         cell.configCell(post: post)
-         if (!cells.contains(cell)) {
-         cells.append(cell)
-         }
-         if (indexPath.row == 0) {
-         cell.isActive()
-         } else {
-         cell.isUnactive()
-         }
-         return cell
-         */
     }
    
     // MARK: - Helpers
-    
     
     private func configureViews() {
         firstPlaceProfileImageView.layer.borderColor = UIColor.systemYellow.cgColor
@@ -381,7 +381,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         
         if (newMostVisibleCandidate != currentCellPlaying) {
             currentCellPlaying.stopvid()
-            newMostVisibleCandidate.playvid(url: newMostVisibleCandidate.post.videoLink)
+//            newMostVisibleCandidate.playvid(url: newMostVisibleCandidate.post.videoLink)
             currentCellPlaying = newMostVisibleCandidate
         }
         
@@ -419,6 +419,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             }
         } else if segue.identifier == "toRecordVideoVC" {
             if let destination = segue.destination as? RecordVideo {
+                destination.tournament = tournament
                 destination.feedVC = self
             }
         } else if segue.identifier == "toRulesVC" {

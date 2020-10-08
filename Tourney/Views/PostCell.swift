@@ -92,9 +92,9 @@ class PostCell: UITableViewCell {
         thumbnailImageView.isHidden = false
     }
     
-    func playvid(url: String) {
+    func playvid(videoURL: URL) {
         
-        let playerItem = AVPlayerItem(url: URL(string: post.videoLink)!)
+        let playerItem = AVPlayerItem(url: videoURL)
         player.replaceCurrentItem(with: playerItem)
         player.automaticallyWaitsToMinimizeStalling = true
         self.player.play()

@@ -17,6 +17,7 @@ class RecordVideo: UIViewController, AVCaptureFileOutputRecordingDelegate {
 
     @IBOutlet weak var previewView: UIView!
     
+    var tournament: Tournament!
     let captureSession = AVCaptureSession()
     let movieOutput = AVCaptureMovieFileOutput()
     var previewLayer: AVCaptureVideoPreviewLayer!
@@ -157,6 +158,7 @@ class RecordVideo: UIViewController, AVCaptureFileOutputRecordingDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEditorSegue" {
             if let destination = segue.destination as? UploadVideo {
+                destination.tournament = tournament
                 destination.delegate = feedVC
                 destination.didComeFromRecording = true
                 destination.recordedVideo = self.outputURL

@@ -91,14 +91,14 @@ class TournamentsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let tournaments = tournaments else { return }
         let tournament = tournaments[indexPath.row]
-        performSegue(withIdentifier: "toVideoFeed", sender: tournament.id)
+        performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toVideoFeed" {
+        if segue.identifier == "SubmissionsViewController" {
             if let destination = segue.destination as? FeedVC {
-                let tournamentId = sender as! String
-                destination.activeFilter = tournamentId
+                let tournament = sender as! Tournament
+                destination.tournament = tournament
             }
         }
     }

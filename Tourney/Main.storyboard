@@ -716,7 +716,7 @@
                                     <action selector="chooseVideoButtonPressed:" destination="Xc6-Lz-pOt" eventType="touchUpInside" id="NW3-n5-U6A"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ewh-iF-Grb" customClass="ABVideoRangeSlider" customModule="ABVideoRangeSlider">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ewh-iF-Grb" customClass="ABVideoRangeSlider" customModule="Tourney" customModuleProvider="target">
                                 <rect key="frame" x="40" y="394" width="295" height="62"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -991,7 +991,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="3s6-BA-Ofa"/>
                     <connections>
-                        <segue destination="hFD-yr-YVI" kind="show" identifier="toVideoFeed" id="po6-sB-hgm"/>
+                        <segue destination="hFD-yr-YVI" kind="show" identifier="SubmissionsViewController" id="po6-sB-hgm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQj-4h-oip" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1421,7 +1421,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xcO-Wg-sga"/>
         <segue reference="GwX-NP-xWc"/>
         <segue reference="jyX-zH-4fh"/>
     </inferredMetricsTieBreakers>

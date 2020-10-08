@@ -26,6 +26,80 @@ protocol UploadVideoDelegate: class {
 
 class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    // MARK: - Actions
+    
+    @IBAction func RecordButtonTapped() {
+        performSegue(withIdentifier: "toRecordVideo", sender: nil)
+    }
+    @IBAction func chooseVideoButtonPressed(_ sender: Any) {
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        imagePickerController.mediaTypes = ["public.movie"]
+        
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    @IBAction func uploadVideoButtonPressed(_ sender: Any) {
+                
+        guard let videoURL = videoURL,
+              let username = User.sharedInstance.username,
+              let userProfileImageURLString = User.sharedInstance.profileImageURL,
+              let userProfileImageURL = URL(string: userProfileImageURLString) else { return }
+
+        // add loading indicator
+        loadingIndicatorView.center = uploadButton.center
+        if let buttonSuperView = uploadButton.superview {
+            buttonSuperView.addSubview(loadingIndicatorView)
+            uploadButton.setTitle("", for: .normal)
+            loadingIndicatorView.startAnimating()
+        }
+        
+        
+        // crop video
+        cropVideo(sourceURL: videoURL as URL, startTime: self.startTime, endTime: self.endTime) { (croppedVideoURL) in
+            print("cropeed video...")
+            // make thumbnail from video
+            self.getThumbnailImageFromVideoUrl(videoURL: croppedVideoURL) { (image) in
+                // upload thumbnail
+                if let image = image {
+                    
+                    print("got image from video.... ")
+                    self.uploadThumbnailToStorage(image: image) { (uploadedThumbnailURL) in
+                        if let uploadedThumbnailURL = uploadedThumbnailURL {
+                            
+                            print("uplaoded thumbnail to storage...")
+                            
+                            // upload video
+                            self.uploadVideoToStorage(url: croppedVideoURL) { (uploadedVideoURL) in
+                                if let uploadedVideoURL = uploadedVideoURL {
+                                    print("uploaded video to storage....")
+                                    // create submission
+                                    let submission = Submission(tournamentId: self.tournament.id, creatorProfileImageURL: userProfileImageURL, creatorUsername: username, videoURL: uploadedVideoURL, thumbnailURL: uploadedThumbnailURL)
+                                    // save new submission
+                                    SubmissionManager().saveNew(submission)
+                                    // dismiss
+                                    if let priorController = self.priorRecordingController {
+                                        priorController.shouldDismiss = true
+                                    }
+                                    self.dismiss(animated: true) {
+                                        // delegate implementation
+                                        self.delegate?.didUploadVideo(with: uploadedVideoURL.absoluteString)
+                                    }
+                                    
+                                } else {
+                                    print("failed to uploaded video")
+                                }
+                            }
+                        } else {
+                            print("failed to uploaded thumbnail")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var chooseVideoButton: UIButton!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var trimView: ABVideoRangeSlider!
@@ -56,6 +130,11 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     
     var priorRecordingController: RecordVideo!
     
+    /// Tournament that video is being uploaded under.
+    var tournament: Tournament!
+    
+    // MARK: - View lifecyle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         randomID = self.randomString(length: 16);
@@ -64,6 +143,8 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
             setupRecordingPreview()
         }
     }
+    
+    // MARK: - Helpers
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -105,10 +186,12 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
         videoView.layer.addSublayer(avPlayerLayer)
         player.play()
     }
-    
-    func uploadToStorage(videoLink: URL) {
-        let storageReference = Storage.storage().reference().child("videos").child(randomID)
-        storageReference.putFile(from: videoLink as URL, metadata: nil, completion: { (metadata, error) in
+    /**
+     Uploads video to Storage under the `videos` folder.
+     */
+    func uploadVideoToStorage(url: URL, completion: @escaping ((_ url: URL?) -> Void)) {
+        let storageReference = Storage.storage().reference().child("videos").child(UUID().uuidString)
+        storageReference.putFile(from: url, metadata: nil, completion: { (metadata, error) in
             if error == nil {
                   // You can also access to download URL after upload.
                 storageReference.downloadURL { (url, error) in
@@ -116,7 +199,7 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
                     // Uh-oh, an error occurred!
                     return
                     }
-                    self.postToDatabase(videoURL: (downloadURL.absoluteString))
+                    completion(downloadURL)
                 }
                 
             } else {
@@ -124,10 +207,35 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
                 self.loadingIndicatorView.stopAnimating()
                 self.resetUploadButtonState()
                 print(error?.localizedDescription ?? "")
+                completion(nil)
             }
         })
     }
-    
+    /**
+     Uploads image to Storage under the `videoThumbnails` folder.
+     */
+    func uploadThumbnailToStorage(image: UIImage, completion: @escaping ((_ url: URL?) -> Void)) {
+        guard let imageData: Data = image.jpegData(compressionQuality: 0.1) else {
+            return
+        }
+
+        let metaDataConfig = StorageMetadata()
+        metaDataConfig.contentType = "image/jpg"
+
+        let storageRef = Storage.storage().reference().child("videoThumbnails").child(UUID().uuidString)
+
+        storageRef.putData(imageData, metadata: metaDataConfig){ (metaData, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(nil)
+                return
+            }
+
+            storageRef.downloadURL(completion: { (url: URL?, error: Error?) in
+                completion(url)
+            })
+        }
+    }
     private func observeTime(elapsedTime: CMTime) {
         let elapsedTime = CMTimeGetSeconds(elapsedTime)
         if (player.currentTime().seconds > self.endTime) {
@@ -199,30 +307,6 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
         
     }
     
-    func postToDatabase(videoURL: String) {
-        let postReference = Database.database().reference().child("posts").child(randomID)
-        let postData = ["uid": User.sharedInstance.uid, "username": User.sharedInstance.username, "profileImage": User.sharedInstance.profileImageURL, "views": 0, "videoURL": videoURL, "eventID": User.sharedInstance.activeFilter] as [String : Any];
-        postReference.updateChildValues(postData) { (error, reference) in
-            
-            // remove loading indicator
-            self.loadingIndicatorView.stopAnimating()
-            self.resetUploadButtonState()
-            
-            if (error == nil) {
-                if let priorController = self.priorRecordingController {
-                    priorController.shouldDismiss = true
-                }
-                self.dismiss(animated: true) {
-                    // delegate implementation
-                    self.delegate?.didUploadVideo(with: videoURL)
-                }
-                
-            } else {
-                print("unsuccessful")
-            }
-        }
-    }
-
     func checkPermissions() {
         let photos = PHPhotoLibrary.authorizationStatus()
         if photos == .notDetermined {
@@ -235,32 +319,6 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
             })
         }
     }
-    
-    @IBAction func chooseVideoButtonPressed(_ sender: Any) {
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        imagePickerController.mediaTypes = ["public.movie"]
-        
-        present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    @IBAction func uploadVideoButtonPressed(_ sender: Any) {
-                
-        guard let videoURL = videoURL else { return }
-
-        // add loading indicator
-        loadingIndicatorView.center = uploadButton.center
-        if let buttonSuperView = uploadButton.superview {
-            buttonSuperView.addSubview(loadingIndicatorView)
-            uploadButton.setTitle("", for: .normal)
-            loadingIndicatorView.startAnimating()
-        }
-        
-        cropVideo(sourceURL: videoURL as URL, startTime: self.startTime, endTime: self.endTime) { (outputURL) in
-            self.uploadToStorage(videoLink: outputURL)
-        }
-    }
-    
     
     func cropVideo(sourceURL: URL, startTime: Double, endTime: Double, completion: ((_ outputUrl: URL) -> Void)? = nil) {
         let fileManager = FileManager.default
@@ -302,6 +360,25 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
         }
     }
 
+    func getThumbnailImageFromVideoUrl(videoURL: URL, completion: @escaping ((_ image: UIImage?)->Void)) {
+        DispatchQueue.global().async {
+            let asset = AVAsset(url: videoURL)
+            let avAssetImageGenerator = AVAssetImageGenerator(asset: asset)
+            avAssetImageGenerator.appliesPreferredTrackTransform = true
+            let thumnailTime = CMTimeMake(value: 1, timescale: 1)
+            do {
+                let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumnailTime, actualTime: nil)
+                let thumbImage = UIImage(cgImage: cgThumbImage)
+                DispatchQueue.main.async {
+                    completion(thumbImage)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }
+    }
     
     func randomString(length: Int) -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -311,10 +388,6 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     func resetUploadButtonState() {
         uploadButton.setTitle("Upload", for: .normal)
     }
-    @IBAction func RecordButtonTapped() {
-        performSegue(withIdentifier: "toRecordVideo", sender: nil)
-    }
-    
     
 }
 
