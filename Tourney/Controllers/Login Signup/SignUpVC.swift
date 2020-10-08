@@ -195,7 +195,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toFeedSegue" {
             if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-                let feedVC = segue.destination as! TournamentTableViewController
+                let feedVC = segue.destination as! TournamentsTableViewController
                 feedVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }                        
         }

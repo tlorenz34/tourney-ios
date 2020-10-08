@@ -856,10 +856,10 @@
             </objects>
             <point key="canvasLocation" x="1102" y="-151"/>
         </scene>
-        <!--Tournament Table View Controller-->
+        <!--Tournaments Table View Controller-->
         <scene sceneID="gTv-Xc-KQA">
             <objects>
-                <tableViewController storyboardIdentifier="CategoriesTableViewController" modalPresentationStyle="fullScreen" id="PxB-fK-dTO" customClass="TournamentTableViewController" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CategoriesTableViewController" modalPresentationStyle="fullScreen" id="PxB-fK-dTO" customClass="TournamentsTableViewController" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="x3f-Ik-vm2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

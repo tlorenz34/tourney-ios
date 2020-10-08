@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import Kingfisher
 
-class TournamentTableViewController: UITableViewController {
+class TournamentsTableViewController: UITableViewController {
     
     var tournaments: [Tournament]?
     /// Placeholder for dynamic link tournament id for new usrs

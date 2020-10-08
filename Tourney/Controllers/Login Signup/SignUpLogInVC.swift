@@ -53,7 +53,7 @@ class SignUpLogInVC: UIViewController {
             }
         } else if segue.identifier == "toFeedSegue" {
             if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-                let destinationVC = segue.destination as! TournamentTableViewController
+                let destinationVC = segue.destination as! TournamentsTableViewController
                 destinationVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }
         } else if segue.identifier == "showSignIn" {

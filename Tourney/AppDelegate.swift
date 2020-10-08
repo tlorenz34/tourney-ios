@@ -112,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if Auth.auth().currentUser != nil {
                 // logged in and already loaded from prior open
-                if let mainTournamentPage = launchVC.presentedViewController as? TournamentTableViewController {
+                if let mainTournamentPage = launchVC.presentedViewController as? TournamentsTableViewController {
                     mainTournamentPage.dynamicLinkTourneyIdForReturningUsers = dynamicLinkTourneyId
                 } else {
                     // logged in but app was closed (????)

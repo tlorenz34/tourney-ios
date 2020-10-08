@@ -34,7 +34,7 @@
 		6E6AA47322EFAA3B006A1267 /* TourneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA47222EFAA3B006A1267 /* TourneyTests.swift */; };
 		6E6AA47E22EFAA3B006A1267 /* TourneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA47D22EFAA3B006A1267 /* TourneyUITests.swift */; };
 		6E6AA48E22EFAB3C006A1267 /* TournamentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA48C22EFAB3C006A1267 /* TournamentCell.swift */; };
-		6E6AA48F22EFAB3C006A1267 /* TournamentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA48D22EFAB3C006A1267 /* TournamentTableViewController.swift */; };
+		6E6AA48F22EFAB3C006A1267 /* TournamentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA48D22EFAB3C006A1267 /* TournamentsTableViewController.swift */; };
 		6E6AA49E22EFAB53006A1267 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49022EFAB52006A1267 /* SignUpVC.swift */; };
 		6E6AA49F22EFAB53006A1267 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49122EFAB52006A1267 /* PostCell.swift */; };
 		6E6AA4A022EFAB53006A1267 /* SignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49222EFAB52006A1267 /* SignOut.swift */; };
@@ -114,7 +114,7 @@
 		6E6AA47D22EFAA3B006A1267 /* TourneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourneyUITests.swift; sourceTree = "<group>"; };
 		6E6AA47F22EFAA3B006A1267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E6AA48C22EFAB3C006A1267 /* TournamentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentCell.swift; sourceTree = "<group>"; };
-		6E6AA48D22EFAB3C006A1267 /* TournamentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentTableViewController.swift; sourceTree = "<group>"; };
+		6E6AA48D22EFAB3C006A1267 /* TournamentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsTableViewController.swift; sourceTree = "<group>"; };
 		6E6AA49022EFAB52006A1267 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		6E6AA49122EFAB52006A1267 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		6E6AA49222EFAB52006A1267 /* SignOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOut.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				098E94762373406F00B9E520 /* Login Signup */,
-				6E6AA48D22EFAB3C006A1267 /* TournamentTableViewController.swift */,
+				6E6AA48D22EFAB3C006A1267 /* TournamentsTableViewController.swift */,
 				6E6AA49422EFAB53006A1267 /* FeedVC.swift */,
 				6E6AA49522EFAB53006A1267 /* RecordVideo.swift */,
 				6E6AA49222EFAB52006A1267 /* SignOut.swift */,
@@ -618,7 +618,7 @@
 				6E6AA4A622EFAB53006A1267 /* VideoView.swift in Sources */,
 				097BE06A23A19DDF00371829 /* ProfileImageView.swift in Sources */,
 				6E6AA48E22EFAB3C006A1267 /* TournamentCell.swift in Sources */,
-				6E6AA48F22EFAB3C006A1267 /* TournamentTableViewController.swift in Sources */,
+				6E6AA48F22EFAB3C006A1267 /* TournamentsTableViewController.swift in Sources */,
 				DFAF566B24F440FD00523ECF /* RulesViewController.swift in Sources */,
 				6E6AA4A322EFAB53006A1267 /* RecordVideo.swift in Sources */,
 				DF72AE04248C166000E730EF /* UIButtonExtension.swift in Sources */,

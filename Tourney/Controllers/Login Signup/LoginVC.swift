@@ -89,7 +89,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             
         } else if segue.identifier == "toFeedVC" {
             if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-                let feedVC = segue.destination as! TournamentTableViewController
+                let feedVC = segue.destination as! TournamentsTableViewController
                 feedVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }
         }
