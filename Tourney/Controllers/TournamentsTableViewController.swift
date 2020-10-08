@@ -1,14 +1,14 @@
 //  Created by Thaddeus Lorenz on 7/3/19.
 //  Copyright © 2019 Thaddeus Lorenz. All rights reserved.
-//
-// This class is when you want to create a new TournamentCell.
-// Whenever I want to add or modify a competition, I have to manually adjust
-// this class in order to change the name/cover photo
+
 
 import UIKit
 import Firebase
 import Kingfisher
 
+/**
+ Displays active tournaments.
+ */
 class TournamentsTableViewController: UITableViewController {
     
     var tournaments: [Tournament]?
@@ -102,5 +102,4 @@ class TournamentsTableViewController: UITableViewController {
             }
         }
     }
-
 }
