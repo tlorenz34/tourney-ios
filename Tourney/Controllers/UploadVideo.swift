@@ -14,7 +14,6 @@ import AVFoundation
 import Firebase
 import Photos
 import SwiftKeychainWrapper
-import ABVideoRangeSlider
 import MobileCoreServices
 
 /**

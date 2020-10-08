@@ -13,7 +13,6 @@ target 'Tourney' do
 	pod 'Firebase/Database'
 	pod 'Firebase/Storage'
   pod 'Firebase/DynamicLinks' 
-	pod 'ABVideoRangeSlider'
   pod 'Kingfisher'
   pod 'SwiftKeychainWrapper'
   pod 'Cache'
