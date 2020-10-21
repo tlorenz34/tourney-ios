@@ -97,6 +97,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     
     var tournament: Tournament!
     var submissions: [Submission] = []
+    var indexPathToPlayVideo: IndexPath?
     
     var posts = [Post]()
     var post: Post!
@@ -129,24 +130,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
-        
-//        loadDataAndResetTable(scrollTo: nil)
-//        loadUserVotes()
-//        configureViews()
-//
-//        sortTopVideos()
-        
-        
-        SubmissionManager().fetchSubmissionsForTournament(tournamentId: tournament.id) { (submissions) in
-            if let submissions = submissions {
-                self.submissions = submissions
-                self.tableView.reloadData()
-            }
-        }
-        
-    }
-    
 
+        fetchLeaderboard()
+        fetchSubmissions()
+    }
     
     // MARK: - TableView
     
@@ -164,49 +151,28 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         let submission = submissions[indexPath.row]
         
+        cell.delegate = self
         cell.usernameLabel.text = submission.creatorUsername
         cell.viewsLabel.text = "\(submission.views)"
         cell.profileImageView.kf.setImage(with: submission.creatorProfileImageURL)
         cell.thumbnailImageView.kf.setImage(with: submission.thumbnailURL)
         
-        return cell
-        
-        
-        
-        
-        
-        let post = posts[indexPath.row]
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
-            cell.configCell(post: post)
-            cell.delegate = self
-            if (cellPostkeys.contains(post.postKey)) {
-                let index = cellPostkeys.firstIndex(of: post.postKey)
-                cells[index!] = cell
-            } else {
-                cells.append(cell)
-                cellPostkeys.append(post.postKey)
-            }
-            if (firstRun && (indexPath.row == 0)) {
-//                cell.playvid(url: post.videoLink)
-                currentCellPlaying = cell
-                firstRun = false
-            }
-            // update vote button reflecting state of vote for post
-            if let postIdOfCurrentUserVote = postIdOfCurrentUserVote {
-                if postIdOfCurrentUserVote == post.postKey {
-                    cell.isVotedFor = true
-                } else {
-                    cell.isVotedFor = false
-                }
-            }
-            
-            cell.updateThumbnail()
-            return cell
-        } else {
-            return PostCell()
+        if (firstRun && (indexPath.row == 0)) {
+            currentCellPlaying = cell
+            firstRun = false
         }
+        
+        // update vote button reflecting state of vote for post
+        if let postIdOfCurrentUserVote = postIdOfCurrentUserVote {
+            if postIdOfCurrentUserVote == post.postKey {
+                cell.isVotedFor = true
+            } else {
+                cell.isVotedFor = false
+            }
+        }
+        return cell
     }
-   
+    
     // MARK: - Helpers
     
     private func configureViews() {
@@ -214,73 +180,26 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         secondPlaceProfileImageView.layer.borderColor = UIColor.gray.cgColor
         thirdPlaceProfileImageView.layer.borderColor = UIColor.orange.cgColor
     }
-    // sorting all uploaded videos to competition/tournament by views
-    // fetching data from Firebase and sorting the top three most viewed videos
-    private func sortTopVideos() {
-        print("running sort top videos...")
-        let ref = Database.database().reference().child("posts")
-        var queriedPosts: [Post] = []
-        let query = ref.queryOrdered(byChild: "eventID").queryEqual(toValue: activeFilter)
-        query.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let childSnapshot = snapshot.children.allObjects as? [DataSnapshot] {
-                queriedPosts.removeAll()
-                for data in childSnapshot {
-                    if let postDict = data.value as? Dictionary<String, AnyObject>{
-                        let key = data.key
-                        let post = Post(postKey: key, postData: postDict)
-                        queriedPosts.append(post)
-                    }
-                }
-            }
-            
-            queriedPosts = queriedPosts.sorted(by: { $0.votes > $1.votes })
-            self.queried = queriedPosts
-            if (queriedPosts.count == 1) {
-                self.updateUITopVideos(topVideos: [queriedPosts[0]], any: true)
-            } else if (queriedPosts.count == 2) {
-                self.updateUITopVideos(topVideos: [queriedPosts[0], queriedPosts[1]], any: true)
-            } else if (queriedPosts.count == 0) {
-                self.updateUITopVideos(topVideos: [], any: false)
-            } else {
-                self.updateUITopVideos(topVideos: [queriedPosts[0], queriedPosts[1] , queriedPosts[2]], any: true)
-            }
-        })
-    }
-    // updates leaderboard based off of views
-    private func updateUITopVideos(topVideos: [Post?], any: Bool) {
-        if let _ = topVideos[exist: 0] {
-            firstPlaceUsernameLabel.text = topVideos[0]!.username
-            firstPlaceViews.text = "\(topVideos[0]!.votes)"
-            downloadImage(from: URL(string: topVideos[0]!.userImg)!, imageView: firstPlaceProfileImageView)
-        }
-        if let _ = topVideos[exist: 1] {
-            secondPlaceUsernameLabel.text = topVideos[1]!.username
-            secondPlaceViews.text = "\(topVideos[1]!.votes)"
-            downloadImage(from: URL(string: topVideos[1]!.userImg)!, imageView: secondPlaceProfileImageView)
-        }
-        if let _ = topVideos[exist: 2] {
-            thirdlaceUsernameLabel.text = topVideos[2]!.username
-            thirdPlaceViews.text = "\(topVideos[2]!.votes)"
-            downloadImage(from: URL(string: topVideos[2]!.userImg)!, imageView: thirdPlaceProfileImageView)
-        }
+    
+    /// Fetch leadboard submissions
+    private func fetchLeaderboard() {
+        
     }
     
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    
-    func downloadImage(from url: URL, imageView: UIImageView) {
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            DispatchQueue.main.async() {
-                imageView.image = UIImage(data: data)
+    /// Fetch submissions for tournament
+    private func fetchSubmissions() {
+        SubmissionManager().fetchSubmissionsForTournament(tournamentId: tournament.id) { (submissions) in
+            if let submissions = submissions {
+                self.submissions = submissions
+                self.submissions.append(contentsOf: submissions)
+                self.submissions.append(contentsOf: submissions)
+                self.submissions.append(contentsOf: submissions)
+                self.tableView.reloadData()
             }
         }
     }
-    /**
-     Initial load for user vote to reflect on posts being displayed.
-     */
+
+    /// Initial load for user vote to reflect on posts being displayed.
     private func loadUserVotes() {
         // initial load vote for user to reflect on cell
         if let userManager = UserManager() {
@@ -294,74 +213,20 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             }
         }
     }
-    /**
-     Loads video submissions (Posts) that have `eventID` as the tournament id (`activeFilter`).
-     
-     To scroll to a video: if `videoURL` parameter  is non-nil, it will look for the `Post` that has the `_videoLink` property to `videoURL'`. Else, it won't scroll.
-     */
-    func loadDataAndResetTable(scrollTo videoURL: String?) {
-        let ref = Database.database().reference().child("posts")
-        let query = ref.queryOrdered(byChild: "eventID").queryEqual(toValue: activeFilter)
-        query.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let snapshot = snapshot.children.allObjects as? [DataSnapshot]{
-                self.posts.removeAll()
-                for data in snapshot {
-                    if let postDict = data.value as? Dictionary<String, AnyObject> {
-                        let key = data.key
-                        let post = Post(postKey: key, postData: postDict)
-                        self.posts.append(post)
-                        let postIndex = self.posts.firstIndex{$0 === post}
-                        self.getThumbnailImageFromVideoUrl(post: post) { (image) in
-                            post.thumbnail = image
-                            if (self.cells.count > postIndex!) {
-                                let cell = self.cells[postIndex!]
-                                cell.updateThumbnail()
-                            }
-                        }
-                    }
-                }
-            }
-            self.tableView.reloadData()
-            
-            // if video url passed, scroll to it
-            if let videoURLToScrollTo = videoURL {
-                for (index, post) in self.posts.enumerated() {
-                    if post._videoLink == videoURLToScrollTo {
-                        self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
-                    }
-                }
-            }
-            
-            if (self.posts.count == 0) {
-                self.noVideosPostedLabel.isHidden = false
-            }
-        })
-    }
     
-    func getThumbnailImageFromVideoUrl(post: Post, completion: @escaping ((_ image: UIImage?)->Void)) {
-        DispatchQueue.global().async {
-            let asset = AVAsset(url: URL(string: post.videoLink)!)
-            let avAssetImageGenerator = AVAssetImageGenerator(asset: asset)
-            avAssetImageGenerator.appliesPreferredTrackTransform = true
-            let thumnailTime = CMTimeMake(value: 1, timescale: 1)
-            do {
-                let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumnailTime, actualTime: nil)
-                let thumbImage = UIImage(cgImage: cgThumbImage)
-                DispatchQueue.main.async {
-                    completion(thumbImage)
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
-            }
-        }
+    /// Fetch new submission with video URL and scroll to it.
+    private func fetchSubmissionAndShow(videoURL: URL) {
+        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+        // handle video playing
+        
         var mostVisiblePercentage: CGFloat = 0.0
         var newMostVisibleCandidate: PostCell!
+        var indexPath: IndexPath!
+        
         for item in tableView.indexPathsForVisibleRows! {
             let cellRect = tableView.rectForRow(at: item)
             if let superview = tableView.superview {
@@ -374,17 +239,17 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
                 if (ratio > mostVisiblePercentage) {
                     newMostVisibleCandidate = (tableView.cellForRow(at: item) as! PostCell)
                     mostVisiblePercentage = ratio
+                    indexPath = item
                 }
-                
             }
         }
         
         if (newMostVisibleCandidate != currentCellPlaying) {
-            currentCellPlaying.stopvid()
-//            newMostVisibleCandidate.playvid(url: newMostVisibleCandidate.post.videoLink)
+            let submission = submissions[indexPath.row]
+            currentCellPlaying.stopVideo()
+            newMostVisibleCandidate.playVideo(videoURL: submission.videoURL)
             currentCellPlaying = newMostVisibleCandidate
         }
-        
     }
         
     func postToFireBase(imgUrl: String){
@@ -472,14 +337,11 @@ extension FeedVC: UIImagePickerControllerDelegate {
     }
 }
 
-extension Collection where Indices.Iterator.Element == Index {
-    subscript (exist index: Index) -> Iterator.Element? {
-        return indices.contains(index) ? self[index] : nil
-    }
-}
 extension FeedVC: UploadVideoDelegate {
     func didUploadVideo(with videoURL: String) {
-        loadDataAndResetTable(scrollTo: videoURL)
+        if let url = URL(string: videoURL) {
+            fetchSubmissionAndShow(videoURL: url)
+        }
     }
 }
 
@@ -489,9 +351,6 @@ extension FeedVC: MFMessageComposeViewControllerDelegate {
     }
 }
 extension FeedVC: PostCellDelegate {
-    /**
-     Delegate call from `PostCellDelegate`
-     */
     func didVoteForPost(postId: String) {
         voteForPost(newVotePostId: postId)
     }
@@ -508,20 +367,20 @@ extension FeedVC: PostCellDelegate {
                         // remove vote from user object and leave empty
                         userManager.removeVoteFromCompetition(competitionId: self.activeFilter)
                         // remove vote from post
-                        PostManager(postId: newVotePostId).removeVote {
+//                        PostManager(postId: newVotePostId).removeVote {
                             // update leaderboard videos
-                            self.sortTopVideos()
-                        }
+//                            self.sortTopVideos()
+//                        }
                         // update current vote (to reflect on cells)
                         self.postIdOfCurrentUserVote = nil
                     } else {
                         // remove vote from old post by decreasing the post.votes count
                         PostManager(postId: oldVotePostId).removeVote {}
                         // add new vote to post Id in post model
-                        PostManager(postId: newVotePostId).addVote {
+//                        PostManager(postId: newVotePostId).addVote {
                             // update leaderboard videos
-                            self.sortTopVideos()
-                        }
+//                            self.sortTopVideos()
+//                        }
                         // replace vote with new vote in user model
                         userManager.addVote(competitionId: self.activeFilter, postId: newVotePostId)
                         // update current vote (to reflect on cells)
@@ -535,12 +394,12 @@ extension FeedVC: PostCellDelegate {
                         // add vote post model
                         PostManager(postId: newVotePostId).addVote {
                             // update leaderboard videos
-                            self.sortTopVideos()
+//                            self.sortTopVideos()
                         }
                         // update current vote (to reflect on cells)
-                        self.postIdOfCurrentUserVote = newVotePostId
+//                        self.postIdOfCurrentUserVote = newVotePostId
                         // update leaderboard videos
-                        self.sortTopVideos()
+//                        self.sortTopVideos()
                     }
                 }
                 self.tableView.reloadData()

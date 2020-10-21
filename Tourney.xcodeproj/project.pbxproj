@@ -10,6 +10,7 @@
 		09464F0B23ABFCA700F10A44 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09464F0A23ABFCA700F10A44 /* LoadingButton.swift */; };
 		094E6D2923A2D179008973C1 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094E6D2823A2D179008973C1 /* CircleView.swift */; };
 		097BE06A23A19DDF00371829 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097BE06923A19DDF00371829 /* ProfileImageView.swift */; };
+		09A56A04253F716D00F7D5D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A56A03253F716D00F7D5D2 /* Extensions.swift */; };
 		09DA1EED252E8F4A002C830C /* ABBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA1EDF252E8F4A002C830C /* ABBorder.swift */; };
 		09DA1EEE252E8F4A002C830C /* ABEndIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA1EE0252E8F4A002C830C /* ABEndIndicator.swift */; };
 		09DA1EEF252E8F4A002C830C /* ABProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA1EE1252E8F4A002C830C /* ABProgressIndicator.swift */; };
@@ -85,6 +86,7 @@
 		09464F0A23ABFCA700F10A44 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		094E6D2823A2D179008973C1 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		097BE06923A19DDF00371829 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		09A56A03253F716D00F7D5D2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		09DA1EDF252E8F4A002C830C /* ABBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABBorder.swift; sourceTree = "<group>"; };
 		09DA1EE0252E8F4A002C830C /* ABEndIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABEndIndicator.swift; sourceTree = "<group>"; };
 		09DA1EE1252E8F4A002C830C /* ABProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABProgressIndicator.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		09DA1F16252E91A1002C830C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				09A56A03253F716D00F7D5D2 /* Extensions.swift */,
 				09DA1EDD252E8F4A002C830C /* ABVideoRangeSlider */,
 			);
 			path = Resources;
@@ -634,6 +637,7 @@
 				09DA1EF4252E8F4A002C830C /* ABTimeView.swift in Sources */,
 				094E6D2923A2D179008973C1 /* CircleView.swift in Sources */,
 				6E6AA4A122EFAB53006A1267 /* leaderboardVC.swift in Sources */,
+				09A56A04253F716D00F7D5D2 /* Extensions.swift in Sources */,
 				09DA1F3A252F80B5002C830C /* TournamentManager.swift in Sources */,
 				09DA1EF2252E8F4A002C830C /* ABVideoRangeSlider.swift in Sources */,
 				09DA1EED252E8F4A002C830C /* ABBorder.swift in Sources */,

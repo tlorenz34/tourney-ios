@@ -37,14 +37,14 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var profileImageView: ProfileImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var viewsLabel: UILabel!
-    @IBOutlet weak var postVideo: UIView!
+    @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var thumbsUpButton: UIButton!
     
     var post: Post!
     var userPostKey: DatabaseReference!
     let currentUser = KeychainWrapper.standard.string(forKey: "uid")
-    let loadingIndicator = UIActivityIndicatorView(style: .white)
+    let loadingIndicator = UIActivityIndicatorView(style: .large)
     var isVotedFor: Bool = false {
         didSet {
             if self.isVotedFor {
@@ -68,95 +68,86 @@ class PostCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        postVideo.backgroundColor = UIColor.clear
-        postVideo.isHidden = true
-        postVideo.layer.cornerRadius = 15
-        postVideo.layer.masksToBounds = true
-        postVideo.layer.addSublayer(self.playerLayer)
-        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
-        thumbnailImageView.backgroundColor = UIColor.gray
-        thumbnailImageView.layer.cornerRadius = 15
+        setupVideoView()
+        setupUI()
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        playerLayer.frame = postVideo.layer.bounds
-        loadingIndicator.frame = bounds
-
+        playerLayer.frame = videoView.layer.bounds
     }
     
-    func stopvid() {
-        postVideo.isHidden = true
-        updateThumbnail()
-        player.replaceCurrentItem(with: nil)
-        thumbnailImageView.isHidden = false
-    }
-    
-    func playvid(videoURL: URL) {
-        
-        let playerItem = AVPlayerItem(url: videoURL)
-        player.replaceCurrentItem(with: playerItem)
-        player.automaticallyWaitsToMinimizeStalling = true
-        self.player.play()
-        
-        // bring views to the front to not be covered by player
-        postVideo.bringSubviewToFront(profileImageView)
-        postVideo.bringSubviewToFront(usernameLabel)
-        postVideo.bringSubviewToFront(viewsLabel)
-        postVideo.bringSubviewToFront(thumbsUpButton)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "rate" {
-            if player.rate > 0 {
-                print("here we set it")
-                self.postVideo.isHidden = false
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "timeControlStatus", let change = change, let newValue = change[NSKeyValueChangeKey.newKey] as? Int, let oldValue = change[NSKeyValueChangeKey.oldKey] as? Int {
+            let oldStatus = AVPlayer.TimeControlStatus(rawValue: oldValue)
+            let newStatus = AVPlayer.TimeControlStatus(rawValue: newValue)
+            if newStatus != oldStatus {
+                DispatchQueue.main.async {[weak self] in
+                    if newStatus == .playing || newStatus == .paused {
+                        self?.loadingIndicator.isHidden = true
+                        self?.loadingIndicator.stopAnimating()
+                    } else {
+                        self?.loadingIndicator.isHidden = false
+                        self?.loadingIndicator.startAnimating()
+                    }
+                }
             }
         }
     }
     
-    func updateThumbnail() {
-        if let thumbnail = post.thumbnail {
-            
-            // once thumbnail is set, replace loading indicator with thumbnail
-            loadingIndicator.stopAnimating()
-            
-            thumbnailImageView.image = thumbnail
-        } else {
-            thumbnailImageView.backgroundColor = UIColor.gray
+    /// Initial set up for video view
+    private func setupVideoView() {
+        
+        // ui
+        videoView.backgroundColor = UIColor.clear
+        videoView.layer.cornerRadius = 15
+        videoView.layer.masksToBounds = true
+        videoView.layer.addSublayer(self.playerLayer)
+        
+        loadingIndicator.center = videoView.center
+        loadingIndicator.color = .white
+        videoView.addSubview(loadingIndicator)
+                        
+        // video ended notificaiton to loop video
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime,
+                                               object: nil,
+                                               queue: nil) { [weak self] note in
+            self?.player.seek(to: .zero)
+            self?.player.play()
         }
+        
+        // check when buffering to show loading indicator
+        player.addObserver(self, forKeyPath: "timeControlStatus", options: [.old, .new], context: nil)
+        
+        
+        // bring views to the front to not be covered by player
+        videoView.bringSubviewToFront(profileImageView)
+        videoView.bringSubviewToFront(usernameLabel)
+        videoView.bringSubviewToFront(viewsLabel)
+        videoView.bringSubviewToFront(thumbsUpButton)
+        videoView.bringSubviewToFront(loadingIndicator)
     }
     
-    
-    func configCell(post: Post, img: UIImage? = nil, userImg: UIImage? = nil) {
-        
-        postVideo.backgroundColor = UIColor.clear
-        self.post = post
-        viewsLabel.text = "\(post.views) views"
-        usernameLabel.text = post.username
-        updateViewsInDatabase()
-        profileImageView.kf.setImage(with: URL(string: post.userImg))
-        
-        // add loading indicator
-        addSubview(loadingIndicator)
-        loadingIndicator.startAnimating()
-        
+    /// Initial set up for general UI
+    private func setupUI() {
+        thumbnailImageView.backgroundColor = UIColor.gray
+        thumbnailImageView.layer.cornerRadius = 15
     }
     
-    func updateViewsInDatabase() {
-      
-            
-        
-        let postRef = Database.database().reference().child("posts").child(post.postKey).child("views")
-        postRef.runTransactionBlock( { (currentData: MutableData) -> TransactionResult in
-            
-            var currentCount = currentData.value as? Int ?? 0
-            currentCount +=  1
-            currentData.value = currentCount
-            
-            return TransactionResult.success(withValue: currentData)
-        })
-        }
+    /// Stop playback of video
+    func stopVideo() {
+        player.replaceCurrentItem(with: nil)
+        loadingIndicator.stopAnimating()
+        loadingIndicator.isHidden = true
+    }
+    
+    /// Play video in cell using given URL
+    func playVideo(videoURL: URL) {
+        let playerItem = AVPlayerItem(url: videoURL)
+        player.replaceCurrentItem(with: playerItem)
+        player.automaticallyWaitsToMinimizeStalling = true
+        player.play()
+    }        
     
     func updateLikesInUI(like: Bool) {
         let views = viewsLabel.text!
