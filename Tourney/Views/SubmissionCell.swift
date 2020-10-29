@@ -1,5 +1,5 @@
 //
-//  PostCell.swift
+//  SubmissionCell.swift
 //  goldcoastleague
 //
 //  Created by Thaddeus Lorenz on 5/29/19.
@@ -20,7 +20,7 @@ protocol SubmissionCellDelegate: class {
     func didVoteForSubmission(submissionId: String)
 }
 
-class PostCell: UITableViewCell {
+class SubmissionCell: UITableViewCell {
     
     @IBAction func didTapThumbsUp() {
         // if state = not vote

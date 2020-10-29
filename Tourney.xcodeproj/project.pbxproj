@@ -39,7 +39,7 @@
 		6E6AA48E22EFAB3C006A1267 /* TournamentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA48C22EFAB3C006A1267 /* TournamentCell.swift */; };
 		6E6AA48F22EFAB3C006A1267 /* TournamentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA48D22EFAB3C006A1267 /* TournamentsTableViewController.swift */; };
 		6E6AA49E22EFAB53006A1267 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49022EFAB52006A1267 /* SignUpVC.swift */; };
-		6E6AA49F22EFAB53006A1267 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49122EFAB52006A1267 /* PostCell.swift */; };
+		6E6AA49F22EFAB53006A1267 /* SubmissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49122EFAB52006A1267 /* SubmissionCell.swift */; };
 		6E6AA4A022EFAB53006A1267 /* SignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49222EFAB52006A1267 /* SignOut.swift */; };
 		6E6AA4A122EFAB53006A1267 /* leaderboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */; };
 		6E6AA4A222EFAB53006A1267 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AA49422EFAB53006A1267 /* FeedVC.swift */; };
@@ -122,7 +122,7 @@
 		6E6AA48C22EFAB3C006A1267 /* TournamentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentCell.swift; sourceTree = "<group>"; };
 		6E6AA48D22EFAB3C006A1267 /* TournamentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsTableViewController.swift; sourceTree = "<group>"; };
 		6E6AA49022EFAB52006A1267 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
-		6E6AA49122EFAB52006A1267 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		6E6AA49122EFAB52006A1267 /* SubmissionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmissionCell.swift; sourceTree = "<group>"; };
 		6E6AA49222EFAB52006A1267 /* SignOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOut.swift; sourceTree = "<group>"; };
 		6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = leaderboardVC.swift; sourceTree = "<group>"; };
 		6E6AA49422EFAB53006A1267 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -350,7 +350,7 @@
 				09464F0A23ABFCA700F10A44 /* LoadingButton.swift */,
 				DF72AE03248C166000E730EF /* UIButtonExtension.swift */,
 				097BE06923A19DDF00371829 /* ProfileImageView.swift */,
-				6E6AA49122EFAB52006A1267 /* PostCell.swift */,
+				6E6AA49122EFAB52006A1267 /* SubmissionCell.swift */,
 				6E6AA49822EFAB53006A1267 /* CircleImage.swift */,
 				094E6D2823A2D179008973C1 /* CircleView.swift */,
 				6E6AA49922EFAB53006A1267 /* VideoView.swift */,
@@ -604,7 +604,7 @@
 			files = (
 				09DA1EF3252E8F4A002C830C /* ABStartIndicator.swift in Sources */,
 				09464F0B23ABFCA700F10A44 /* LoadingButton.swift in Sources */,
-				6E6AA49F22EFAB53006A1267 /* PostCell.swift in Sources */,
+				6E6AA49F22EFAB53006A1267 /* SubmissionCell.swift in Sources */,
 				DFC545692305AB79009F84B1 /* TopVideoController.swift in Sources */,
 				09DA1EF5252E8F4A002C830C /* ABVideoHelper.swift in Sources */,
 				DF0B82472360DE1E000DDF32 /* LoginVC.swift in Sources */,

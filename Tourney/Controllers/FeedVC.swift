@@ -109,8 +109,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     var activeFilter: String! = "BMX_Competition_2"
     /// ID of post which user has voted for within competition. Used to signify which post the user has voted for via the voting button
     var submissionIdOfCurrentUserVote: String?
-    var currentCellPlaying: PostCell!
-    var cells: [PostCell] = [];
+    var currentCellPlaying: SubmissionCell!
+    var cells: [SubmissionCell] = [];
     var cellPostkeys: [String] = []
     var firstRun: Bool = true
     
@@ -148,7 +148,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SubmissionCell") as! SubmissionCell
         let submission = submissions[indexPath.row]
         
         cell.submissionId = submission.id
@@ -226,6 +226,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         SubmissionManager().fetchSubmissionsForTournament(tournamentId: tournament.id) { (submissions) in
             if let submissions = submissions {
                 self.submissions = submissions
+                self.submissions.append(contentsOf: submissions)
+                self.submissions.append(contentsOf: submissions)
+                self.submissions.append(contentsOf: submissions)
                 self.tableView.reloadData()
             }
         }
@@ -256,7 +259,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         // handle video playing
         
         var mostVisiblePercentage: CGFloat = 0.0
-        var newMostVisibleCandidate: PostCell!
+        var newMostVisibleCandidate: SubmissionCell!
         var indexPath: IndexPath!
         
         for item in tableView.indexPathsForVisibleRows! {
@@ -269,7 +272,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
                 let ratio = visibleHeight / cellHeight
                 
                 if (ratio > mostVisiblePercentage) {
-                    newMostVisibleCandidate = (tableView.cellForRow(at: item) as! PostCell)
+                    newMostVisibleCandidate = (tableView.cellForRow(at: item) as! SubmissionCell)
                     mostVisiblePercentage = ratio
                     indexPath = item
                 }
