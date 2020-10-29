@@ -146,11 +146,16 @@ class PostManager {
             completion()
         }
     }
+    /// Increases `views` field by `1`
+    public func addView() {
+        submissionRef.updateData([
+            "views": FieldValue.increment(Int64(1))
+        ])        
+    }
     /**
      Add amount to `votes` field of Post object
      */
     private func addToVote(amount: Int, completion: @escaping () -> Void) {
-
         submissionRef.updateData([
             "votes": FieldValue.increment(Int64(amount))
         ])

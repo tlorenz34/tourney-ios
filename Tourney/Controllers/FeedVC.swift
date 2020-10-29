@@ -248,9 +248,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         
         if (newMostVisibleCandidate != currentCellPlaying) {
             let submission = submissions[indexPath.row]
+            // update cells video playback
             currentCellPlaying.stopVideo()
             newMostVisibleCandidate.playVideo(videoURL: submission.videoURL)
             currentCellPlaying = newMostVisibleCandidate
+            // update video views
+            PostManager(submissionId: submission.id).addView()
         }
     }
         
