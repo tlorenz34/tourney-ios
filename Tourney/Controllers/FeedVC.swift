@@ -407,7 +407,7 @@ extension FeedVC: SubmissionCellDelegate {
                         // remove vote from post
                         PostManager(submissionId: submissionId).removeVote {
                             // update leaderboard videos
-//                            self.sortTopVideos()
+                            self.fetchLeaderboard()
                         }
                         // update current vote (to reflect on cells)
                         self.submissionIdOfCurrentUserVote = nil
@@ -417,7 +417,7 @@ extension FeedVC: SubmissionCellDelegate {
                         // add new vote to post Id in post model
                         PostManager(submissionId: submissionId).addVote {
                             // update leaderboard videos
-//                            self.sortTopVideos()
+                            self.fetchLeaderboard()
                         }
                         // replace vote with new vote in user model
                         userManager.addVote(competitionId: self.tournament.id, postId: submissionId)
@@ -432,12 +432,12 @@ extension FeedVC: SubmissionCellDelegate {
                         // add vote post model
                         PostManager(submissionId: submissionId).addVote {
                             // update leaderboard videos
-//                            self.sortTopVideos()
+                            self.fetchLeaderboard()
                         }
                         // update current vote (to reflect on cells)
                         self.submissionIdOfCurrentUserVote = submissionId
                         // update leaderboard videos
-//                        self.sortTopVideos()
+                        self.fetchLeaderboard()
                     }
                 }
                 self.tableView.reloadData()
