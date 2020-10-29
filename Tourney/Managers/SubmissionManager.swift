@@ -36,7 +36,21 @@ struct SubmissionManager {
             }
             completion(self.parseDocumentsToSubmissions(documents: snapshot.documents))
         }
-        completion(nil)
+    }
+    /**
+     Fetches top 3 `Submission`s for `Torunament`
+     */
+    func fetchLeaderboardForTorunament(tournamentId: String, completion: @escaping ([Submission]?) -> Void) {
+        baseQuery.whereField("tournamentId", isEqualTo: tournamentId)
+            .order(by: "votes", descending: true)
+            .getDocuments { (snapshot, error) in
+            guard let snapshot = snapshot else {
+                completion(nil)
+                return
+            }
+            let subs = self.parseDocumentsToSubmissions(documents: snapshot.documents)
+            completion(subs)
+        }
     }
     /**
      Creates new document for submission.

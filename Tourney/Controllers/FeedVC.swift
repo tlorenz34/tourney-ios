@@ -193,7 +193,38 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     
     /// Fetch leadboard submissions
     private func fetchLeaderboard() {
+        SubmissionManager().fetchLeaderboardForTorunament(tournamentId: tournament.id) { (submissions) in
+            guard let submissions = submissions else {
+                print("error getting subs")
+                return
+            }
+            self.setUpSubmissionsUI(submissions)
+        }
+    }
+    
+    /// Render submissions into leaderboard UI
+    private func setUpSubmissionsUI(_ submissions: [Submission]) {
         
+        for (index, submission) in submissions.enumerated() {
+            // first place
+            if index == 0 {
+                firstPlaceProfileImageView.kf.setImage(with: submission.creatorProfileImageURL)
+                firstPlaceUsernameLabel.text = submission.creatorUsername
+                firstPlaceViews.text = "\(submission.views)"
+            }
+            // second place
+            if index == 1 {
+                secondPlaceProfileImageView.kf.setImage(with: submission.creatorProfileImageURL)
+                secondPlaceUsernameLabel.text = submission.creatorUsername
+                secondPlaceViews.text = "\(submission.views)"
+            }
+            // third place
+            if index == 2 {
+                thirdPlaceProfileImageView.kf.setImage(with: submission.creatorProfileImageURL)
+                thirdlaceUsernameLabel.text = submission.creatorUsername
+                thirdPlaceViews.text = "\(submission.views)"
+            }
+        }
     }
     
     /// Fetch submissions for tournament
@@ -201,9 +232,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         SubmissionManager().fetchSubmissionsForTournament(tournamentId: tournament.id) { (submissions) in
             if let submissions = submissions {
                 self.submissions = submissions
-                self.submissions.append(contentsOf: submissions)
-                self.submissions.append(contentsOf: submissions)
-                self.submissions.append(contentsOf: submissions)
                 self.tableView.reloadData()
             }
         }
