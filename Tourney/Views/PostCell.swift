@@ -16,8 +16,8 @@ import SwiftKeychainWrapper
 import AVKit
 import Kingfisher
 
-protocol PostCellDelegate: class {
-    func didVoteForPost(postId: String)
+protocol SubmissionCellDelegate: class {
+    func didVoteForSubmission(submissionId: String)
 }
 
 class PostCell: UITableViewCell {
@@ -31,7 +31,8 @@ class PostCell: UITableViewCell {
             updateUIForVotingButton(voted: false)
         }
         // notify controllers of action
-        delegate?.didVoteForPost(postId: post.postKey)
+        guard let id = submissionId else { return }
+        delegate?.didVoteForSubmission(submissionId: id)
     }
     
     @IBOutlet weak var profileImageView: ProfileImageView!
@@ -43,6 +44,9 @@ class PostCell: UITableViewCell {
     
     var post: Post!
     var userPostKey: DatabaseReference!
+    var viewed: Bool = false;
+    /// Submission ID to be able to tell the delegate which submission is being handled.
+    var submissionId: String?
     let currentUser = KeychainWrapper.standard.string(forKey: "uid")
     let loadingIndicator = UIActivityIndicatorView(style: .large)
     var isVotedFor: Bool = false {
@@ -54,9 +58,7 @@ class PostCell: UITableViewCell {
             }
         }
     }
-    weak var delegate: PostCellDelegate?
-    
-    var viewed: Bool = false;
+    weak var delegate: SubmissionCellDelegate?
     
     private lazy var player: AVPlayer = AVPlayer(playerItem: nil)
     

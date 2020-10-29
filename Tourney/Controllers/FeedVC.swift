@@ -109,7 +109,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     /// ID of competition being displayed
     var activeFilter: String! = "BMX_Competition_2"
     /// ID of post which user has voted for within competition. Used to signify which post the user has voted for via the voting button
-    var postIdOfCurrentUserVote: String?
+    var submissionIdOfCurrentUserVote: String?
     var currentCellPlaying: PostCell!
     var cells: [PostCell] = [];
     var cellPostkeys: [String] = []
@@ -133,6 +133,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
 
         fetchLeaderboard()
         fetchSubmissions()
+        loadUserVotes()
     }
     
     // MARK: - TableView
@@ -151,6 +152,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         let submission = submissions[indexPath.row]
         
+        cell.submissionId = submission.id
         cell.delegate = self
         cell.usernameLabel.text = submission.creatorUsername
         cell.viewsLabel.text = "\(submission.views)"
@@ -163,8 +165,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         }
         
         // update vote button reflecting state of vote for post
-        if let postIdOfCurrentUserVote = postIdOfCurrentUserVote {
-            if postIdOfCurrentUserVote == post.postKey {
+        if let submissionIdOfCurrentUserVote = submissionIdOfCurrentUserVote {
+            if submissionIdOfCurrentUserVote == submission.id {
                 cell.isVotedFor = true
             } else {
                 cell.isVotedFor = false
@@ -205,8 +207,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         if let userManager = UserManager() {
             userManager.getVotes { (votes) in
                 if let votes = votes {
-                    if (votes[self.activeFilter] != nil) {
-                        self.postIdOfCurrentUserVote = votes[self.activeFilter]
+                    if (votes[self.tournament.id] != nil) {
+                        self.submissionIdOfCurrentUserVote = votes[self.tournament.id]
                         self.tableView.reloadData()
                     }
                 }
@@ -350,54 +352,54 @@ extension FeedVC: MFMessageComposeViewControllerDelegate {
         controller.dismiss(animated: true, completion: nil)
     }
 }
-extension FeedVC: PostCellDelegate {
-    func didVoteForPost(postId: String) {
-        voteForPost(newVotePostId: postId)
+extension FeedVC: SubmissionCellDelegate {
+    func didVoteForSubmission(submissionId: String) {
+        voteForSubmission(submissionId: submissionId)
     }
     /**
      Set a vote from user towards a submission.
      */
-    private func voteForPost(newVotePostId: String) {
+    private func voteForSubmission(submissionId: String) {
         // check if user already voted for a post in this competition
         if let userManager = UserManager() {
             userManager.getVotes { (votes) in
-                if let votes = votes, let oldVotePostId = votes[self.activeFilter] {
+                if let votes = votes, let oldVotePostId = votes[self.tournament.id] {
                     // if user is unvoting a submission which they previously voted for
-                    if newVotePostId == oldVotePostId {
+                    if submissionId == oldVotePostId {
                         // remove vote from user object and leave empty
-                        userManager.removeVoteFromCompetition(competitionId: self.activeFilter)
+                        userManager.removeVoteFromCompetition(competitionId: self.tournament.id)
                         // remove vote from post
-//                        PostManager(postId: newVotePostId).removeVote {
+                        PostManager(submissionId: submissionId).removeVote {
                             // update leaderboard videos
 //                            self.sortTopVideos()
-//                        }
+                        }
                         // update current vote (to reflect on cells)
-                        self.postIdOfCurrentUserVote = nil
+                        self.submissionIdOfCurrentUserVote = nil
                     } else {
                         // remove vote from old post by decreasing the post.votes count
-                        PostManager(postId: oldVotePostId).removeVote {}
+                        PostManager(submissionId: oldVotePostId).removeVote {}
                         // add new vote to post Id in post model
-//                        PostManager(postId: newVotePostId).addVote {
+                        PostManager(submissionId: submissionId).addVote {
                             // update leaderboard videos
 //                            self.sortTopVideos()
-//                        }
+                        }
                         // replace vote with new vote in user model
-                        userManager.addVote(competitionId: self.activeFilter, postId: newVotePostId)
+                        userManager.addVote(competitionId: self.tournament.id, postId: submissionId)
                         // update current vote (to reflect on cells)
-                        self.postIdOfCurrentUserVote = newVotePostId
+                        self.submissionIdOfCurrentUserVote = submissionId
                     }
                 } else {
                     // new vote
                     if let userManager = UserManager() {
                         // add vote to user model
-                        userManager.addVote(competitionId: self.activeFilter, postId: newVotePostId)
+                        userManager.addVote(competitionId: self.tournament.id, postId: submissionId)
                         // add vote post model
-                        PostManager(postId: newVotePostId).addVote {
+                        PostManager(submissionId: submissionId).addVote {
                             // update leaderboard videos
 //                            self.sortTopVideos()
                         }
                         // update current vote (to reflect on cells)
-//                        self.postIdOfCurrentUserVote = newVotePostId
+                        self.submissionIdOfCurrentUserVote = submissionId
                         // update leaderboard videos
 //                        self.sortTopVideos()
                     }

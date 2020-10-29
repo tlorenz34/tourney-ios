@@ -11,6 +11,7 @@
 import Foundation
 import FirebaseAnalytics
 import FirebaseDatabase
+import Firebase
 import AVKit
 import UIKit
 
@@ -124,13 +125,15 @@ class Post  {
 class PostManager {
     
     var id: String
-    var postRef: DatabaseReference {
-        Database.database().reference().child("posts").child(id)
+    let db = Firestore.firestore()
+    var submissionRef: DocumentReference {
+        db.collection("submissions").document(id)
     }
     
-    init(postId: String) {
-        id = postId
+    init(submissionId: String) {
+        id = submissionId
     }
+    
     /// Increments `votes` field by `1`
     public func addVote(completion: @escaping () -> Void) {
         addToVote(amount: 1) {
@@ -147,25 +150,11 @@ class PostManager {
      Add amount to `votes` field of Post object
      */
     private func addToVote(amount: Int, completion: @escaping () -> Void) {
-        postRef.observeSingleEvent(of: .value) { (snapshot) in
-            if let value = snapshot.value as? [String : Any] {                
-                if let votes = value["votes"] as? Int {
-                    // check to make sure votes don't go below 0 (happens in an environment where votes are simultaneously being sent and netowrk lags
-                    if votes + amount < 0 { return }
-                    // add votes
-                    self.postRef.updateChildValues(["votes" : votes + amount]) { (error, ref) in
-                        completion()
-                    }
-                } else {
-                    // no votes field found, fist vote.
-                    if amount > 0 { // security check to not go below 0
-                        self.postRef.updateChildValues(["votes" : 1]) { (error, ref) in
-                            completion()
-                        }
-                    }
-                }
-            }
-        }
+
+        submissionRef.updateData([
+            "votes": FieldValue.increment(Int64(amount))
+        ])
+        completion()
     }
     
 }
