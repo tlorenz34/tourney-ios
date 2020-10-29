@@ -97,7 +97,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     
     var tournament: Tournament!
     var submissions: [Submission] = []
-    var indexPathToPlayVideo: IndexPath?
     
     var posts = [Post]()
     var post: Post!
@@ -158,11 +157,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         cell.viewsLabel.text = "\(submission.views)"
         cell.profileImageView.kf.setImage(with: submission.creatorProfileImageURL)
         cell.thumbnailImageView.kf.setImage(with: submission.thumbnailURL)
-        
-        if (firstRun && (indexPath.row == 0)) {
-            currentCellPlaying = cell
-            firstRun = false
-        }
         
         // update vote button reflecting state of vote for post
         if let submissionIdOfCurrentUserVote = submissionIdOfCurrentUserVote {
