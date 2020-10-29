@@ -172,6 +172,14 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
                 cell.isVotedFor = false
             }
         }
+        
+        // playback for first run on first cell
+        if firstRun && indexPath.row == 0 {
+            cell.playVideo(videoURL: submission.videoURL)
+            currentCellPlaying = cell
+            firstRun = false
+        }
+        
         return cell
     }
     
