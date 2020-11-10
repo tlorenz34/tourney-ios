@@ -105,7 +105,7 @@ struct Tournament {
         }
         
         // featured
-        if let featuredVideoURLString = dictionary["featuredVideoURLString"] as? String,
+        if let featuredVideoURLString = dictionary["featuredVideoURL"] as? String,
            let featuredVideoURL = URL(string: featuredVideoURLString) {
             self.featuredVideoURL = featuredVideoURL
         } else {
