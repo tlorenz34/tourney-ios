@@ -21,6 +21,7 @@ struct Tournament {
     let leaderProfileImageURL: URL?
     let parentTournamentId: String?
     let parentTournamentWinnerId: String?
+    let featuredVideoURL: URL?
     
     init?(id: String, dictionary: [String : Any]) {
         guard let name = dictionary["name"] as? String,
@@ -36,6 +37,7 @@ struct Tournament {
         self.featuredImageURL = featuredImageURL
         self.canInteract = canInteract
         
+        // leader info
         if let leaderId = dictionary["leaderId"] as? String,
            let leaderUsername = dictionary["leaderUsername"] as? String,
            let leaderProfileImageURLString = dictionary["leaderProfileImageURL"] as? String,
@@ -49,6 +51,7 @@ struct Tournament {
             self.leaderProfileImageURL = nil
         }
         
+        // parent tournament info
         if let parentTournamentId = dictionary["parentTournamentId"] as? String,
            let parentTournamentWinnerId = dictionary["parentTournamentWinnerId"] as? String {
             self.parentTournamentId = parentTournamentId
@@ -56,6 +59,14 @@ struct Tournament {
         } else {
             self.parentTournamentId = nil
             self.parentTournamentWinnerId = nil
+        }
+        
+        // featured
+        if let featuredVideoURLString = dictionary["featuredVideoURLString"] as? String,
+           let featuredVideoURL = URL(string: featuredVideoURLString) {
+            self.featuredVideoURL = featuredVideoURL
+        } else {
+            self.featuredVideoURL = nil
         }
     }
 }
