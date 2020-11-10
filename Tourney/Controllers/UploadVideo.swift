@@ -159,7 +159,7 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
      
      The function does several things linked together:
      1. Crops video.
-     2. Captures thumnail of video.
+     2. Captures thumbnail of video.
      3. Uploads the thumbnail and video to Storage.
      4. Creates new `Submission` with data.
      5. Dismisses view controller.

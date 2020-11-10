@@ -41,6 +41,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     
     @IBOutlet weak var noVideosPostedLabel: UILabel!
     @IBOutlet var startCompetingButton: UIButton!
+    /// Plays `featuredVideoURL` of `Tournament`. Also serves as the button for the parent tournament winner to upload the featured video.
+    @IBOutlet var challengeButton: UIButton!
             
     // MARK: - Actions
     
@@ -84,13 +86,32 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBAction func rulesButtonTapped() {
         performSegue(withIdentifier: "toRulesVC", sender: nil)
     }
-    // invite a user by sending a unique tournament/competition link through iMessage
+    /// Invite a user by sending a unique tournament/competition link through iMessage
     @IBAction func inviteTapped(_ sender: Any) {
         if MFMessageComposeViewController.canSendText() {
             let controller = MFMessageComposeViewController()
             controller.body = "Think you can beat me? Start competing against me by uploading a video to the Tourney app. Accept this challenge by clicking the link https://tourney.page.link/\(activeFilter!)"
             controller.messageComposeDelegate = self
             self.present(controller, animated: true, completion: nil)
+        }
+    }
+    /// Plays challenge video or request challenge video to be uploaded depending on user tapping.
+    @IBAction func challengeButtonTapped() {
+        // if featured video is available, play it
+        if let featuredVideoURL = tournament.featuredVideoURL {
+            playVideo(url: featuredVideoURL)
+        }
+        // if no challenge video is available and parent tournament winner is current user, send to record the challenge video
+        else if let parentTournamentWinnerId = tournament.parentTournamentWinnerId, let currentUser = Auth.auth().currentUser {
+            if parentTournamentWinnerId == currentUser.uid {
+                uploadingFeaturedVideo = true
+                performSegue(withIdentifier: "toRecordVideoVC", sender: nil)
+            }
+        }
+        // no challenge video available yet and current user is not parent tournament winner, show alert
+        // note: this should never run as tournaments without `featuredVideoURL` properties are not fetched unless the user is indeed the parent tournament winner.
+        else {
+            showAlert(title: "Error", message: "No challenge video available yet.")
         }
     }
     
@@ -134,6 +155,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         imagePicker.allowsEditing = true
         startCompetingButton.isHidden = !tournament.canInteract
 
+        configureViews()
         fetchLeaderboard()
         fetchSubmissions()
         loadUserVotes()
@@ -184,10 +206,27 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     
     // MARK: - Helpers
     
+    func playVideo(url: URL) {
+        let player = AVPlayer(url: url)
+        let vc = AVPlayerViewController()
+        vc.player = player
+        present(vc, animated: true) { vc.player?.play() }
+    }
+    
+    ///
     private func configureViews() {
+        // set ui for leaderboard
         firstPlaceProfileImageView.layer.borderColor = UIColor.systemYellow.cgColor
         secondPlaceProfileImageView.layer.borderColor = UIColor.gray.cgColor
         thirdPlaceProfileImageView.layer.borderColor = UIColor.orange.cgColor
+        // update challenge video
+        if let currentUser = Auth.auth().currentUser,
+           let parentTournamentWinnerId = tournament.parentTournamentWinnerId {
+            if currentUser.uid == parentTournamentWinnerId &&
+                tournament.featuredVideoURL == nil {
+                challengeButton.setTitle("Upload Challenge", for: .normal)
+            }
+        }
     }
     
     /// Fetch leadboard submissions

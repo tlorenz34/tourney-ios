@@ -305,7 +305,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="85j-sH-D74">
-                                <rect key="frame" x="0.0" y="175" width="375" height="452"/>
+                                <rect key="frame" x="0.0" y="255" width="375" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubmissionCell" rowHeight="344" id="hmW-ya-0fA" customClass="SubmissionCell" customModule="Tourney" customModuleProvider="target">
@@ -555,6 +555,25 @@
                                     <action selector="thirdButtonPressed:" destination="hFD-yr-YVI" eventType="touchUpInside" id="nov-uW-XIA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LD-v3-kG2">
+                                <rect key="frame" x="86" y="185" width="203" height="50"/>
+                                <color key="backgroundColor" red="0.49019607843137253" green="0.67843137254901964" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="a4R-C3-KqV"/>
+                                    <constraint firstAttribute="width" constant="203" id="cDk-bc-Kq2"/>
+                                </constraints>
+                                <state key="normal" title="Challenge">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="challengeButtonTapped" destination="hFD-yr-YVI" eventType="touchUpInside" id="ftE-Be-FBg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tPb-Xw-rs5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -579,20 +598,22 @@
                             <constraint firstItem="4Y2-wY-0SZ" firstAttribute="centerX" secondItem="iGd-p0-gPZ" secondAttribute="centerX" id="PUi-H2-zjf"/>
                             <constraint firstItem="oYw-II-E1S" firstAttribute="leading" secondItem="tPb-Xw-rs5" secondAttribute="leading" id="Q76-Ow-lEH"/>
                             <constraint firstItem="oYw-II-E1S" firstAttribute="trailing" secondItem="tPb-Xw-rs5" secondAttribute="trailing" id="QjY-ei-Bg6"/>
-                            <constraint firstItem="85j-sH-D74" firstAttribute="top" secondItem="mV3-Vy-7kc" secondAttribute="bottom" constant="10" id="ULi-aL-Gxk"/>
                             <constraint firstItem="i7q-49-G4T" firstAttribute="top" secondItem="qM9-Jb-cje" secondAttribute="top" constant="-10" id="W9V-yh-D5i"/>
                             <constraint firstItem="qM9-Jb-cje" firstAttribute="centerY" secondItem="bph-kZ-8FJ" secondAttribute="centerY" id="Xyx-jJ-FDC"/>
                             <constraint firstItem="bph-kZ-8FJ" firstAttribute="leading" secondItem="qM9-Jb-cje" secondAttribute="trailing" constant="30" id="YVH-Nl-6hW"/>
                             <constraint firstItem="mV3-Vy-7kc" firstAttribute="centerX" secondItem="vFf-fA-ef1" secondAttribute="centerX" id="b4e-9V-zOT"/>
                             <constraint firstItem="i7q-49-G4T" firstAttribute="centerX" secondItem="qM9-Jb-cje" secondAttribute="centerX" id="d4M-bx-VE3"/>
                             <constraint firstItem="PPB-Rp-PBc" firstAttribute="centerY" secondItem="bph-kZ-8FJ" secondAttribute="centerY" id="dlj-6g-O0h"/>
+                            <constraint firstItem="85j-sH-D74" firstAttribute="top" secondItem="7LD-v3-kG2" secondAttribute="bottom" constant="20" id="doL-wd-XIh"/>
                             <constraint firstItem="Z38-S9-q22" firstAttribute="top" secondItem="qM9-Jb-cje" secondAttribute="bottom" constant="8" id="eDS-Sb-QwR"/>
                             <constraint firstItem="iGd-p0-gPZ" firstAttribute="top" secondItem="PPB-Rp-PBc" secondAttribute="bottom" constant="8" id="fYR-4y-O9M"/>
                             <constraint firstItem="XQW-rF-xmN" firstAttribute="top" secondItem="85j-sH-D74" secondAttribute="bottom" id="frr-b3-cPj"/>
                             <constraint firstItem="W2p-rA-myy" firstAttribute="centerY" secondItem="PPB-Rp-PBc" secondAttribute="centerY" id="gDy-0B-gl1"/>
                             <constraint firstItem="W2p-rA-myy" firstAttribute="width" secondItem="PPB-Rp-PBc" secondAttribute="width" id="gpq-LN-64x"/>
+                            <constraint firstItem="7LD-v3-kG2" firstAttribute="centerX" secondItem="mV3-Vy-7kc" secondAttribute="centerX" id="gzJ-OO-7RX"/>
                             <constraint firstItem="Zyb-NQ-oSu" firstAttribute="top" secondItem="bph-kZ-8FJ" secondAttribute="top" constant="-10" id="icG-fa-0Sg"/>
                             <constraint firstItem="tPb-Xw-rs5" firstAttribute="trailing" secondItem="36h-G6-cej" secondAttribute="trailing" id="izf-h3-JO3"/>
+                            <constraint firstItem="7LD-v3-kG2" firstAttribute="top" secondItem="mV3-Vy-7kc" secondAttribute="bottom" constant="20" id="mZG-f1-Nfj"/>
                             <constraint firstItem="S6G-vG-5ot" firstAttribute="height" secondItem="qM9-Jb-cje" secondAttribute="height" id="nbS-9P-woH"/>
                             <constraint firstItem="dUH-Zw-up7" firstAttribute="width" secondItem="bph-kZ-8FJ" secondAttribute="width" id="ott-4w-Rm9"/>
                             <constraint firstItem="36h-G6-cej" firstAttribute="leading" secondItem="tPb-Xw-rs5" secondAttribute="leading" id="prS-2Q-78S"/>
@@ -612,6 +633,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="KYl-G3-hBe"/>
                     <connections>
+                        <outlet property="challengeButton" destination="7LD-v3-kG2" id="iJG-EU-YKs"/>
                         <outlet property="firstPlaceProfileImageView" destination="bph-kZ-8FJ" id="59B-Ku-Qv8"/>
                         <outlet property="firstPlaceUsernameLabel" destination="vFf-fA-ef1" id="gto-aE-MiL"/>
                         <outlet property="firstPlaceViews" destination="mV3-Vy-7kc" id="VWZ-1E-TRq"/>
