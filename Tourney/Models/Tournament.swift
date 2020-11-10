@@ -17,6 +17,8 @@ struct Tournament {
     let leaderId: String?
     let leaderUsername: String?
     let leaderProfileImageURL: URL?
+    let parentTournamentId: String?
+    let parentTournamentWinnerId: String?
     
     init?(id: String, dictionary: [String : Any]) {
         guard let name = dictionary["name"] as? String,
@@ -41,6 +43,15 @@ struct Tournament {
             self.leaderId = nil
             self.leaderUsername = nil
             self.leaderProfileImageURL = nil
+        }
+        
+        if let parentTournamentId = dictionary["parentTournamentId"] as? String,
+           let parentTournamentWinnerId = dictionary["parentTournamentWinnerId"] as? String {
+            self.parentTournamentId = parentTournamentId
+            self.parentTournamentWinnerId = parentTournamentWinnerId
+        } else {
+            self.parentTournamentId = nil
+            self.parentTournamentWinnerId = nil
         }
     }
 }

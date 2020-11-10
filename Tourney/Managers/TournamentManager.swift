@@ -32,6 +32,20 @@ struct TournamentManager {
         completion(nil)
     }
     /**
+     Fetch child `Tournament`where `currentUser` is the featured video uploader.
+     */
+    func fetchWonTournaments(completion: @escaping (([Tournament]?) -> Void)) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        baseQuery.whereField("parentTournamentWinnerId", isEqualTo: currentUser.uid).getDocuments { (snapshot, error) in
+            guard let snapshot = snapshot else {
+                completion(nil)
+                return
+            }
+            completion(self.parseDocumentsToTournaments(documents: snapshot.documents))
+        }
+        completion(nil)
+    }
+    /**
      Parse array of `QueryDocumentSnapshot` objects to array of `Tournament` objects
      */
     private func parseDocumentsToTournaments(documents: [QueryDocumentSnapshot]) -> [Tournament] {

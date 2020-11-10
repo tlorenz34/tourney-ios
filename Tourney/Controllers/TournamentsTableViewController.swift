@@ -11,7 +11,7 @@ import Kingfisher
  */
 class TournamentsTableViewController: UITableViewController {
     
-    var tournaments: [Tournament]?
+    var tournaments: [Tournament] = []
     /// Placeholder for dynamic link tournament id for new usrs
     var dynamicLinkTourneyId: String?
     var dynamicLinkTourneyIdForReturningUsers: String? {
@@ -27,9 +27,16 @@ class TournamentsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TournamentManager().fetchActiveTournaments { (tournaments) in
-            if let tournaments = tournaments {
-                self.tournaments = tournaments
+        let tournamentsManager = TournamentManager()
+        tournamentsManager.fetchActiveTournaments { (_tournaments) in
+            if let _tournaments = _tournaments {
+                self.tournaments.append(contentsOf: _tournaments)
+                self.tableView.reloadData()
+            }
+        }
+        tournamentsManager.fetchWonTournaments { (_tournaments) in
+            if let _tournaments = _tournaments {
+                self.tournaments.append(contentsOf: _tournaments)
                 self.tableView.reloadData()
             }
         }
@@ -47,9 +54,6 @@ class TournamentsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let tournaments = tournaments else {
-            return 0
-        }
         return tournaments.count
     }
     
@@ -60,9 +64,6 @@ class TournamentsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
         let cell = tableView.dequeueReusableCell(withIdentifier: "TournamentCell", for: indexPath) as! TournamentCell
-        guard let tournaments = tournaments else {
-            return UITableViewCell()
-        }
         
         let tournament = tournaments[indexPath.row]
         
@@ -89,7 +90,6 @@ class TournamentsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let tournaments = tournaments else { return }
         let tournament = tournaments[indexPath.row]
         performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
     }
