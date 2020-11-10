@@ -159,6 +159,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         cell.viewsLabel.text = "\(submission.views)"
         cell.profileImageView.kf.setImage(with: submission.creatorProfileImageURL)
         cell.thumbnailImageView.kf.setImage(with: submission.thumbnailURL)
+        cell.voteButton.isEnabled = tournament.canInteract
         
         // update vote button reflecting state of vote for post
         if let submissionIdOfCurrentUserVote = submissionIdOfCurrentUserVote {
