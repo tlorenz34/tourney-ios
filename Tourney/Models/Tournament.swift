@@ -12,6 +12,8 @@ struct Tournament {
     let name: String
     let id: String
     let featuredImageURL: URL
+    /// Flag to determine whether the voting/submission phase has ended.
+    let canInteract: Bool
     let participants: Int
     /// Leader info (may be nil due to no leader due to no votes)
     let leaderId: String?
@@ -24,13 +26,15 @@ struct Tournament {
         guard let name = dictionary["name"] as? String,
               let participants = dictionary["participants"] as? Int,
               let featuredImageURLString = dictionary["featuredImageURL"] as? String,
-              let featuredImageURL = URL(string: featuredImageURLString) else {
+              let featuredImageURL = URL(string: featuredImageURLString),
+              let canInteract = dictionary["canInteract"] as? Bool else {
             return nil
         }
         self.id = id
         self.name = name
         self.participants = participants
         self.featuredImageURL = featuredImageURL
+        self.canInteract = canInteract
         
         if let leaderId = dictionary["leaderId"] as? String,
            let leaderUsername = dictionary["leaderUsername"] as? String,
