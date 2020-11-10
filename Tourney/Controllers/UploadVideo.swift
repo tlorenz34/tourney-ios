@@ -40,11 +40,6 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     }
     @IBAction func uploadVideoButtonPressed(_ sender: Any) {
                 
-        guard let videoURL = videoURL,
-              let username = User.sharedInstance.username,
-              let userProfileImageURLString = User.sharedInstance.profileImageURL,
-              let userProfileImageURL = URL(string: userProfileImageURLString) else { return }
-
         // add loading indicator
         loadingIndicatorView.center = uploadButton.center
         if let buttonSuperView = uploadButton.superview {
@@ -53,49 +48,18 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
             loadingIndicatorView.startAnimating()
         }
         
+        guard let videoURL = videoURL else { return }
         
-        // crop video
-        cropVideo(sourceURL: videoURL as URL, startTime: self.startTime, endTime: self.endTime) { (croppedVideoURL) in
-            print("cropeed video...")
-            // make thumbnail from video
-            self.getThumbnailImageFromVideoUrl(videoURL: croppedVideoURL) { (image) in
-                // upload thumbnail
-                if let image = image {
-                    
-                    print("got image from video.... ")
-                    self.uploadThumbnailToStorage(image: image) { (uploadedThumbnailURL) in
-                        if let uploadedThumbnailURL = uploadedThumbnailURL {
-                            
-                            print("uplaoded thumbnail to storage...")
-                            
-                            // upload video
-                            self.uploadVideoToStorage(url: croppedVideoURL) { (uploadedVideoURL) in
-                                if let uploadedVideoURL = uploadedVideoURL {
-                                    print("uploaded video to storage....")
-                                    // create submission
-                                    let submission = Submission(tournamentId: self.tournament.id, creatorProfileImageURL: userProfileImageURL, creatorUsername: username, videoURL: uploadedVideoURL, thumbnailURL: uploadedThumbnailURL)
-                                    // save new submission
-                                    SubmissionManager().saveNew(submission)
-                                    // dismiss
-                                    if let priorController = self.priorRecordingController {
-                                        priorController.shouldDismiss = true
-                                    }
-                                    self.dismiss(animated: true) {
-                                        // delegate implementation
-                                        self.delegate?.didUploadVideo(with: uploadedVideoURL.absoluteString)
-                                    }
-                                    
-                                } else {
-                                    print("failed to uploaded video")
-                                }
-                            }
-                        } else {
-                            print("failed to uploaded thumbnail")
-                        }
-                    }
-                }
+        if uploadingFeaturedVideo {
+            uploadFeaturedVideo(videoURL: videoURL)
+        } else {
+            if let username = User.sharedInstance.username,
+                let userProfileImageURLString = User.sharedInstance.profileImageURL,
+                let userProfileImageURL = URL(string: userProfileImageURLString) {
+            uploadAndCreateSubmission(videoURL: videoURL, username: username, userProfileImageURL: userProfileImageURL)
             }
         }
+        
     }
     
     // MARK: - Outlets
@@ -132,11 +96,14 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     
     /// Tournament that video is being uploaded under.
     var tournament: Tournament!
+    // Flag to upload recorded video to `featuredVideoURL` property of tournament instead of submission
+    var uploadingFeaturedVideo: Bool = false
     
     // MARK: - View lifecyle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("frmo uploadvideoVC: uploadingfeatuedvideo is \(uploadingFeaturedVideo)")
         randomID = self.randomString(length: 16);
         setupTrimView()
         if (didComeFromRecording) {
@@ -156,6 +123,90 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
         //Dismiss the controller after picking some media
         dismiss(animated: true, completion: nil)
         
+    }
+
+    /**
+     Uploads featured video to storage, updates `Tournament` object's `featuredVideoURL` property and dismisses view controller.
+     */
+    private func uploadFeaturedVideo(videoURL: NSURL) {
+        // crop video
+        cropVideo(sourceURL: videoURL as URL, startTime: startTime, endTime: endTime) { (croppedVideoURL) in
+            // upload video
+            self.uploadVideoToFeaturedVideosStorage(url: croppedVideoURL) { (uploadedVideoURL) in
+                if let uploadedVideoURL = uploadedVideoURL {
+                    print("uploaded video to storage....")
+                    // update tournament with featured video
+                    self.tournament.featuredVideoURL = uploadedVideoURL as URL
+                    TournamentManager().save(self.tournament)
+                    // dismiss
+                    if let priorController = self.priorRecordingController {
+                        priorController.shouldDismiss = true
+                    }
+                    self.dismiss(animated: true) {
+                        // delegate implementation
+                        self.delegate?.didUploadVideo(with: uploadedVideoURL.absoluteString)
+                    }
+                    
+                } else {
+                    print("failed to uploaded video")
+                }
+            }
+        }
+    }
+    
+    /**
+     Adds a new `Submission` and dismisses view controller.
+     
+     The function does several things linked together:
+     1. Crops video.
+     2. Captures thumnail of video.
+     3. Uploads the thumbnail and video to Storage.
+     4. Creates new `Submission` with data.
+     5. Dismisses view controller.
+     */
+    private func uploadAndCreateSubmission(videoURL: NSURL, username: String, userProfileImageURL: URL) {
+        // crop video
+        cropVideo(sourceURL: videoURL as URL, startTime: self.startTime, endTime: self.endTime) { (croppedVideoURL) in
+            print("cropeed video...")
+            // make thumbnail from video
+            self.getThumbnailImageFromVideoUrl(videoURL: croppedVideoURL) { (image) in
+                // upload thumbnail
+                if let image = image {
+                    
+                    print("got image from video.... ")
+                    self.uploadThumbnailToStorage(image: image) { (uploadedThumbnailURL) in
+                        if let uploadedThumbnailURL = uploadedThumbnailURL {
+                            
+                            print("uplaoded thumbnail to storage...")
+                            
+                            // upload video
+                            self.uploadVideoToSubmissionsStorage(url: croppedVideoURL) { (uploadedVideoURL) in
+                                if let uploadedVideoURL = uploadedVideoURL {
+                                    print("uploaded video to storage....")
+                                    // create submission
+                                    let submission = Submission(tournamentId: self.tournament.id, creatorProfileImageURL: userProfileImageURL, creatorUsername: username, videoURL: uploadedVideoURL, thumbnailURL: uploadedThumbnailURL)
+                                    // save new submission
+                                    SubmissionManager().saveNew(submission)
+                                    // dismiss
+                                    if let priorController = self.priorRecordingController {
+                                        priorController.shouldDismiss = true
+                                    }
+                                    self.dismiss(animated: true) {
+                                        // delegate implementation
+                                        self.delegate?.didUploadVideo(with: uploadedVideoURL.absoluteString)
+                                    }
+                                    
+                                } else {
+                                    print("failed to uploaded video")
+                                }
+                            }
+                        } else {
+                            print("failed to uploaded thumbnail")
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func setupRecordingPreview() {
@@ -189,8 +240,33 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     /**
      Uploads video to Storage under the `videos` folder.
      */
-    func uploadVideoToStorage(url: URL, completion: @escaping ((_ url: URL?) -> Void)) {
+    func uploadVideoToSubmissionsStorage(url: URL, completion: @escaping ((_ url: URL?) -> Void)) {
         let storageReference = Storage.storage().reference().child("videos").child(UUID().uuidString)
+        storageReference.putFile(from: url, metadata: nil, completion: { (metadata, error) in
+            if error == nil {
+                  // You can also access to download URL after upload.
+                storageReference.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                    // Uh-oh, an error occurred!
+                    return
+                    }
+                    completion(downloadURL)
+                }
+                
+            } else {
+                // if error, stop loading indicator
+                self.loadingIndicatorView.stopAnimating()
+                self.resetUploadButtonState()
+                print(error?.localizedDescription ?? "")
+                completion(nil)
+            }
+        })
+    }
+    /**
+     Uploads video to Storage under the `featuredVideos` folder.
+     */
+    func uploadVideoToFeaturedVideosStorage(url: URL, completion: @escaping ((_ url: URL?) -> Void)) {
+        let storageReference = Storage.storage().reference().child("featured-videos").child(UUID().uuidString)
         storageReference.putFile(from: url, metadata: nil, completion: { (metadata, error) in
             if error == nil {
                   // You can also access to download URL after upload.
@@ -222,7 +298,7 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
         let metaDataConfig = StorageMetadata()
         metaDataConfig.contentType = "image/jpg"
 
-        let storageRef = Storage.storage().reference().child("videoThumbnails").child(UUID().uuidString)
+        let storageRef = Storage.storage().reference().child("video-thumbnails").child(UUID().uuidString)
 
         storageRef.putData(imageData, metadata: metaDataConfig){ (metaData, error) in
             if let error = error {
