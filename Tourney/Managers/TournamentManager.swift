@@ -46,6 +46,14 @@ struct TournamentManager {
         completion(nil)
     }
     /**
+     Update given `Tournament` by saving it to the database.
+     */
+    public func save(_ tournament: Tournament) {
+        let tournamentRef = db.collection(tournamentsCollectionKey).document(tournament.id)
+        tournamentRef.updateData(tournament.dictionary)
+    }
+    
+    /**
      Parse array of `QueryDocumentSnapshot` objects to array of `Tournament` objects
      */
     private func parseDocumentsToTournaments(documents: [QueryDocumentSnapshot]) -> [Tournament] {
