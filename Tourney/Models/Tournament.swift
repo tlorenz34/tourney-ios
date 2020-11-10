@@ -21,7 +21,50 @@ struct Tournament {
     let leaderProfileImageURL: URL?
     let parentTournamentId: String?
     let parentTournamentWinnerId: String?
-    let featuredVideoURL: URL?
+    var featuredVideoURL: URL?
+    
+    /// Dictionary representation of object
+    var dictionary: [String : Any] {
+        
+        var dict: [String : Any] = [
+            "name": id,
+            "featuredImageURL": featuredImageURL.absoluteString,
+            "canInteract": canInteract,
+            "participants": participants
+        ]
+        
+        if let leaderId = leaderId {
+            dict["leaderId"] = leaderId
+        } else {
+            dict["leaderId"] = ""
+        }
+        if let leaderUsername = leaderUsername {
+            dict["leaderUsername"] = leaderUsername
+        } else {
+            dict["leaderUsername"] = ""
+        }
+        if let leaderProfileImageURL = leaderProfileImageURL {
+            dict["leaderProfileImageURL"] = leaderProfileImageURL.absoluteString
+        } else {
+            dict["leaderProfileImageURL"] = ""
+        }
+        if let parentTournamentId = parentTournamentId {
+            dict["parentTournamentId"] = parentTournamentId
+        } else {
+            dict["parentTournamentId"] = ""
+        }
+        if let parentTournamentWinnerId = parentTournamentWinnerId {
+            dict["parentTournamentWinnerId"] = parentTournamentWinnerId
+        } else {
+            dict["parentTournamentWinnerId"] = ""
+        }
+        if let featuredVideoURL = featuredVideoURL {
+            dict["featuredVideoURL"] = featuredVideoURL.absoluteString
+        } else {
+            dict["featuredVideoURL"] = ""
+        }
+        return dict
+    }
     
     init?(id: String, dictionary: [String : Any]) {
         guard let name = dictionary["name"] as? String,

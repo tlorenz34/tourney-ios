@@ -352,6 +352,7 @@ PODS:
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
   - SwiftKeychainWrapper (3.4.0)
+  - VIMediaCache (0.4)
 
 DEPENDENCIES:
   - Cache
@@ -364,6 +365,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - Kingfisher
   - SwiftKeychainWrapper
+  - VIMediaCache
 
 SPEC REPOS:
   trunk:
@@ -391,6 +393,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SwiftKeychainWrapper
+    - VIMediaCache
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -417,7 +420,8 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
+  VIMediaCache: aa650f82cb114c68a343beb4e67416cf5eb2f3a2
 
-PODFILE CHECKSUM: 95ce0217bfbed017430b4b695f471e42f56bf173
+PODFILE CHECKSUM: ba7edaa65b5d17586939986df6d35fa6eaa84124
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0.rc.1
