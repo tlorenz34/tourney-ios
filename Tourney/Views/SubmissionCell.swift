@@ -22,9 +22,9 @@ protocol SubmissionCellDelegate: class {
 
 class SubmissionCell: UITableViewCell {
     
-    @IBAction func didTapThumbsUp() {
+    @IBAction func didTapVote() {
         // if state = not vote
-        if thumbsUpButton.titleLabel!.text == "Vote" {
+        if voteButton.titleLabel!.text == "Vote" {
             // update ui
             updateUIForVotingButton(voted: true)
         } else {
@@ -40,7 +40,7 @@ class SubmissionCell: UITableViewCell {
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
-    @IBOutlet weak var thumbsUpButton: UIButton!
+    @IBOutlet weak var voteButton: UIButton!
     
     var post: Post!
     var userPostKey: DatabaseReference!
@@ -126,7 +126,7 @@ class SubmissionCell: UITableViewCell {
         videoView.bringSubviewToFront(profileImageView)
         videoView.bringSubviewToFront(usernameLabel)
         videoView.bringSubviewToFront(viewsLabel)
-        videoView.bringSubviewToFront(thumbsUpButton)
+        videoView.bringSubviewToFront(voteButton)
         videoView.bringSubviewToFront(loadingIndicator)
     }
     
@@ -160,13 +160,13 @@ class SubmissionCell: UITableViewCell {
      */
     private func updateUIForVotingButton(voted: Bool) {
         if voted {
-            thumbsUpButton.setTitle("Voted", for: .normal)
-            thumbsUpButton.backgroundColor = UIColor.link
-            thumbsUpButton.setTitleColor(UIColor.white, for: .normal)
+            voteButton.setTitle("Voted", for: .normal)
+            voteButton.backgroundColor = UIColor.link
+            voteButton.setTitleColor(UIColor.white, for: .normal)
         } else {
-            thumbsUpButton.setTitle("Vote", for: .normal)
-            thumbsUpButton.backgroundColor = UIColor.white
-            thumbsUpButton.setTitleColor(UIColor.link, for: .normal)
+            voteButton.setTitle("Vote", for: .normal)
+            voteButton.backgroundColor = UIColor.white
+            voteButton.setTitleColor(UIColor.link, for: .normal)
         }
     }
 }

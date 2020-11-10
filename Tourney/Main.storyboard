@@ -345,7 +345,7 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
-                                                                <action selector="didTapThumbsUp" destination="hmW-ya-0fA" eventType="touchUpInside" id="DLd-LN-FJ9"/>
+                                                                <action selector="didTapVote" destination="hmW-ya-0fA" eventType="touchUpInside" id="S6S-dV-CHt"/>
                                                             </connections>
                                                         </button>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1OA-2u-5tD" customClass="ProfileImageView" customModule="Tourney" customModuleProvider="target">
@@ -396,10 +396,10 @@
                                         <connections>
                                             <outlet property="profileImageView" destination="1OA-2u-5tD" id="KKi-k8-cRM"/>
                                             <outlet property="thumbnailImageView" destination="8DX-LY-Bm0" id="0uX-b1-j2H"/>
-                                            <outlet property="thumbsUpButton" destination="zbj-3b-jnc" id="9j9-RB-1sv"/>
                                             <outlet property="usernameLabel" destination="Rdh-Ue-b9a" id="ILr-8d-MFh"/>
                                             <outlet property="videoView" destination="GZc-fX-mxX" id="zQ3-5P-mHa"/>
                                             <outlet property="viewsLabel" destination="VHq-ej-wEn" id="oSj-kj-ArC"/>
+                                            <outlet property="voteButton" destination="zbj-3b-jnc" id="O50-PD-dvx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
