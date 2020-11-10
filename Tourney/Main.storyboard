@@ -619,6 +619,7 @@
                         <outlet property="secondPlaceProfileImageView" destination="qM9-Jb-cje" id="46a-Z9-ORX"/>
                         <outlet property="secondPlaceUsernameLabel" destination="Z38-S9-q22" id="C8m-6e-2LZ"/>
                         <outlet property="secondPlaceViews" destination="OjG-9W-lYr" id="Fpk-hC-4Az"/>
+                        <outlet property="startCompetingButton" destination="TFU-Tb-n8K" id="kCP-SY-OnS"/>
                         <outlet property="tableView" destination="85j-sH-D74" id="jWV-Nz-HvL"/>
                         <outlet property="thirdPlaceProfileImageView" destination="PPB-Rp-PBc" id="mxo-Dj-HMP"/>
                         <outlet property="thirdPlaceViews" destination="4Y2-wY-0SZ" id="jQD-SP-uig"/>

@@ -40,6 +40,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBOutlet var thirdPlaceViews: UILabel!
     
     @IBOutlet weak var noVideosPostedLabel: UILabel!
+    @IBOutlet var startCompetingButton: UIButton!
             
     // MARK: - Actions
     
@@ -129,6 +130,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        startCompetingButton.isHidden = !tournament.canInteract
 
         fetchLeaderboard()
         fetchSubmissions()
