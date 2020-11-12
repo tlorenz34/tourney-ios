@@ -22,6 +22,7 @@ class LoadingUIButton: UIButton {
     }
 
     func showLoading() {
+        isEnabled = false
         originalButtonText = self.titleLabel?.text
         self.setTitle("", for: .normal)
 
@@ -33,6 +34,7 @@ class LoadingUIButton: UIButton {
     }
 
     func hideLoading() {
+        isEnabled = true
         DispatchQueue.main.async(execute: {
             self.setTitle(self.originalButtonText, for: .normal)
             self.activityIndicator.stopAnimating()
