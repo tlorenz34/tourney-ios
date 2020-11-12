@@ -72,6 +72,30 @@ class TournamentsTableViewController: UITableViewController {
             cell.hideLeaderUI(true)
         }
         
+        // add notifiers //
+        
+        // if user won tournament
+        if let parentTournamentWinnerId = tournament.parentTournamentWinnerId,
+           let currentUser = Auth.auth().currentUser {
+            // if user won and challenge video has not been uploaded
+            if parentTournamentWinnerId == currentUser.uid && tournament.featuredVideoURL == nil {
+                print("here for tournament: \(tournament.id)")
+                cell.noticeLabel.isHidden = false
+                cell.noticeLabel.text = "You've won!"
+            } else {
+                cell.noticeLabel.isHidden = true
+            }
+        }
+        // if tournament ended
+        else if !tournament.canInteract {
+            cell.noticeLabel.isHidden = false
+            cell.noticeLabel.text = "Tournament ended"
+        }
+        // else, hide notifier label
+        else {
+            cell.noticeLabel.isHidden = true
+        }
+        
         return cell
     }
     

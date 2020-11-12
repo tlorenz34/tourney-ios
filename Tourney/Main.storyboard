@@ -972,6 +972,23 @@
                                                 <constraint firstItem="7gp-yz-r9L" firstAttribute="centerY" secondItem="4e2-qO-A8E" secondAttribute="centerY" id="s1C-3D-Vhv"/>
                                             </constraints>
                                         </view>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tournament ended" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UC3-Rx-T5N">
+                                            <rect key="frame" x="12" y="41" width="161" height="31"/>
+                                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="31" id="C95-kX-Ofg"/>
+                                                <constraint firstAttribute="width" constant="161" id="aMY-uK-2ae"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -979,6 +996,7 @@
                                         <constraint firstItem="g5c-Tm-rRq" firstAttribute="centerY" secondItem="1BC-so-xNx" secondAttribute="centerY" id="0k4-xz-m4u"/>
                                         <constraint firstItem="1BC-so-xNx" firstAttribute="top" secondItem="4rp-gh-8Lh" secondAttribute="bottom" constant="10" id="3ss-yz-ul5"/>
                                         <constraint firstItem="4e2-qO-A8E" firstAttribute="leading" secondItem="1BC-so-xNx" secondAttribute="leading" constant="-2" id="6XO-wv-ds8"/>
+                                        <constraint firstItem="UC3-Rx-T5N" firstAttribute="leading" secondItem="smi-cH-qGf" secondAttribute="leading" constant="-4" id="8HC-28-eKW"/>
                                         <constraint firstItem="1BC-so-xNx" firstAttribute="bottom" secondItem="Xbl-w1-tsc" secondAttribute="bottom" constant="-15" id="Hsh-Ih-POb"/>
                                         <constraint firstItem="smi-cH-qGf" firstAttribute="height" secondItem="Xbl-w1-tsc" secondAttribute="height" id="LpC-Gf-s5j"/>
                                         <constraint firstItem="udp-dS-2iJ" firstAttribute="trailing" secondItem="Xbl-w1-tsc" secondAttribute="trailing" constant="-10" id="Oof-Br-svX"/>
@@ -988,6 +1006,7 @@
                                         <constraint firstItem="4rp-gh-8Lh" firstAttribute="leading" secondItem="1BC-so-xNx" secondAttribute="leading" id="XXK-Ei-hKr"/>
                                         <constraint firstItem="udp-dS-2iJ" firstAttribute="centerY" secondItem="g5c-Tm-rRq" secondAttribute="centerY" id="cfh-aR-c0t"/>
                                         <constraint firstItem="Xbl-w1-tsc" firstAttribute="leading" secondItem="P2e-cN-WJ7" secondAttribute="leadingMargin" id="ewt-2E-iCm"/>
+                                        <constraint firstItem="UC3-Rx-T5N" firstAttribute="top" secondItem="smi-cH-qGf" secondAttribute="top" constant="30" id="fAt-Gb-Xd5"/>
                                         <constraint firstItem="4e2-qO-A8E" firstAttribute="top" secondItem="1BC-so-xNx" secondAttribute="top" constant="-2" id="p6X-vg-oXT"/>
                                         <constraint firstItem="Xbl-w1-tsc" firstAttribute="top" secondItem="P2e-cN-WJ7" secondAttribute="topMargin" id="pJU-LS-Ail"/>
                                         <constraint firstItem="smi-cH-qGf" firstAttribute="centerX" secondItem="Xbl-w1-tsc" secondAttribute="centerX" id="szg-lo-6QC"/>
@@ -1001,6 +1020,7 @@
                                     <outlet property="leaderDecorationView" destination="4e2-qO-A8E" id="2ln-Bn-ZtL"/>
                                     <outlet property="leaderProfileImageView" destination="1BC-so-xNx" id="Aew-wF-t6i"/>
                                     <outlet property="leaderUsernameLabel" destination="g5c-Tm-rRq" id="9lK-br-AVn"/>
+                                    <outlet property="noticeLabel" destination="UC3-Rx-T5N" id="dA2-QS-mDu"/>
                                     <outlet property="opaqueView" destination="smi-cH-qGf" id="fWO-VM-O94"/>
                                     <outlet property="participantsLabel" destination="udp-dS-2iJ" id="zgY-bv-sye"/>
                                     <outlet property="tournamentTitleLabel" destination="4rp-gh-8Lh" id="Qiu-mH-COO"/>
@@ -1444,6 +1464,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="xcO-Wg-sga"/>
         <segue reference="GwX-NP-xWc"/>
         <segue reference="jyX-zH-4fh"/>
     </inferredMetricsTieBreakers>
@@ -1485,6 +1506,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
