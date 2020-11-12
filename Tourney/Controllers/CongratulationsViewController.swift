@@ -11,5 +11,8 @@ import UIKit
 class CongratulationsViewController: UIViewController {
     
     override func viewDidLoad() {
+        let confettiView = SAConfettiView(frame: view.frame)
+        view.addSubview(confettiView)
+        confettiView.startConfetti()
     }
 }
