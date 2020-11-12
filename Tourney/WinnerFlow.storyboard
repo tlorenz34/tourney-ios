@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ttu-Og-TWI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Congratulations View Controller-->
+        <scene sceneID="Y00-Bc-2YS">
+            <objects>
+                <viewController id="ttu-Og-TWI" customClass="CongratulationsViewController" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ucW-wO-gmr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="winner-illustration" translatesAutoresizingMaskIntoConstraints="NO" id="ocN-0A-gcm">
+                                <rect key="frame" x="30" y="220" width="354" height="269"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="269" id="dmV-vC-qUA"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hb-XB-prZ">
+                                <rect key="frame" x="104.5" y="106" width="205" height="32"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've won the Skate Challenge!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kw5-BX-4O9">
+                                <rect key="frame" x="80" y="173" width="254.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To begin the next tournament, upload a challenge video." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StI-Qs-Zg5">
+                                <rect key="frame" x="78.5" y="505" width="257" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="257" id="ykN-Hv-DGp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFQ-oo-kGs">
+                                <rect key="frame" x="107" y="712" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.3921568627" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3JR-5K-dHT"/>
+                                    <constraint firstAttribute="width" constant="200" id="HYK-h0-R02"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Upload Challenge">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="U7S-Tb-6da"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ocN-0A-gcm" firstAttribute="leading" secondItem="U7S-Tb-6da" secondAttribute="leading" constant="30" id="3PU-00-1md"/>
+                            <constraint firstItem="Kw5-BX-4O9" firstAttribute="top" secondItem="3Hb-XB-prZ" secondAttribute="bottom" constant="35" id="5O6-Ei-ahd"/>
+                            <constraint firstItem="NFQ-oo-kGs" firstAttribute="centerX" secondItem="StI-Qs-Zg5" secondAttribute="centerX" id="Oa7-K1-hhS"/>
+                            <constraint firstItem="U7S-Tb-6da" firstAttribute="trailing" secondItem="ocN-0A-gcm" secondAttribute="trailing" constant="30" id="Pyj-VZ-fFc"/>
+                            <constraint firstItem="ocN-0A-gcm" firstAttribute="top" secondItem="Kw5-BX-4O9" secondAttribute="bottom" constant="26" id="UoX-q8-dlg"/>
+                            <constraint firstItem="Kw5-BX-4O9" firstAttribute="centerX" secondItem="3Hb-XB-prZ" secondAttribute="centerX" id="bhx-yG-6zt"/>
+                            <constraint firstItem="StI-Qs-Zg5" firstAttribute="top" secondItem="ocN-0A-gcm" secondAttribute="bottom" constant="16" id="byb-4T-Cg6"/>
+                            <constraint firstItem="StI-Qs-Zg5" firstAttribute="centerX" secondItem="ocN-0A-gcm" secondAttribute="centerX" id="dgU-G5-Ict"/>
+                            <constraint firstItem="3Hb-XB-prZ" firstAttribute="centerX" secondItem="U7S-Tb-6da" secondAttribute="centerX" id="eys-Rg-fdM"/>
+                            <constraint firstItem="U7S-Tb-6da" firstAttribute="bottom" secondItem="NFQ-oo-kGs" secondAttribute="bottom" constant="100" id="heH-O8-AZf"/>
+                            <constraint firstItem="3Hb-XB-prZ" firstAttribute="top" secondItem="U7S-Tb-6da" secondAttribute="top" constant="62" id="iqx-vp-qk3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="kyg-Cy-iq6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vpg-Cn-1Ih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2932" y="-158.77061469265368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="winner-illustration" width="1384" height="813"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

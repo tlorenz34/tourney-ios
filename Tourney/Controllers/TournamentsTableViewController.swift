@@ -91,7 +91,25 @@ class TournamentsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tournament = tournaments[indexPath.row]
-        performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
+        
+        // if user is winner and challenge video has not been upload, show won VC flow
+        if let parentTournamentWinnerId = tournament.parentTournamentWinnerId,
+           let currentUser = Auth.auth().currentUser {
+            
+            if parentTournamentWinnerId == currentUser.uid {
+                if tournament.featuredVideoURL == nil {
+                    // go to won vc flow
+                    presentWinnerFlowStoryboard()
+                } else {
+                    // already uploaded featured video
+                    performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
+                }
+            }
+        } else {
+            // regular user (not winner)
+            performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
+        }
+        
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

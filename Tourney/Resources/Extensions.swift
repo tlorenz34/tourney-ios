@@ -23,4 +23,10 @@ extension UIViewController {
         alert.addAction(dismissAction)
         present(alert, animated: true, completion: nil)
     }
+    func presentWinnerFlowStoryboard() {
+        let storyboard = UIStoryboard(name: "WinnerFlow", bundle: .main)
+        if let initialViewController = storyboard.instantiateInitialViewController() {
+            present(initialViewController, animated: true, completion: nil)
+        }
+    }
 }

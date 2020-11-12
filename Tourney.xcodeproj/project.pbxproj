@@ -28,6 +28,8 @@
 		09DA1F3A252F80B5002C830C /* TournamentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA1F39252F80B5002C830C /* TournamentManager.swift */; };
 		09DA1F77252FABEB002C830C /* Submission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA1F76252FABEB002C830C /* Submission.swift */; };
 		09DA1F7C252FAC41002C830C /* SubmissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA1F7B252FAC41002C830C /* SubmissionManager.swift */; };
+		09F9021D255CF0F400421B3F /* WinnerFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F9021C255CF0F400421B3F /* WinnerFlow.storyboard */; };
+		09F90243255CF23F00421B3F /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F90242255CF23F00421B3F /* CongratulationsViewController.swift */; };
 		4D0CA4B65570B64F4966238C /* Pods_TourneyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332AD775DEECDBF079B44E07 /* Pods_TourneyUITests.framework */; };
 		4EACE43D0769FABE1627E0D8 /* Pods_TourneyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7F4B9CBDBABBE5D7A0C2C3 /* Pods_TourneyTests.framework */; };
 		5AA3CBA15A8BC08F54B11DB6 /* Pods_Tourney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F4A147F551EC5A23237372 /* Pods_Tourney.framework */; };
@@ -104,6 +106,8 @@
 		09DA1F39252F80B5002C830C /* TournamentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentManager.swift; sourceTree = "<group>"; };
 		09DA1F76252FABEB002C830C /* Submission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Submission.swift; sourceTree = "<group>"; };
 		09DA1F7B252FAC41002C830C /* SubmissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionManager.swift; sourceTree = "<group>"; };
+		09F9021C255CF0F400421B3F /* WinnerFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WinnerFlow.storyboard; sourceTree = "<group>"; };
+		09F90242255CF23F00421B3F /* CongratulationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CongratulationsViewController.swift; path = "/Users/germanespitia/Documents/Lindy Technologies/Clients/Tourney/tourneyFinal/Tourney/Controllers/CongratulationsViewController.swift"; sourceTree = "<absolute>"; };
 		332AD775DEECDBF079B44E07 /* Pods_TourneyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourneyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EE4966694CF40101B40DC84 /* Pods-Tourney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tourney.debug.xcconfig"; path = "Target Support Files/Pods-Tourney/Pods-Tourney.debug.xcconfig"; sourceTree = "<group>"; };
 		400BB418888C43F7223AD794 /* Pods-TourneyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourneyUITests.debug.xcconfig"; path = "Target Support Files/Pods-TourneyUITests/Pods-TourneyUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 				6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */,
 				DFC545682305AB79009F84B1 /* TopVideoController.swift */,
 				DFAF566A24F440FD00523ECF /* RulesViewController.swift */,
+				09F902BE255CF5C900421B3F /* Winner Flow */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -272,6 +277,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		09F902BE255CF5C900421B3F /* Winner Flow */ = {
+			isa = PBXGroup;
+			children = (
+				09F90242255CF23F00421B3F /* CongratulationsViewController.swift */,
+			);
+			path = "Winner Flow";
+			sourceTree = "<group>";
+		};
 		2F3391B8AB786C39994757EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +329,7 @@
 				6E6AA49722EFAB53006A1267 /* Views */,
 				098E94782373636800B9E520 /* Controllers */,
 				6E6AA4AB22EFAB78006A1267 /* Main.storyboard */,
+				09F9021C255CF0F400421B3F /* WinnerFlow.storyboard */,
 				6E6AA46622EFAA3A006A1267 /* LaunchScreen.storyboard */,
 				6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */,
 				6E6AA46922EFAA3B006A1267 /* Info.plist */,
@@ -486,6 +500,7 @@
 				DFAF567124F44AD500523ECF /* Rule.xib in Resources */,
 				6E6AA4AC22EFAB78006A1267 /* Main.storyboard in Resources */,
 				6E6AA4B222EFABF6006A1267 /* GoogleService-Info.plist in Resources */,
+				09F9021D255CF0F400421B3F /* WinnerFlow.storyboard in Resources */,
 				09DA1EF9252E8F4A002C830C /* ProgressIndicator.png in Resources */,
 				09DA1EF0252E8F4A002C830C /* .gitkeep in Resources */,
 				09DA1EF6252E8F4A002C830C /* BorderLine.png in Resources */,
@@ -620,6 +635,7 @@
 				DFC545672305AB65009F84B1 /* DatabaseService.swift in Sources */,
 				6E6AA49E22EFAB53006A1267 /* SignUpVC.swift in Sources */,
 				6E6AA4A922EFAB53006A1267 /* User.swift in Sources */,
+				09F90243255CF23F00421B3F /* CongratulationsViewController.swift in Sources */,
 				6E6AA4AA22EFAB53006A1267 /* UserProfile.swift in Sources */,
 				6E6AA46322EFAA39006A1267 /* Tourney.xcdatamodeld in Sources */,
 				09DA1EEF252E8F4A002C830C /* ABProgressIndicator.swift in Sources */,
