@@ -48,18 +48,12 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
             loadingIndicatorView.startAnimating()
         }
         
-        guard let videoURL = videoURL else { return }
+        guard let videoURL = videoURL,
+              let username = User.sharedInstance.username,
+              let userProfileImageURLString = User.sharedInstance.profileImageURL,
+              let userProfileImageURL = URL(string: userProfileImageURLString) else { return }
         
-        if uploadingFeaturedVideo {
-            uploadFeaturedVideo(videoURL: videoURL)
-        } else {
-            if let username = User.sharedInstance.username,
-                let userProfileImageURLString = User.sharedInstance.profileImageURL,
-                let userProfileImageURL = URL(string: userProfileImageURLString) {
-            uploadAndCreateSubmission(videoURL: videoURL, username: username, userProfileImageURL: userProfileImageURL)
-            }
-        }
-        
+        uploadAndCreateSubmission(videoURL: videoURL, username: username, userProfileImageURL: userProfileImageURL)
     }
     
     // MARK: - Outlets
@@ -96,14 +90,11 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
     
     /// Tournament that video is being uploaded under.
     var tournament: Tournament!
-    // Flag to upload recorded video to `featuredVideoURL` property of tournament instead of submission
-    var uploadingFeaturedVideo: Bool = false
     
     // MARK: - View lifecyle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("frmo uploadvideoVC: uploadingfeatuedvideo is \(uploadingFeaturedVideo)")
         randomID = self.randomString(length: 16);
         setupTrimView()
         if (didComeFromRecording) {

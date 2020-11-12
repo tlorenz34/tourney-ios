@@ -25,8 +25,6 @@ class RecordVideo: UIViewController, AVCaptureFileOutputRecordingDelegate {
     var outputURL: URL!
     // Holds FeedVC to pass on to the editor VC and set it as its delegate (UploadVideoDelegate) 
     var feedVC: FeedVC!
-    // Flag to pass onto `UploadVideo` to signal that user is uploading the featured video for the tournament, not a submission itself.
-    var uploadingFeaturedVideo: Bool = false
     
     var shouldDismiss: Bool = false
 
@@ -160,7 +158,6 @@ class RecordVideo: UIViewController, AVCaptureFileOutputRecordingDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEditorSegue" {
             if let destination = segue.destination as? UploadVideo {
-                destination.uploadingFeaturedVideo = uploadingFeaturedVideo
                 destination.tournament = tournament
                 destination.delegate = feedVC
                 destination.didComeFromRecording = true

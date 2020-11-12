@@ -101,13 +101,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         if let featuredVideoURL = tournament.featuredVideoURL {
             playVideo(url: featuredVideoURL)
         }
-        // if no challenge video is available and parent tournament winner is current user, send to record the challenge video
-        else if let parentTournamentWinnerId = tournament.parentTournamentWinnerId, let currentUser = Auth.auth().currentUser {
-            if parentTournamentWinnerId == currentUser.uid {
-                uploadingFeaturedVideo = true
-                performSegue(withIdentifier: "toRecordVideoVC", sender: nil)
-            }
-        }
         // no challenge video available yet and current user is not parent tournament winner, show alert
         // note: this should never run as tournaments without `featuredVideoURL` properties are not fetched unless the user is indeed the parent tournament winner.
         else {
@@ -132,8 +125,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     /// ID of post which user has voted for within competition. Used to signify which post the user has voted for via the voting button
     var submissionIdOfCurrentUserVote: String?
     var currentCellPlaying: SubmissionCell!
-    // Flag to pass onto `RecordVideo` to signal that user is uploading the featured video for the tournament, not a submission itself.
-    var uploadingFeaturedVideo: Bool = false
     var cells: [SubmissionCell] = [];
     var cellPostkeys: [String] = []
     var firstRun: Bool = true
@@ -365,7 +356,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             }
         } else if segue.identifier == "toRecordVideoVC" {
             if let destination = segue.destination as? RecordVideo {
-                destination.uploadingFeaturedVideo = uploadingFeaturedVideo
                 destination.tournament = tournament
                 destination.feedVC = self
             }
