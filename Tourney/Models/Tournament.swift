@@ -27,7 +27,7 @@ struct Tournament {
     var dictionary: [String : Any] {
         
         var dict: [String : Any] = [
-            "name": id,
+            "name": name,
             "featuredImageURL": featuredImageURL.absoluteString,
             "canInteract": canInteract,
             "participants": participants
