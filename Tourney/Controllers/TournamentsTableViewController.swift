@@ -26,20 +26,7 @@ class TournamentsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let tournamentsManager = TournamentManager()
-        tournamentsManager.fetchActiveTournaments { (_tournaments) in
-            if let _tournaments = _tournaments {
-                self.tournaments.append(contentsOf: _tournaments)
-                self.tableView.reloadData()
-            }
-        }
-        tournamentsManager.fetchWonTournaments { (_tournaments) in
-            if let _tournaments = _tournaments {
-                self.tournaments.append(contentsOf: _tournaments)
-                self.tableView.reloadData()
-            }
-        }
+        fetchTournaments()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -99,7 +86,7 @@ class TournamentsTableViewController: UITableViewController {
             if parentTournamentWinnerId == currentUser.uid {
                 if tournament.featuredVideoURL == nil {
                     // go to won vc flow
-                    presentWinnerFlowStoryboard()
+                    presentWinnerFlowStoryboard(tournament: tournament, tournamentsViewController: self)
                 } else {
                     // already uploaded featured video
                     performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
@@ -117,6 +104,23 @@ class TournamentsTableViewController: UITableViewController {
             if let destination = segue.destination as? FeedVC {
                 let tournament = sender as! Tournament
                 destination.tournament = tournament
+            }
+        }
+    }
+    
+    /// Fetch active and won tournaments
+    private func fetchTournaments() {
+        let tournamentsManager = TournamentManager()
+        tournamentsManager.fetchActiveTournaments { (_tournaments) in
+            if let _tournaments = _tournaments {
+                self.tournaments.append(contentsOf: _tournaments)
+                self.tableView.reloadData()
+            }
+        }
+        tournamentsManager.fetchWonTournaments { (_tournaments) in
+            if let _tournaments = _tournaments {
+                self.tournaments.append(contentsOf: _tournaments)
+                self.tableView.reloadData()
             }
         }
     }

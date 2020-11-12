@@ -115,35 +115,6 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
         dismiss(animated: true, completion: nil)
         
     }
-
-    /**
-     Uploads featured video to storage, updates `Tournament` object's `featuredVideoURL` property and dismisses view controller.
-     */
-    private func uploadFeaturedVideo(videoURL: NSURL) {
-        // crop video
-        cropVideo(sourceURL: videoURL as URL, startTime: startTime, endTime: endTime) { (croppedVideoURL) in
-            // upload video
-            self.uploadVideoToFeaturedVideosStorage(url: croppedVideoURL) { (uploadedVideoURL) in
-                if let uploadedVideoURL = uploadedVideoURL {
-                    print("uploaded video to storage....")
-                    // update tournament with featured video
-                    self.tournament.featuredVideoURL = uploadedVideoURL as URL
-                    TournamentManager().save(self.tournament)
-                    // dismiss
-                    if let priorController = self.priorRecordingController {
-                        priorController.shouldDismiss = true
-                    }
-                    self.dismiss(animated: true) {
-                        // delegate implementation
-                        self.delegate?.didUploadVideo(with: uploadedVideoURL.absoluteString)
-                    }
-                    
-                } else {
-                    print("failed to uploaded video")
-                }
-            }
-        }
-    }
     
     /**
      Adds a new `Submission` and dismisses view controller.

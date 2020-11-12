@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ttu-Og-TWI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mA6-Et-FZi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -12,31 +12,31 @@
         <!--Congratulations View Controller-->
         <scene sceneID="Y00-Bc-2YS">
             <objects>
-                <viewController id="ttu-Og-TWI" customClass="CongratulationsViewController" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="ttu-Og-TWI" customClass="CongratulationsViewController" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ucW-wO-gmr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="winner-illustration" translatesAutoresizingMaskIntoConstraints="NO" id="ocN-0A-gcm">
-                                <rect key="frame" x="30" y="220" width="354" height="269"/>
+                                <rect key="frame" x="30" y="195.5" width="354" height="269"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="269" id="dmV-vC-qUA"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hb-XB-prZ">
-                                <rect key="frame" x="104.5" y="106" width="205" height="32"/>
+                                <rect key="frame" x="104.5" y="108" width="205" height="32"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've won the Skate Challenge!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kw5-BX-4O9">
-                                <rect key="frame" x="80" y="173" width="254.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've won the Skate Challenge!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kw5-BX-4O9">
+                                <rect key="frame" x="80" y="175" width="254.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To begin the next tournament, upload a challenge video." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StI-Qs-Zg5">
-                                <rect key="frame" x="78.5" y="505" width="257" height="36"/>
+                                <rect key="frame" x="78.5" y="480.5" width="257" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="257" id="ykN-Hv-DGp"/>
                                 </constraints>
@@ -45,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFQ-oo-kGs">
-                                <rect key="frame" x="107" y="712" width="200" height="50"/>
+                                <rect key="frame" x="107" y="782" width="200" height="50"/>
                                 <color key="backgroundColor" red="0.86666666670000003" green="0.3921568627" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3JR-5K-dHT"/>
@@ -60,6 +60,9 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Cr0-g0-Cts" kind="show" identifier="UploadChallengeVideoViewController" id="Aj5-fv-riF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U7S-Tb-6da"/>
@@ -69,24 +72,153 @@
                             <constraint firstItem="Kw5-BX-4O9" firstAttribute="top" secondItem="3Hb-XB-prZ" secondAttribute="bottom" constant="35" id="5O6-Ei-ahd"/>
                             <constraint firstItem="NFQ-oo-kGs" firstAttribute="centerX" secondItem="StI-Qs-Zg5" secondAttribute="centerX" id="Oa7-K1-hhS"/>
                             <constraint firstItem="U7S-Tb-6da" firstAttribute="trailing" secondItem="ocN-0A-gcm" secondAttribute="trailing" constant="30" id="Pyj-VZ-fFc"/>
-                            <constraint firstItem="ocN-0A-gcm" firstAttribute="top" secondItem="Kw5-BX-4O9" secondAttribute="bottom" constant="26" id="UoX-q8-dlg"/>
+                            <constraint firstItem="ocN-0A-gcm" firstAttribute="top" secondItem="Kw5-BX-4O9" secondAttribute="bottom" id="UoX-q8-dlg"/>
                             <constraint firstItem="Kw5-BX-4O9" firstAttribute="centerX" secondItem="3Hb-XB-prZ" secondAttribute="centerX" id="bhx-yG-6zt"/>
                             <constraint firstItem="StI-Qs-Zg5" firstAttribute="top" secondItem="ocN-0A-gcm" secondAttribute="bottom" constant="16" id="byb-4T-Cg6"/>
                             <constraint firstItem="StI-Qs-Zg5" firstAttribute="centerX" secondItem="ocN-0A-gcm" secondAttribute="centerX" id="dgU-G5-Ict"/>
                             <constraint firstItem="3Hb-XB-prZ" firstAttribute="centerX" secondItem="U7S-Tb-6da" secondAttribute="centerX" id="eys-Rg-fdM"/>
-                            <constraint firstItem="U7S-Tb-6da" firstAttribute="bottom" secondItem="NFQ-oo-kGs" secondAttribute="bottom" constant="100" id="heH-O8-AZf"/>
-                            <constraint firstItem="3Hb-XB-prZ" firstAttribute="top" secondItem="U7S-Tb-6da" secondAttribute="top" constant="62" id="iqx-vp-qk3"/>
+                            <constraint firstItem="U7S-Tb-6da" firstAttribute="bottom" secondItem="NFQ-oo-kGs" secondAttribute="bottom" constant="30" id="heH-O8-AZf"/>
+                            <constraint firstItem="3Hb-XB-prZ" firstAttribute="top" secondItem="U7S-Tb-6da" secondAttribute="top" constant="20" id="iqx-vp-qk3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="kyg-Cy-iq6"/>
+                    <navigationItem key="navigationItem" id="kyg-Cy-iq6">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Q2H-qz-7Ej"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="Kw5-BX-4O9" id="Y08-Tf-xEI"/>
+                        <outlet property="uploadChallengeButton" destination="NFQ-oo-kGs" id="ClZ-Dp-7OB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vpg-Cn-1Ih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2932" y="-158.77061469265368"/>
+            <point key="canvasLocation" x="3842.0289855072465" y="-159.375"/>
+        </scene>
+        <!--Upload Challenge Video View Controller-->
+        <scene sceneID="RFB-yX-kbP">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Cr0-g0-Cts" customClass="UploadChallengeVideoViewController" customModule="Tourney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DHR-TD-LdP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7k-zT-Bxb" customClass="ABVideoRangeSlider" customModule="Tourney" customModuleProvider="target">
+                                <rect key="frame" x="40" y="398.5" width="334" height="62"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="Bi4-Se-iPG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvG-g6-jmu">
+                                <rect key="frame" x="0.0" y="148.5" width="414" height="200"/>
+                                <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="oMU-eH-XKd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWT-Rn-ohI" customClass="LoadingUIButton" customModule="Tourney" customModuleProvider="target">
+                                <rect key="frame" x="82" y="782" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.3921568627" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="a6a-fM-XhK"/>
+                                    <constraint firstAttribute="width" constant="250" id="cV5-Wf-DeB"/>
+                                </constraints>
+                                <state key="normal" title="Upload">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="uploadTapped" destination="Cr0-g0-Cts" eventType="touchUpInside" id="c12-0p-DlY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HG-lx-Bmw">
+                                <rect key="frame" x="82" y="702" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.88235294117647056" blue="0.31764705882352939" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="H11-P7-aFY"/>
+                                    <constraint firstAttribute="height" constant="50" id="On7-w1-Ged"/>
+                                </constraints>
+                                <state key="normal" title="Choose video from camera roll">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="chooseVideoButtonPressed:" destination="Cr0-g0-Cts" eventType="touchUpInside" id="yrQ-4g-Ujo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge video" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEl-8Y-8Oh">
+                                <rect key="frame" x="144.5" y="108" width="125" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="R2F-QU-VAY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R2F-QU-VAY" firstAttribute="trailing" secondItem="fvG-g6-jmu" secondAttribute="trailing" id="ADG-Gc-DdR"/>
+                            <constraint firstItem="hEl-8Y-8Oh" firstAttribute="centerX" secondItem="R2F-QU-VAY" secondAttribute="centerX" id="B89-LG-NhD"/>
+                            <constraint firstItem="hEl-8Y-8Oh" firstAttribute="top" secondItem="R2F-QU-VAY" secondAttribute="top" constant="20" id="Bsq-Ah-35f"/>
+                            <constraint firstItem="0HG-lx-Bmw" firstAttribute="centerX" secondItem="W7k-zT-Bxb" secondAttribute="centerX" id="IZV-n0-dUs"/>
+                            <constraint firstItem="MWT-Rn-ohI" firstAttribute="centerX" secondItem="0HG-lx-Bmw" secondAttribute="centerX" id="KD6-4F-zOs"/>
+                            <constraint firstItem="fvG-g6-jmu" firstAttribute="leading" secondItem="R2F-QU-VAY" secondAttribute="leading" id="Nbo-0q-GnK"/>
+                            <constraint firstItem="R2F-QU-VAY" firstAttribute="bottom" secondItem="MWT-Rn-ohI" secondAttribute="bottom" constant="30" id="Tky-dg-jym"/>
+                            <constraint firstItem="W7k-zT-Bxb" firstAttribute="top" secondItem="fvG-g6-jmu" secondAttribute="bottom" constant="50" id="ZP5-Vv-WgT"/>
+                            <constraint firstItem="MWT-Rn-ohI" firstAttribute="top" secondItem="0HG-lx-Bmw" secondAttribute="bottom" constant="30" id="ap3-n7-YZO"/>
+                            <constraint firstItem="R2F-QU-VAY" firstAttribute="trailing" secondItem="W7k-zT-Bxb" secondAttribute="trailing" constant="40" id="c49-Zt-kHW"/>
+                            <constraint firstItem="W7k-zT-Bxb" firstAttribute="leading" secondItem="R2F-QU-VAY" secondAttribute="leading" constant="40" id="kS9-sU-8cH"/>
+                            <constraint firstItem="fvG-g6-jmu" firstAttribute="top" secondItem="hEl-8Y-8Oh" secondAttribute="bottom" constant="20" id="oXK-Ly-nLO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="s4q-tB-VgB"/>
+                    <connections>
+                        <outlet property="chooseVideoButton" destination="0HG-lx-Bmw" id="8kB-D0-r0M"/>
+                        <outlet property="trimView" destination="W7k-zT-Bxb" id="etF-3g-Dt5"/>
+                        <outlet property="uploadVideo" destination="MWT-Rn-ohI" id="IQE-wV-UVm"/>
+                        <outlet property="videoView" destination="fvG-g6-jmu" id="dMH-F1-2BW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zmY-CU-OUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4686.9565217391309" y="-159.375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="l7W-hm-dCV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="mA6-Et-FZi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R0n-zd-jKW" customClass="TransparentNavigationBar" customModule="Tourney" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ttu-Og-TWI" kind="relationship" relationship="rootViewController" id="VHQ-r8-8B7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="taz-eO-yOw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2931.8840579710145" y="-159.375"/>
         </scene>
     </scenes>
     <resources>
         <image name="winner-illustration" width="1384" height="813"/>
+        <systemColor name="scrollViewTexturedBackgroundColor">
+            <color red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -23,10 +23,14 @@ extension UIViewController {
         alert.addAction(dismissAction)
         present(alert, animated: true, completion: nil)
     }
-    func presentWinnerFlowStoryboard() {
+    /// Presents the WinnerFlow storyboard to take user through the uploading challenge video flow.
+    func presentWinnerFlowStoryboard(tournament: Tournament, tournamentsViewController: TournamentsTableViewController) {
         let storyboard = UIStoryboard(name: "WinnerFlow", bundle: .main)
-        if let initialViewController = storyboard.instantiateInitialViewController() {
-            present(initialViewController, animated: true, completion: nil)
+        if let navController = storyboard.instantiateInitialViewController() as? UINavigationController,
+           let congratulationsViewController = navController.viewControllers.first as? CongratulationsViewController {
+            congratulationsViewController.tournamentsViewController = tournamentsViewController
+            congratulationsViewController.tournament = tournament
+            present(navController, animated: true, completion: nil)
         }
     }
 }
