@@ -403,7 +403,7 @@ extension FeedVC: UploadVideoDelegate {
             self.tableView.endUpdates()
             self.tableView.scrollToRow(at: lastIndexPath, at: .top, animated: true)
         }
-                
+        fetchLeaderboard()
     }
 }
 
