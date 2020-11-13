@@ -145,11 +145,17 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
                             self.uploadVideoToSubmissionsStorage(url: croppedVideoURL) { (uploadedVideoURL) in
                                 if let uploadedVideoURL = uploadedVideoURL {
                                     print("uploaded video to storage....")
-                                    // create submission
-                                    if let submission = Submission(tournamentId: self.tournament.id, creatorProfileImageURL: userProfileImageURL, creatorUsername: username, videoURL: uploadedVideoURL, thumbnailURL: uploadedThumbnailURL) {
-                                        // save new submission
-                                        SubmissionManager().saveNew(submission)
+                                    // update participants property in tournament
+                                    API().updateParticipantsForTournament(tournament: self.tournament) {
+                                        // create submission
+                                        if let submission = Submission(tournamentId: self.tournament.id, creatorProfileImageURL: userProfileImageURL, creatorUsername: username, videoURL: uploadedVideoURL, thumbnailURL: uploadedThumbnailURL) {
+                                            // save new submission
+                                            SubmissionManager().saveNew(submission)
+                                            // update leaderboard for tournamnet
+                                            API().updateLeaderForTournament(tournament: self.tournament)
+                                        }
                                     }
+                                    
                                     // dismiss
                                     if let priorController = self.priorRecordingController {
                                         priorController.shouldDismiss = true
