@@ -200,6 +200,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		095537E2255EF3FE002126A9 /* Winner flow */ = {
+			isa = PBXGroup;
+			children = (
+				09F90242255CF23F00421B3F /* CongratulationsViewController.swift */,
+				09F90355255DAC5400421B3F /* UploadChallengeVideoViewController.swift */,
+			);
+			path = "Winner flow";
+			sourceTree = "<group>";
+		};
 		098E94762373406F00B9E520 /* Login Signup */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,8 +243,7 @@
 				6E6AA49322EFAB52006A1267 /* leaderboardVC.swift */,
 				DFC545682305AB79009F84B1 /* TopVideoController.swift */,
 				DFAF566A24F440FD00523ECF /* RulesViewController.swift */,
-				09F90242255CF23F00421B3F /* CongratulationsViewController.swift */,
-				09F90355255DAC5400421B3F /* UploadChallengeVideoViewController.swift */,
+				095537E2255EF3FE002126A9 /* Winner flow */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
