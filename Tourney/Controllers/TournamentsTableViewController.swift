@@ -137,14 +137,24 @@ class TournamentsTableViewController: UITableViewController {
         let tournamentsManager = TournamentManager()
         tournamentsManager.fetchActiveTournaments { (_tournaments) in
             if let _tournaments = _tournaments {
-                self.tournaments.append(contentsOf: _tournaments)
+                self.addTournamentsIfUnique(_tournaments: _tournaments)
                 self.tableView.reloadData()
             }
         }
         tournamentsManager.fetchWonTournaments { (_tournaments) in
             if let _tournaments = _tournaments {
-                self.tournaments.append(contentsOf: _tournaments)
+                self.addTournamentsIfUnique(_tournaments: _tournaments)
                 self.tableView.reloadData()
+            }
+        }
+    }
+    /// Add tournaments to `tournaments` when array does not already contain it.
+    private func addTournamentsIfUnique(_tournaments: [Tournament]) {
+        for tournament in _tournaments {
+            if !tournaments.contains(where: {
+                $0.id == tournament.id
+            }) {
+                tournaments.append(tournament)
             }
         }
     }
