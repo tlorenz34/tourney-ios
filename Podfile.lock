@@ -238,6 +238,9 @@ PODS:
   - Firebase/Firestore (7.0.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 7.0.0)
+  - Firebase/Functions (7.0.0):
+    - Firebase/CoreOnly
+    - FirebaseFunctions (~> 7.0.0)
   - Firebase/Storage (7.0.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 7.0.0)
@@ -281,6 +284,9 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30906.0)
+  - FirebaseFunctions (7.0.0):
+    - FirebaseCore (~> 7.0)
+    - GTMSessionFetcher/Core (~> 1.4)
   - FirebaseInstallations (7.1.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
@@ -361,6 +367,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/DynamicLinks
   - Firebase/Firestore
+  - Firebase/Functions
   - Firebase/Storage
   - Kingfisher
   - SwiftKeychainWrapper
@@ -378,6 +385,7 @@ SPEC REPOS:
     - FirebaseDatabase
     - FirebaseDynamicLinks
     - FirebaseFirestore
+    - FirebaseFunctions
     - FirebaseInstallations
     - FirebaseStorage
     - GoogleAppMeasurement
@@ -404,6 +412,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 2481b48ebfd233ef591095d79d76720ea85cde74
   FirebaseDynamicLinks: 71ed03780db3986e1bd386d6a1be44d09d4cd0ec
   FirebaseFirestore: 969dd448250bee681d0e2d0af89cbb76ef955bb0
+  FirebaseFunctions: 571aee227a021debe3e1092aa079f751623e233a
   FirebaseInstallations: 3de38553e86171b5f81d83cdeef63473d37bfdb0
   FirebaseStorage: ea52bc7a1cb540406ed1e1acfc2bf3946621ed34
   GoogleAppMeasurement: 7790ef975d1d463c8614cd949a847e612edf087a
@@ -418,6 +427,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
-PODFILE CHECKSUM: 95ce0217bfbed017430b4b695f471e42f56bf173
+PODFILE CHECKSUM: cd46f2271c9e61f150ea59e744a0b008d3906a58
 
 COCOAPODS: 1.10.0
