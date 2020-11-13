@@ -146,9 +146,10 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
                                 if let uploadedVideoURL = uploadedVideoURL {
                                     print("uploaded video to storage....")
                                     // create submission
-                                    let submission = Submission(tournamentId: self.tournament.id, creatorProfileImageURL: userProfileImageURL, creatorUsername: username, videoURL: uploadedVideoURL, thumbnailURL: uploadedThumbnailURL)
-                                    // save new submission
-                                    SubmissionManager().saveNew(submission)
+                                    if let submission = Submission(tournamentId: self.tournament.id, creatorProfileImageURL: userProfileImageURL, creatorUsername: username, videoURL: uploadedVideoURL, thumbnailURL: uploadedThumbnailURL) {
+                                        // save new submission
+                                        SubmissionManager().saveNew(submission)
+                                    }
                                     // dismiss
                                     if let priorController = self.priorRecordingController {
                                         priorController.shouldDismiss = true

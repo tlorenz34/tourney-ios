@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import Firebase
 
 struct Submission {
     let id: String
+    let creatorId: String
     let tournamentId: String
     let creatorProfileImageURL: URL
     let creatorUsername: String
@@ -20,6 +22,7 @@ struct Submission {
     
     init?(id: String, dictionary: [String : Any]) {
         guard let tournamentId = dictionary["tournamentId"] as? String,
+              let creatorId = dictionary["creatorId"] as? String,
               let creatorProfileImageURLString = dictionary["creatorProfileImageURL"] as? String,
               let creatorProfileImageURL = URL(string: creatorProfileImageURLString),
               let creatorUsername = dictionary["creatorUsername"] as? String,
@@ -33,6 +36,7 @@ struct Submission {
         }
         
         self.id = id
+        self.creatorId = creatorId
         self.tournamentId = tournamentId
         self.creatorProfileImageURL = creatorProfileImageURL
         self.creatorUsername = creatorUsername
@@ -41,8 +45,10 @@ struct Submission {
         self.views = views
         self.votes = votes
     }
-    init(tournamentId: String, creatorProfileImageURL: URL, creatorUsername: String, videoURL: URL, thumbnailURL: URL) {
+    init?(tournamentId: String, creatorProfileImageURL: URL, creatorUsername: String, videoURL: URL, thumbnailURL: URL) {
+        guard let currentUser = Auth.auth().currentUser else { return nil }
         self.id = UUID().uuidString
+        self.creatorId = currentUser.uid
         self.tournamentId = tournamentId
         self.creatorProfileImageURL = creatorProfileImageURL
         self.creatorUsername = creatorUsername
@@ -55,6 +61,7 @@ struct Submission {
     var dictionary: [String : Any] {
         return [
             "id": id,
+            "creatorId": creatorId,
             "tournamentId": tournamentId,
             "creatorProfileImageURL": creatorProfileImageURL.absoluteString,
             "creatorUsername": creatorUsername,
