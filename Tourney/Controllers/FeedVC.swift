@@ -171,7 +171,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         cell.submissionId = submission.id
         cell.delegate = self
         cell.usernameLabel.text = submission.creatorUsername
-        cell.viewsLabel.text = "\(submission.views)"
+        cell.viewsLabel.text = "\(submission.views) views"
         cell.profileImageView.kf.setImage(with: submission.creatorProfileImageURL)
         cell.thumbnailImageView.kf.setImage(with: submission.thumbnailURL)
         cell.voteButton.isEnabled = tournament.canInteract
