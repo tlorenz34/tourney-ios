@@ -204,20 +204,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         present(vc, animated: true) { vc.player?.play() }
     }
     
-    ///
+    /// Additional UI modifications
     private func configureViews() {
         // set ui for leaderboard
         firstPlaceProfileImageView.layer.borderColor = UIColor.systemYellow.cgColor
         secondPlaceProfileImageView.layer.borderColor = UIColor.gray.cgColor
         thirdPlaceProfileImageView.layer.borderColor = UIColor.orange.cgColor
-        // update challenge video
-        if let currentUser = Auth.auth().currentUser,
-           let parentTournamentWinnerId = tournament.parentTournamentWinnerId {
-            if currentUser.uid == parentTournamentWinnerId &&
-                tournament.featuredVideoURL == nil {
-                challengeButton.setTitle("Upload Challenge", for: .normal)
-            }
-        }
     }
     
     /// Fetch leadboard submissions
