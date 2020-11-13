@@ -13,7 +13,7 @@ struct Tournament {
     let id: String
     let featuredImageURL: URL
     /// Flag to determine whether the voting/submission phase has ended.
-    let canInteract: Bool
+    var canInteract: Bool
     let participants: Int
     /// Leader info (may be nil due to no leader due to no votes)
     let leaderId: String?
@@ -22,6 +22,7 @@ struct Tournament {
     let parentTournamentId: String?
     let parentTournamentWinnerId: String?
     var featuredVideoURL: URL?
+    var active: Bool
     
     /// Dictionary representation of object
     var dictionary: [String : Any] {
@@ -30,7 +31,8 @@ struct Tournament {
             "name": name,
             "featuredImageURL": featuredImageURL.absoluteString,
             "canInteract": canInteract,
-            "participants": participants
+            "participants": participants,
+            "active": active
         ]
         
         if let leaderId = leaderId {
@@ -71,7 +73,8 @@ struct Tournament {
               let participants = dictionary["participants"] as? Int,
               let featuredImageURLString = dictionary["featuredImageURL"] as? String,
               let featuredImageURL = URL(string: featuredImageURLString),
-              let canInteract = dictionary["canInteract"] as? Bool else {
+              let canInteract = dictionary["canInteract"] as? Bool,
+              let active = dictionary["active"] as? Bool else {
             return nil
         }
         self.id = id
@@ -79,6 +82,7 @@ struct Tournament {
         self.participants = participants
         self.featuredImageURL = featuredImageURL
         self.canInteract = canInteract
+        self.active = active
         
         // leader info
         if let leaderId = dictionary["leaderId"] as? String,
