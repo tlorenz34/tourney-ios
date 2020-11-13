@@ -36,7 +36,10 @@ struct TournamentManager {
      */
     func fetchWonTournaments(completion: @escaping (([Tournament]?) -> Void)) {
         guard let currentUser = Auth.auth().currentUser else { return }
-        baseQuery.whereField("parentTournamentWinnerId", isEqualTo: currentUser.uid).getDocuments { (snapshot, error) in
+        baseQuery
+            .whereField("parentTournamentWinnerId", isEqualTo: currentUser.uid)
+            .whereField("active", isEqualTo: true)
+            .getDocuments { (snapshot, error) in
             guard let snapshot = snapshot else {
                 completion(nil)
                 return
