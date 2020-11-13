@@ -305,7 +305,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="85j-sH-D74">
-                                <rect key="frame" x="0.0" y="255" width="375" height="372"/>
+                                <rect key="frame" x="0.0" y="255" width="375" height="362"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubmissionCell" rowHeight="344" id="hmW-ya-0fA" customClass="SubmissionCell" customModule="Tourney" customModuleProvider="target">
@@ -405,20 +405,23 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be the first to upload" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36h-G6-cej">
-                                <rect key="frame" x="0.0" y="612.5" width="375" height="14.5"/>
+                                <rect key="frame" x="0.0" y="602.5" width="375" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="XQW-rF-xmN">
-                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFU-Tb-n8K">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <color key="backgroundColor" red="0.86666666670000003" green="0.3921568627" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="F00-Uq-ilF"/>
+                                            <constraint firstAttribute="height" constant="50" id="F00-Uq-ilF"/>
                                         </constraints>
-                                        <state key="normal" title="Start Competing"/>
+                                        <state key="normal" title="Start Competing">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="rulesButtonTapped" destination="hFD-yr-YVI" eventType="touchUpInside" id="lkZ-io-3T0"/>
                                             <segue destination="jJ5-tK-a38" kind="show" identifier="toRulesVC" id="W5s-2v-Qzr"/>
@@ -433,14 +436,14 @@
                                     <constraint firstAttribute="width" constant="70" id="s08-U0-10j"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFf-fA-ef1">
-                                <rect key="frame" x="181" y="138" width="13" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFf-fA-ef1">
+                                <rect key="frame" x="186" y="138" width="3.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV3-Vy-7kc">
-                                <rect key="frame" x="184.5" y="153" width="6.5" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV3-Vy-7kc">
+                                <rect key="frame" x="186" y="153" width="3" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -452,14 +455,14 @@
                                     <constraint firstAttribute="height" constant="50" id="ug6-YB-egK"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGd-p0-gPZ">
-                                <rect key="frame" x="271" y="128" width="13" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGd-p0-gPZ">
+                                <rect key="frame" x="276" y="128" width="3.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y2-wY-0SZ">
-                                <rect key="frame" x="274.5" y="143" width="6.5" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y2-wY-0SZ">
+                                <rect key="frame" x="276" y="143" width="3" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -471,18 +474,39 @@
                                     <constraint firstAttribute="height" constant="50" id="q1X-ty-l3z"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z38-S9-q22">
-                                <rect key="frame" x="91" y="128" width="13" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z38-S9-q22">
+                                <rect key="frame" x="96" y="128" width="3.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjG-9W-lYr">
-                                <rect key="frame" x="94.5" y="143" width="6.5" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjG-9W-lYr">
+                                <rect key="frame" x="96" y="143" width="3" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6G-vG-5ot">
+                                <rect key="frame" x="72.5" y="70" width="50" height="50"/>
+                                <state key="normal" image="profile-placeholder"/>
+                                <connections>
+                                    <action selector="secondButtonPressed:" destination="hFD-yr-YVI" eventType="touchUpInside" id="gAb-Ce-HME"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2p-rA-myy">
+                                <rect key="frame" x="252.5" y="70" width="50" height="50"/>
+                                <state key="normal" image="profile-placeholder"/>
+                                <connections>
+                                    <action selector="thirdButtonPressed:" destination="hFD-yr-YVI" eventType="touchUpInside" id="nov-uW-XIA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUH-Zw-up7">
+                                <rect key="frame" x="152.5" y="60" width="70" height="70"/>
+                                <state key="normal" image="profile-placeholder"/>
+                                <connections>
+                                    <action selector="firstVideoPressed:" destination="hFD-yr-YVI" eventType="touchUpInside" id="Eqi-D2-s4J"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7q-49-G4T" customClass="CircleView" customModule="Tourney" customModuleProvider="target">
                                 <rect key="frame" x="87.5" y="60" width="20" height="20"/>
                                 <subviews>
@@ -537,32 +561,17 @@
                                     <constraint firstItem="L6f-9g-1Ln" firstAttribute="centerX" secondItem="IDh-Oy-mpz" secondAttribute="centerX" id="hzf-X5-mbD"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6G-vG-5ot">
-                                <rect key="frame" x="72.5" y="70" width="50" height="50"/>
-                                <connections>
-                                    <action selector="secondButtonPressed:" destination="hFD-yr-YVI" eventType="touchUpInside" id="gAb-Ce-HME"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUH-Zw-up7">
-                                <rect key="frame" x="152.5" y="60" width="70" height="70"/>
-                                <connections>
-                                    <action selector="firstVideoPressed:" destination="hFD-yr-YVI" eventType="touchUpInside" id="Eqi-D2-s4J"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2p-rA-myy">
-                                <rect key="frame" x="252.5" y="70" width="50" height="50"/>
-                                <connections>
-                                    <action selector="thirdButtonPressed:" destination="hFD-yr-YVI" eventType="touchUpInside" id="nov-uW-XIA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LD-v3-kG2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LD-v3-kG2">
                                 <rect key="frame" x="86" y="185" width="203" height="50"/>
                                 <color key="backgroundColor" red="0.49019607843137253" green="0.67843137254901964" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="a4R-C3-KqV"/>
                                     <constraint firstAttribute="width" constant="203" id="cDk-bc-Kq2"/>
                                 </constraints>
-                                <state key="normal" title="Challenge">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="titleEdgeInsets" minX="-35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="140" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Challenge" image="play.fill" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1464,7 +1473,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xcO-Wg-sga"/>
         <segue reference="GwX-NP-xWc"/>
         <segue reference="jyX-zH-4fh"/>
     </inferredMetricsTieBreakers>
@@ -1475,6 +1483,7 @@
         <image name="baseline_settings_black_48pt_3x" width="144" height="144"/>
         <image name="invite_friends" width="144" height="144"/>
         <image name="jan-kopriva-Sgv7CbCWcFE-unsplash" width="4000" height="6000"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="profile-placeholder" width="360" height="360"/>
         <image name="tourney-text-logo" width="332" height="129"/>
         <systemColor name="darkTextColor">
