@@ -145,24 +145,28 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
                             self.uploadVideoToSubmissionsStorage(url: croppedVideoURL) { (uploadedVideoURL) in
                                 if let uploadedVideoURL = uploadedVideoURL {
                                     print("uploaded video to storage....")
+                                    
                                     // update participants property in tournament
                                     API().updateParticipantsForTournament(tournament: self.tournament) {
+                                        
                                         // create submission
                                         if let submission = Submission(tournamentId: self.tournament.id, creatorProfileImageURL: userProfileImageURL, creatorUsername: username, videoURL: uploadedVideoURL, thumbnailURL: uploadedThumbnailURL) {
                                             // save new submission
                                             SubmissionManager().saveNew(submission)
+                                            
                                             // update leaderboard for tournamnet
-                                            API().updateLeaderForTournament(tournament: self.tournament)
+                                            API().updateLeaderForTournament(tournament: self.tournament) {
+                                                
+                                                // dismiss
+                                                if let priorController = self.priorRecordingController {
+                                                    priorController.shouldDismiss = true
+                                                }
+                                                self.dismiss(animated: true) {
+                                                    // delegate implementation
+                                                    self.delegate?.didUploadVideo(with: uploadedVideoURL.absoluteString)
+                                                }
+                                            }
                                         }
-                                    }
-                                    
-                                    // dismiss
-                                    if let priorController = self.priorRecordingController {
-                                        priorController.shouldDismiss = true
-                                    }
-                                    self.dismiss(animated: true) {
-                                        // delegate implementation
-                                        self.delegate?.didUploadVideo(with: uploadedVideoURL.absoluteString)
                                     }
                                     
                                 } else {

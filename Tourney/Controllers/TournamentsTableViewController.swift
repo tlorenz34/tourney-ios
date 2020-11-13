@@ -26,11 +26,11 @@ class TournamentsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchTournaments()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        fetchTournaments()
         // Present tournament if dynamic link is found
         if let dynamicLinkTourneyId = dynamicLinkTourneyId {
             // PASS DYNAMIC LINK TO VIDEO FEED
@@ -135,6 +135,10 @@ class TournamentsTableViewController: UITableViewController {
     
     /// Fetch active and won tournaments
     private func fetchTournaments() {
+        
+        // clear out tournaments
+        tournaments = []
+        // fetch active
         let tournamentsManager = TournamentManager()
         tournamentsManager.fetchActiveTournaments { (_tournaments) in
             if let _tournaments = _tournaments {
@@ -142,6 +146,7 @@ class TournamentsTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+        // fetch won
         tournamentsManager.fetchWonTournaments { (_tournaments) in
             if let _tournaments = _tournaments {
                 self.addTournamentsIfUnique(_tournaments: _tournaments)
