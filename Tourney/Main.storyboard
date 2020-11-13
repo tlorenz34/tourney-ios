@@ -429,7 +429,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bph-kZ-8FJ" customClass="ProfileImageView" customModule="Tourney" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="bph-kZ-8FJ" customClass="ProfileImageView" customModule="Tourney" customModuleProvider="target">
                                 <rect key="frame" x="152.5" y="60" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="9yJ-Sh-PPt"/>
@@ -448,7 +448,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PPB-Rp-PBc" customClass="ProfileImageView" customModule="Tourney" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="PPB-Rp-PBc" customClass="ProfileImageView" customModule="Tourney" customModuleProvider="target">
                                 <rect key="frame" x="252.5" y="70" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="h2Z-Fg-gQJ"/>
@@ -467,7 +467,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qM9-Jb-cje" customClass="ProfileImageView" customModule="Tourney" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="qM9-Jb-cje" customClass="ProfileImageView" customModule="Tourney" customModuleProvider="target">
                                 <rect key="frame" x="72.5" y="70" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="mC4-X8-vVq"/>
@@ -488,21 +488,18 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6G-vG-5ot">
                                 <rect key="frame" x="72.5" y="70" width="50" height="50"/>
-                                <state key="normal" image="profile-placeholder"/>
                                 <connections>
                                     <action selector="secondButtonPressed:" destination="hFD-yr-YVI" eventType="touchUpInside" id="gAb-Ce-HME"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2p-rA-myy">
                                 <rect key="frame" x="252.5" y="70" width="50" height="50"/>
-                                <state key="normal" image="profile-placeholder"/>
                                 <connections>
                                     <action selector="thirdButtonPressed:" destination="hFD-yr-YVI" eventType="touchUpInside" id="nov-uW-XIA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUH-Zw-up7">
                                 <rect key="frame" x="152.5" y="60" width="70" height="70"/>
-                                <state key="normal" image="profile-placeholder"/>
                                 <connections>
                                     <action selector="firstVideoPressed:" destination="hFD-yr-YVI" eventType="touchUpInside" id="Eqi-D2-s4J"/>
                                 </connections>
