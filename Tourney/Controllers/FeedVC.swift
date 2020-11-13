@@ -66,18 +66,21 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     
     // view first place video on leaderboard
     @IBAction func firstVideoPressed(_ sender: Any) {
-        self.selectedVideo = queried[0]
-        self.performSegue(withIdentifier: "toTopVideo", sender: nil)
+        if leaderboardSubmissions.indices.contains(0) {
+            playVideo(url: leaderboardSubmissions[0].videoURL)
+        }
     }
     // view second place video on leaderboard
     @IBAction func secondButtonPressed(_ sender: Any) {
-        self.selectedVideo = queried[1]
-        self.performSegue(withIdentifier: "toTopVideo", sender: nil)
+        if leaderboardSubmissions.indices.contains(1) {
+            playVideo(url: leaderboardSubmissions[1].videoURL)
+        }
     }
     // view third place video on leaderboard
     @IBAction func thirdButtonPressed(_ sender: Any) {
-        self.selectedVideo = queried[2]
-        self.performSegue(withIdentifier: "toTopVideo", sender: nil)
+        if leaderboardSubmissions.indices.contains(2) {
+            playVideo(url: leaderboardSubmissions[2].videoURL)
+        }
     }
     
     @IBAction func uploadVideoButtonTapped() {
@@ -112,6 +115,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     
     var tournament: Tournament!
     var submissions: [Submission] = []
+    /// Holds leaderboard submissions where index 0 is first, 1 is second, etc.
+    var leaderboardSubmissions: [Submission] = []
     
     var posts = [Post]()
     var post: Post!
@@ -128,10 +133,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     var cells: [SubmissionCell] = [];
     var cellPostkeys: [String] = []
     var firstRun: Bool = true
-    
-    var selectedVideo: Post!
-    var queried: [Post] = []
-    
+        
     var likedPosts: [String] = []
     
     // MARK: - View lifecycle
@@ -219,6 +221,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
                 print("error getting subs")
                 return
             }
+            self.leaderboardSubmissions = submissions
             self.setUpSubmissionsUI(submissions)
         }
     }
@@ -330,11 +333,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toTopVideo" {
-            if let destination = segue.destination as? TopVideoController {
-                destination.post = self.selectedVideo
-            }
-        } else if segue.identifier == "toUploadVideoVC" {
+        if segue.identifier == "toUploadVideoVC" {
             if let destination = segue.destination as? UploadVideo {
                 destination.delegate = self
             }
