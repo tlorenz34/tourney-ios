@@ -46,5 +46,6 @@ class TournamentCell: UITableViewCell {
         leaderDecorationView.isHidden = hide
         leaderUsernameLabel.isHidden = hide
         leaderProfileImageView.isHidden = hide
+        participantsLabel.isHidden = hide
     }
 }
