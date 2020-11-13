@@ -645,15 +645,15 @@
                         <outlet property="challengeButton" destination="7LD-v3-kG2" id="iJG-EU-YKs"/>
                         <outlet property="firstPlaceProfileImageView" destination="bph-kZ-8FJ" id="59B-Ku-Qv8"/>
                         <outlet property="firstPlaceUsernameLabel" destination="vFf-fA-ef1" id="gto-aE-MiL"/>
-                        <outlet property="firstPlaceViews" destination="mV3-Vy-7kc" id="VWZ-1E-TRq"/>
+                        <outlet property="firstPlaceVotesLabel" destination="mV3-Vy-7kc" id="aOa-iY-cO6"/>
                         <outlet property="noVideosPostedLabel" destination="36h-G6-cej" id="Zkr-c4-d5h"/>
                         <outlet property="secondPlaceProfileImageView" destination="qM9-Jb-cje" id="46a-Z9-ORX"/>
                         <outlet property="secondPlaceUsernameLabel" destination="Z38-S9-q22" id="C8m-6e-2LZ"/>
-                        <outlet property="secondPlaceViews" destination="OjG-9W-lYr" id="Fpk-hC-4Az"/>
+                        <outlet property="secondPlaceVotesLabel" destination="OjG-9W-lYr" id="AWi-yi-agg"/>
                         <outlet property="startCompetingButton" destination="TFU-Tb-n8K" id="kCP-SY-OnS"/>
                         <outlet property="tableView" destination="85j-sH-D74" id="jWV-Nz-HvL"/>
                         <outlet property="thirdPlaceProfileImageView" destination="PPB-Rp-PBc" id="mxo-Dj-HMP"/>
-                        <outlet property="thirdPlaceViews" destination="4Y2-wY-0SZ" id="jQD-SP-uig"/>
+                        <outlet property="thirdPlaceVotesLabel" destination="4Y2-wY-0SZ" id="5EI-32-qNh"/>
                         <outlet property="thirdlaceUsernameLabel" destination="iGd-p0-gPZ" id="vVQ-bc-EA4"/>
                         <segue destination="gSG-Sq-wle" kind="show" identifier="toTopVideo" id="0ew-Ft-8bm"/>
                         <segue destination="BJr-F5-TZn" kind="show" identifier="toRecordVideoVC" id="pSm-6N-PDa"/>

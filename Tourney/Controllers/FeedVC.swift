@@ -35,9 +35,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     @IBOutlet var thirdlaceUsernameLabel: UILabel!
     
     // leaderboard views
-    @IBOutlet var firstPlaceViews: UILabel!
-    @IBOutlet var secondPlaceViews: UILabel!
-    @IBOutlet var thirdPlaceViews: UILabel!
+    @IBOutlet var firstPlaceVotesLabel: UILabel!
+    @IBOutlet var secondPlaceVotesLabel: UILabel!
+    @IBOutlet var thirdPlaceVotesLabel: UILabel!
     
     @IBOutlet weak var noVideosPostedLabel: UILabel!
     @IBOutlet var startCompetingButton: UIButton!
@@ -231,19 +231,19 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             if index == 0 {
                 firstPlaceProfileImageView.kf.setImage(with: submission.creatorProfileImageURL)
                 firstPlaceUsernameLabel.text = submission.creatorUsername
-                firstPlaceViews.text = "\(submission.views)"
+                firstPlaceVotesLabel.text = "\(submission.votes)"
             }
             // second place
             if index == 1 {
                 secondPlaceProfileImageView.kf.setImage(with: submission.creatorProfileImageURL)
                 secondPlaceUsernameLabel.text = submission.creatorUsername
-                secondPlaceViews.text = "\(submission.views)"
+                secondPlaceVotesLabel.text = "\(submission.votes)"
             }
             // third place
             if index == 2 {
                 thirdPlaceProfileImageView.kf.setImage(with: submission.creatorProfileImageURL)
                 thirdlaceUsernameLabel.text = submission.creatorUsername
-                thirdPlaceViews.text = "\(submission.views)"
+                thirdPlaceVotesLabel.text = "\(submission.votes)"
             }
         }
     }
@@ -394,7 +394,7 @@ extension FeedVC: UIImagePickerControllerDelegate {
 }
 
 extension FeedVC: UploadVideoDelegate {
-    func didUploadVideoForSubmission(submission: Submission) {        
+    func didUploadVideoForSubmission(submission: Submission) {
         DispatchQueue.main.async {
             self.tableView.beginUpdates()
             self.submissions.append(submission)
