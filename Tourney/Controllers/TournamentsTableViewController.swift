@@ -99,7 +99,6 @@ class TournamentsTableViewController: UITableViewController {
         return cell
     }
     
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tournament = tournaments[indexPath.row]
         
@@ -115,6 +114,9 @@ class TournamentsTableViewController: UITableViewController {
                     // already uploaded featured video
                     performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
                 }
+            } else {
+                // regular user (not winner)
+                performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
             }
         } else {
             // regular user (not winner)
