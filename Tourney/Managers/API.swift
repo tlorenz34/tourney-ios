@@ -49,7 +49,7 @@ struct API {
     /**
      Updates leader fields of tournament with current leader (most votes)
      */
-    func updateLeaderForTournament(tournament: Tournament) {
+    func updateLeaderForTournament(tournament: Tournament, completion: @escaping (() -> Void)) {
         
         let params = updateLeaderForTournamentParams(tournamentId: tournament.id)
         
@@ -62,10 +62,12 @@ struct API {
                     print(code as Any)
                     print(message)
                     print(details as Any)
+                    completion()
                 }
             }
             guard let result = result, let data = result.data as? [String : Any] else { return }            
             print(data)
+            completion()
         }
     }
     /**
