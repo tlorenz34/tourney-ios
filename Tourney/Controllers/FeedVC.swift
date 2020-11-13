@@ -261,9 +261,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         SubmissionManager().fetchSubmissionsForTournament(tournamentId: tournament.id) { (submissions) in
             if let submissions = submissions {
                 self.submissions = submissions
-                self.submissions.append(contentsOf: submissions)
-                self.submissions.append(contentsOf: submissions)
-                self.submissions.append(contentsOf: submissions)
                 self.tableView.reloadData()
             }
         }
