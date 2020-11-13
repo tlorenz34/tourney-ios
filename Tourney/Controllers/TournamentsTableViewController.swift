@@ -79,7 +79,6 @@ class TournamentsTableViewController: UITableViewController {
            let currentUser = Auth.auth().currentUser {
             // if user won and challenge video has not been uploaded
             if parentTournamentWinnerId == currentUser.uid && tournament.featuredVideoURL == nil {
-                print("here for tournament: \(tournament.id)")
                 cell.noticeLabel.isHidden = false
                 cell.noticeLabel.text = "You've won!"
             } else {
@@ -101,7 +100,7 @@ class TournamentsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tournament = tournaments[indexPath.row]
-        
+
         // if user is winner and challenge video has not been upload, show won VC flow
         if let parentTournamentWinnerId = tournament.parentTournamentWinnerId,
            let currentUser = Auth.auth().currentUser {
