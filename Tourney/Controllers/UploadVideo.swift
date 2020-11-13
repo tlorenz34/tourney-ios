@@ -21,7 +21,7 @@ import MobileCoreServices
  */
 
 protocol UploadVideoDelegate: class {
-    func didUploadVideo(with videoURL: String)
+    func didUploadVideoForSubmission(submission: Submission)
 }
 
 class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -163,7 +163,7 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
                                                 }
                                                 self.dismiss(animated: true) {
                                                     // delegate implementation
-                                                    self.delegate?.didUploadVideo(with: uploadedVideoURL.absoluteString)
+                                                    self.delegate?.didUploadVideoForSubmission(submission: submission)
                                                 }
                                             }
                                         }

@@ -273,11 +273,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         }
     }
     
-    /// Fetch new submission with video URL and scroll to it.
-    private func fetchSubmissionAndShow(videoURL: URL) {
-        
-    }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // handle video playing
@@ -399,10 +394,16 @@ extension FeedVC: UIImagePickerControllerDelegate {
 }
 
 extension FeedVC: UploadVideoDelegate {
-    func didUploadVideo(with videoURL: String) {
-        if let url = URL(string: videoURL) {
-            fetchSubmissionAndShow(videoURL: url)
+    func didUploadVideoForSubmission(submission: Submission) {        
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            self.submissions.append(submission)
+            let lastIndexPath = IndexPath(row: self.submissions.count - 1, section: 0)
+            self.tableView.insertRows(at: [lastIndexPath], with: .none)
+            self.tableView.endUpdates()
+            self.tableView.scrollToRow(at: lastIndexPath, at: .top, animated: true)
         }
+                
     }
 }
 
