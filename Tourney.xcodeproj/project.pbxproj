@@ -28,6 +28,7 @@
 		09DA1F3A252F80B5002C830C /* TournamentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA1F39252F80B5002C830C /* TournamentManager.swift */; };
 		09DA1F77252FABEB002C830C /* Submission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA1F76252FABEB002C830C /* Submission.swift */; };
 		09DA1F7C252FAC41002C830C /* SubmissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA1F7B252FAC41002C830C /* SubmissionManager.swift */; };
+		09DBA29B255E25D400CF7FF0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBA29A255E25D400CF7FF0 /* API.swift */; };
 		09F9021D255CF0F400421B3F /* WinnerFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F9021C255CF0F400421B3F /* WinnerFlow.storyboard */; };
 		09F90243255CF23F00421B3F /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F90242255CF23F00421B3F /* CongratulationsViewController.swift */; };
 		09F902D4255CFC8D00421B3F /* SAConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F902D3255CFC8D00421B3F /* SAConfettiView.swift */; };
@@ -113,6 +114,7 @@
 		09DA1F39252F80B5002C830C /* TournamentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentManager.swift; sourceTree = "<group>"; };
 		09DA1F76252FABEB002C830C /* Submission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Submission.swift; sourceTree = "<group>"; };
 		09DA1F7B252FAC41002C830C /* SubmissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionManager.swift; sourceTree = "<group>"; };
+		09DBA29A255E25D400CF7FF0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		09F9021C255CF0F400421B3F /* WinnerFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WinnerFlow.storyboard; sourceTree = "<group>"; };
 		09F90242255CF23F00421B3F /* CongratulationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CongratulationsViewController.swift; path = "/Users/germanespitia/Documents/Lindy Technologies/Clients/Tourney/tourneyFinal/Tourney/Controllers/CongratulationsViewController.swift"; sourceTree = "<absolute>"; };
 		09F902D3255CFC8D00421B3F /* SAConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAConfettiView.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 		09DA1F3E252F80BA002C830C /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				09DBA29A255E25D400CF7FF0 /* API.swift */,
 				09DA1F7B252FAC41002C830C /* SubmissionManager.swift */,
 				09DA1F39252F80B5002C830C /* TournamentManager.swift */,
 			);
@@ -684,6 +687,7 @@
 				09DA1F77252FABEB002C830C /* Submission.swift in Sources */,
 				09F9035E255DBF9800421B3F /* TransparentNavigationBar.swift in Sources */,
 				6E6AA4A322EFAB53006A1267 /* RecordVideo.swift in Sources */,
+				09DBA29B255E25D400CF7FF0 /* API.swift in Sources */,
 				DF72AE04248C166000E730EF /* UIButtonExtension.swift in Sources */,
 				DFAF566F24F446DE00523ECF /* ruleView.swift in Sources */,
 				09DA1EF4252E8F4A002C830C /* ABTimeView.swift in Sources */,
