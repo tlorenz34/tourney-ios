@@ -13,6 +13,7 @@ class UploadChallengeVideoViewController: UploadVideo {
     @IBOutlet var uploadVideo: LoadingUIButton!
     
     @IBAction func uploadTapped() {
+        
         guard let videoURL = videoURL else {
             showAlert(title: "Missing Video", message: "Please select a video to upload!")
             return
@@ -38,11 +39,10 @@ class UploadChallengeVideoViewController: UploadVideo {
             self.uploadVideoToFeaturedVideosStorage(url: croppedVideoURL) { (uploadedVideoURL) in
                 if let uploadedVideoURL = uploadedVideoURL {
                     self.uploadVideo.hideLoading()
-                    // update tournament with featured video
-                    self.tournament.featuredVideoURL = uploadedVideoURL as URL
-                    TournamentManager().save(self.tournament)
-                    // update tournament tablevc tournament object with new updated object (makes it so that when user dismisses, they automatically can tap on tournament to view challenge video)
-                    self.replaceTournament(tournament: self.tournament)
+                    // update tournament and its parent
+                    self.updateChildAndParentTournament(challengeVideoURL: uploadedVideoURL as URL)                    
+                    // update tournament tablevc data source
+                    self.updateDataSource(tournament: self.tournament)
                     self.tournamentsViewController.tableView.reloadData()
                     // dismiss nav controller
                     self.navigationController?.dismiss(animated: true, completion: nil)
@@ -53,10 +53,35 @@ class UploadChallengeVideoViewController: UploadVideo {
             }
         }
     }
-    /// Replaces a tournament with passed tournament
-    private func replaceTournament(tournament: Tournament) {
+    
+    /// Updates child tournament to become active and disables parent tournamnet to become inactive.
+    func updateChildAndParentTournament(challengeVideoURL: URL) {
+        
+        let tournamentManager = TournamentManager()
+        
+        tournament.featuredVideoURL = challengeVideoURL
+        tournament.canInteract = true
+        tournament.active = true
+        tournamentManager.save(tournament)
+        
+        if let parentTournamentId = tournament.parentTournamentId,
+           var parentTournament = tournamentsViewController.tournaments.first(where: { $0.id == parentTournamentId }) {
+            parentTournament.active = false
+            tournamentManager.save(parentTournament)
+        }
+    }
+    /// Update `tournamentsViewController` data source
+    private func updateDataSource(tournament: Tournament) {
+        // switch new tournament for updated new tournament (now with `featuredVideoURL` property)
         if let index = tournamentsViewController.tournaments.firstIndex(where: { $0.id == tournament.id }) {
             self.tournamentsViewController.tournaments[index] = tournament
+        }
+        // remove old video (parent tournament is not inactive)
+        if let parentTournamentId = tournament.parentTournamentId {
+            tournamentsViewController.tournaments.removeAll(where: {
+                $0.id == parentTournamentId
+            })
+            tournamentsViewController.tableView.reloadData()
         }
     }
     
