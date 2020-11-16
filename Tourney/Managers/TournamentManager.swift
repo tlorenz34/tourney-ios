@@ -38,7 +38,6 @@ struct TournamentManager {
         guard let currentUser = Auth.auth().currentUser else { return }
         baseQuery
             .whereField("parentTournamentWinnerId", isEqualTo: currentUser.uid)
-            .whereField("active", isEqualTo: true)
             .getDocuments { (snapshot, error) in
             guard let snapshot = snapshot else {
                 completion(nil)
