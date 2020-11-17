@@ -18,7 +18,7 @@ struct DynamicLinkGenerator {
     private let host = "www.tourneyevents.com"
     private let queryItemKey = "tournament_id"
     private let bundleId = "com.tourney.Tourney"
-    private let appStoreId = 1477223676
+    private let appStoreId = "1477223676"
     
     /// Generates dynamic link to share a tournaments page.
     public func generateLinkForTournament(_ tournament: Tournament, completion: @escaping ((URL?) -> Void)) {
@@ -44,8 +44,10 @@ struct DynamicLinkGenerator {
         }
         
         // set params
-        shareLink.iOSParameters = DynamicLinkIOSParameters(bundleID: "com.tourney.Tourney")
-        shareLink.iOSParameters?.appStoreID = "1477223676"
+        guard let bundleId = Bundle.main.bundleIdentifier else { return }
+        
+        shareLink.iOSParameters = DynamicLinkIOSParameters(bundleID: bundleId)
+        shareLink.iOSParameters?.appStoreID = appStoreId
         
         shareLink.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
         shareLink.socialMetaTagParameters?.title = "\(tournament.name)"
