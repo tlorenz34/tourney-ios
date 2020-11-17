@@ -12,9 +12,9 @@ import Kingfisher
 class TournamentsTableViewController: UITableViewController {
     
     var tournaments: [Tournament] = []
-    /// Placeholder for dynamic link tournament id for new usrs
+    /// Dynamic link to handle non-logged in or app-closed users (get's handled after tournaments are loaded)
     var dynamicLinkTourneyId: String?
-    /// Dynamic link to handle already logged in user who opens app via dynamic link and opens app via dynamic link
+    /// Dynamic link to handle already logged in user who opens app via dynamic link
     var dynamicLinkTourneyIdForReturningUsers: String? {
         didSet {
             if let dynamicLink = dynamicLinkTourneyIdForReturningUsers {
