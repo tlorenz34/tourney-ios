@@ -14,12 +14,12 @@ class TournamentsTableViewController: UITableViewController {
     var tournaments: [Tournament] = []
     /// Placeholder for dynamic link tournament id for new usrs
     var dynamicLinkTourneyId: String?
+    /// Dynamic link to handle already logged in user who opens app via dynamic link and opens app via dynamic link
     var dynamicLinkTourneyIdForReturningUsers: String? {
-        didSet { // when user is already logge in and opens app via dynamic link
-            if let tournament = tournaments.first(where: { $0.id == dynamicLinkTourneyIdForReturningUsers }) {
-                performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
+        didSet {
+            if let dynamicLink = dynamicLinkTourneyIdForReturningUsers {
+                presentTournamentViaDynamicLink(dynamicLinkTournamentId: dynamicLink)
             }
-            dynamicLinkTourneyId = nil
         }
     }
     var firstLoad = true
@@ -31,13 +31,6 @@ class TournamentsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         fetchTournaments()
-        // Present tournament if dynamic link is found
-        if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-            if let tournament = tournaments.first(where: { $0.id == dynamicLinkTourneyId }) {
-                performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
-            }
-        }
-        dynamicLinkTourneyId = nil
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -151,6 +144,10 @@ class TournamentsTableViewController: UITableViewController {
             if let _tournaments = _tournaments {
                 self.addTournamentsIfUnique(_tournaments: _tournaments)
                 self.tableView.reloadData()
+                // check if dynamic link is available to be passed
+                if let dynamicLink = self.dynamicLinkTourneyId {
+                    self.presentTournamentViaDynamicLink(dynamicLinkTournamentId: dynamicLink)
+                }
             }
         }
         // fetch won
@@ -170,5 +167,14 @@ class TournamentsTableViewController: UITableViewController {
                 tournaments.append(tournament)
             }
         }
+    }
+    /// Present tournament given dynamic link
+    func presentTournamentViaDynamicLink(dynamicLinkTournamentId: String) {
+        // Present tournament if dynamic link is found
+        if let tournament = tournaments.first(where: { $0.id == dynamicLinkTournamentId }) {
+            performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
+        }
+        // reset dynamic link property
+        dynamicLinkTourneyId = nil
     }
 }
