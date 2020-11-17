@@ -16,7 +16,7 @@ class TournamentsTableViewController: UITableViewController {
     var dynamicLinkTourneyId: String?
     var dynamicLinkTourneyIdForReturningUsers: String? {
         didSet { // when user is already logge in and opens app via dynamic link
-            if let tournament = tournaments.first(where: { $0.id == dynamicLinkTourneyId }) {
+            if let tournament = tournaments.first(where: { $0.id == dynamicLinkTourneyIdForReturningUsers }) {
                 performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
             }
             dynamicLinkTourneyId = nil
