@@ -91,11 +91,13 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     }
     /// Invite a user by sending a unique tournament/competition link through iMessage
     @IBAction func inviteTapped(_ sender: Any) {
-        if MFMessageComposeViewController.canSendText() {
-            let controller = MFMessageComposeViewController()
-            controller.body = "Think you can beat me? Start competing against me by uploading a video to the Tourney app. Accept this challenge by clicking the link https://tourney.page.link/\(activeFilter!)"
-            controller.messageComposeDelegate = self
-            self.present(controller, animated: true, completion: nil)
+        
+        guard let tournament = tournament else { return }
+        
+        DynamicLinkGenerator().generateLinkForTournament(tournament) { (url) in
+            if let url = url {
+                self.sendMessageWithURL(url: url)
+            }
         }
     }
     /// Plays challenge video or request challenge video to be uploaded depending on user tapping.
@@ -273,6 +275,16 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
                     }
                 }
             }
+        }
+    }
+    
+    /// Display text mesage controller to share link via text
+    private func sendMessageWithURL(url: URL) {
+        if MFMessageComposeViewController.canSendText() {
+            let controller = MFMessageComposeViewController()
+            controller.body = "Think you can beat me? Start competing against me by uploading a video to the Tourney app. Accept this challenge by clicking the link \(url.absoluteString)"
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
         }
     }
     
