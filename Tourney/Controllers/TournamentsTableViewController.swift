@@ -16,10 +16,10 @@ class TournamentsTableViewController: UITableViewController {
     var dynamicLinkTourneyId: String?
     var dynamicLinkTourneyIdForReturningUsers: String? {
         didSet { // when user is already logge in and opens app via dynamic link
-            // PASS DYNAMIC LINK TO VIDEO FEED
-            // in prepForSegue, set FeedVC.activeFilter to the tournament id
-            // change activeFilter property name to a more accurate representation of what it means
-            // RESET DYNAMIC LINK TO NIL
+            if let tournament = tournaments.first(where: { $0.id == dynamicLinkTourneyId }) {
+                performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
+            }
+            dynamicLinkTourneyId = nil
         }
     }
     var firstLoad = true
@@ -33,11 +33,11 @@ class TournamentsTableViewController: UITableViewController {
         fetchTournaments()
         // Present tournament if dynamic link is found
         if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-            // PASS DYNAMIC LINK TO VIDEO FEED
-            // in prepForSegue, set FeedVC.activeFilter to the tournament id
-            // change activeFilter property name to a more accurate representation of what it means
-            // RESET DYNAMIC LINK TO NIL
+            if let tournament = tournaments.first(where: { $0.id == dynamicLinkTourneyId }) {
+                performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
+            }
         }
+        dynamicLinkTourneyId = nil
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
