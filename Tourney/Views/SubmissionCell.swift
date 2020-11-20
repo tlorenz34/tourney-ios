@@ -18,6 +18,7 @@ import Kingfisher
 
 protocol SubmissionCellDelegate: class {
     func didVoteForSubmission(submissionId: String)
+    func didPlayVideo(submissionId: String)
 }
 
 class SubmissionCell: UITableViewCell {
@@ -149,6 +150,10 @@ class SubmissionCell: UITableViewCell {
         player.replaceCurrentItem(with: playerItem)
         player.automaticallyWaitsToMinimizeStalling = true
         player.play()
+        // notify delegate
+        if let submissionId = submissionId {
+            delegate?.didPlayVideo(submissionId: submissionId)
+        }        
     }        
     
     func updateLikesInUI(like: Bool) {

@@ -319,8 +319,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
             currentCellPlaying.stopVideo()
             newMostVisibleCandidate.playVideo(videoURL: submission.videoURL)
             currentCellPlaying = newMostVisibleCandidate
-            // update video views
-            PostManager(submissionId: submission.id).addView()
         }
     }
         
@@ -424,6 +422,9 @@ extension FeedVC: MFMessageComposeViewControllerDelegate {
     }
 }
 extension FeedVC: SubmissionCellDelegate {
+    func didPlayVideo(submissionId: String) {
+        PostManager(submissionId: submissionId).addView()
+    }
     func didVoteForSubmission(submissionId: String) {
         voteForSubmission(submissionId: submissionId)
     }
