@@ -19,6 +19,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var signUpEmailField: UITextField!
     @IBOutlet weak var signUpPasswordField: UITextField!
+    @IBOutlet weak var checkBtn: UIButton!
     
     var userUid: String!
     var emailField: String!
@@ -27,6 +28,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     var username: String!
     var imageSelected = false
     var dynamicLinkTourneyId: String?
+    var termAccepted = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         self.usernameField.delegate = self
+        checkBtn.setImage(UIImage(systemName: "square"), for: .normal)
         print(dynamicLinkTourneyId)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -44,11 +47,18 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     @IBAction func completeAccount(_ sender: LoadingUIButton){
         
+        
+        //alert user if term not accepted
+        if termAccepted == false {
+            alert(title: "Oh Oh", message: "Make sure you accept the Terms & Conditions")
+        }
+        
         // alert user if profile picture has not been set
         if imageSelected == false {
             alert(title: "Profile Picture", message: "Set up a profile picture before creating an account!")
             return
         }
+        
         // alert username has not been set
         if let username = usernameField.text {
             if username.count == 0 {
@@ -91,6 +101,22 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     @IBAction func cancel(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func acceptTerm(_ sender: UIButton) {
+        termAccepted = !termAccepted
+        if (!termAccepted) {
+            sender.setImage(UIImage(systemName: "square"), for: .normal)
+        } else {
+            sender.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        }
+    }
+    
+    @IBAction func openTerm(_ sender: UIButton) {
+        guard let url = URL(string: "https://example.com") else {
+            return
+        }
+        UIApplication.shared.open(url)
     }
     
     // MARK: - Helpers

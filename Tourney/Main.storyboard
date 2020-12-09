@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1113,8 +1113,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJh-CY-GQN" customClass="LoadingUIButton" customModule="Tourney" customModuleProvider="target">
+                                <rect key="frame" x="40" y="420" width="119" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SCe-Gi-N9P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Terms &amp; Conditions">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="openTerm:" destination="tGY-Ki-3g3" eventType="touchUpInside" id="IBn-8X-moM"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5k-V7-qjv" customClass="LoadingUIButton" customModule="Tourney" customModuleProvider="target">
-                                <rect key="frame" x="16" y="444" width="343" height="50"/>
+                                <rect key="frame" x="16" y="464" width="343" height="50"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="lq9-4X-Hla"/>
@@ -1157,6 +1170,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxR-ay-Ji2">
+                                <rect key="frame" x="17" y="420" width="18" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JJD-g0-IR1"/>
+                                    <constraint firstAttribute="width" constant="18" id="yiq-hl-NMY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="check">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="acceptTerm:" destination="tGY-Ki-3g3" eventType="touchUpInside" id="5HR-9D-pLD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dkg-y4-lpB"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1171,15 +1198,19 @@
                             <constraint firstItem="dkg-y4-lpB" firstAttribute="trailing" secondItem="d5k-V7-qjv" secondAttribute="trailing" constant="16" id="Gry-Ib-nGV"/>
                             <constraint firstItem="YdH-a3-V7H" firstAttribute="top" secondItem="ZuX-Yt-mao" secondAttribute="bottom" constant="32" id="Hps-km-Ln2"/>
                             <constraint firstItem="dkg-y4-lpB" firstAttribute="trailing" secondItem="YdH-a3-V7H" secondAttribute="trailing" constant="16" id="K0h-ip-Grt"/>
+                            <constraint firstItem="qJh-CY-GQN" firstAttribute="leading" secondItem="OxR-ay-Ji2" secondAttribute="trailing" constant="5" id="NdZ-7N-mG7"/>
                             <constraint firstItem="dkg-y4-lpB" firstAttribute="trailing" secondItem="aDM-jB-naQ" secondAttribute="trailing" constant="16" id="QFS-ua-jaF"/>
                             <constraint firstItem="aDM-jB-naQ" firstAttribute="leading" secondItem="dkg-y4-lpB" secondAttribute="leading" constant="16" id="ZMg-2h-FAQ"/>
+                            <constraint firstItem="OxR-ay-Ji2" firstAttribute="leading" secondItem="dkg-y4-lpB" secondAttribute="leading" constant="17" id="bqN-jY-iEg"/>
                             <constraint firstItem="d5k-V7-qjv" firstAttribute="leading" secondItem="dkg-y4-lpB" secondAttribute="leading" constant="16" id="ddB-fK-FO4"/>
                             <constraint firstItem="aDM-jB-naQ" firstAttribute="top" secondItem="ZuX-Yt-mao" secondAttribute="bottom" constant="90" id="ejk-gr-cJ9"/>
                             <constraint firstItem="YdH-a3-V7H" firstAttribute="leading" secondItem="dkg-y4-lpB" secondAttribute="leading" constant="16" id="grY-iV-o0V"/>
                             <constraint firstItem="ZuX-Yt-mao" firstAttribute="top" secondItem="dkg-y4-lpB" secondAttribute="top" constant="80" id="jKB-uQ-VWV"/>
+                            <constraint firstItem="OxR-ay-Ji2" firstAttribute="top" secondItem="XHX-kj-FyG" secondAttribute="bottom" constant="10" id="lgN-vS-jDW"/>
                             <constraint firstItem="eb4-nb-0oX" firstAttribute="top" secondItem="YdH-a3-V7H" secondAttribute="bottom" constant="66" id="m2V-ph-3o4"/>
                             <constraint firstItem="dkg-y4-lpB" firstAttribute="trailing" secondItem="eb4-nb-0oX" secondAttribute="trailing" constant="16" id="mGy-nC-Xy2"/>
-                            <constraint firstItem="d5k-V7-qjv" firstAttribute="top" secondItem="aDM-jB-naQ" secondAttribute="bottom" constant="115" id="pfd-4n-L99"/>
+                            <constraint firstItem="d5k-V7-qjv" firstAttribute="top" secondItem="aDM-jB-naQ" secondAttribute="bottom" constant="135" id="pfd-4n-L99"/>
+                            <constraint firstItem="OxR-ay-Ji2" firstAttribute="top" secondItem="qJh-CY-GQN" secondAttribute="top" id="rxh-Om-qef"/>
                             <constraint firstItem="ZuX-Yt-mao" firstAttribute="centerX" secondItem="aDM-jB-naQ" secondAttribute="centerX" id="tRl-Qs-EsP"/>
                             <constraint firstItem="aDM-jB-naQ" firstAttribute="top" secondItem="XHX-kj-FyG" secondAttribute="bottom" constant="-131" id="ter-xn-g6V"/>
                             <constraint firstItem="5Cc-Vf-Azb" firstAttribute="leading" secondItem="dkg-y4-lpB" secondAttribute="leading" constant="16" id="zOL-21-edF"/>
@@ -1187,6 +1218,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="3si-EA-B3I"/>
                     <connections>
+                        <outlet property="checkBtn" destination="OxR-ay-Ji2" id="eQh-p6-1Sm"/>
                         <outlet property="completeSignInBtn" destination="d5k-V7-qjv" id="Vt3-18-xuR"/>
                         <outlet property="signUpEmailField" destination="YdH-a3-V7H" id="iuZ-8Z-MLC"/>
                         <outlet property="signUpPasswordField" destination="eb4-nb-0oX" id="H7p-wt-MaI"/>
@@ -1197,7 +1229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAR-dB-Cve" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="177" y="132"/>
+            <point key="canvasLocation" x="176.80000000000001" y="131.78410794602701"/>
         </scene>
         <!--User Profile-->
         <scene sceneID="lmF-BH-of2">
@@ -1490,6 +1522,7 @@
         <image name="TourneyCompetitionLogoWHITE" width="1983" height="357"/>
         <image name="baseline_person_black_48pt_3x" width="144" height="144"/>
         <image name="baseline_settings_black_48pt_3x" width="144" height="144"/>
+        <image name="check" width="128" height="128"/>
         <image name="invite_friends" width="144" height="144"/>
         <image name="jan-kopriva-Sgv7CbCWcFE-unsplash" width="4000" height="6000"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
