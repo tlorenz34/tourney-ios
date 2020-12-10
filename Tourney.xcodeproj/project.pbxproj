@@ -64,6 +64,8 @@
 		6E6AA4AC22EFAB78006A1267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E6AA4AB22EFAB78006A1267 /* Main.storyboard */; };
 		6E6AA4AE22EFAB8A006A1267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */; };
 		6E6AA4B222EFABF6006A1267 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */; };
+		84A5CCED258196F1001649FB /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5CCEC258196F1001649FB /* TermsAndConditionsViewController.swift */; };
+		84A5CCF22581A0FC001649FB /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5CCF12581A0FC001649FB /* InitialViewController.swift */; };
 		DF0B82472360DE1E000DDF32 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B82462360DE1E000DDF32 /* LoginVC.swift */; };
 		DF0B824D2361EE99000DDF32 /* SignUpLogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B824C2361EE99000DDF32 /* SignUpLogInVC.swift */; };
 		DF72AE04248C166000E730EF /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF72AE03248C166000E730EF /* UIButtonExtension.swift */; };
@@ -118,7 +120,6 @@
 		09DA1F7B252FAC41002C830C /* SubmissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionManager.swift; sourceTree = "<group>"; };
 		09DBA29A255E25D400CF7FF0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		09F9021C255CF0F400421B3F /* WinnerFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WinnerFlow.storyboard; sourceTree = "<group>"; };
-		09F90242255CF23F00421B3F /* CongratulationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CongratulationsViewController.swift; path = "/Users/germanespitia/Documents/Lindy Technologies/Clients/Tourney/tourneyFinal/Tourney/Controllers/CongratulationsViewController.swift"; sourceTree = "<absolute>"; };
 		09F902D3255CFC8D00421B3F /* SAConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAConfettiView.swift; sourceTree = "<group>"; };
 		09F902E1255CFCA800421B3F /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
 		09F902E3255CFCA800421B3F /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
@@ -159,6 +160,8 @@
 		6E6AA4AB22EFAB78006A1267 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84A5CCEC258196F1001649FB /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		84A5CCF12581A0FC001649FB /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		8E7F4B9CBDBABBE5D7A0C2C3 /* Pods_TourneyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourneyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6849550BE28B7D56F62AAA /* Pods-Tourney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tourney.release.xcconfig"; path = "Target Support Files/Pods-Tourney/Pods-Tourney.release.xcconfig"; sourceTree = "<group>"; };
 		DF0B82462360DE1E000DDF32 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -206,7 +209,6 @@
 		095537E2255EF3FE002126A9 /* Winner flow */ = {
 			isa = PBXGroup;
 			children = (
-				09F90242255CF23F00421B3F /* CongratulationsViewController.swift */,
 				09F90355255DAC5400421B3F /* UploadChallengeVideoViewController.swift */,
 			);
 			path = "Winner flow";
@@ -218,6 +220,8 @@
 				DF0B824C2361EE99000DDF32 /* SignUpLogInVC.swift */,
 				DF0B82462360DE1E000DDF32 /* LoginVC.swift */,
 				6E6AA49022EFAB52006A1267 /* SignUpVC.swift */,
+				84A5CCEC258196F1001649FB /* TermsAndConditionsViewController.swift */,
+				84A5CCF12581A0FC001649FB /* InitialViewController.swift */,
 			);
 			path = "Login Signup";
 			sourceTree = "<group>";
@@ -681,6 +685,7 @@
 				DF0B824D2361EE99000DDF32 /* SignUpLogInVC.swift in Sources */,
 				6E6AA4A422EFAB53006A1267 /* Post.swift in Sources */,
 				09DA1F35252F8077002C830C /* Tournament.swift in Sources */,
+				84A5CCF22581A0FC001649FB /* InitialViewController.swift in Sources */,
 				09DA1EF1252E8F4A002C830C /* ABThumbnailsManager.swift in Sources */,
 				09F90356255DAC5400421B3F /* UploadChallengeVideoViewController.swift in Sources */,
 				09DA1F7C252FAC41002C830C /* SubmissionManager.swift in Sources */,
@@ -712,6 +717,7 @@
 				09DA1EF2252E8F4A002C830C /* ABVideoRangeSlider.swift in Sources */,
 				09DA1EED252E8F4A002C830C /* ABBorder.swift in Sources */,
 				6E6AA45B22EFAA39006A1267 /* AppDelegate.swift in Sources */,
+				84A5CCED258196F1001649FB /* TermsAndConditionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

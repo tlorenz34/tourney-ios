@@ -22,7 +22,8 @@ class SignOut: UIViewController {
         try! Auth.auth().signOut()
         
         KeychainWrapper.standard.removeObject(forKey: "uid")
-        self.performSegue(withIdentifier: "signedOut", sender: nil)
+//        self.performSegue(withIdentifier: "signedOut", sender: nil)
+		NotificationCenter.default.post(name: .signOutNotification, object: nil)
         
     }
     @IBAction func goBackToOneButtonTapped(_ sender: Any) {

@@ -49,13 +49,14 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         
         //alert user if term not accepted
-        if termAccepted == false {
-            alert(title: "Oh Oh", message: "Make sure you accept the Terms & Conditions")
+        guard termAccepted == true else {
+            alert(title: "Terms & Conditions", message: "Please check and accept our Terms & Conditions to continue.")
+			return
         }
         
         // alert user if profile picture has not been set
-        if imageSelected == false {
-            alert(title: "Profile Picture", message: "Set up a profile picture before creating an account!")
+        guard imageSelected == true else {
+            alert(title: "Profile Picture", message: "Please set up a profile picture before creating an account.")
             return
         }
         
@@ -106,17 +107,10 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBAction func acceptTerm(_ sender: UIButton) {
         termAccepted = !termAccepted
         if (!termAccepted) {
-            sender.setImage(UIImage(systemName: "square"), for: .normal)
+            checkBtn.setImage(UIImage(systemName: "square"), for: .normal)
         } else {
-            sender.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+			checkBtn.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         }
-    }
-    
-    @IBAction func openTerm(_ sender: UIButton) {
-        guard let url = URL(string: "https://example.com") else {
-            return
-        }
-        UIApplication.shared.open(url)
     }
     
     // MARK: - Helpers
