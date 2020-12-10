@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,6 +19,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKd-KD-8W3">
                                 <rect key="frame" x="16" y="114" width="343" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hGk-co-dat"/>
                                 </constraints>
@@ -30,6 +31,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P4L-J9-diD">
                                 <rect key="frame" x="16" y="190" width="343" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="4FJ-Yp-5BA"/>
                                     <constraint firstAttribute="height" constant="50" id="ggw-Lz-2vz"/>
@@ -560,7 +562,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LD-v3-kG2">
                                 <rect key="frame" x="86" y="185" width="203" height="50"/>
-                                <color key="backgroundColor" red="0.49019607843137253" green="0.67843137254901964" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41974714209240171" green="0.64086834833554962" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="a4R-C3-KqV"/>
                                     <constraint firstAttribute="width" constant="203" id="cDk-bc-Kq2"/>
@@ -1087,6 +1089,7 @@
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDM-jB-naQ">
                                 <rect key="frame" x="16" y="279" width="343" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="g1s-lk-8QN"/>
                                 </constraints>
@@ -1095,6 +1098,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email (user@example.com)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YdH-a3-V7H">
                                 <rect key="frame" x="16" y="221" width="343" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hIJ-tL-XMl"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="plj-Oi-43d"/>
@@ -1105,6 +1109,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eb4-nb-0oX">
                                 <rect key="frame" x="16" y="337" width="343" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="E0K-zC-q1J"/>
                                     <constraint firstAttribute="height" constant="50" id="aRQ-zC-vcQ"/>
@@ -1326,25 +1331,16 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDD-st-g4n">
                                 <rect key="frame" x="0.0" y="208" width="375" height="250"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="K5f-Q0-yEd"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="R2n-Ys-FfZ"/>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="FdW-db-FED">
-                                <rect key="frame" x="168" y="163" width="39" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="hqg-dO-ALH"/>
-                                    <constraint firstAttribute="width" constant="39" id="k09-Wn-Fqb"/>
-                                </constraints>
-                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTD-8M-EOs">
-                                <rect key="frame" x="58" y="547" width="259" height="51"/>
+                                <rect key="frame" x="58" y="558" width="259" height="40"/>
                                 <color key="backgroundColor" red="0.99278236040609136" green="0.86247994611781387" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="FqH-1j-uqm"/>
-                                    <constraint firstAttribute="width" constant="259" id="KAw-bR-rgS"/>
+                                    <constraint firstAttribute="width" constant="259" id="Oz4-6n-Hga"/>
+                                    <constraint firstAttribute="height" constant="40" id="lku-Ob-wx2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="START COMPETING">
@@ -1357,8 +1353,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hg-8e-XD8">
                                 <rect key="frame" x="23" y="20" width="34" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="Njl-DN-Y4X"/>
-                                    <constraint firstAttribute="height" constant="30" id="jUN-u0-rbH"/>
+                                    <constraint firstAttribute="width" constant="34" id="Z9Z-uO-YEy"/>
+                                    <constraint firstAttribute="height" constant="30" id="hSZ-5w-j6s"/>
                                 </constraints>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1367,18 +1363,27 @@
                                     <action selector="cancel:" destination="jJ5-tK-a38" eventType="touchUpInside" id="33r-ex-Nzd"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="FdW-db-FED">
+                                <rect key="frame" x="74" y="479.5" width="226" height="27.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27.5" id="MPY-2R-MbW"/>
+                                    <constraint firstAttribute="width" constant="226" id="WKb-HT-QlO"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Cdf-ge-mJR"/>
                         <color key="backgroundColor" red="0.3146297716" green="0.85911722720000006" blue="0.44390886569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0Hg-8e-XD8" firstAttribute="top" secondItem="Cdf-ge-mJR" secondAttribute="top" constant="20" id="4IZ-PA-0pM"/>
-                            <constraint firstItem="Cdf-ge-mJR" firstAttribute="trailing" secondItem="FdW-db-FED" secondAttribute="trailing" constant="168" id="MXG-kn-ghV"/>
-                            <constraint firstItem="0Hg-8e-XD8" firstAttribute="leading" secondItem="Cdf-ge-mJR" secondAttribute="leading" constant="23" id="WJI-Wt-x2J"/>
-                            <constraint firstItem="OTD-8M-EOs" firstAttribute="leading" secondItem="Cdf-ge-mJR" secondAttribute="leading" constant="58" id="cR1-z8-zkS"/>
-                            <constraint firstItem="Cdf-ge-mJR" firstAttribute="trailing" secondItem="OTD-8M-EOs" secondAttribute="trailing" constant="58" id="iD4-i3-DIS"/>
-                            <constraint firstItem="FdW-db-FED" firstAttribute="leading" secondItem="Cdf-ge-mJR" secondAttribute="leading" constant="168" id="iNS-6B-cIo"/>
-                            <constraint firstItem="Cdf-ge-mJR" firstAttribute="bottom" secondItem="OTD-8M-EOs" secondAttribute="bottom" constant="69" id="lgs-yH-7Vb"/>
-                            <constraint firstItem="FdW-db-FED" firstAttribute="top" secondItem="Cdf-ge-mJR" secondAttribute="top" constant="163" id="nxv-WU-XEs"/>
+                            <constraint firstItem="OTD-8M-EOs" firstAttribute="top" secondItem="FdW-db-FED" secondAttribute="bottom" constant="51" id="8Gk-ha-Pay"/>
+                            <constraint firstItem="Cdf-ge-mJR" firstAttribute="trailing" secondItem="FdW-db-FED" secondAttribute="trailing" constant="75" id="97u-XS-4v9"/>
+                            <constraint firstItem="Cdf-ge-mJR" firstAttribute="bottom" secondItem="OTD-8M-EOs" secondAttribute="bottom" constant="69" id="UzN-K4-zIV"/>
+                            <constraint firstItem="OTD-8M-EOs" firstAttribute="leading" secondItem="Cdf-ge-mJR" secondAttribute="leading" constant="58" id="bUP-Ev-ZMq"/>
+                            <constraint firstItem="0Hg-8e-XD8" firstAttribute="top" secondItem="Cdf-ge-mJR" secondAttribute="top" constant="20" id="cqL-f0-mKR"/>
+                            <constraint firstItem="FdW-db-FED" firstAttribute="leading" secondItem="Cdf-ge-mJR" secondAttribute="leading" constant="74" id="kEH-em-iC0"/>
+                            <constraint firstItem="Cdf-ge-mJR" firstAttribute="trailing" secondItem="OTD-8M-EOs" secondAttribute="trailing" constant="58" id="sBg-TY-ryO"/>
+                            <constraint firstItem="0Hg-8e-XD8" firstAttribute="leading" secondItem="Cdf-ge-mJR" secondAttribute="leading" constant="23" id="t2Y-IY-Zl8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pxa-hb-sJS"/>
@@ -1389,7 +1394,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUh-AK-U4L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2953" y="1297"/>
+            <point key="canvasLocation" x="2952.8000000000002" y="1295.8020989505249"/>
         </scene>
         <!--Sign Out-->
         <scene sceneID="pva-dJ-iaa">
@@ -1482,8 +1487,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GwX-NP-xWc"/>
-        <segue reference="cIv-nT-Xdz"/>
+        <segue reference="P0u-iu-Uw9"/>
+        <segue reference="o0G-E3-jeL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BMX_Competition_1" width="7952" height="5304"/>
@@ -1519,6 +1524,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

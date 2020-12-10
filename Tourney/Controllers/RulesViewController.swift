@@ -22,7 +22,7 @@ class RulesViewController: UIViewController, UIScrollViewDelegate {
     let rule1 = ["title":"Watch challenge video","image":"watchVideo"]
     let rule2 = ["title":"Start competing by recording and uploading","image":"competitionStart"]
     let rule3 = ["title":"Everyone can vote","image":"vote"]
-    let rule4 = ["title":"Whoever has the most votes by Sunday wins","image":"competitionEnd"]
+    let rule4 = ["title":"Whoever has the most votes after three days wins","image":"competitionEnd"]
     let rule5 = ["title":"Winner has to upload a new challenge","image":"trophy"]
     let rule6 = ["title":"Invite your friends","image":"invite_friends"]
     

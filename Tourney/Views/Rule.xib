@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,13 +22,17 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="119" id="I5x-wf-jbP"/>
                                 <constraint firstAttribute="height" constant="113" id="SH4-2c-1qV"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="113" id="cfe-FU-cGr"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="119" id="lwC-XB-8na"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload as many times as possible to the " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDp-fV-s8e" userLabel="Title Label">
                             <rect key="frame" x="8" y="173" width="466" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="2G8-uz-5Mn"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="9dr-qD-G6T"/>
                                 <constraint firstAttribute="width" constant="466" id="Pyl-02-b1A"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="466" id="hRI-2T-nb4"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -37,13 +41,19 @@
                     </subviews>
                     <color key="backgroundColor" red="0.3146297716" green="0.85911722720000006" blue="0.44390886569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="cDp-fV-s8e" secondAttribute="trailing" constant="8" id="1q0-v5-6l6"/>
+                        <constraint firstAttribute="bottom" secondItem="cDp-fV-s8e" secondAttribute="bottom" constant="56" id="29k-50-mPO"/>
                         <constraint firstItem="f5N-K1-byw" firstAttribute="leading" secondItem="KjC-8z-eHs" secondAttribute="leading" constant="182" id="8Ll-pq-Xmk"/>
+                        <constraint firstItem="cDp-fV-s8e" firstAttribute="leading" secondItem="KjC-8z-eHs" secondAttribute="leading" constant="8" id="BPP-Mg-wkK"/>
                         <constraint firstItem="f5N-K1-byw" firstAttribute="top" secondItem="KjC-8z-eHs" secondAttribute="top" constant="52" id="Ctr-4t-htC"/>
+                        <constraint firstAttribute="trailing" secondItem="f5N-K1-byw" secondAttribute="trailing" constant="181" id="F8o-iL-rzs"/>
                         <constraint firstAttribute="height" constant="250" id="FOM-B8-X38"/>
                         <constraint firstAttribute="trailing" secondItem="f5N-K1-byw" secondAttribute="trailing" constant="181" id="G4q-vo-And"/>
                         <constraint firstAttribute="width" constant="482" id="GrF-6Z-iZU"/>
+                        <constraint firstItem="f5N-K1-byw" firstAttribute="top" secondItem="KjC-8z-eHs" secondAttribute="top" constant="52" id="JuH-Ja-wYw"/>
                         <constraint firstAttribute="bottom" secondItem="cDp-fV-s8e" secondAttribute="bottom" constant="56" id="UlL-vO-2jR"/>
                         <constraint firstAttribute="trailing" secondItem="cDp-fV-s8e" secondAttribute="trailing" constant="8" id="dma-Hg-WQP"/>
+                        <constraint firstItem="f5N-K1-byw" firstAttribute="leading" secondItem="KjC-8z-eHs" secondAttribute="leading" constant="182" id="m0d-Ao-61O"/>
                         <constraint firstItem="cDp-fV-s8e" firstAttribute="leading" secondItem="KjC-8z-eHs" secondAttribute="leading" constant="8" id="xv1-ib-UDX"/>
                     </constraints>
                 </view>
