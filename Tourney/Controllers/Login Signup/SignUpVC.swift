@@ -19,6 +19,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var signUpEmailField: UITextField!
     @IBOutlet weak var signUpPasswordField: UITextField!
+    @IBOutlet weak var checkBtn: UIButton!
     
     var userUid: String!
     var emailField: String!
@@ -27,6 +28,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     var username: String!
     var imageSelected = false
     var dynamicLinkTourneyId: String?
+    var termAccepted = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         self.usernameField.delegate = self
+        checkBtn.setImage(UIImage(systemName: "square"), for: .normal)
         print(dynamicLinkTourneyId)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -44,11 +47,19 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     @IBAction func completeAccount(_ sender: LoadingUIButton){
         
+        
+        //alert user if term not accepted
+        guard termAccepted == true else {
+            alert(title: "Terms & Conditions", message: "Please check and accept our Terms & Conditions to continue.")
+			return
+        }
+        
         // alert user if profile picture has not been set
-        if imageSelected == false {
-            alert(title: "Profile Picture", message: "Set up a profile picture before creating an account!")
+        guard imageSelected == true else {
+            alert(title: "Profile Picture", message: "Please set up a profile picture before creating an account.")
             return
         }
+        
         // alert username has not been set
         if let username = usernameField.text {
             if username.count == 0 {
@@ -91,6 +102,15 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     @IBAction func cancel(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func acceptTerm(_ sender: UIButton) {
+        termAccepted = !termAccepted
+        if (!termAccepted) {
+            checkBtn.setImage(UIImage(systemName: "square"), for: .normal)
+        } else {
+			checkBtn.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        }
     }
     
     // MARK: - Helpers
