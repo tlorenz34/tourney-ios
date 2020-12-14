@@ -63,6 +63,8 @@
 		6E6AA4AE22EFAB8A006A1267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */; };
 		6E6AA4B222EFABF6006A1267 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */; };
 		76A10F08A4B8CA7A8CA47ECA /* Pods_TourneyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D366F59548C20EAFD9E821A9 /* Pods_TourneyTests.framework */; };
+		845B65462587ED17007A4869 /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B65442587ED17007A4869 /* TermsAndConditionsViewController.swift */; };
+		845B65472587ED17007A4869 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B65452587ED17007A4869 /* InitialViewController.swift */; };
 		D584FF6E1A17AA4E3DC88F40 /* Pods_Tourney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB774814209366FE7161383 /* Pods_Tourney.framework */; };
 		DF0B82472360DE1E000DDF32 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B82462360DE1E000DDF32 /* LoginVC.swift */; };
 		DF0B824D2361EE99000DDF32 /* SignUpLogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B824C2361EE99000DDF32 /* SignUpLogInVC.swift */; };
@@ -73,7 +75,7 @@
 		DFAF567124F44AD500523ECF /* Rule.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFAF567024F44AD500523ECF /* Rule.xib */; };
 		DFC545672305AB65009F84B1 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC545662305AB64009F84B1 /* DatabaseService.swift */; };
 		DFC545692305AB79009F84B1 /* TopVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC545682305AB79009F84B1 /* TopVideoController.swift */; };
-		EFF473742580898600461089 /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF473732580898600461089 /* CongratulationsViewController.swift */; };
+		EFF473742580898600461089 /* (null) in Sources */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +162,8 @@
 		6E6AA4AD22EFAB8A006A1267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E6AA4B122EFABF6006A1267 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7EB774814209366FE7161383 /* Pods_Tourney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tourney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		845B65442587ED17007A4869 /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		845B65452587ED17007A4869 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		AD32496722576C4FBE174A5E /* Pods-TourneyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourneyTests.debug.xcconfig"; path = "Target Support Files/Pods-TourneyTests/Pods-TourneyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D366F59548C20EAFD9E821A9 /* Pods_TourneyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourneyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9AEC6245C99990B377F8A49 /* Pods-TourneyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourneyUITests.debug.xcconfig"; path = "Target Support Files/Pods-TourneyUITests/Pods-TourneyUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,11 +219,11 @@
 		098E94762373406F00B9E520 /* Login Signup */ = {
 			isa = PBXGroup;
 			children = (
+				845B65452587ED17007A4869 /* InitialViewController.swift */,
+				845B65442587ED17007A4869 /* TermsAndConditionsViewController.swift */,
 				DF0B824C2361EE99000DDF32 /* SignUpLogInVC.swift */,
 				DF0B82462360DE1E000DDF32 /* LoginVC.swift */,
 				6E6AA49022EFAB52006A1267 /* SignUpVC.swift */,
-				84A5CCEC258196F1001649FB /* TermsAndConditionsViewController.swift */,
-				84A5CCF12581A0FC001649FB /* InitialViewController.swift */,
 			);
 			path = "Login Signup";
 			sourceTree = "<group>";
@@ -238,7 +242,6 @@
 		098E94782373636800B9E520 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EFF473732580898600461089 /* CongratulationsViewController.swift */,
 				6E6AA48D22EFAB3C006A1267 /* TournamentsTableViewController.swift */,
 				6E6AA49422EFAB53006A1267 /* FeedVC.swift */,
 				6E6AA49522EFAB53006A1267 /* RecordVideo.swift */,
@@ -674,8 +677,10 @@
 				09F902D4255CFC8D00421B3F /* SAConfettiView.swift in Sources */,
 				6E6AA49F22EFAB53006A1267 /* SubmissionCell.swift in Sources */,
 				DFC545692305AB79009F84B1 /* TopVideoController.swift in Sources */,
-				EFF473742580898600461089 /* CongratulationsViewController.swift in Sources */,
+				EFF473742580898600461089 /* (null) in Sources */,
 				09DA1EF5252E8F4A002C830C /* ABVideoHelper.swift in Sources */,
+				845B65472587ED17007A4869 /* InitialViewController.swift in Sources */,
+				845B65462587ED17007A4869 /* TermsAndConditionsViewController.swift in Sources */,
 				DF0B82472360DE1E000DDF32 /* LoginVC.swift in Sources */,
 				6E6AA4A022EFAB53006A1267 /* SignOut.swift in Sources */,
 				6E6AA4A222EFAB53006A1267 /* FeedVC.swift in Sources */,
@@ -684,7 +689,6 @@
 				DF0B824D2361EE99000DDF32 /* SignUpLogInVC.swift in Sources */,
 				6E6AA4A422EFAB53006A1267 /* Post.swift in Sources */,
 				09DA1F35252F8077002C830C /* Tournament.swift in Sources */,
-				84A5CCF22581A0FC001649FB /* InitialViewController.swift in Sources */,
 				09DA1EF1252E8F4A002C830C /* ABThumbnailsManager.swift in Sources */,
 				09F90356255DAC5400421B3F /* UploadChallengeVideoViewController.swift in Sources */,
 				09DA1F7C252FAC41002C830C /* SubmissionManager.swift in Sources */,
@@ -716,7 +720,6 @@
 				09DA1EF2252E8F4A002C830C /* ABVideoRangeSlider.swift in Sources */,
 				09DA1EED252E8F4A002C830C /* ABBorder.swift in Sources */,
 				6E6AA45B22EFAA39006A1267 /* AppDelegate.swift in Sources */,
-				84A5CCED258196F1001649FB /* TermsAndConditionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
