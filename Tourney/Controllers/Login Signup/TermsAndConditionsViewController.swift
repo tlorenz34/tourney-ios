@@ -21,7 +21,7 @@ class TermsAndConditionsViewController: UIViewController {
     }
 	
 	func loadTermsAndConditions() {
-		let url = URL(string: "https://www.apple.com")!
+		let url = URL(string: "https://www.tourneyevents.com/post/tourney-competitions-contest-official-rules-rules-terms-and-conditions")!
 		m_webviewTaC.load(URLRequest(url: url))
 	}
     

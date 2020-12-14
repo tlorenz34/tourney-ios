@@ -3,7 +3,7 @@
 //  Tourney
 //
 //  Created by German Espitia on 10/8/20.
-//  Copyright © 2020 Will Cohen. All rights reserved.
+//  Copyright © 2020 Thaddeus Lorenz. All rights reserved.
 //
 
 import Foundation

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="980-90-mZB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="980-90-mZB">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1473,15 +1473,6 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="K5f-Q0-yEd"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="R2n-Ys-FfZ"/>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="FdW-db-FED">
-                                <rect key="frame" x="168" y="163" width="39" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="hqg-dO-ALH"/>
-                                    <constraint firstAttribute="width" constant="39" id="k09-Wn-Fqb"/>
-                                </constraints>
-                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTD-8M-EOs">
                                 <rect key="frame" x="58" y="547" width="259" height="51"/>
                                 <color key="backgroundColor" red="0.99278236040609136" green="0.86247994611781387" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1510,18 +1501,27 @@
                                     <action selector="cancel:" destination="jJ5-tK-a38" eventType="touchUpInside" id="33r-ex-Nzd"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="FdW-db-FED">
+                                <rect key="frame" x="44" y="477" width="287" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="hqg-dO-ALH"/>
+                                    <constraint firstAttribute="width" constant="287" id="k09-Wn-Fqb"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Cdf-ge-mJR"/>
                         <color key="backgroundColor" red="0.3146297716" green="0.85911722720000006" blue="0.44390886569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0Hg-8e-XD8" firstAttribute="top" secondItem="Cdf-ge-mJR" secondAttribute="top" constant="20" id="4IZ-PA-0pM"/>
-                            <constraint firstItem="Cdf-ge-mJR" firstAttribute="trailing" secondItem="FdW-db-FED" secondAttribute="trailing" constant="168" id="MXG-kn-ghV"/>
+                            <constraint firstItem="Cdf-ge-mJR" firstAttribute="trailing" secondItem="FdW-db-FED" secondAttribute="trailing" constant="44" id="MXG-kn-ghV"/>
                             <constraint firstItem="0Hg-8e-XD8" firstAttribute="leading" secondItem="Cdf-ge-mJR" secondAttribute="leading" constant="23" id="WJI-Wt-x2J"/>
                             <constraint firstItem="OTD-8M-EOs" firstAttribute="leading" secondItem="Cdf-ge-mJR" secondAttribute="leading" constant="58" id="cR1-z8-zkS"/>
                             <constraint firstItem="Cdf-ge-mJR" firstAttribute="trailing" secondItem="OTD-8M-EOs" secondAttribute="trailing" constant="58" id="iD4-i3-DIS"/>
-                            <constraint firstItem="FdW-db-FED" firstAttribute="leading" secondItem="Cdf-ge-mJR" secondAttribute="leading" constant="168" id="iNS-6B-cIo"/>
+                            <constraint firstItem="FdW-db-FED" firstAttribute="leading" secondItem="Cdf-ge-mJR" secondAttribute="leading" constant="44" id="iNS-6B-cIo"/>
                             <constraint firstItem="Cdf-ge-mJR" firstAttribute="bottom" secondItem="OTD-8M-EOs" secondAttribute="bottom" constant="69" id="lgs-yH-7Vb"/>
-                            <constraint firstItem="FdW-db-FED" firstAttribute="top" secondItem="Cdf-ge-mJR" secondAttribute="top" constant="163" id="nxv-WU-XEs"/>
+                            <constraint firstItem="FdW-db-FED" firstAttribute="top" secondItem="Cdf-ge-mJR" secondAttribute="top" constant="477" id="nxv-WU-XEs"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pxa-hb-sJS"/>
@@ -1532,7 +1532,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUh-AK-U4L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2953" y="1297"/>
+            <point key="canvasLocation" x="2952.8000000000002" y="1295.8020989505249"/>
         </scene>
         <!--Sign Out-->
         <scene sceneID="pva-dJ-iaa">
