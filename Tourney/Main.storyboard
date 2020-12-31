@@ -822,27 +822,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZh-Be-qdm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vfq-Bv-vW1">
-                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPV-ab-dZF">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                        <state key="normal" title="Record Video"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPV-ab-dZF">
+                                        <rect key="frame" x="132.5" y="527.5" width="110" height="109"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="532-WP-uQ6"/>
+                                            <constraint firstAttribute="width" constant="110" id="D5J-uU-ZXt"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" backgroundImage="video.circle.fill" catalog="system"/>
                                         <connections>
                                             <action selector="recordButtonPressed:" destination="BJr-F5-TZn" eventType="touchUpInside" id="OIj-6d-CNg"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74V-Fu-XjK">
+                                        <rect key="frame" x="8" y="30" width="50" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="ajI-x9-UFv"/>
+                                            <constraint firstAttribute="height" constant="50" id="ugt-LD-Pvv"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="multiply" catalog="system"/>
+                                        <connections>
+                                            <action selector="cancelButtonTapped" destination="BJr-F5-TZn" eventType="touchUpInside" id="x09-At-z1a"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1E-O4-ABy">
+                                        <rect key="frame" x="42.5" y="568" width="40" height="27.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="bcp-ku-39q"/>
+                                            <constraint firstAttribute="width" constant="40" id="oZo-p9-ZqN"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="photo" catalog="system"/>
+                                        <connections>
+                                            <action selector="cameraRollButtonTapped" destination="BJr-F5-TZn" eventType="touchUpInside" id="Xta-fL-mQy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="0DE-kt-7SP"/>
-                                    <constraint firstItem="gPV-ab-dZF" firstAttribute="top" secondItem="Vfq-Bv-vW1" secondAttribute="top" id="DjZ-AX-a81"/>
-                                    <constraint firstAttribute="trailing" secondItem="gPV-ab-dZF" secondAttribute="trailing" id="hZ3-bg-Mwm"/>
-                                    <constraint firstAttribute="bottom" secondItem="gPV-ab-dZF" secondAttribute="bottom" id="l7L-Ci-9IR"/>
-                                    <constraint firstItem="gPV-ab-dZF" firstAttribute="leading" secondItem="Vfq-Bv-vW1" secondAttribute="leading" id="wN3-pi-BaN"/>
+                                    <constraint firstItem="r1E-O4-ABy" firstAttribute="centerY" secondItem="gPV-ab-dZF" secondAttribute="centerY" id="81K-mY-ulQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="gPV-ab-dZF" secondAttribute="bottom" constant="30" id="ALx-Hl-9yx"/>
+                                    <constraint firstItem="74V-Fu-XjK" firstAttribute="top" secondItem="jZh-Be-qdm" secondAttribute="top" constant="30" id="BcB-Zk-VMU"/>
+                                    <constraint firstItem="gPV-ab-dZF" firstAttribute="leading" secondItem="r1E-O4-ABy" secondAttribute="trailing" constant="50" id="OwF-6Q-9Gg"/>
+                                    <constraint firstItem="74V-Fu-XjK" firstAttribute="leading" secondItem="jZh-Be-qdm" secondAttribute="leading" constant="8" id="djT-7x-Jqm"/>
+                                    <constraint firstItem="gPV-ab-dZF" firstAttribute="centerX" secondItem="jZh-Be-qdm" secondAttribute="centerX" id="hdp-13-ZuW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -850,24 +879,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jZh-Be-qdm" firstAttribute="leading" secondItem="nB6-BD-pC4" secondAttribute="leading" id="3Ua-Xl-sFr"/>
-                            <constraint firstItem="nB6-BD-pC4" firstAttribute="trailing" secondItem="Vfq-Bv-vW1" secondAttribute="trailing" id="6kG-bL-Uqf"/>
+                            <constraint firstItem="nB6-BD-pC4" firstAttribute="bottom" secondItem="jZh-Be-qdm" secondAttribute="bottom" id="MJp-9d-N0M"/>
                             <constraint firstItem="jZh-Be-qdm" firstAttribute="trailing" secondItem="nB6-BD-pC4" secondAttribute="trailing" id="cg7-BD-cCw"/>
-                            <constraint firstItem="Vfq-Bv-vW1" firstAttribute="top" secondItem="jZh-Be-qdm" secondAttribute="bottom" id="d7w-1I-5OL"/>
-                            <constraint firstItem="nB6-BD-pC4" firstAttribute="trailing" secondItem="Vfq-Bv-vW1" secondAttribute="trailing" id="h1Y-Jc-ztM"/>
                             <constraint firstItem="jZh-Be-qdm" firstAttribute="top" secondItem="6mr-EI-8vn" secondAttribute="top" id="o4H-Qb-UWS"/>
-                            <constraint firstItem="Vfq-Bv-vW1" firstAttribute="leading" secondItem="nB6-BD-pC4" secondAttribute="leading" id="oJT-F8-hyT"/>
-                            <constraint firstItem="nB6-BD-pC4" firstAttribute="bottom" secondItem="Vfq-Bv-vW1" secondAttribute="bottom" id="onc-hE-KOK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nei-z2-ZAR"/>
                     <connections>
+                        <outlet property="cameraRollButton" destination="r1E-O4-ABy" id="hIc-7J-EWc"/>
+                        <outlet property="cancelButton" destination="74V-Fu-XjK" id="VGp-Zd-CfS"/>
                         <outlet property="previewView" destination="jZh-Be-qdm" id="8Uq-ZR-jqU"/>
+                        <outlet property="recordButton" destination="gPV-ab-dZF" id="Ior-yF-QkR"/>
                         <segue destination="Xc6-Lz-pOt" kind="show" identifier="toEditorSegue" id="nk2-te-ED4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dC6-dw-vUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2953" y="564"/>
+            <point key="canvasLocation" x="2952.8000000000002" y="563.56821589205401"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pW3-cj-McK">
@@ -1496,10 +1524,13 @@
         <image name="baseline_settings_black_48pt_3x" width="144" height="144"/>
         <image name="invite_friends" width="144" height="144"/>
         <image name="jan-kopriva-Sgv7CbCWcFE-unsplash" width="4000" height="6000"/>
+        <image name="multiply" catalog="system" width="128" height="111"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="profile-placeholder" width="360" height="360"/>
         <image name="tourney-text-logo" width="332" height="129"/>
+        <image name="video.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

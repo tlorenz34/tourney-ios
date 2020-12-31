@@ -15,21 +15,42 @@ import AVFoundation
 
 class RecordVideo: UIViewController, AVCaptureFileOutputRecordingDelegate {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var previewView: UIView!
+    @IBOutlet var recordButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var cameraRollButton: UIButton!
+    
+    // MARK: - Actions
+    
+    @IBAction func cancelButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func cameraRollButtonTapped() {
+        getVideoFromCameraRoll()
+    }
+    
+    // MARK: - Properties
     
     var tournament: Tournament!
     let captureSession = AVCaptureSession()
     let movieOutput = AVCaptureMovieFileOutput()
+    let imagePicker = UIImagePickerController()
     var previewLayer: AVCaptureVideoPreviewLayer!
     var activeInput: AVCaptureDeviceInput!
     var outputURL: URL!
-    // Holds FeedVC to pass on to the editor VC and set it as its delegate (UploadVideoDelegate) 
+    /// Holds FeedVC to pass on to the editor VC and set it as its delegate (UploadVideoDelegate)
     var feedVC: FeedVC!
-    
     var shouldDismiss: Bool = false
+    
+    // MARK: - View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpImagePicker()
+        
         if setupSession() {
             setupPreview()
             startSession()
@@ -54,6 +75,26 @@ class RecordVideo: UIViewController, AVCaptureFileOutputRecordingDelegate {
         previewLayer.frame = previewView.layer.bounds
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         previewView.layer.addSublayer(previewLayer)
+        
+        // bring ui buttons to front
+        previewView.bringSubviewToFront(recordButton)
+        previewView.bringSubviewToFront(cameraRollButton)
+        previewView.bringSubviewToFront(cancelButton)
+    }
+    
+    // MARK: - Image Picker
+    
+    private func setUpImagePicker() {
+        imagePicker.delegate = self
+    }
+
+    private func getVideoFromCameraRoll() {
+        //Check is source type available
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            // allow videos only
+            imagePicker.mediaTypes = ["public.movie"]
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     //MARK:- Setup Camera
@@ -106,6 +147,7 @@ class RecordVideo: UIViewController, AVCaptureFileOutputRecordingDelegate {
     }
     
     //MARK:- Camera Session
+    
     func startSession() {
         
         if !captureSession.isRunning {
@@ -250,4 +292,20 @@ class RecordVideo: UIViewController, AVCaptureFileOutputRecordingDelegate {
         
     }
     
+}
+extension RecordVideo: UINavigationControllerDelegate {
+    
+}
+extension RecordVideo: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePicker.dismiss(animated: true) {
+            if let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
+                self.outputURL = url
+                self.performSegue(withIdentifier: "toEditorSegue", sender: self.outputURL)
+            }
+        }
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
