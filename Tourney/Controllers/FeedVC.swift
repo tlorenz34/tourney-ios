@@ -102,6 +102,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     }
     /// Plays challenge video or request challenge video to be uploaded depending on user tapping.
     @IBAction func challengeButtonTapped() {
+        
+        stopCurrentVideoPlayback()
+        
         // if featured video is available, play it
         if let featuredVideoURL = tournament.featuredVideoURL {
             playVideo(url: featuredVideoURL)
@@ -288,6 +291,13 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
         }
     }
     
+    /// Stop current cell video playback
+    private func stopCurrentVideoPlayback() {
+        if let currentCell = currentCellPlaying {
+            currentCell.stopVideo()
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // handle video playing
@@ -343,6 +353,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        stopCurrentVideoPlayback()
+        
         if segue.identifier == "toUploadVideoVC" {
             if let destination = segue.destination as? UploadVideo {
                 destination.delegate = self
