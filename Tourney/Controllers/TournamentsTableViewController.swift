@@ -5,6 +5,7 @@
 import UIKit
 import Firebase
 import Kingfisher
+import DateToolsSwift
 
 /**
  Displays active tournaments.
@@ -32,6 +33,8 @@ class TournamentsTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         fetchTournaments()
     }
+    
+    // MARK: Table Data Source & Delegate
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tournaments.count
@@ -50,6 +53,7 @@ class TournamentsTableViewController: UITableViewController {
         cell.backgroundImageView.kf.setImage(with: tournament.featuredImageURL)
         cell.tournamentTitleLabel.text = tournament.name
         cell.participantsLabel.text = "\(tournament.participants)"
+        cell.timeLeftLabel.text = timeLeftString(tournament: tournament)
         
         // check if there is a leader
         if let _ = tournament.leaderId,
@@ -123,13 +127,35 @@ class TournamentsTableViewController: UITableViewController {
         }
         
     }
- 
+    
+    // MARK: Helpers
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SubmissionsViewController" {
             if let destination = segue.destination as? FeedVC {
                 let tournament = sender as! Tournament
                 destination.tournament = tournament
             }
+        }
+    }
+    
+    /// Parse string for time left for tournament
+    private func timeLeftString(tournament: Tournament) -> String {
+        
+        // calculate time left
+        let daysLeft = Date().days(from: tournament.createdAt)
+        
+        if daysLeft == 0 {
+            
+            // if 0 days left, try using hours
+            let hoursLeft = Date().hours(from: tournament.createdAt)
+            if hoursLeft > 0 {
+                return "⏳ \(hoursLeft) hours left"
+            } else {
+                return "--"
+            }
+        } else {
+            return "⏳ \(daysLeft) days left"
         }
     }
     

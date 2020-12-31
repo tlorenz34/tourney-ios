@@ -28,6 +28,7 @@ class TournamentCell: UITableViewCell {
     @IBOutlet var participantsIconImageView: UIImageView!
     /// Red label on top-left on cell notifying user or state of tournament (ended, won, etc).
     @IBOutlet var noticeLabel: UILabel!
+    @IBOutlet var timeLeftLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

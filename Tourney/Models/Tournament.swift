@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import Firebase
 
 struct Tournament {
+    let createdAt: Date
     let name: String
     let id: String
     let featuredImageURL: URL
@@ -70,6 +72,7 @@ struct Tournament {
     
     init?(id: String, dictionary: [String : Any]) {
         guard let name = dictionary["name"] as? String,
+              let createdAtTimestamp = dictionary["createdAt"] as? Timestamp,
               let participants = dictionary["participants"] as? Int,
               let featuredImageURLString = dictionary["featuredImageURL"] as? String,
               let featuredImageURL = URL(string: featuredImageURLString),
@@ -77,6 +80,7 @@ struct Tournament {
               let active = dictionary["active"] as? Bool else {
             return nil
         }
+        self.createdAt = Date(timeIntervalSince1970: TimeInterval(createdAtTimestamp.seconds))
         self.id = id
         self.name = name
         self.participants = participants
