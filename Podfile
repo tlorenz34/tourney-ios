@@ -16,6 +16,7 @@ target 'Tourney' do
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/Functions'
   pod 'Kingfisher'
+  pod 'DateToolsSwift'
   pod 'SwiftKeychainWrapper'
   pod 'Cache'
 	
