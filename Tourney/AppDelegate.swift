@@ -10,6 +10,11 @@ import UIKit
 import CoreData
 import Firebase
 
+extension Notification.Name {
+	static let signOutNotification = Notification.Name("signOutNotification")
+	static let signedInNotification = Notification.Name("signedInNotification")
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -25,9 +30,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let userActivity = userActivityDictionary[.userActivityType] as? NSUserActivity {
             handleUserActivity(userActivity: userActivity)
         }
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(signOutAction(_:)), name: .signOutNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(signedInAction(_:)), name: .signedInNotification, object: nil)
         
         return true
     }
+	
+	@objc func signOutAction(_ notification: Notification) {
+		replaceVCWith(storyboard: "Main", identifier: "SignUpLogInVC")
+	}
+	
+	@objc func signedInAction(_ notification: Notification) {
+		replaceVCWith(storyboard: "Main", identifier: "CategoriesTableViewController")
+	}
+	
+	func replaceVCWith(storyboard: String, identifier: String) {
+		let storyboard = UIStoryboard(name: storyboard, bundle: nil)
+		let vc = storyboard.instantiateViewController(withIdentifier: identifier)
+		
+		self.window?.rootViewController = vc
+	}
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

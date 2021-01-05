@@ -219,6 +219,8 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
   - Cache (6.0.0)
+  - Firebase (7.1.0):
+    - Firebase/Core (= 7.1.0)
   - Firebase/Auth (7.1.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.1.0)
