@@ -13,6 +13,7 @@ import DateToolsSwift
 class TournamentsTableViewController: UITableViewController {
     
     var tournaments: [Tournament] = []
+    var tournamentLength: Int?
     /// Dynamic link to handle non-logged in or app-closed users (get's handled after tournaments are loaded)
     var dynamicLinkTourneyId: String?
     /// Dynamic link to handle already logged in user who opens app via dynamic link
@@ -141,21 +142,20 @@ class TournamentsTableViewController: UITableViewController {
     
     /// Parse string for time left for tournament
     private func timeLeftString(tournament: Tournament) -> String {
+                
+        guard let tournamentLength = tournamentLength else {
+            return "--"
+        }
         
         // calculate time left
-        let daysLeft = Date().days(from: tournament.createdAt)
-        
-        if daysLeft == 0 {
+        let hoursLeft = tournament.createdAt.add(tournamentLength.days).hoursUntil
             
-            // if 0 days left, try using hours
-            let hoursLeft = Date().hours(from: tournament.createdAt)
-            if hoursLeft > 0 {
-                return "⏳ \(hoursLeft) hours left"
-            } else {
-                return "--"
-            }
+        if hoursLeft <= 0 {
+            return "--"
+        } else if hoursLeft < 24 {
+            return "⏳ \(hoursLeft) hours left"
         } else {
-            return "⏳ \(daysLeft) days left"
+            return "⏳ \(hoursLeft/24) days left"
         }
     }
     
@@ -180,6 +180,15 @@ class TournamentsTableViewController: UITableViewController {
         tournamentsManager.fetchWonTournaments { (_tournaments) in
             if let _tournaments = _tournaments {
                 self.addTournamentsIfUnique(_tournaments: _tournaments)
+                self.tableView.reloadData()
+            }
+        }
+        
+        // fetch tournament length data
+        let adminManager = AdminManager()
+        adminManager.fetchTournamentLengthDays { (length) in
+            if let length = length {
+                self.tournamentLength = length
                 self.tableView.reloadData()
             }
         }
