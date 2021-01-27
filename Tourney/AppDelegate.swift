@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import IQKeyboardManagerSwift
 
 extension Notification.Name {
 	static let signOutNotification = Notification.Name("signOutNotification")
@@ -24,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // FIX THIS
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        
+        IQKeyboardManager.shared.enable = true
+
         // handle dynamic link when app is switching from inactive to active state
         if let userActivityDictionary = launchOptions?[.userActivityDictionary] as? [UIApplication.LaunchOptionsKey : Any],
             let userActivity = userActivityDictionary[.userActivityType] as? NSUserActivity {

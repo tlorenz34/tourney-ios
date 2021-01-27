@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mA6-Et-FZi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mA6-Et-FZi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -158,6 +158,49 @@
                                     <action selector="chooseVideoButtonPressed:" destination="Cr0-g0-Cts" eventType="touchUpInside" id="yrQ-4g-Ujo"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REg-3v-9iU">
+                                <rect key="frame" x="82" y="460.5" width="250" height="241.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hnO-7v-myN">
+                                        <rect key="frame" x="0.0" y="81" width="250" height="79.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NVb-C0-neG">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="25.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                                <connections>
+                                                    <action selector="textFieldNameChanged:" destination="Cr0-g0-Cts" eventType="editingChanged" id="6Jd-p4-4iw"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bak-A2-K3a">
+                                                <rect key="frame" x="0.0" y="33.5" width="250" height="1"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="l1R-5r-qoV"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name your challenge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iS-qb-40F">
+                                                <rect key="frame" x="0.0" y="42.5" width="250" height="14.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OlH-8C-tPL">
+                                                <rect key="frame" x="0.0" y="65" width="250" height="14.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hnO-7v-myN" secondAttribute="trailing" id="Ar2-bn-E9f"/>
+                                    <constraint firstItem="hnO-7v-myN" firstAttribute="leading" secondItem="REg-3v-9iU" secondAttribute="leading" id="FcK-rm-drx"/>
+                                    <constraint firstItem="hnO-7v-myN" firstAttribute="centerY" secondItem="REg-3v-9iU" secondAttribute="centerY" id="kGm-c2-TYl"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge video" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEl-8Y-8Oh">
                                 <rect key="frame" x="144.5" y="108" width="125" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
@@ -168,11 +211,13 @@
                         <viewLayoutGuide key="safeArea" id="R2F-QU-VAY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="REg-3v-9iU" firstAttribute="leading" secondItem="0HG-lx-Bmw" secondAttribute="leading" id="6M5-eT-YuK"/>
                             <constraint firstItem="R2F-QU-VAY" firstAttribute="trailing" secondItem="fvG-g6-jmu" secondAttribute="trailing" id="ADG-Gc-DdR"/>
                             <constraint firstItem="hEl-8Y-8Oh" firstAttribute="centerX" secondItem="R2F-QU-VAY" secondAttribute="centerX" id="B89-LG-NhD"/>
                             <constraint firstItem="hEl-8Y-8Oh" firstAttribute="top" secondItem="R2F-QU-VAY" secondAttribute="top" constant="20" id="Bsq-Ah-35f"/>
                             <constraint firstItem="0HG-lx-Bmw" firstAttribute="centerX" secondItem="W7k-zT-Bxb" secondAttribute="centerX" id="IZV-n0-dUs"/>
                             <constraint firstItem="MWT-Rn-ohI" firstAttribute="centerX" secondItem="0HG-lx-Bmw" secondAttribute="centerX" id="KD6-4F-zOs"/>
+                            <constraint firstItem="REg-3v-9iU" firstAttribute="top" secondItem="W7k-zT-Bxb" secondAttribute="bottom" id="MxS-X0-Jpf"/>
                             <constraint firstItem="fvG-g6-jmu" firstAttribute="leading" secondItem="R2F-QU-VAY" secondAttribute="leading" id="Nbo-0q-GnK"/>
                             <constraint firstItem="R2F-QU-VAY" firstAttribute="bottom" secondItem="MWT-Rn-ohI" secondAttribute="bottom" constant="30" id="Tky-dg-jym"/>
                             <constraint firstItem="W7k-zT-Bxb" firstAttribute="top" secondItem="fvG-g6-jmu" secondAttribute="bottom" constant="50" id="ZP5-Vv-WgT"/>
@@ -180,11 +225,15 @@
                             <constraint firstItem="R2F-QU-VAY" firstAttribute="trailing" secondItem="W7k-zT-Bxb" secondAttribute="trailing" constant="40" id="c49-Zt-kHW"/>
                             <constraint firstItem="W7k-zT-Bxb" firstAttribute="leading" secondItem="R2F-QU-VAY" secondAttribute="leading" constant="40" id="kS9-sU-8cH"/>
                             <constraint firstItem="fvG-g6-jmu" firstAttribute="top" secondItem="hEl-8Y-8Oh" secondAttribute="bottom" constant="20" id="oXK-Ly-nLO"/>
+                            <constraint firstItem="0HG-lx-Bmw" firstAttribute="top" secondItem="REg-3v-9iU" secondAttribute="bottom" id="sC4-mh-a6U"/>
+                            <constraint firstItem="REg-3v-9iU" firstAttribute="trailing" secondItem="0HG-lx-Bmw" secondAttribute="trailing" id="xsY-Zg-EyQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s4q-tB-VgB"/>
                     <connections>
                         <outlet property="chooseVideoButton" destination="0HG-lx-Bmw" id="8kB-D0-r0M"/>
+                        <outlet property="labelPreview" destination="OlH-8C-tPL" id="da0-6T-6Xs"/>
+                        <outlet property="textFieldName" destination="NVb-C0-neG" id="DRT-Ay-twu"/>
                         <outlet property="trimView" destination="W7k-zT-Bxb" id="etF-3g-Dt5"/>
                         <outlet property="uploadVideo" destination="MWT-Rn-ohI" id="IQE-wV-UVm"/>
                         <outlet property="videoView" destination="fvG-g6-jmu" id="dMH-F1-2BW"/>

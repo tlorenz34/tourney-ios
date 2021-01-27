@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="980-90-mZB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="980-90-mZB">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1055,8 +1055,14 @@
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rp-gh-8Lh">
-                                            <rect key="frame" x="31" y="233" width="80" height="41"/>
+                                            <rect key="frame" x="31" y="217" width="80" height="41"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojz-80-DCy">
+                                            <rect key="frame" x="31" y="258" width="33" height="16"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1131,7 +1137,6 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="Xbl-w1-tsc" secondAttribute="trailing" id="04N-ea-FcS"/>
                                         <constraint firstItem="ugD-ZJ-KV5" firstAttribute="trailing" secondItem="Xbl-w1-tsc" secondAttribute="trailing" constant="-15" id="05B-Ph-OVK"/>
                                         <constraint firstItem="g5c-Tm-rRq" firstAttribute="centerY" secondItem="1BC-so-xNx" secondAttribute="centerY" id="0k4-xz-m4u"/>
-                                        <constraint firstItem="1BC-so-xNx" firstAttribute="top" secondItem="4rp-gh-8Lh" secondAttribute="bottom" constant="10" id="3ss-yz-ul5"/>
                                         <constraint firstItem="udp-dS-2iJ" firstAttribute="centerY" secondItem="ZzL-lx-aRs" secondAttribute="centerY" id="5zK-LE-0TR"/>
                                         <constraint firstItem="4e2-qO-A8E" firstAttribute="leading" secondItem="1BC-so-xNx" secondAttribute="leading" constant="-2" id="6XO-wv-ds8"/>
                                         <constraint firstItem="UC3-Rx-T5N" firstAttribute="leading" secondItem="smi-cH-qGf" secondAttribute="leading" constant="-4" id="8HC-28-eKW"/>
@@ -1143,7 +1148,10 @@
                                         <constraint firstItem="g5c-Tm-rRq" firstAttribute="leading" secondItem="1BC-so-xNx" secondAttribute="trailing" constant="10" id="Wmj-zj-5MO"/>
                                         <constraint firstItem="smi-cH-qGf" firstAttribute="width" secondItem="Xbl-w1-tsc" secondAttribute="width" id="XNl-Ru-1iZ"/>
                                         <constraint firstItem="4rp-gh-8Lh" firstAttribute="leading" secondItem="1BC-so-xNx" secondAttribute="leading" id="XXK-Ei-hKr"/>
+                                        <constraint firstItem="Ojz-80-DCy" firstAttribute="leading" secondItem="4rp-gh-8Lh" secondAttribute="leading" id="XiO-aV-HSs"/>
+                                        <constraint firstItem="Ojz-80-DCy" firstAttribute="top" secondItem="4rp-gh-8Lh" secondAttribute="bottom" id="Xko-VE-TIY"/>
                                         <constraint firstItem="ugD-ZJ-KV5" firstAttribute="top" secondItem="ZzL-lx-aRs" secondAttribute="bottom" constant="10" id="XoW-eT-FVH"/>
+                                        <constraint firstItem="1BC-so-xNx" firstAttribute="top" secondItem="Ojz-80-DCy" secondAttribute="bottom" constant="10" id="dYX-8t-Rbm"/>
                                         <constraint firstItem="Xbl-w1-tsc" firstAttribute="leading" secondItem="P2e-cN-WJ7" secondAttribute="leadingMargin" id="ewt-2E-iCm"/>
                                         <constraint firstItem="UC3-Rx-T5N" firstAttribute="top" secondItem="smi-cH-qGf" secondAttribute="top" constant="30" id="fAt-Gb-Xd5"/>
                                         <constraint firstItem="4e2-qO-A8E" firstAttribute="top" secondItem="1BC-so-xNx" secondAttribute="top" constant="-2" id="p6X-vg-oXT"/>
@@ -1167,6 +1175,7 @@
                                     <outlet property="participantsLabel" destination="udp-dS-2iJ" id="zgY-bv-sye"/>
                                     <outlet property="timeLeftLabel" destination="ugD-ZJ-KV5" id="cf6-Zl-N3H"/>
                                     <outlet property="tournamentTitleLabel" destination="4rp-gh-8Lh" id="Qiu-mH-COO"/>
+                                    <outlet property="typeLabel" destination="Ojz-80-DCy" id="xrw-yQ-juw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1689,12 +1698,6 @@
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -1721,30 +1724,6 @@
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="viewFlipsideBackgroundColor">
             <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
