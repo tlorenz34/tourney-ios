@@ -106,9 +106,7 @@ class TournamentsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tournament = tournaments[indexPath.row]
-        presentWinnerFlowStoryboard(tournament: tournament, tournamentsViewController: self)
-        return
-        
+
         // if user is winner and challenge video has not been upload, show won VC flow
         if let parentTournamentWinnerId = tournament.parentTournamentWinnerId,
            let currentUser = Auth.auth().currentUser {
