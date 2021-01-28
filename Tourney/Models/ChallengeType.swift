@@ -6,7 +6,7 @@
 //  Copyright © 2021 Will Cohen. All rights reserved.
 //
 
-enum ChallengeType: String, EnumDecodable, Encodable {
+enum ChallengeType: String, EnumDecodable {
     static var `default`: ChallengeType {
         `public`
     }

@@ -14,6 +14,11 @@ class UploadChallengeVideoViewController: UploadVideo {
     @IBOutlet var uploadVideo: LoadingUIButton!
     @IBOutlet var labelPreview: UILabel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textFieldName.delegate = self
+    }
+    
     @IBAction func uploadTapped() {
         guard let videoURL = videoURL else {
             showAlert(title: "Missing Video", message: "Please select a video to upload!")
@@ -65,7 +70,7 @@ class UploadChallengeVideoViewController: UploadVideo {
         if !textFieldName.text.isNilOrEmpty {
             tournament.name = textFieldName.text!
         }
-        tournament.challengeType = .public
+        tournament.challengeType = ChallengeType.public.rawValue
         tournamentManager.save(tournament)
         
         if let parentTournamentId = tournament.parentTournamentId,
@@ -88,7 +93,7 @@ class UploadChallengeVideoViewController: UploadVideo {
             tournamentsViewController.tableView.reloadData()
         }
     }
-    
+}
 
 extension UploadChallengeVideoViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

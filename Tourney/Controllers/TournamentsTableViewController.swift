@@ -55,7 +55,7 @@ class TournamentsTableViewController: UITableViewController {
         cell.tournamentTitleLabel.text = tournament.name
         cell.participantsLabel.text = "\(tournament.participants)"
         cell.timeLeftLabel.text = timeLeftString(tournament: tournament)
-        cell.typeLabel.text = "\(tournament.challengeType.rawValue) Challenge"
+        cell.typeLabel.text = "\(tournament.challengeType) Challenge"
         
         // check if there is a leader
         if let _ = tournament.leaderId,
@@ -106,7 +106,9 @@ class TournamentsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tournament = tournaments[indexPath.row]
-
+        presentWinnerFlowStoryboard(tournament: tournament, tournamentsViewController: self)
+        return
+        
         // if user is winner and challenge video has not been upload, show won VC flow
         if let parentTournamentWinnerId = tournament.parentTournamentWinnerId,
            let currentUser = Auth.auth().currentUser {
