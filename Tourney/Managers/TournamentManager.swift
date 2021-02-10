@@ -32,12 +32,60 @@ struct TournamentManager {
         completion(nil)
     }
     /**
+     Fetch `Tournament` objects with `active` property as `true` and `channel` as given
+     */
+    func fetchActiveTournaments(channelId: String, completion: @escaping (([Tournament]?) -> Void)) {
+        baseQuery.whereField("channel", isEqualTo: channelId)
+            .whereField("active", isEqualTo: true).getDocuments { (snapshot, error) in
+                guard let snapshot = snapshot else {
+                    completion(nil)
+                    return
+                }
+                completion(self.parseDocumentsToTournaments(documents: snapshot.documents))
+            }
+        completion(nil)
+    }
+    /**
      Fetch child `Tournament`where `currentUser` is the featured video uploader.
      */
     func fetchWonTournaments(completion: @escaping (([Tournament]?) -> Void)) {
         guard let currentUser = Auth.auth().currentUser else { return }
         baseQuery
             .whereField("parentTournamentWinnerId", isEqualTo: currentUser.uid)
+            .getDocuments { (snapshot, error) in
+            guard let snapshot = snapshot else {
+                completion(nil)
+                return
+            }
+            completion(self.parseDocumentsToTournaments(documents: snapshot.documents))
+        }
+        completion(nil)
+    }
+    /**
+     Fetch child `Tournament`where `currentUser` is the featured video uploader  and `channel` as given
+     */
+    func fetchWonTournaments(channelId: String, completion: @escaping (([Tournament]?) -> Void)) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        baseQuery.whereField("channel", isEqualTo: channelId)
+            .whereField("parentTournamentWinnerId", isEqualTo: currentUser.uid)
+            .getDocuments { (snapshot, error) in
+                guard let snapshot = snapshot else {
+                    completion(nil)
+                    return
+                }
+                completion(self.parseDocumentsToTournaments(documents: snapshot.documents))
+            }
+        completion(nil)
+    }
+    /**
+     Fetch child `Tournament`where `currentUser` is the leader and `active`, `canInteract` fields are false
+     */
+    func fetchPastWonTournaments(completion: @escaping (([Tournament]?) -> Void)) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        baseQuery
+            .whereField("leaderId", isEqualTo: currentUser.uid)
+            .whereField("active", isEqualTo: false)
+            .whereField("canInteract", isEqualTo: false)
             .getDocuments { (snapshot, error) in
             guard let snapshot = snapshot else {
                 completion(nil)

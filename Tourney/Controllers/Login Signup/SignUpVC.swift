@@ -137,7 +137,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let setLocation = Database.database().reference().child("users").child(userUid)
         setLocation.updateChildValues(userData)
         DatabaseService.loadSingletonData { (success) in
-            self.performSegue(withIdentifier: "toFeedSegue", sender: nil);
+            NotificationCenter.default.post(name: .signedInNotification, object: nil, userInfo: ["dynamicLinkTourneyId" : self.dynamicLinkTourneyId ?? ""])
         }
         
     }
@@ -212,12 +212,4 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toFeedSegue" {
-            if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-                let feedVC = segue.destination as! TournamentsTableViewController
-                feedVC.dynamicLinkTourneyId = dynamicLinkTourneyId
-            }                        
-        }
-    }
 }

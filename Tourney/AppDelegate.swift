@@ -40,19 +40,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 	
 	@objc func signOutAction(_ notification: Notification) {
-		replaceVCWith(storyboard: "Main", identifier: "SignUpLogInVC")
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpLogInVC")
 	}
-	
+    
 	@objc func signedInAction(_ notification: Notification) {
-		replaceVCWith(storyboard: "Main", identifier: "CategoriesTableViewController")
+        let afterLoginNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AfterLoginNavigationController") as! UINavigationController
+        if let dynamicLinkTourneyId = notification.userInfo?["dynamicLinkTourneyId"] as? String, !dynamicLinkTourneyId.isEmpty {
+            let featuredChannelsVC = afterLoginNavigationController.viewControllers.first as? FeaturedChannelsTableViewController
+            featuredChannelsVC?.dynamicLinkTourneyId = dynamicLinkTourneyId
+        }
+        window?.rootViewController = afterLoginNavigationController
 	}
-	
-	func replaceVCWith(storyboard: String, identifier: String) {
-		let storyboard = UIStoryboard(name: storyboard, bundle: nil)
-		let vc = storyboard.instantiateViewController(withIdentifier: identifier)
-		
-		self.window?.rootViewController = vc
-	}
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -123,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("incoming dynamic link url: \(dynamicLinkURL)")
         
         guard let urlComponents = URLComponents(url: dynamicLinkURL, resolvingAgainstBaseURL: false),
-            let queryItems = urlComponents.queryItems else { return }
+              let queryItems = urlComponents.queryItems else { return }
         
         print("found \(queryItems.count) query items for dynamic link:")
         queryItems.forEach({
@@ -131,33 +130,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("value: \($0.value)")
         })
         
+        guard let dynamicLinkTourneyId = queryItems[0].value else { return }
         
-        if let launchVC = self.window?.rootViewController as? SignUpLogInVC,
-            let dynamicLinkTourneyId = queryItems[0].value {
-            
-            if Auth.auth().currentUser != nil {
-                // logged in and already loaded from prior open
-                if let mainTournamentPage = launchVC.presentedViewController as? TournamentsTableViewController {
-                    mainTournamentPage.dynamicLinkTourneyIdForReturningUsers = dynamicLinkTourneyId
-                } else {
-                    // logged in but app was closed (????)
-                    launchVC.dynamicLinkTourneyId = dynamicLinkTourneyId
-                }
+        if let signUpLogInVC = window?.rootViewController as? SignUpLogInVC {
+            // not signed in, set dynamic link var at approproate VC (depending on where user is when dynamic link is parsed from network)
+            if let signUpPage = signUpLogInVC.presentedViewController as? SignUpVC {
+                // not logged in but already tapped signup
+                signUpPage.dynamicLinkTourneyId = dynamicLinkTourneyId
+            } else if let loginPage = signUpLogInVC.presentedViewController as? LoginVC {
+                // not logged in but already tapped sign in
+                loginPage.dynamicLinkTourneyId = dynamicLinkTourneyId
             } else {
-                // not signed in, set dynamic link var at approproate VC (depending on where user is when dynamic link is parsed from network)
-                if let signUpPage = launchVC.presentedViewController as? SignUpVC {
-                    // not logged in but already tapped signup
-                    signUpPage.dynamicLinkTourneyId = dynamicLinkTourneyId
-                } else if let loginPage = launchVC.presentedViewController as? LoginVC {
-                    // not logged in but already tapped sign in
-                    loginPage.dynamicLinkTourneyId = dynamicLinkTourneyId
-                } else {
-                    // not logged in and has not tapped sign up or sign in
-                    launchVC.dynamicLinkTourneyId = dynamicLinkTourneyId
-                }
+                // not logged in and has not tapped sign up or sign in
+                signUpLogInVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }
+        } else if let navigationController = window?.rootViewController as? UINavigationController {
+            (navigationController.viewControllers.first as? FeaturedChannelsTableViewController)?.dynamicLinkTourneyId = dynamicLinkTourneyId
         }
-        
     }
     
     // MARK: - Custom URL Link Handler

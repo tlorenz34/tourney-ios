@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "TransparentPixel.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -9,7 +10,6 @@
       "scale" : "2x"
     },
     {
-      "filename" : "baseline_settings_black_48pt_3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

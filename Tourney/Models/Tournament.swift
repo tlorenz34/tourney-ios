@@ -26,6 +26,7 @@ struct Tournament {
     var featuredVideoURL: URL?
     var active: Bool
     var challengeType: String
+    let channel: String?
     
     /// Dictionary representation of object
     var dictionary: [String : Any] {
@@ -34,7 +35,8 @@ struct Tournament {
             "featuredImageURL": featuredImageURL.absoluteString,
             "canInteract": canInteract,
             "participants": participants,
-            "active": active
+            "active": active,
+            "channel": channel ?? "",
         ]
         
         if let leaderId = leaderId {
@@ -90,6 +92,7 @@ struct Tournament {
         self.canInteract = canInteract
         self.active = active
         self.challengeType = (dictionary["challengeType"] as? String) ?? ChallengeType.public.rawValue
+        self.channel = dictionary["channel"] as? String
         
         // leader info
         if let leaderId = dictionary["leaderId"] as? String,

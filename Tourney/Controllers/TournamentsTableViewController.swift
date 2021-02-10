@@ -12,6 +12,7 @@ import DateToolsSwift
  */
 class TournamentsTableViewController: UITableViewController {
     
+    var channelId: String?
     var tournaments: [Tournament] = []
     var tournamentLength: Int?
     /// Dynamic link to handle non-logged in or app-closed users (get's handled after tournaments are loaded)
@@ -167,7 +168,7 @@ class TournamentsTableViewController: UITableViewController {
         tournaments = []
         // fetch active
         let tournamentsManager = TournamentManager()
-        tournamentsManager.fetchActiveTournaments { (_tournaments) in
+        tournamentsManager.fetchActiveTournaments(channelId: channelId ?? "") { (_tournaments) in
             if let _tournaments = _tournaments {
                 self.addTournamentsIfUnique(_tournaments: _tournaments)
                 self.tableView.reloadData()
@@ -178,7 +179,7 @@ class TournamentsTableViewController: UITableViewController {
             }
         }
         // fetch won
-        tournamentsManager.fetchWonTournaments { (_tournaments) in
+        tournamentsManager.fetchWonTournaments(channelId: channelId ?? "") { (_tournaments) in
             if let _tournaments = _tournaments {
                 self.addTournamentsIfUnique(_tournaments: _tournaments)
                 self.tableView.reloadData()
