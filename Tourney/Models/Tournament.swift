@@ -127,3 +127,9 @@ struct Tournament {
         }
     }
 }
+
+extension Tournament: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}

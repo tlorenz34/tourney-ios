@@ -13,7 +13,14 @@ import DateToolsSwift
 class TournamentsTableViewController: UITableViewController {
     
     var channelId: String?
-    var tournaments: [Tournament] = []
+    var tournaments: [Tournament] = [] {
+        didSet {
+            for tournament in tournaments {
+                fetchSubmissionsForTournament(tournament: tournament)
+            }
+        }
+    }
+    var tournamentsSubmissions: [Tournament:[Submission]] = [:]
     var tournamentLength: Int?
     /// Dynamic link to handle non-logged in or app-closed users (get's handled after tournaments are loaded)
     var dynamicLinkTourneyId: String?
@@ -102,6 +109,22 @@ class TournamentsTableViewController: UITableViewController {
             }
         }
         
+        let viewerCount = tournamentsSubmissions[tournament]?.reduce(into: 0, { result, submission in
+            result += submission.views
+        })
+        if let viewerCount = viewerCount {
+            if viewerCount > 1 {
+                cell.viewersLabel.text = "\(viewerCount) viewers"
+            } else {
+                cell.viewersLabel.text = "\(viewerCount) viewer"
+            }
+            cell.viewersLabel.isHidden = false
+            cell.viewersImageView.isHidden = false
+        } else {
+            cell.viewersLabel.isHidden = true
+            cell.viewersImageView.isHidden = true
+        }
+        
         return cell
     }
     
@@ -158,6 +181,17 @@ class TournamentsTableViewController: UITableViewController {
             return "⏳ \(hoursLeft) hours left"
         } else {
             return "⏳ \(hoursLeft/24) days left"
+        }
+    }
+    
+    private func fetchSubmissionsForTournament(tournament: Tournament) {
+        guard tournamentsSubmissions[tournament].isNilOrEmpty else { return }
+        
+        SubmissionManager().fetchSubmissionsForTournament(tournamentId: tournament.id) { (submissions) in
+            if let submissions = submissions {
+                self.tournamentsSubmissions[tournament] = submissions
+                self.tableView.reloadData()
+            }
         }
     }
     
