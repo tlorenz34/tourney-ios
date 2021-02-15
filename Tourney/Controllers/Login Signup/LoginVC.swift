@@ -38,7 +38,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                             User.sharedInstance.uid = user.user.uid
                             DatabaseService.loadSingletonData(completionHandler: { (success) in
                                 self.roundedLoginButton.hideLoading()
-                                self.goToFeedVC()
+                                NotificationCenter.default.post(name: .signedInNotification, object: nil, userInfo: ["dynamicLinkTourneyId" : self.dynamicLinkTourneyId ?? ""])
                             })
                         }
                     } else {
@@ -87,21 +87,11 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 
             }
             
-        } else if segue.identifier == "toFeedVC" {
-            if let dynamicLinkTourneyId = dynamicLinkTourneyId {
-                let feedVC = segue.destination as! TournamentsTableViewController
-                feedVC.dynamicLinkTourneyId = dynamicLinkTourneyId
-            }
         }
     }
     
     func goToCreateUserVC(){
         performSegue(withIdentifier: "toSignUp", sender: nil)
-    }
-
-    func goToFeedVC(){
-        performSegue(withIdentifier: "toFeedVC", sender: nil)
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -53,6 +53,19 @@ struct SubmissionManager {
         }
     }
     /**
+     Fetch `Submission` objects belonging to current user.
+     */
+    func fetchSubmissionsOfUser(completion: @escaping (([Submission]?) -> Void)) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        baseQuery.whereField("creatorId", isEqualTo: currentUser.uid).getDocuments { (snapshot, error) in
+            guard let snapshot = snapshot else {
+                completion(nil)
+                return
+            }
+            completion(self.parseDocumentsToSubmissions(documents: snapshot.documents))
+        }
+    }
+    /**
      Creates new document for submission.
      */
     public func saveNew(_ submission: Submission) {

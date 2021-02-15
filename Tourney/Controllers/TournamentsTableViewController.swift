@@ -12,7 +12,15 @@ import DateToolsSwift
  */
 class TournamentsTableViewController: UITableViewController {
     
-    var tournaments: [Tournament] = []
+    var channelId: String?
+    var tournaments: [Tournament] = [] {
+        didSet {
+            for tournament in tournaments {
+                fetchSubmissionsForTournament(tournament: tournament)
+            }
+        }
+    }
+    var tournamentsSubmissions: [Tournament:[Submission]] = [:]
     var tournamentLength: Int?
     /// Dynamic link to handle non-logged in or app-closed users (get's handled after tournaments are loaded)
     var dynamicLinkTourneyId: String?
@@ -28,10 +36,6 @@ class TournamentsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         fetchTournaments()
     }
     
@@ -101,6 +105,22 @@ class TournamentsTableViewController: UITableViewController {
             }
         }
         
+        let viewerCount = tournamentsSubmissions[tournament]?.reduce(into: 0, { result, submission in
+            result += submission.views
+        })
+        if let viewerCount = viewerCount {
+            if viewerCount > 1 {
+                cell.viewersLabel.text = "\(viewerCount) viewers"
+            } else {
+                cell.viewersLabel.text = "\(viewerCount) viewer"
+            }
+            cell.viewersLabel.isHidden = false
+            cell.viewersImageView.isHidden = false
+        } else {
+            cell.viewersLabel.isHidden = true
+            cell.viewersImageView.isHidden = true
+        }
+        
         return cell
     }
     
@@ -160,6 +180,17 @@ class TournamentsTableViewController: UITableViewController {
         }
     }
     
+    private func fetchSubmissionsForTournament(tournament: Tournament) {
+        guard tournamentsSubmissions[tournament].isNilOrEmpty else { return }
+        
+        SubmissionManager().fetchSubmissionsForTournament(tournamentId: tournament.id) { (submissions) in
+            if let submissions = submissions {
+                self.tournamentsSubmissions[tournament] = submissions
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     /// Fetch active and won tournaments
     private func fetchTournaments() {
         
@@ -167,7 +198,7 @@ class TournamentsTableViewController: UITableViewController {
         tournaments = []
         // fetch active
         let tournamentsManager = TournamentManager()
-        tournamentsManager.fetchActiveTournaments { (_tournaments) in
+        tournamentsManager.fetchActiveTournaments(channelId: channelId ?? "") { (_tournaments) in
             if let _tournaments = _tournaments {
                 self.addTournamentsIfUnique(_tournaments: _tournaments)
                 self.tableView.reloadData()
@@ -178,7 +209,7 @@ class TournamentsTableViewController: UITableViewController {
             }
         }
         // fetch won
-        tournamentsManager.fetchWonTournaments { (_tournaments) in
+        tournamentsManager.fetchWonTournaments(channelId: channelId ?? "") { (_tournaments) in
             if let _tournaments = _tournaments {
                 self.addTournamentsIfUnique(_tournaments: _tournaments)
                 self.tableView.reloadData()

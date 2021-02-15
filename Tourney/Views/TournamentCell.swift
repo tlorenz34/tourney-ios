@@ -30,6 +30,8 @@ class TournamentCell: UITableViewCell {
     @IBOutlet var noticeLabel: UILabel!
     @IBOutlet var timeLeftLabel: UILabel!
     @IBOutlet var typeLabel: UILabel!
+    @IBOutlet var viewersLabel: UILabel!
+    @IBOutlet var viewersImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,8 +41,8 @@ class TournamentCell: UITableViewCell {
     
     func setup() {
         // set rounded borders
-        backgroundImageView.layer.cornerRadius = 15
-        opaqueView.layer.cornerRadius = 15
+        backgroundImageView.layer.cornerRadius = 20
+        opaqueView.layer.cornerRadius = 20
     }
     /**
      Sets state of `isHidden` property of UI components that display leader info.
