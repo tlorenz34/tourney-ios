@@ -10,10 +10,16 @@ import UIKit
 
 class UploadChallengeVideoViewController: UploadVideo {
     
+    @IBOutlet var textFieldName: UITextField!
     @IBOutlet var uploadVideo: LoadingUIButton!
+    @IBOutlet var labelPreview: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textFieldName.delegate = self
+    }
     
     @IBAction func uploadTapped() {
-        
         guard let videoURL = videoURL else {
             showAlert(title: "Missing Video", message: "Please select a video to upload!")
             return
@@ -23,12 +29,11 @@ class UploadChallengeVideoViewController: UploadVideo {
     }
     
     var tournamentsViewController: TournamentsTableViewController!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
     
+    @IBAction func textFieldNameChanged(_ sender: UITextField) {
+        labelPreview.text = "Preview: \(sender.text ?? "") Challenge"
+    }
+
     /**
      Uploads featured video to storage, updates `Tournament` object's `featuredVideoURL` property and dismisses view controller.
      */
@@ -62,6 +67,10 @@ class UploadChallengeVideoViewController: UploadVideo {
         tournament.featuredVideoURL = challengeVideoURL
         tournament.canInteract = true
         tournament.active = true
+        if !textFieldName.text.isNilOrEmpty {
+            tournament.name = textFieldName.text!
+        }
+        tournament.challengeType = ChallengeType.public.rawValue
         tournamentManager.save(tournament)
         
         if let parentTournamentId = tournament.parentTournamentId,
@@ -84,6 +93,12 @@ class UploadChallengeVideoViewController: UploadVideo {
             tournamentsViewController.tableView.reloadData()
         }
     }
-    
+}
 
+extension UploadChallengeVideoViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= 8
+   }
 }

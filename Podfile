@@ -19,7 +19,8 @@ target 'Tourney' do
   pod 'DateToolsSwift'
   pod 'SwiftKeychainWrapper'
   pod 'Cache'
-	
+  pod 'IQKeyboardManagerSwift'
+
   target 'TourneyTests' do
     inherit! :search_paths
     # Pods for testing

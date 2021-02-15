@@ -11,7 +11,7 @@ import Firebase
 
 struct Tournament {
     let createdAt: Date
-    let name: String
+    var name: String
     let id: String
     let featuredImageURL: URL
     /// Flag to determine whether the voting/submission phase has ended.
@@ -25,10 +25,10 @@ struct Tournament {
     let parentTournamentWinnerId: String?
     var featuredVideoURL: URL?
     var active: Bool
+    var challengeType: String
     
     /// Dictionary representation of object
     var dictionary: [String : Any] {
-        
         var dict: [String : Any] = [
             "name": name,
             "featuredImageURL": featuredImageURL.absoluteString,
@@ -67,6 +67,8 @@ struct Tournament {
         } else {
             dict["featuredVideoURL"] = ""
         }
+        dict["challengeType"] = challengeType
+        
         return dict
     }
     
@@ -87,6 +89,7 @@ struct Tournament {
         self.featuredImageURL = featuredImageURL
         self.canInteract = canInteract
         self.active = active
+        self.challengeType = (dictionary["challengeType"] as? String) ?? ChallengeType.public.rawValue
         
         // leader info
         if let leaderId = dictionary["leaderId"] as? String,

@@ -55,6 +55,7 @@ class TournamentsTableViewController: UITableViewController {
         cell.tournamentTitleLabel.text = tournament.name
         cell.participantsLabel.text = "\(tournament.participants)"
         cell.timeLeftLabel.text = timeLeftString(tournament: tournament)
+        cell.typeLabel.text = "\(tournament.challengeType) Challenge"
         
         // check if there is a leader
         if let _ = tournament.leaderId,
