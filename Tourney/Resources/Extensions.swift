@@ -23,8 +23,9 @@ extension UIViewController {
         alert.addAction(dismissAction)
         present(alert, animated: true, completion: nil)
     }
+    
     /// Presents the WinnerFlow storyboard to take user through the uploading challenge video flow.
-    func presentWinnerFlowStoryboard(tournament: Tournament, tournamentsViewController: TournamentsTableViewController) {
+    func presentWinnerFlowStoryboard(tournament: Tournament, tournamentsViewController: TournamentsViewController) {
         let storyboard = UIStoryboard(name: "WinnerFlow", bundle: .main)
         if let navController = storyboard.instantiateInitialViewController() as? UINavigationController,
            let congratulationsViewController = navController.viewControllers.first as? CongratulationsViewController {
@@ -33,4 +34,16 @@ extension UIViewController {
             present(navController, animated: true, completion: nil)
         }
     }
+    
+    
+//    /// Presents the WinnerFlow storyboard to take user through the uploading challenge video flow.
+//    func presentWinnerFlowStoryboard(tournament: Tournament, tournamentsViewController: TournamentsTableViewController) {
+//        let storyboard = UIStoryboard(name: "WinnerFlow", bundle: .main)
+//        if let navController = storyboard.instantiateInitialViewController() as? UINavigationController,
+//           let congratulationsViewController = navController.viewControllers.first as? CongratulationsViewController {
+//            congratulationsViewController.tournamentsViewController = tournamentsViewController
+//            congratulationsViewController.tournament = tournament
+//            present(navController, animated: true, completion: nil)
+//        }
+//    }
 }

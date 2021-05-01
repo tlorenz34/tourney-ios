@@ -51,6 +51,10 @@ struct API {
      */
     func updateLeaderForTournament(tournament: Tournament, completion: @escaping (() -> Void)) {
         
+        /*
+        {"tournamentId": 123}
+        {"data":  {"tournamentId": 123}}
+        */
         let params = updateLeaderForTournamentParams(tournamentId: tournament.id)
         
         functions.httpsCallable(Endpoint.updateLeaderForTournament.rawValue).call(params.dictionary) { (result, error) in

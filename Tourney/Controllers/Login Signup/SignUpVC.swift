@@ -47,7 +47,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     @IBAction func completeAccount(_ sender: LoadingUIButton){
         
-        
         //alert user if term not accepted
         guard termAccepted == true else {
             alert(title: "Terms & Conditions", message: "Please check and accept our Terms & Conditions to continue.")
@@ -87,6 +86,8 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         sender.hideLoading()
                         if (success) {
                             self.setUpUserAndContinue()
+                
+                            
                         } else {
                             print("@willcohen somethign went wrong")
                         }
@@ -97,6 +98,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     @IBAction func selectedImagePicker(_ sender: Any){
+        
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -124,22 +126,28 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         present(alertController, animated: true, completion: nil)
     }
     
-    func keychain(){
-        KeychainWrapper.standard.set(userUid, forKey: "uid")
-    }
-    
     func setUpUserAndContinue(){
+        
         let userData = [
             "username": username,
             "email": emailField
         ]
-        keychain()
-        let setLocation = Database.database().reference().child("users").child(userUid)
-        setLocation.updateChildValues(userData)
+        KeychainWrapper.standard.set(userUid, forKey: "uid")
+       
+        Database.database().reference().child("users").child(userUid).updateChildValues(userData)
+        
         DatabaseService.loadSingletonData { (success) in
-            NotificationCenter.default.post(name: .signedInNotification, object: nil, userInfo: ["dynamicLinkTourneyId" : self.dynamicLinkTourneyId ?? ""])
+            
+            self.performSegue(withIdentifier: "toOnboardingVC", sender: nil)
+            
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let ovc = segue.destination as? OnboardingViewController{
+            ovc.dynamicLinkTourneyId = dynamicLinkTourneyId
+        }
     }
     
     func checkPermissions() {
@@ -204,6 +212,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         checkPermissions()
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
+            
             userImagePicker.image = image
             imageSelected = true
         } else {
@@ -211,5 +220,8 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
-    
+   
+   
+
 }
+

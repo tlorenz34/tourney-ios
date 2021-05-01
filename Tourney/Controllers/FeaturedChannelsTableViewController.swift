@@ -82,7 +82,7 @@ class FeaturedChannelsTableViewController: UITableViewController {
     // MARK: - Table view data source / delegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 500
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,7 +112,7 @@ class FeaturedChannelsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "toTournaments":
-            if let tournamentsVC = segue.destination as? TournamentsTableViewController, let channelId = sender as? String {
+            if let tournamentsVC = segue.destination as? TournamentsViewController, let channelId = sender as? String {
                 tournamentsVC.channelId = channelId
             }
         case "toProfile":

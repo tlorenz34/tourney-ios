@@ -28,7 +28,7 @@ class UploadChallengeVideoViewController: UploadVideo {
         uploadFeaturedVideo(videoURL: videoURL)
     }
     
-    var tournamentsViewController: TournamentsTableViewController!
+    var tournamentsViewController: TournamentsViewController!
     
     @IBAction func textFieldNameChanged(_ sender: UITextField) {
         labelPreview.text = "Preview: \(sender.text ?? "") Challenge"
@@ -48,7 +48,7 @@ class UploadChallengeVideoViewController: UploadVideo {
                     self.updateChildAndParentTournament(challengeVideoURL: uploadedVideoURL as URL)                    
                     // update tournament tablevc data source
                     self.updateDataSource(tournament: self.tournament)
-                    self.tournamentsViewController.tableView.reloadData()
+                    self.tournamentsViewController.mainTableView.reloadData()
                     // dismiss nav controller
                     self.navigationController?.dismiss(animated: true, completion: nil)
                 } else {
@@ -90,7 +90,7 @@ class UploadChallengeVideoViewController: UploadVideo {
             tournamentsViewController.tournaments.removeAll(where: {
                 $0.id == parentTournamentId
             })
-            tournamentsViewController.tableView.reloadData()
+            tournamentsViewController.mainTableView.reloadData()
         }
     }
 }

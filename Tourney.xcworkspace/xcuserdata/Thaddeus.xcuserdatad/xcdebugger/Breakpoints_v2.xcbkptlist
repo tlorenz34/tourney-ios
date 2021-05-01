@@ -7,18 +7,193 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F31524E2-485A-45E5-A4A0-365B7BDF031C"
+            uuid = "3E72207D-C6BA-429F-B457-1738136DB68C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tourney/Controllers/TournamentsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F164CCE-EDCE-4804-B2F9-986723D2EE5C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tourney/Controllers/TournamentsTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "timeLeftString(tournament:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "764F149D-811C-493A-A170-52F518D142F0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tourney/FeedVC.swift"
-            timestampString = "591898100.823217"
+            filePath = "Tourney/Managers/API.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
             endingLineNumber = "60"
-            landmarkName = "viewDidAppear(_:)"
+            landmarkName = "updateLeaderForTournament(tournament:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "764F149D-811C-493A-A170-52F518D142F0 - 899836186bd6583e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tourney.API.updateLeaderForTournament(tournament: Tourney.Tournament, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "Tourney"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Thaddeus/Documents/tourney/tourneyFinal/Tourney/Managers/API.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "187">
+               </Location>
+               <Location
+                  uuid = "764F149D-811C-493A-A170-52F518D142F0 - 22e67f42fe40daa5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRHTTPSCallableResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Tourney.API.updateLeaderForTournament(tournament: Tourney.Tournament, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "Tourney"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Thaddeus/Documents/tourney/tourneyFinal/Tourney/Managers/API.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "307">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3BF30C62-81BB-4196-A3D1-AE4052B470D8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tourney/Managers/API.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "updateLeaderForTournament(tournament:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7CAC1B3B-96DE-4709-9434-B6FA766B12CF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tourney/Controllers/UploadVideo.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "uploadAndCreateSubmission(videoURL:username:userProfileImageURL:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7CAC1B3B-96DE-4709-9434-B6FA766B12CF - 7b4c46191bb6cf1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tourney.UploadVideo.(uploadAndCreateSubmission in _246770326842AD9587136CD9DD4F2767)(videoURL: __C.NSURL, username: Swift.String, userProfileImageURL: Foundation.URL) -&gt; ()"
+                  moduleName = "Tourney"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Thaddeus/Documents/tourney/tourneyFinal/Tourney/Controllers/UploadVideo.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "161">
+               </Location>
+               <Location
+                  uuid = "7CAC1B3B-96DE-4709-9434-B6FA766B12CF - fe9891d7a10613d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.URL) -&gt; () in Tourney.UploadVideo.(uploadAndCreateSubmission in _246770326842AD9587136CD9DD4F2767)(videoURL: __C.NSURL, username: Swift.String, userProfileImageURL: Foundation.URL) -&gt; ()"
+                  moduleName = "Tourney"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Thaddeus/Documents/tourney/tourneyFinal/Tourney/Controllers/UploadVideo.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "161">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C972B421-2375-4225-88AE-3EA28C507B20"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tourney/Managers/API.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "updateParticipantsForTournament(tournament:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C972B421-2375-4225-88AE-3EA28C507B20 - 8d132476a522eaeb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tourney.API.updateParticipantsForTournament(tournament: Tourney.Tournament, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "Tourney"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Thaddeus/Documents/tourney/tourneyFinal/Tourney/Managers/API.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "181">
+               </Location>
+               <Location
+                  uuid = "C972B421-2375-4225-88AE-3EA28C507B20 - da8718192c3666e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRHTTPSCallableResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Tourney.API.updateParticipantsForTournament(tournament: Tourney.Tournament, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "Tourney"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Thaddeus/Documents/tourney/tourneyFinal/Tourney/Managers/API.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "307">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,13 +19,44 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jan-kopriva-Sgv7CbCWcFE-unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="WmL-jR-oT1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sB4-BE-P5A">
+                                <rect key="frame" x="60" y="103" width="400" height="32"/>
+                                <segments>
+                                    <segment title="Leaderboard"/>
+                                    <segment title="Submissions"/>
+                                    <segment title=""/>
+                                </segments>
+                            </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TourneyCompetitionLogoWHITE" translatesAutoresizingMaskIntoConstraints="NO" id="WVK-AN-co4">
+                                <rect key="frame" x="87" y="417" width="240" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="NFV-8x-x94"/>
+                                    <constraint firstAttribute="height" constant="62" id="xfw-vu-ezg"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tourneyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="e4W-m4-AXz">
+                                <rect key="frame" x="113" y="309" width="188" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Xll-Z1-he4"/>
+                                    <constraint firstAttribute="width" constant="188" id="aTe-Js-WyH"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="sB4-BE-P5A" secondAttribute="trailing" constant="-66" id="6HN-jl-6i4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WVK-AN-co4" secondAttribute="bottom" constant="383" id="7OL-Go-yi9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e4W-m4-AXz" secondAttribute="trailing" constant="113" id="8E0-9g-dKD"/>
                             <constraint firstItem="WmL-jR-oT1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8gP-rw-HbT"/>
                             <constraint firstItem="WmL-jR-oT1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="E9h-RC-zKU"/>
+                            <constraint firstItem="WVK-AN-co4" firstAttribute="top" secondItem="e4W-m4-AXz" secondAttribute="bottom" constant="8" id="HTm-P6-Amh"/>
                             <constraint firstAttribute="bottom" secondItem="WmL-jR-oT1" secondAttribute="bottom" id="Pze-GV-KnO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WVK-AN-co4" secondAttribute="trailing" constant="87" id="R5b-2d-4PQ"/>
+                            <constraint firstItem="e4W-m4-AXz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="113" id="deW-Xk-3m2"/>
+                            <constraint firstItem="sB4-BE-P5A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="kDb-iv-AhK"/>
+                            <constraint firstItem="sB4-BE-P5A" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="59" id="og2-oP-onV"/>
+                            <constraint firstItem="WVK-AN-co4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="pKn-DO-BEg"/>
                             <constraint firstItem="WmL-jR-oT1" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="v2Q-VS-cxk"/>
                         </constraints>
                     </view>
@@ -36,6 +67,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TourneyCompetitionLogoWHITE" width="1983" height="357"/>
         <image name="jan-kopriva-Sgv7CbCWcFE-unsplash" width="4000" height="6000"/>
+        <image name="tourneyIcon" width="1920" height="1920"/>
     </resources>
 </document>

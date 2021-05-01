@@ -9,22 +9,46 @@
 import UIKit
 import CoreData
 import Firebase
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseMessaging
+
+
 import IQKeyboardManagerSwift
 
 extension Notification.Name {
 	static let signOutNotification = Notification.Name("signOutNotification")
 	static let signedInNotification = Notification.Name("signedInNotification")
 }
-
+  
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
+    
+    let gcmMessageIDKey = "gcmMessage_ID"
 
     var window: UIWindow?
 
 // I can create an account with nothing in the email and password field right now
     // FIX THIS
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
+        
+        if #available(iOS 10.0, *) {
+          // For iOS 10 display notification (sent via APNS)
+          UNUserNotificationCenter.current().delegate = self
+
+          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+          UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
+        } else {
+          let settings: UIUserNotificationSettings =
+          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+          application.registerUserNotificationSettings(settings)
+        }
+
+        application.registerForRemoteNotifications()
+
+        
         IQKeyboardManager.shared.enable = true
 
         // handle dynamic link when app is switching from inactive to active state
@@ -35,7 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(signOutAction(_:)), name: .signOutNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(signedInAction(_:)), name: .signedInNotification, object: nil)
-        
+        Messaging.messaging().delegate = self
+        FirebaseApp.configure()
         return true
     }
 	
@@ -44,6 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
     
 	@objc func signedInAction(_ notification: Notification) {
+        
+        // If the user is anonoymous 
+        
         let afterLoginNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AfterLoginNavigationController") as! UINavigationController
         if let dynamicLinkTourneyId = notification.userInfo?["dynamicLinkTourneyId"] as? String, !dynamicLinkTourneyId.isEmpty {
             let featuredChannelsVC = afterLoginNavigationController.viewControllers.first as? FeaturedChannelsTableViewController
@@ -54,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state. 
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
 
@@ -159,6 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
     }
+    
 
     // MARK: - Core Data stack
 
@@ -206,4 +235,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+@available(iOS 10, *)
+extension AppDelegate : UNUserNotificationCenterDelegate {
 
+  // Receive displayed notifications for iOS 10 devices.
+  func userNotificationCenter(_ center: UNUserNotificationCenter,
+                              willPresent notification: UNNotification,
+    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    let userInfo = notification.request.content.userInfo
+
+    // With swizzling disabled you must let Messaging know about the message, for Analytics
+    // Messaging.messaging().appDidReceiveMessage(userInfo)
+
+    // ...
+
+    // Print full message.
+    print(userInfo)
+
+    // Change this to your preferred presentation option
+    completionHandler([[.alert, .sound]])
+  }
+
+  func userNotificationCenter(_ center: UNUserNotificationCenter,
+                              didReceive response: UNNotificationResponse,
+                              withCompletionHandler completionHandler: @escaping () -> Void) {
+    let userInfo = response.notification.request.content.userInfo
+
+    // ...
+
+    // With swizzling disabled you must let Messaging know about the message, for Analytics
+    // Messaging.messaging().appDidReceiveMessage(userInfo)
+
+    // Print full message.
+    print(userInfo)
+
+    completionHandler()
+  }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+      // If you are receiving a notification message while your app is in the background,
+      // this callback will not be fired till the user taps on the notification launching the application.
+      // TODO: Handle data of notification
+
+      // With swizzling disabled you must let Messaging know about the message, for Analytics
+      // Messaging.messaging().appDidReceiveMessage(userInfo)
+
+      // Print message ID.
+      if let messageID = userInfo[gcmMessageIDKey] {
+        print("Message ID: \(messageID)")
+      }
+
+      // Print full message.
+      print(userInfo)
+
+      completionHandler(UIBackgroundFetchResult.newData)
+    }
+    func application(_ application: UIApplication,
+    didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+      Messaging.messaging().apnsToken = deviceToken;
+    }
+}
+
+
+
+ 

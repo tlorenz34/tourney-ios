@@ -20,6 +20,8 @@ target 'Tourney' do
   pod 'SwiftKeychainWrapper'
   pod 'Cache'
   pod 'IQKeyboardManagerSwift'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics'
 
   target 'TourneyTests' do
     inherit! :search_paths

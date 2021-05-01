@@ -80,6 +80,16 @@ class SubmissionCell: UITableViewCell {
         playerLayer.frame = videoView.layer.bounds
     }
     
+    // Pass the cell the data it needs to set up its outlets
+    func updateUI(submission: Submission, canInteract: Bool){
+        submissionId = submission.id
+        usernameLabel.text = submission.creatorUsername
+        viewsLabel.text = "\(submission.views) views"
+        profileImageView.kf.setImage(with: submission.creatorProfileImageURL)
+        thumbnailImageView.kf.setImage(with: submission.thumbnailURL)
+        voteButton.isEnabled = canInteract
+    }
+    
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "timeControlStatus", let change = change, let newValue = change[NSKeyValueChangeKey.newKey] as? Int, let oldValue = change[NSKeyValueChangeKey.oldKey] as? Int {
             let oldStatus = AVPlayer.TimeControlStatus(rawValue: oldValue)

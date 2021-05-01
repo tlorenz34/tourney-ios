@@ -134,7 +134,8 @@ class TournamentsTableViewController: UITableViewController {
             if parentTournamentWinnerId == currentUser.uid {
                 if tournament.featuredVideoURL == nil {
                     // go to won vc flow
-                    presentWinnerFlowStoryboard(tournament: tournament, tournamentsViewController: self)
+                    // COMMENT OUT / TIGHTLY COUPLED
+//                    presentWinnerFlowStoryboard(tournament: tournament, tournamentsViewController: self)
                 } else {
                     // already uploaded featured video
                     performSegue(withIdentifier: "SubmissionsViewController", sender: tournament)
@@ -174,9 +175,9 @@ class TournamentsTableViewController: UITableViewController {
         if hoursLeft <= 0 {
             return "--"
         } else if hoursLeft < 24 {
-            return "⏳ \(hoursLeft) hours left"
+            return "\(hoursLeft) hours left"
         } else {
-            return "⏳ \(hoursLeft/24) days left"
+            return "\(hoursLeft/24) days left"
         }
     }
     

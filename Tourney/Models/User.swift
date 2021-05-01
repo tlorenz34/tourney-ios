@@ -12,7 +12,7 @@ import Firebase
 
 final class User {
     static let sharedInstance = User()
-    private init() { }
+    init() { }
     
     var uid: String!
     var username: String?
@@ -58,6 +58,22 @@ class UserManager {
             if let value = snapshot.value as? [String : Any],
                 let votes =  value["votes"] as? [String : String] {
                 completion(votes)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func getUser(userId: String, completion: @escaping (User?) -> Void){
+        Database.database().reference().child("users").child(userId).observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? [String : Any]
+               {
+                let judge = User()
+                judge.profileImageURL = value["profileImageUrl"] as? String
+                judge.uid = userId
+                judge.username = value["username"] as? String
+              
+                completion(judge)
             } else {
                 completion(nil)
             }

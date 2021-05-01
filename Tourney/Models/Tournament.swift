@@ -28,6 +28,30 @@ struct Tournament {
     var challengeType: String
     let channel: String?
     
+    var userIds: [String]?
+    var judgeId: String?
+    
+    
+    var canParticipate: Bool{
+        
+        // If the user is not logged in, cannot participate
+        guard let currentUser = Auth.auth().currentUser else { return false }
+        
+        // If userIds is not set, then it's public and anyone can participate
+        guard let userIds = userIds else { return true }
+        
+        // If user is logged in and userIds is set, is the user part of userIds
+        return userIds.contains(currentUser.uid)
+        
+    }
+    
+    var canJudge: Bool{
+        // If the user is not logged in, cannot judge
+        guard let currentUser = Auth.auth().currentUser, let judgeId = judgeId else { return false }
+        
+        return judgeId == currentUser.uid
+    }
+    
     /// Dictionary representation of object
     var dictionary: [String : Any] {
         var dict: [String : Any] = [
@@ -36,7 +60,7 @@ struct Tournament {
             "canInteract": canInteract,
             "participants": participants,
             "active": active,
-            "channel": channel ?? "",
+            "channel": channel ?? ""
         ]
         
         if let leaderId = leaderId {
@@ -93,6 +117,8 @@ struct Tournament {
         self.active = active
         self.challengeType = (dictionary["challengeType"] as? String) ?? ChallengeType.public.rawValue
         self.channel = dictionary["channel"] as? String
+        self.userIds = dictionary["userIds"] as? [String]
+        self.judgeId = dictionary["judgeId"] as? String
         
         // leader info
         if let leaderId = dictionary["leaderId"] as? String,

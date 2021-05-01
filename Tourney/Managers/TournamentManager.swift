@@ -13,11 +13,31 @@ import Firebase
  */
 struct TournamentManager {
     
+    let TEST_USER_ID  = "xBzOHvLrbYPH5J6q1a83uhZEJK62"
+    
     let db = Firestore.firestore()
     private let tournamentsCollectionKey = "tournaments"
     private var baseQuery: Query {
         return db.collection(tournamentsCollectionKey)
     }
+    
+    
+    /**
+     Fetch `Tournament` objects with `channel` as given
+     */
+    func fetchTournaments(channelId: String, completion: @escaping (([Tournament]?) -> Void)) {
+        baseQuery.whereField("channel", isEqualTo: channelId)
+            .getDocuments { (snapshot, error) in
+                guard let snapshot = snapshot else {
+                    completion(nil)
+                    return
+                }
+                completion(self.parseDocumentsToTournaments(documents: snapshot.documents))
+            }
+        completion(nil)
+    }
+    
+    
     /**
      Fetch `Tournament` objects with `active` property as `true`
      */
@@ -68,6 +88,7 @@ struct TournamentManager {
         guard let currentUser = Auth.auth().currentUser else { return }
         baseQuery.whereField("channel", isEqualTo: channelId)
             .whereField("parentTournamentWinnerId", isEqualTo: currentUser.uid)
+            
             .getDocuments { (snapshot, error) in
                 guard let snapshot = snapshot else {
                     completion(nil)
@@ -113,8 +134,10 @@ struct TournamentManager {
                 tournaments.append(tournament)
             }
         }
+        
         return tournaments
     }
+
     /**
      Parse `QueryDocumentSnapshot` to `Tournament`
      */

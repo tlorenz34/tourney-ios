@@ -124,14 +124,23 @@ class Post  {
  */
 class PostManager {
     
-    var id: String
+    var submissionId: String
+    
+    var tournament: Tournament
+    
     let db = Firestore.firestore()
+    
     var submissionRef: DocumentReference {
-        db.collection("submissions").document(id)
+        db.collection("submissions").document(submissionId)
     }
     
-    init(submissionId: String) {
-        id = submissionId
+    var tournamentRef: DocumentReference {
+        db.collection("tournaments").document(tournament.id)
+    }
+    
+    init(tournament: Tournament, submissionId: String) {
+        self.tournament = tournament
+        self.submissionId = submissionId
     }
     
     /// Increments `votes` field by `1`
@@ -156,8 +165,15 @@ class PostManager {
      Add amount to `votes` field of Post object
      */
     private func addToVote(amount: Int, completion: @escaping () -> Void) {
+        
+        let VOTE_KEY  = tournament.canJudge ? "votesJudge" : "votes"
+        let TOTAL_VOTE_KEY  = tournament.canJudge ? "totalVotesJudge" : "totalVotes"
+        
         submissionRef.updateData([
-            "votes": FieldValue.increment(Int64(amount))
+            "\(VOTE_KEY)": FieldValue.increment(Int64(amount))
+        ])
+        tournamentRef.updateData([
+            "\(TOTAL_VOTE_KEY)": FieldValue.increment(Int64(amount))
         ])
         completion()
     }

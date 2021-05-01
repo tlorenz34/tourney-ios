@@ -17,7 +17,7 @@ struct ChannelManager {
     private let channelsCollectionKey = "channels"
     private var baseQuery: Query {
         return db.collection(channelsCollectionKey)
-    }
+    } 
     
     func fetchFeaturedChannels(completion: @escaping ( ([Channel]?) -> Void)) {
         baseQuery.getDocuments { (snapshot, error) in

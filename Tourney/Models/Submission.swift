@@ -19,6 +19,7 @@ struct Submission {
     let videoURL: URL
     let views: Int
     let votes: Int
+    let judgeVotes: Int?
     
     init?(id: String, dictionary: [String : Any]) {
         guard let tournamentId = dictionary["tournamentId"] as? String,
@@ -44,7 +45,10 @@ struct Submission {
         self.thumbnailURL = thumbnailURL
         self.views = views
         self.votes = votes
+        self.judgeVotes = dictionary["judgeVotes"] as? Int
+        
     }
+    
     init?(tournamentId: String, creatorProfileImageURL: URL, creatorUsername: String, videoURL: URL, thumbnailURL: URL) {
         guard let currentUser = Auth.auth().currentUser else { return nil }
         self.id = UUID().uuidString
@@ -56,6 +60,7 @@ struct Submission {
         self.thumbnailURL = thumbnailURL
         self.views = 0
         self.votes = 0
+        self.judgeVotes = 0
     }
     
     var dictionary: [String : Any] {
@@ -68,7 +73,8 @@ struct Submission {
             "videoURL": videoURL.absoluteString,
             "thumbnailURL": thumbnailURL.absoluteString,
             "views": views,
-            "votes": votes
+            "votes": votes,
+            "judgeVotes": judgeVotes
         ]
     }
 }

@@ -54,4 +54,8 @@ class TournamentCell: UITableViewCell {
         participantsLabel.isHidden = hide
         participantsIconImageView.isHidden = hide
     }
+    
+    func updateUI(tournament: Tournament){
+        
+    }
 }

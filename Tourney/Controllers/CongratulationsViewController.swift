@@ -11,7 +11,7 @@ import UIKit
 class CongratulationsViewController: UIViewController {
     
     var tournament: Tournament!
-    var tournamentsViewController: TournamentsTableViewController!
+    var tournamentsViewController: TournamentsViewController!
     
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var uploadChallengeButton: UIButton!

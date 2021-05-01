@@ -93,6 +93,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     func goToCreateUserVC(){
         performSegue(withIdentifier: "toSignUp", sender: nil)
     }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

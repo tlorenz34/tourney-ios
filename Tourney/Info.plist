@@ -22,10 +22,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>Bundle ID</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.tourney.Tourney</string>
+				<string>com.googleusercontent.apps.398050718511-vje902v425bloh9joo555d0300krdm89</string>
 			</array>
 		</dict>
 	</array>
@@ -44,6 +44,12 @@
 	<string>We need to access your microphone to record videos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need to access your photos to upload images</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

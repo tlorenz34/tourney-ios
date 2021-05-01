@@ -18,6 +18,7 @@ class SignUpLogInVC: UIViewController {
     
     @IBOutlet weak var roundedSignUpBtn: UIButton!
     @IBOutlet weak var roundedLoginBtn: UIButton!
+    @IBOutlet weak var roundedAnonymousBtn: UIButton!
     
     var dynamicLinkTourneyId: String?
     
@@ -26,6 +27,10 @@ class SignUpLogInVC: UIViewController {
     }
     @IBAction func signInTapped() {
         performSegue(withIdentifier: "showSignIn", sender: nil)
+    }
+    
+    @IBAction func skipTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "toOnboardingVC", sender: nil)
     }
     
     override func viewDidLoad() {
@@ -45,6 +50,7 @@ class SignUpLogInVC: UIViewController {
 //        }
 //    }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSignUp" {
             if let dynamicLinkTourneyId = dynamicLinkTourneyId {
@@ -61,8 +67,13 @@ class SignUpLogInVC: UIViewController {
                 let destinationVC = segue.destination as! LoginVC
                 destinationVC.dynamicLinkTourneyId = dynamicLinkTourneyId
             }
+        } else if segue.identifier == "toOnboardingVC" {
+            if let dynamicLinkTourneyId = dynamicLinkTourneyId {
+                let destinationVC = segue.destination as! OnboardingViewController
+                destinationVC.dynamicLinkTourneyId = dynamicLinkTourneyId
         }
     }
 
   
+}
 }
