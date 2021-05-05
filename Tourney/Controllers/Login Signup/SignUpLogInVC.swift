@@ -37,6 +37,7 @@ class SignUpLogInVC: UIViewController {
         super.viewDidLoad()
         self.roundedSignUpBtn.layer.cornerRadius = 8
         self.roundedLoginBtn.layer.cornerRadius = 8
+        self.roundedAnonymousBtn.layer.cornerRadius = 8
     }
     
 //    override func viewDidAppear(_ animated: Bool) {

@@ -157,6 +157,14 @@ class UploadVideo: UIViewController, UIImagePickerControllerDelegate, UINavigati
                                             // update leaderboard for tournamnet
                                             API().updateLeaderForTournament(tournament: self.tournament) {
                                                 
+//                                                var localNotification = UILocalNotification()
+//                                                    localNotification.fireDate = Date()
+//                                                    localNotification.alertBody = "This is local notification from Swift 2.0"
+//                                                
+//                                                    localNotification.category = "Message"
+//
+//                                                    UIApplication.shared().scheduleLocalNotification(localNotification)
+                                                
                                                 // dismiss
                                                 if let priorController = self.priorRecordingController {
                                                     priorController.shouldDismiss = true

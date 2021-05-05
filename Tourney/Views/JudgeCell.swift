@@ -20,7 +20,7 @@ class JudgeCell: UITableViewCell {
         guard let  judge = judge else {
             judgeName.text = "Public Vote"
             // TODO: - Thaddues
-//            judgeProfilePicture.image = UIImage(named: "")
+            judgeProfilePicture.image = UIImage(named: "public")
             return
         }
         
@@ -30,6 +30,12 @@ class JudgeCell: UITableViewCell {
         }
         
         
+    }
+    @IBOutlet weak var roundedCellView: UIView! {
+        didSet {
+            roundedCellView.layer.cornerRadius = 20
+            roundedCellView.layer.masksToBounds = true
+        }
     }
 
 }

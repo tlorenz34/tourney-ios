@@ -359,6 +359,14 @@ extension TournamentsViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        // If user selects a judge, return
+        if userDidSelectLive && indexPath.row == liveTournaments.count{
+            return
+        }
+        
+        // livesTournaments[1]
         let tournament = userDidSelectLive ? liveTournaments[indexPath.row] : finishedTournaments[indexPath.row]
 //        let tournament = tournaments[indexPath.row]
 

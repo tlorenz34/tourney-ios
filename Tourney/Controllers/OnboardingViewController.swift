@@ -23,7 +23,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
 
     //data for the slides
     var titles = ["Watch Featured Contests","Join Public Contests","Vote", "Track Progress"]
-    var descs = ["Live contests between pro athletes","All skill levels welcome. Record and submit your best line","Vote on your favorite submission, judge has final say", "Track your total votes, wins, and participated"]
+    var descs = ["Live contests between pro athletes","Invite only. Record and submit your best line","Vote on your favorite submission, judge has final say", "Track your total votes, wins, and participated"]
     var imgs = ["featured","allcontests","submissions_example", "profile"]
 
     //get dynamic width and height of scrollview and save it
@@ -36,7 +36,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
         //to call viewDidLayoutSubviews() and get dynamic width and height of scrollview
-
+        self.btnGetStarted.layer.cornerRadius = 8
         self.scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
